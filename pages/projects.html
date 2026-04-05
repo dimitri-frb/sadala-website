@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Approach — Sadala</title>
+    <title>Projects — Sadala</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -19,18 +19,20 @@
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
 
+        /* NAV */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--grey-border); }
         .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
+        .nav-links a.active { color: var(--black); font-weight: 400; }
         .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
         .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
 
         /* PAGE HEADER */
         .page-header {
-            padding: 160px 48px 80px;
-            max-width: 900px; margin: 0 auto;
+            padding: 160px 48px 60px;
+            max-width: 1200px; margin: 0 auto;
         }
         .page-header-label {
             font-size: 11px; font-weight: 400; letter-spacing: 3px;
@@ -38,95 +40,133 @@
         }
         .page-header h1 {
             font-family: var(--serif); font-size: clamp(36px, 5vw, 56px);
-            font-weight: 300; line-height: 1.15;
+            font-weight: 300; line-height: 1.15; margin-bottom: 16px;
         }
-        .page-header .page-sub {
+        .page-header p {
             font-size: 15px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); margin-top: 20px; max-width: 600px;
+            color: var(--grey); max-width: 550px;
         }
 
-        /* IMAGE BAND */
-        .image-band {
-            height: 55vh; overflow: hidden;
+        /* FILTER TABS */
+        .filter-tabs {
+            padding: 0 48px;
+            max-width: 1200px; margin: 0 auto 48px;
+            display: flex; gap: 24px;
+            border-bottom: 1px solid var(--grey-border);
         }
-        .image-band img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* PHILOSOPHY */
-        .philosophy {
-            padding: 100px 48px;
-            max-width: 1000px; margin: 0 auto;
+        .filter-tab {
+            font-size: 12px; font-weight: 400; letter-spacing: 1px;
+            text-transform: uppercase; color: var(--grey);
+            padding: 12px 0; cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all .3s;
         }
-        .philosophy-block {
-            display: grid; grid-template-columns: 180px 1fr; gap: 60px;
-            margin-bottom: 80px;
-        }
-        .philosophy-block:last-child { margin-bottom: 0; }
-        .phil-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent); padding-top: 6px;
-        }
-        .phil-content h2 {
-            font-family: var(--serif); font-size: 28px; font-weight: 400;
-            margin-bottom: 16px;
-        }
-        .phil-content p {
-            font-size: 14px; font-weight: 300; line-height: 1.9;
-            color: var(--grey); margin-bottom: 12px;
+        .filter-tab:hover { color: var(--black); }
+        .filter-tab.active {
+            color: var(--black);
+            border-bottom-color: var(--accent);
         }
 
-        /* PILLARS */
-        .pillars {
-            padding: 100px 48px;
-            background: var(--black);
+        /* PROJECT LIST */
+        .projects-list {
+            padding: 0 48px 100px;
+            max-width: 1200px; margin: 0 auto;
         }
-        .pillars-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
+
+        /* FEATURED PROJECT — Large card */
+        .project-featured {
+            display: grid; grid-template-columns: 1.4fr 1fr;
+            gap: 48px; margin-bottom: 80px;
+            text-decoration: none; color: inherit;
+            align-items: center;
+        }
+        .project-featured-image {
+            overflow: hidden; aspect-ratio: 16/10;
+        }
+        .project-featured-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .8s cubic-bezier(.25,.1,.25,1);
+        }
+        .project-featured:hover .project-featured-image img {
+            transform: scale(1.03);
+        }
+        .project-featured-info .pf-status {
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
             text-transform: uppercase; color: var(--accent);
-            margin-bottom: 48px; max-width: 1100px; margin-left: auto; margin-right: auto;
+            margin-bottom: 12px;
         }
-        .pillars-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 0; max-width: 1100px; margin: 0 auto;
+        .project-featured-info h2 {
+            font-family: var(--serif); font-size: 36px; font-weight: 400;
+            margin-bottom: 12px;
         }
-        .pillar {
-            padding: 40px 32px;
-            border-left: 1px solid rgba(225,216,204,.06);
-        }
-        .pillar:first-child { border-left: none; }
-        .pillar-num {
-            font-family: var(--serif); font-size: 32px; font-weight: 300;
-            color: var(--accent); opacity: .4; margin-bottom: 20px;
-        }
-        .pillar-title {
-            font-family: var(--serif); font-size: 20px; font-weight: 400;
-            color: var(--off-white); margin-bottom: 10px;
-        }
-        .pillar-desc {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey);
-        }
-
-        /* TEAM */
-        .team {
-            padding: 100px 48px;
-            max-width: 900px; margin: 0 auto;
-            text-align: center;
-        }
-        .team h2 {
-            font-family: var(--serif); font-size: 32px; font-weight: 400;
+        .project-featured-info .pf-location {
+            font-size: 13px; font-weight: 300; color: var(--grey);
             margin-bottom: 16px;
         }
-        .team p {
+        .project-featured-info .pf-desc {
             font-size: 14px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); max-width: 600px; margin: 0 auto 32px;
+            color: var(--grey); margin-bottom: 20px;
         }
-        .team-cta {
-            display: inline-block; padding: 14px 32px;
-            font-family: var(--sans); font-size: 12px; font-weight: 400;
-            color: var(--black); text-decoration: none;
-            border: 1px solid var(--grey-light); transition: all .3s;
+        .project-featured-info .pf-kpis {
+            display: flex; gap: 32px; margin-bottom: 24px;
         }
-        .team-cta:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+        .pf-kpi-value {
+            font-family: var(--serif); font-size: 24px; font-weight: 400;
+            color: var(--black);
+        }
+        .pf-kpi-label {
+            font-size: 10px; font-weight: 400; letter-spacing: 1px;
+            text-transform: uppercase; color: var(--grey-light);
+        }
+        .project-featured-info .pf-cta {
+            font-size: 12px; font-weight: 400; color: var(--black);
+            text-decoration: none; border-bottom: 1px solid var(--grey-light);
+            padding-bottom: 4px; transition: border-color .3s;
+        }
+        .project-featured-info .pf-cta:hover { border-color: var(--black); }
+
+        /* DIVIDER */
+        .section-divider {
+            border: none; border-top: 1px solid var(--grey-border);
+            margin: 0 0 80px;
+        }
+
+        /* SMALLER GRID */
+        .projects-grid-small {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .project-card {
+            text-decoration: none; color: inherit; display: block;
+        }
+        .project-card-image {
+            overflow: hidden; aspect-ratio: 3/2; margin-bottom: 16px;
+        }
+        .project-card-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .8s cubic-bezier(.25,.1,.25,1);
+        }
+        .project-card:hover .project-card-image img { transform: scale(1.04); }
+        .project-card-status {
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+        }
+        .project-card-title {
+            font-family: var(--serif); font-size: 22px; font-weight: 400;
+            color: var(--black); margin-bottom: 4px;
+        }
+        .project-card-sub {
+            font-size: 13px; font-weight: 300; color: var(--grey);
+        }
+
+        /* CTA BAND */
+        .cta-band {
+            background: var(--black); padding: 80px 48px; text-align: center;
+        }
+        .cta-band h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--off-white); margin-bottom: 12px; }
+        .cta-band p { font-size: 14px; font-weight: 300; color: var(--grey); margin-bottom: 28px; }
+        .cta-band .btn { display: inline-block; padding: 14px 32px; font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--off-white); text-decoration: none; border: 1px solid rgba(225,216,204,.2); transition: all .3s; }
+        .cta-band .btn:hover { background: rgba(225,216,204,.08); border-color: rgba(225,216,204,.4); }
 
         /* FOOTER */
         footer { background: var(--black); color: var(--off-white); padding: 80px 48px 0; }
@@ -155,15 +195,12 @@
 
         @media (max-width: 900px) {
             nav { padding: 20px 24px; } .nav-links { display: none; }
-            .page-header { padding: 120px 24px 60px; }
-            .image-band { height: 40vh; }
-            .philosophy { padding: 60px 24px; }
-            .philosophy-block { grid-template-columns: 1fr; gap: 12px; }
-            .pillars { padding: 60px 24px; }
-            .pillars-grid { grid-template-columns: 1fr 1fr; }
-            .pillar { border-left: none; border-top: 1px solid rgba(225,216,204,.06); }
-            .pillar:nth-child(-n+2) { border-top: none; }
-            .team { padding: 60px 24px; }
+            .page-header { padding: 120px 24px 40px; }
+            .filter-tabs { padding: 0 24px; }
+            .projects-list { padding: 0 24px 60px; }
+            .project-featured { grid-template-columns: 1fr; gap: 24px; }
+            .projects-grid-small { grid-template-columns: 1fr; gap: 40px; }
+            .cta-band { padding: 60px 24px; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
@@ -174,80 +211,80 @@
 <nav>
     <a href="../index.html" class="nav-logo">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html">Projects</a>
+        <a href="projects.html" class="active">Projects</a>
         <a href="approach.html">Our Approach</a>
         <a href="contact.html" class="nav-contact">Contact</a>
     </div>
 </nav>
 
+<!-- HEADER -->
 <section class="page-header reveal">
-    <div class="page-header-label">Our Approach</div>
-    <h1>We are not a volume developer.</h1>
-    <p class="page-sub">Each project is a singular commitment &mdash; one site, one vision, one team. From land acquisition through to handover, every decision passes through our hands.</p>
+    <div class="page-header-label">Portfolio</div>
+    <h1>Our Projects</h1>
+    <p>Each project is a singular commitment. No two are alike. Here is every home we have conceived, built, or are currently delivering.</p>
 </section>
 
-<section class="image-band">
-    <img src="../img/cantal-interior.jpg" alt="Villa El Cantal outdoor living space">
-</section>
+<!-- FILTER TABS -->
+<div class="filter-tabs">
+    <span class="filter-tab active">All</span>
+    <span class="filter-tab">Current</span>
+    <span class="filter-tab">Completed</span>
+</div>
 
-<section class="philosophy">
-    <div class="philosophy-block reveal">
-        <div class="phil-label">How We Work</div>
-        <div class="phil-content">
-            <h2>A conversation before a transaction</h2>
-            <p>We don't list properties for mass distribution. Before anything is built, there is a dialogue &mdash; about how you live, what you value, and what a home should feel like when you walk through the door.</p>
-            <p>We select sites for their irreplaceability: the mature trees, the slope, the morning light. The land writes the brief. Everything else follows.</p>
+<!-- PROJECTS -->
+<section class="projects-list">
+
+    <!-- FEATURED: El Cantal -->
+    <a href="villa-el-cantal.html" class="project-featured reveal">
+        <div class="project-featured-image">
+            <img src="../img/cantal-hero.jpg" alt="Villa El Cantal among Mediterranean pines">
         </div>
+        <div class="project-featured-info">
+            <div class="pf-status">Under Construction</div>
+            <h2>Villa El Cantal</h2>
+            <div class="pf-location">Monte de M&aacute;laga, Pinares de San Ant&oacute;n</div>
+            <p class="pf-desc">A cantilevered volume of perforated corten steel, suspended above the hillside. The living roof dissolves the boundary between architecture and landscape.</p>
+            <div class="pf-kpis">
+                <div><div class="pf-kpi-value">350</div><div class="pf-kpi-label">m&sup2;</div></div>
+                <div><div class="pf-kpi-value">5</div><div class="pf-kpi-label">Bed</div></div>
+                <div><div class="pf-kpi-value">2025</div><div class="pf-kpi-label">Delivery</div></div>
+            </div>
+            <span class="pf-cta">View project &rarr;</span>
+        </div>
+    </a>
+
+    <hr class="section-divider">
+
+    <!-- GRID: Other projects -->
+    <div class="projects-grid-small">
+        <a class="project-card reveal" href="villa-buganvilleas.html">
+            <div class="project-card-image">
+                <img src="../img/buganvilleas-sunset.png" alt="Villa Buganvilleas at sunset">
+            </div>
+            <div class="project-card-status">Under Construction</div>
+            <div class="project-card-title">Villa Buganvilleas</div>
+            <div class="project-card-sub">280 m&sup2; &middot; 4 bed &middot; Pinares de San Ant&oacute;n</div>
+        </a>
+        <a class="project-card reveal" href="villa-buganvilleas.html">
+            <div class="project-card-image">
+                <img src="../img/buganvilleas-entrance-dusk.png" alt="Villa Buganvilleas entrance at dusk">
+            </div>
+            <div class="project-card-status">Under Construction</div>
+            <div class="project-card-title">Buganvilleas &mdash; Detail</div>
+            <div class="project-card-sub">Brass door &middot; Olive trees &middot; Step lighting</div>
+        </a>
     </div>
-    <div class="philosophy-block reveal">
-        <div class="phil-label">What We Build</div>
-        <div class="phil-content">
-            <h2>Heritage meets contemporary design</h2>
-            <p>While others demolish, we preserve. We find value in what already exists &mdash; a stone wall, a century-old tree, the natural contour of a hillside &mdash; and build around it. Not out of sentiment, but because these elements are irreplaceable.</p>
-            <p>We work with award-winning architects and local artisans who share our belief that the best buildings are those that belong to their place.</p>
-        </div>
-    </div>
-    <div class="philosophy-block reveal">
-        <div class="phil-label">How We Deliver</div>
-        <div class="phil-content">
-            <h2>End-to-end, in our hands</h2>
-            <p>From land identification and acquisition, through design, permitting, construction, and final handover &mdash; every stage is managed directly by our team. No intermediaries. No corners cut. One point of responsibility from beginning to end.</p>
-        </div>
-    </div>
+
 </section>
 
-<section class="pillars">
-    <div class="pillars-label">Our Four Pillars</div>
-    <div class="pillars-grid">
-        <div class="pillar reveal">
-            <div class="pillar-num">01</div>
-            <div class="pillar-title">Zero Replication</div>
-            <div class="pillar-desc">Every home is a one-time creation. No project is ever repeated, no plan recycled.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">02</div>
-            <div class="pillar-title">Heritage First</div>
-            <div class="pillar-desc">We preserve what centuries formed. Not sentiment &mdash; irreplaceability.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">03</div>
-            <div class="pillar-title">Artisan Craft</div>
-            <div class="pillar-desc">Local stone, reclaimed timber, hand-applied lime plaster. Materials with memory.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">04</div>
-            <div class="pillar-title">Nature as Brief</div>
-            <div class="pillar-desc">The land writes the program. The architecture listens.</div>
-        </div>
-    </div>
+<!-- CTA -->
+<section class="cta-band">
+    <h2>Looking for something unique?</h2>
+    <p>We are always scouting new sites. If you'd like to be the first to know about our next project, get in touch.</p>
+    <a href="contact.html" class="btn">Start a conversation</a>
 </section>
 
-<section class="team reveal">
-    <h2>Built by a team that cares</h2>
-    <p>Sadala is led by a small, dedicated team based in M&aacute;laga. We work closely with architects, engineers, and artisans who share our vision for thoughtful, singular construction.</p>
-    <a href="contact.html" class="team-cta">Start a conversation</a>
-</section>
-
+<!-- FOOTER -->
 <footer>
     <div class="footer-main">
         <div class="footer-brand"><span class="footer-logo">Sadala</span><p class="footer-tagline">Builders of the Unique. Singular homes conceived, built and delivered in the Andaluc&iacute;an landscape.</p><span class="footer-location">M&aacute;laga, Southern Spain</span></div>
