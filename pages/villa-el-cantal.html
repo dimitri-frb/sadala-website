@@ -55,6 +55,25 @@
         .feature-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--black); margin-bottom: 8px; }
         .feature-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
 
+        .location-section { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
+        .location-header { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; margin-bottom: 48px; }
+        .location-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+        .location-map { width: 100%; height: 400px; border: 0; filter: grayscale(.3) contrast(1.05); }
+        .location-highlights { display: flex; gap: 32px; margin-top: 20px; }
+        .lh-value { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--black); margin-bottom: 2px; }
+        .lh-label { font-size: 11px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); }
+        .location-text h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+        .location-text p { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); margin-bottom: 12px; }
+
+        .partners-section { padding: 100px 48px; background: var(--off-white); }
+        .partners-header { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; margin-bottom: 16px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+        .partners-sub { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); max-width: 1100px; margin: 0 auto 48px; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .partner-card { padding: 32px; background: var(--white); text-align: center; }
+        .partner-role { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+        .partner-name { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--black); margin-bottom: 8px; }
+        .partner-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+
         .slider-section { padding: 80px 48px; border-top: 1px solid var(--grey-border); }
         .slider-section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
         .slider-section-header h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; }
@@ -111,6 +130,8 @@
             .villa-intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 12px; }
             .kpi-grid { grid-template-columns: 1fr 1fr; }
             .features { padding: 60px 24px; } .features-grid { grid-template-columns: 1fr; }
+            .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
+            .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
@@ -164,6 +185,27 @@
         <div><div class="feature-title">Indoor-Outdoor Living</div><div class="feature-desc">Full-height glazing and retractable walls dissolve the boundary between the interior and the garden terrace.</div></div>
         <div><div class="feature-title">Infinity Pool</div><div class="feature-desc">Integrated into the hillside with views toward the Mediterranean, appearing to merge with the landscape below.</div></div>
         <div><div class="feature-title">Natural Rock Integration</div><div class="feature-desc">Existing rock formations are preserved and incorporated into the garden design, anchoring the house to its site.</div></div>
+    </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section reveal">
+    <h2 class="location-header">The Location</h2>
+    <div class="location-grid">
+        <div>
+            <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.5!2d-4.38!3d36.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQzJzEyLjAiTiA0wrAyMic0OC4wIlc!5e0!3m2!1sen!2ses!4v1" allowfullscreen loading="lazy"></iframe>
+            <div class="location-highlights">
+                <div class="lh-item"><div class="lh-value">500m</div><div class="lh-label">To the beach</div></div>
+                <div class="lh-item"><div class="lh-value">10 min</div><div class="lh-label">To Malaga center</div></div>
+                <div class="lh-item"><div class="lh-value">20 min</div><div class="lh-label">To the airport</div></div>
+            </div>
+        </div>
+        <div class="location-text">
+            <h3>The new luxury</h3>
+            <p>Perched on Monte de Malaga with sweeping views across the city and the Mediterranean, Villa El Cantal occupies one of the most privileged positions in Malaga Este.</p>
+            <p>The site sits within Pinares de San Anton, a protected residential enclave surrounded by century-old pine forests. 24-hour security, a private tennis club and a private social club create a self-contained world of calm.</p>
+            <p>The centre of Malaga is 10 minutes away. The Mediterranean is 5 minutes away. The airport is 20 minutes. Everything else stays outside.</p>
+        </div>
     </div>
 </section>
 
@@ -238,6 +280,29 @@
         <button class="slider-btn" onclick="slideGallery(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="slider-dots" id="galleryDots"></div>
         <button class="slider-btn" onclick="slideGallery(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section reveal">
+    <h2 class="partners-header">Crafted by award-winning professionals</h2>
+    <p class="partners-sub">Every Sadala project brings together a unique team of specialists, handpicked for their craft. For Villa El Cantal, we partnered with:</p>
+    <div class="partners-grid">
+        <div class="partner-card">
+            <div class="partner-role">Architecture</div>
+            <div class="partner-name">Flow81</div>
+            <div class="partner-desc">Experiential architecture lab designing homes that reconnect with nature. Known for sensory-driven spaces that engage all five senses.</div>
+        </div>
+        <div class="partner-card">
+            <div class="partner-role">Interior Design</div>
+            <div class="partner-name">Studio 1969</div>
+            <div class="partner-desc">Contemporary interior design studio creating spaces where materiality, light, and proportion work in quiet harmony.</div>
+        </div>
+        <div class="partner-card">
+            <div class="partner-role">Landscaping</div>
+            <div class="partner-name">Landscapers</div>
+            <div class="partner-desc">Mediterranean landscape architects designing outdoor spaces that extend the home into the hillside, preserving native ecosystems.</div>
+        </div>
     </div>
 </section>
 
