@@ -199,22 +199,26 @@
         </div>
 
         <div class="reveal">
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" action="https://formsubmit.co/dimitri@dfginvest.fr" method="POST">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde Sadala web (Contacto ES)">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://sadala.com/es/pages/contact.html">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-row">
                     <label>Nombre Completo</label>
-                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="text" name="name" placeholder="Tu nombre" required>
                 </div>
                 <div class="form-row">
                     <label>Email</label>
-                    <input type="email" placeholder="tu@ejemplo.com" required>
+                    <input type="email" name="email" placeholder="tu@ejemplo.com" required>
                 </div>
                 <div class="form-row">
                     <label>Tel&eacute;fono</label>
-                    <input type="tel" placeholder="+34 ...">
+                    <input type="tel" name="phone" placeholder="+34 ...">
                 </div>
                 <div class="form-row">
                     <label>Interesado En</label>
-                    <select>
+                    <select name="interested_in">
                         <option value="" disabled selected>Selecciona un proyecto...</option>
                         <option>Villa El Cantal</option>
                         <option>Villa Buganvilleas</option>
@@ -224,14 +228,10 @@
                 </div>
                 <div class="form-row">
                     <label>Mensaje</label>
-                    <textarea placeholder="Cu&eacute;ntanos qu&eacute; buscas, tus plazos o cualquier otra cosa..."></textarea>
+                    <textarea name="message" placeholder="Cu&eacute;ntanos qu&eacute; buscas, tus plazos o cualquier otra cosa..."></textarea>
                 </div>
                 <button type="submit">Enviar Mensaje</button>
             </form>
-            <div class="form-success" id="formSuccess">
-                <h3>Mensaje enviado</h3>
-                <p>Gracias por contactarnos. Nos pondremos en contacto en 24 horas.</p>
-            </div>
         </div>
     </div>
 </section>
