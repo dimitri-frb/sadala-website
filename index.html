@@ -281,9 +281,10 @@
             gap: 80px; max-width: 1200px; margin: 0 auto;
             align-items: center;
         }
-        .about-strip-image { overflow: hidden; }
+        .about-strip-image { overflow: visible; }
         .about-strip-image img {
-            width: 100%; height: 420px; object-fit: contain;
+            width: 100%; height: auto; max-height: 560px; object-fit: contain;
+            display: block;
         }
         .about-strip-text h3 {
             font-family: var(--serif);
