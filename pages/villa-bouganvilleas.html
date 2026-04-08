@@ -27,6 +27,7 @@
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
+        .nav-links a.active { color: var(--black); font-weight: 400; }
         .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
         .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
 
@@ -260,7 +261,7 @@
 <nav>
     <a href="../index.html" class="nav-logo">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html">Projects</a>
+        <a href="projects.html" class="active">Projects</a>
         <a href="approach.html">Our approach</a>
         <a href="contact.html" class="nav-contact">Contact</a>
     </div>
