@@ -482,6 +482,25 @@ const galleryNav = createSlider('gallerySlider', 'galleryCounter', 'galleryDots'
 
 function slideFloor(dir) { dir > 0 ? floorNav.next() : floorNav.prev(); }
 function slideGallery(dir) { dir > 0 ? galleryNav.next() : galleryNav.prev(); }
+
+/* Keyboard arrows control whichever slider is currently in view */
+let activeSlider = null;
+const sliderObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+            const id = e.target.id;
+            if (id === 'gallery') activeSlider = galleryNav;
+            else if (id === 'floorLayout') activeSlider = floorNav;
+        }
+    });
+}, { threshold: [0.4, 0.6] });
+document.querySelectorAll('#floorLayout, #gallery').forEach(el => sliderObserver.observe(el));
+
+document.addEventListener('keydown', e => {
+    if (!activeSlider) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); activeSlider.prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); activeSlider.next(); }
+});
 </script>
 </body>
 </html>

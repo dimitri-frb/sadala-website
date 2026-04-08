@@ -312,10 +312,29 @@ function createSlider(sliderId, counterId, dotsId) {
     }
     return { next: () => goTo(current + 1), prev: () => goTo(current - 1) };
 }
-const floorNav = createSlider('floorSlider', 'floorCounter', 'floorDots');
+const floorNav = document.getElementById('floorSlider') ? createSlider('floorSlider', 'floorCounter', 'floorDots') : null;
 const galleryNav = createSlider('gallerySlider', 'galleryCounter', 'galleryDots');
-function slideFloor(dir) { dir > 0 ? floorNav.next() : floorNav.prev(); }
+function slideFloor(dir) { if (floorNav) dir > 0 ? floorNav.next() : floorNav.prev(); }
 function slideGallery(dir) { dir > 0 ? galleryNav.next() : galleryNav.prev(); }
+
+/* Keyboard arrows control whichever slider is currently in view */
+let activeSlider = galleryNav;
+const sliderObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+            const id = e.target.id;
+            if (id === 'gallery') activeSlider = galleryNav;
+            else if (id === 'floorLayout' && floorNav) activeSlider = floorNav;
+        }
+    });
+}, { threshold: [0.4, 0.6] });
+document.querySelectorAll('#gallery, #floorLayout').forEach(el => sliderObserver.observe(el));
+
+document.addEventListener('keydown', e => {
+    if (!activeSlider) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); activeSlider.prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); activeSlider.next(); }
+});
 </script>
 </body>
 </html>
