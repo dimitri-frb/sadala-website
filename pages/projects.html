@@ -228,55 +228,31 @@
 
 <!-- FILTER TABS -->
 <div class="filter-tabs">
-    <span class="filter-tab active">All</span>
-    <span class="filter-tab">Current</span>
-    <span class="filter-tab">Completed</span>
+    <span class="filter-tab active" data-filter="all">All</span>
+    <span class="filter-tab" data-filter="current">Current</span>
+    <span class="filter-tab" data-filter="completed">Completed</span>
 </div>
 
 <!-- PROJECTS -->
 <section class="projects-list">
-
-    <!-- FEATURED: El Cantal -->
-    <a href="villa-el-cantal.html" class="project-featured reveal">
-        <div class="project-featured-image">
-            <img src="../img/cantal/cantal-hero.jpg" alt="Villa El Cantal among Mediterranean pines">
-        </div>
-        <div class="project-featured-info">
-            <div class="pf-status">Under construction</div>
-            <h2>Villa El Cantal</h2>
-            <div class="pf-location">Luxury among the Pines &middot; Pinares de San Ant&oacute;n</div>
-            <p class="pf-desc">A volume of perforated corten steel, floating above the hillside. The living roof dissolves the boundary between architecture and landscape.</p>
-            <div class="pf-kpis">
-                <div><div class="pf-kpi-value">550</div><div class="pf-kpi-label">m&sup2;</div></div>
-                <div><div class="pf-kpi-value">5</div><div class="pf-kpi-label">Bed</div></div>
-                <div><div class="pf-kpi-value">2028</div><div class="pf-kpi-label">Delivery</div></div>
-            </div>
-            <span class="pf-cta">View project &rarr;</span>
-        </div>
-    </a>
-
-    <hr class="section-divider">
-
-    <!-- GRID: Other projects -->
     <div class="projects-grid-small">
-        <a class="project-card reveal" href="villa-bouganvilleas.html">
+        <a class="project-card reveal" href="villa-el-cantal.html" data-status="current">
+            <div class="project-card-image">
+                <img src="../img/cantal/cantal-hero.jpg" alt="Villa El Cantal among Mediterranean pines">
+            </div>
+            <div class="project-card-status">Project approved</div>
+            <div class="project-card-title">Villa El Cantal</div>
+            <div class="project-card-sub">550 m&sup2; &middot; 5 bed &middot; Pinares de San Ant&oacute;n</div>
+        </a>
+        <a class="project-card reveal" href="villa-bouganvilleas.html" data-status="current">
             <div class="project-card-image">
                 <img src="../img/buganvilleas/buganvilleas-sunset.png" alt="Villa Bouganvilleas at sunset">
             </div>
-            <div class="project-card-status">Under construction</div>
+            <div class="project-card-status">Construction to begin shortly</div>
             <div class="project-card-title">Villa Bouganvilleas</div>
-            <div class="project-card-sub">280 m&sup2; &middot; 4 bed &middot; Pinares de San Ant&oacute;n</div>
-        </a>
-        <a class="project-card reveal" href="villa-bouganvilleas.html">
-            <div class="project-card-image">
-                <img src="../img/buganvilleas/buganvilleas-entrance-dusk.png" alt="Villa Bouganvilleas entrance at dusk">
-            </div>
-            <div class="project-card-status">Under construction</div>
-            <div class="project-card-title">Bouganvilleas - Detail</div>
-            <div class="project-card-sub">Brass door &middot; Olive trees &middot; Step lighting</div>
+            <div class="project-card-sub">570 m&sup2; &middot; 4 bed &middot; Pinares de San Ant&oacute;n</div>
         </a>
     </div>
-
 </section>
 
 <!-- CTA -->
@@ -298,6 +274,24 @@
 <script>
 const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Filter tabs
+const tabs = document.querySelectorAll('.filter-tab');
+const cards = document.querySelectorAll('.project-card');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+            if (filter === 'all' || card.dataset.status === filter) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
 </script>
 </body>
 </html>
