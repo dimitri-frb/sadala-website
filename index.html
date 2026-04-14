@@ -751,6 +751,24 @@ prevBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current 
 nextBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current + 1); startAuto(); });
 startAuto();
 
+/* Touch/swipe on hero slider */
+const sliderEl = document.getElementById('slider');
+let startX = 0, heroSwiping = false;
+sliderEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; heroSwiping = true; }, { passive: true });
+sliderEl.addEventListener('touchend', e => {
+    if (!heroSwiping) return; heroSwiping = false;
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff < -50) { clearInterval(autoPlay); goTo(current + 1); startAuto(); }
+    else if (diff > 50) { clearInterval(autoPlay); goTo(current - 1); startAuto(); }
+});
+sliderEl.addEventListener('mousedown', e => { startX = e.clientX; heroSwiping = true; });
+sliderEl.addEventListener('mouseup', e => {
+    if (!heroSwiping) return; heroSwiping = false;
+    const diff = e.clientX - startX;
+    if (diff < -50) { clearInterval(autoPlay); goTo(current + 1); startAuto(); }
+    else if (diff > 50) { clearInterval(autoPlay); goTo(current - 1); startAuto(); }
+});
+
 /* Nav solid on scroll */
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
