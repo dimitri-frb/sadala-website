@@ -27,6 +27,20 @@
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
         .nav-links a.active { color: var(--black); font-weight: 400; }
+                .nav-hamburger {
+            display: none; cursor: pointer;
+            width: 24px; height: 16px;
+            position: relative; z-index: 1001;
+        }
+        .nav-hamburger span {
+            display: block; width: 100%; height: 1.5px;
+            background: var(--black); position: absolute; left: 0;
+            transition: all .3s;
+        }
+        .nav-hamburger span:nth-child(1) { top: 0; }
+        .nav-hamburger span:nth-child(2) { top: 7px; }
+        .nav-hamburger span:nth-child(3) { top: 14px; }
+
         .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
         .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
 
@@ -158,6 +172,7 @@
 
         @media (max-width: 900px) {
             nav { padding: 20px 24px; } .nav-links { display: none; }
+            .nav-hamburger { display: block; }
             .page-header { padding: 120px 24px 60px; }
             .image-band { height: 40vh; }
             .philosophy { padding: 60px 24px; }
@@ -180,6 +195,9 @@
         <a href="projects.html">Projects</a>
         <a href="approach.html" class="active">Our approach</a>
         <a href="contact.html" class="nav-contact">Contact</a>
+    </div>
+    <div class="nav-hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';">
+        <span></span><span></span><span></span>
     </div>
 </nav>
 
