@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa El Cantal - Sadala Brochure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --white: #E8E2D5; --off-white: #E1D8CC; --black: #2C2C2C; --grey: #7A7570; --grey-light: #B5AFA8; --accent: #C1876B; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Inter', sans-serif; }
+        body { font-family: var(--sans); color: var(--black); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .print-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--black); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        .print-bar span { color: var(--white); font-size: 13px; font-weight: 300; }
+        .print-bar button { background: var(--accent); color: #fff; border: none; padding: 10px 28px; font-family: var(--sans); font-size: 13px; font-weight: 400; cursor: pointer; }
+        .print-bar button:hover { background: #d49a7e; }
+        @media print { .print-bar { display: none; } body { padding-top: 0; } }
+        @media screen { body { padding-top: 56px; } }
+        .page { width: 210mm; min-height: 297mm; margin: 0 auto; position: relative; overflow: hidden; page-break-after: always; }
+        @media screen { .page { margin: 20px auto; box-shadow: 0 2px 20px rgba(0,0,0,.1); } }
+        .cover { background: var(--black); display: flex; flex-direction: column; justify-content: flex-end; }
+        .cover-image { position: absolute; inset: 0; }
+        .cover-image img { width: 100%; height: 100%; object-fit: cover; }
+        .cover-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(44,44,44,.7) 100%); }
+        .cover-content { position: relative; z-index: 1; padding: 48px; }
+        .cover-logo { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 24px; }
+        .cover-title { font-family: var(--serif); font-size: 48px; font-weight: 400; color: #fff; margin-bottom: 8px; }
+        .cover-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+        .cover-status { display: inline-block; margin-top: 16px; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; background: #5A7A5A; color: #fff; }
+        .overview { background: var(--white); padding: 48px; }
+        .section-label { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .overview-intro { font-family: var(--serif); font-size: 22px; font-weight: 300; line-height: 1.5; font-style: italic; color: var(--black); margin-bottom: 40px; max-width: 480px; }
+        .kpi-row { display: flex; gap: 40px; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(44,44,44,.08); }
+        .kpi { text-align: center; }
+        .kpi-value { font-family: var(--serif); font-size: 32px; font-weight: 400; }
+        .kpi-label { font-size: 9px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 2px; }
+        .features-title { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .feature-name { font-family: var(--serif); font-size: 15px; font-weight: 400; color: var(--black); margin-bottom: 3px; }
+        .feature-desc { font-size: 10px; font-weight: 300; line-height: 1.6; color: var(--grey); }
+        .gallery-page { background: #fff; padding: 48px; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+        .gallery-grid img { width: 100%; height: 180px; object-fit: cover; }
+        .gallery-grid .full { grid-column: span 2; height: 280px; }
+        .partner-block { margin-top: 32px; padding: 32px; background: var(--white); }
+        .partner-block h3 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 12px; }
+        .partner-block p { font-size: 10px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+        .partner-role-label { font-size: 9px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+        .contact-page { background: var(--white); padding: 48px; display: flex; flex-direction: column; justify-content: space-between; min-height: 297mm; }
+        .location-block { margin-bottom: 40px; }
+        .location-block h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+        .location-block p { font-size: 11px; font-weight: 300; line-height: 1.8; color: var(--grey); margin-bottom: 8px; }
+        .location-highlights { display: flex; gap: 32px; margin: 24px 0; }
+        .lh-value { font-family: var(--serif); font-size: 20px; font-weight: 400; }
+        .lh-label { font-size: 9px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); }
+        .contact-block { background: var(--black); padding: 40px; margin-top: auto; }
+        .contact-block h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--white); margin-bottom: 8px; }
+        .contact-block p { font-size: 11px; font-weight: 300; color: var(--grey); margin-bottom: 20px; }
+        .contact-row { display: flex; gap: 40px; }
+        .contact-item { font-size: 11px; font-weight: 300; color: var(--grey-light); }
+        .contact-item strong { display: block; font-weight: 400; color: var(--white); margin-bottom: 2px; }
+        .brochure-footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid rgba(44,44,44,.06); display: flex; justify-content: space-between; }
+        .brochure-footer span { font-size: 9px; color: var(--grey-light); }
+        .brochure-footer .logo { font-family: var(--serif); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--grey); }
+    </style>
+</head>
+<body>
+
+<div class="print-bar">
+    <span>Villa El Cantal - Sadala Brochure</span>
+    <button onclick="window.print()">Download PDF</button>
+</div>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+    <div class="cover-image">
+        <img src="../img/cantal/cantal-hero.jpg" alt="Villa El Cantal">
+    </div>
+    <div class="cover-content">
+        <div class="cover-logo">Sadala</div>
+        <h1 class="cover-title">Villa El Cantal</h1>
+        <div class="cover-sub">Luxury among the Pines &middot; Pinares de San Ant&oacute;n, M&aacute;laga</div>
+        <div class="cover-sub">550 m&sup2; built &middot; 5 rooms &middot; 1,000 m&sup2; plot &middot; Delivery 2028</div>
+        <div class="cover-status">Project approved</div>
+    </div>
+</div>
+
+<!-- PAGE 2: OVERVIEW -->
+<div class="page overview">
+    <div class="section-label">The vision</div>
+    <p class="overview-intro">
+        A volume of perforated corten steel, floating above the hillside like a bridge between earth and sky. The living roof dissolves the boundary between architecture and landscape, while the structure opens entirely to the garden below.
+    </p>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="kpi-value">550</div><div class="kpi-label">m&sup2; built</div></div>
+        <div class="kpi"><div class="kpi-value">5</div><div class="kpi-label">Rooms</div></div>
+        <div class="kpi"><div class="kpi-value">1,000</div><div class="kpi-label">m&sup2; plot</div></div>
+        <div class="kpi"><div class="kpi-value">2028</div><div class="kpi-label">Delivery</div></div>
+    </div>
+
+    <div class="features-title">Key features</div>
+    <div class="features-grid">
+        <div><div class="feature-name">Living green roof</div><div class="feature-desc">The entire roof continues the hillside, planted with native grasses and Mediterranean species.</div></div>
+        <div><div class="feature-name">Corten steel facade</div><div class="feature-desc">Perforated weathering steel panels filter light and shadow, evolving with the seasons.</div></div>
+        <div><div class="feature-name">Floating structure</div><div class="feature-desc">The main volume floats above the natural slope, preserving terrain and mature trees beneath.</div></div>
+        <div><div class="feature-name">Indoor-outdoor living</div><div class="feature-desc">Full-height glazing and retractable walls dissolve the boundary between interior and garden.</div></div>
+        <div><div class="feature-name">Infinity pool</div><div class="feature-desc">Integrated into the hillside with views toward the Mediterranean.</div></div>
+        <div><div class="feature-name">Natural rock integration</div><div class="feature-desc">Existing rock formations preserved and incorporated into the garden design.</div></div>
+    </div>
+</div>
+
+<!-- PAGE 3: GALLERY + PARTNER -->
+<div class="page gallery-page">
+    <div class="section-label">Gallery</div>
+    <div class="gallery-grid">
+        <img src="../img/cantal/cantal-hero.jpg" alt="Villa El Cantal approach" class="full">
+        <img src="../img/cantal/cantal-aerial.jpg" alt="Aerial view">
+        <img src="../img/cantal/cantal-garden.jpg" alt="Garden">
+        <img src="../img/cantal/cantal-interior.jpg" alt="Interior" class="full">
+    </div>
+
+    <div class="partner-block">
+        <div class="partner-role-label">Architecture &middot; Interior design &middot; Landscaping</div>
+        <h3>Flow81</h3>
+        <p>Villa El Cantal is designed entirely by Flow81, an award-winning experiential architecture lab based in M&aacute;laga founded by Arregui &amp; Merino. They have shared the podium with Pritzker Prize legends like Foster + Partners, Zaha Hadid, and Tadao Ando. Their structures are born from the terrain itself - spaces that reconnect with nature and engage all five senses.</p>
+    </div>
+</div>
+
+<!-- PAGE 4: LOCATION + CONTACT -->
+<div class="page contact-page">
+    <div>
+        <div class="section-label">Location</div>
+        <div class="location-block">
+            <h3>The new luxury</h3>
+            <p>Built on the mountains of M&aacute;laga with sweeping views across the city and the Mediterranean, Villa El Cantal occupies one of the most privileged positions in M&aacute;laga Este.</p>
+            <p>The site sits within Pinares de San Ant&oacute;n, a protected residential enclave surrounded by century-old pine forests. 24-hour security, a private tennis club and a private social club create a self-contained world of calm.</p>
+            <div class="location-highlights">
+                <div><div class="lh-value">500m</div><div class="lh-label">To the beach</div></div>
+                <div><div class="lh-value">10 min</div><div class="lh-label">To M&aacute;laga center</div></div>
+                <div><div class="lh-value">20 min</div><div class="lh-label">To the airport</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-block">
+        <h3>Interested in Villa El Cantal?</h3>
+        <p>Our process starts with a conversation, not a brochure. Let's talk.</p>
+        <div class="contact-row">
+            <div class="contact-item"><strong>Email</strong>info@sadala.com</div>
+            <div class="contact-item"><strong>Phone</strong>+34 639 675 315</div>
+            <div class="contact-item"><strong>WhatsApp</strong>wa.me/34639675315</div>
+            <div class="contact-item"><strong>Web</strong>sadala.com</div>
+        </div>
+    </div>
+
+    <div class="brochure-footer">
+        <span class="logo">Sadala</span>
+        <span>&copy; 2026 Kakarot Ventures S.L. &middot; All information subject to change</span>
+    </div>
+</div>
+
+</body>
+</html>

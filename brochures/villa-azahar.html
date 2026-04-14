@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Azahar - Sadala Brochure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white: #E8E2D5;
+            --off-white: #E1D8CC;
+            --black: #2C2C2C;
+            --grey: #7A7570;
+            --grey-light: #B5AFA8;
+            --accent: #C1876B;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', sans-serif;
+        }
+        body {
+            font-family: var(--sans);
+            color: var(--black);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Print button - hidden in print */
+        .print-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: var(--black); padding: 16px 32px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .print-bar span { color: var(--white); font-size: 13px; font-weight: 300; }
+        .print-bar button {
+            background: var(--accent); color: #fff; border: none;
+            padding: 10px 28px; font-family: var(--sans); font-size: 13px;
+            font-weight: 400; cursor: pointer; letter-spacing: .5px;
+        }
+        .print-bar button:hover { background: #d49a7e; }
+        @media print { .print-bar { display: none; } body { padding-top: 0; } }
+        @media screen { body { padding-top: 56px; } }
+
+        /* PAGE 1: Cover */
+        .page {
+            width: 210mm; min-height: 297mm;
+            margin: 0 auto; position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+        @media screen { .page { margin: 20px auto; box-shadow: 0 2px 20px rgba(0,0,0,.1); } }
+
+        .cover {
+            background: var(--black);
+            display: flex; flex-direction: column;
+            justify-content: flex-end;
+            padding: 0;
+        }
+        .cover-image {
+            position: absolute; inset: 0;
+        }
+        .cover-image img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .cover-image::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 30%, rgba(44,44,44,.7) 100%);
+        }
+        .cover-content {
+            position: relative; z-index: 1;
+            padding: 48px;
+        }
+        .cover-logo {
+            font-family: var(--serif); font-size: 14px; font-weight: 400;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: rgba(255,255,255,.5); margin-bottom: 24px;
+        }
+        .cover-title {
+            font-family: var(--serif); font-size: 48px; font-weight: 400;
+            color: #fff; margin-bottom: 8px;
+        }
+        .cover-sub {
+            font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6);
+            margin-bottom: 4px;
+        }
+        .cover-status {
+            display: inline-block; margin-top: 16px;
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; padding: 5px 14px;
+            background: var(--accent); color: #fff;
+        }
+
+        /* PAGE 2: Overview */
+        .overview {
+            background: var(--white);
+            padding: 48px;
+        }
+        .section-label {
+            font-size: 10px; font-weight: 500; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .overview-intro {
+            font-family: var(--serif); font-size: 22px; font-weight: 300;
+            line-height: 1.5; font-style: italic; color: var(--black);
+            margin-bottom: 40px; max-width: 480px;
+        }
+        .kpi-row {
+            display: flex; gap: 40px; margin-bottom: 48px;
+            padding-bottom: 32px; border-bottom: 1px solid rgba(44,44,44,.08);
+        }
+        .kpi { text-align: center; }
+        .kpi-value { font-family: var(--serif); font-size: 32px; font-weight: 400; }
+        .kpi-label { font-size: 9px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 2px; }
+
+        .features-title {
+            font-size: 10px; font-weight: 500; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
+        }
+        .features-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .feature { margin-bottom: 8px; }
+        .feature-name {
+            font-family: var(--serif); font-size: 15px; font-weight: 400;
+            color: var(--black); margin-bottom: 3px;
+        }
+        .feature-desc {
+            font-size: 10px; font-weight: 300; line-height: 1.6;
+            color: var(--grey);
+        }
+
+        /* PAGE 3: Gallery + Plans */
+        .gallery-page {
+            background: #fff; padding: 48px;
+        }
+        .gallery-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            margin-bottom: 32px;
+        }
+        .gallery-grid img {
+            width: 100%; height: 180px; object-fit: cover;
+        }
+        .gallery-grid .full { grid-column: span 2; height: 240px; }
+
+        .plans-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+            margin-top: 24px;
+        }
+        .plans-row img {
+            width: 100%; height: auto; object-fit: contain;
+            background: #f5f5f0;
+        }
+        .plan-caption {
+            font-size: 9px; font-weight: 300; color: var(--grey);
+            text-align: center; margin-top: 6px;
+        }
+
+        /* PAGE 4: Location + Contact */
+        .contact-page {
+            background: var(--white); padding: 48px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            min-height: 297mm;
+        }
+        .location-block { margin-bottom: 40px; }
+        .location-block h3 {
+            font-family: var(--serif); font-size: 24px; font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .location-block p {
+            font-size: 11px; font-weight: 300; line-height: 1.8;
+            color: var(--grey); margin-bottom: 8px;
+        }
+        .location-highlights {
+            display: flex; gap: 32px; margin: 24px 0;
+        }
+        .lh-value { font-family: var(--serif); font-size: 20px; font-weight: 400; }
+        .lh-label { font-size: 9px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); }
+
+        .partners-block { margin-bottom: 40px; }
+        .partners-block h3 {
+            font-family: var(--serif); font-size: 20px; font-weight: 400;
+            margin-bottom: 12px;
+        }
+        .partners-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+        }
+        .partner-name {
+            font-family: var(--serif); font-size: 14px; font-weight: 400;
+            margin-bottom: 2px;
+        }
+        .partner-role {
+            font-size: 9px; font-weight: 400; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--accent);
+        }
+
+        .contact-block {
+            background: var(--black); padding: 40px; margin-top: auto;
+        }
+        .contact-block h3 {
+            font-family: var(--serif); font-size: 24px; font-weight: 400;
+            color: var(--white); margin-bottom: 8px;
+        }
+        .contact-block p {
+            font-size: 11px; font-weight: 300; color: var(--grey); margin-bottom: 20px;
+        }
+        .contact-row {
+            display: flex; gap: 40px;
+        }
+        .contact-item {
+            font-size: 11px; font-weight: 300; color: var(--grey-light);
+        }
+        .contact-item strong {
+            display: block; font-weight: 400; color: var(--white);
+            margin-bottom: 2px;
+        }
+        .brochure-footer {
+            margin-top: 40px; padding-top: 16px;
+            border-top: 1px solid rgba(44,44,44,.06);
+            display: flex; justify-content: space-between;
+        }
+        .brochure-footer span {
+            font-size: 9px; color: var(--grey-light);
+        }
+        .brochure-footer .logo {
+            font-family: var(--serif); font-size: 12px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--grey);
+        }
+    </style>
+</head>
+<body>
+
+<!-- PRINT BAR -->
+<div class="print-bar">
+    <span>Villa Azahar - Sadala Brochure</span>
+    <button onclick="window.print()">Download PDF</button>
+</div>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+    <div class="cover-image">
+        <img src="../img/azahar/azahar-sunset.png" alt="Villa Azahar">
+    </div>
+    <div class="cover-content">
+        <div class="cover-logo">Sadala</div>
+        <h1 class="cover-title">Villa Azahar</h1>
+        <div class="cover-sub">Between Pines and Sea &middot; Pinares de San Ant&oacute;n, M&aacute;laga</div>
+        <div class="cover-sub">570 m&sup2; built &middot; 4 rooms &middot; 1,096 m&sup2; plot &middot; Delivery 2027</div>
+        <div class="cover-status">Construction to begin shortly</div>
+    </div>
+</div>
+
+<!-- PAGE 2: OVERVIEW -->
+<div class="page overview">
+    <div class="section-label">The vision</div>
+    <p class="overview-intro">
+        A unique contemporary villa where stone, wood and glass shape spaces conceived for Mediterranean living. Built in harmony with the landscape, integrated into nature, designed to endure.
+    </p>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="kpi-value">570</div><div class="kpi-label">m&sup2; built</div></div>
+        <div class="kpi"><div class="kpi-value">4</div><div class="kpi-label">Rooms</div></div>
+        <div class="kpi"><div class="kpi-value">1,096</div><div class="kpi-label">m&sup2; plot</div></div>
+        <div class="kpi"><div class="kpi-value">3</div><div class="kpi-label">Levels</div></div>
+        <div class="kpi"><div class="kpi-value">2027</div><div class="kpi-label">Delivery</div></div>
+    </div>
+
+    <div class="features-title">The experience</div>
+    <div class="features-grid">
+        <div class="feature">
+            <div class="feature-name">The horizon begins here</div>
+            <div class="feature-desc">Infinity pool with overflow designed to merge with the views over M&aacute;laga and the Mediterranean.</div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">A fire pit that unites inside and out</div>
+            <div class="feature-desc">An outdoor gathering point where fire and the M&aacute;laga sky create the perfect setting.</div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">M&aacute;laga at your feet</div>
+            <div class="feature-desc">Elevated terrace at the heart of the plot. The place from which you understand why this villa exists here.</div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">The best table in the city</div>
+            <div class="feature-desc">Kitchen and outdoor dining integrated into the landscape. Designed for those who know the best dinners happen under open skies.</div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">Nature, uninterrupted</div>
+            <div class="feature-desc">A path through century-old pines and native vegetation. A space to disconnect from the world without leaving home.</div>
+        </div>
+        <div class="feature">
+            <div class="feature-name">The corner everyone looks for</div>
+            <div class="feature-desc">A reading nook integrated into the garden, sheltered by the shade of the pine forest.</div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3: GALLERY + PLANS -->
+<div class="page gallery-page">
+    <div class="section-label">Gallery</div>
+    <div class="gallery-grid">
+        <img src="../img/azahar/azahar-sunset.png" alt="Villa Azahar exterior" class="full">
+        <img src="../img/azahar/azahar-garden-landscape.png" alt="Garden landscape">
+        <img src="../img/azahar/azahar-terrace-dining.png" alt="Terrace dining">
+        <img src="../img/azahar/azahar-firepit-lounge.png" alt="Fire pit lounge">
+        <img src="../img/azahar/azahar-entrance-dusk.png" alt="Entrance at dusk">
+    </div>
+
+    <div class="section-label">Floor layout</div>
+    <div class="plans-row">
+        <div>
+            <img src="../img/azahar/planta-baja.png" alt="Ground floor">
+            <div class="plan-caption">Ground floor - 4 rooms, pool, terrace and garden</div>
+        </div>
+        <div>
+            <img src="../img/azahar/planta-primera.png" alt="First floor">
+            <div class="plan-caption">First floor - living room, kitchen, entrance hall and terrace</div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 4: LOCATION + CONTACT -->
+<div class="page contact-page">
+    <div>
+        <div class="section-label">Location</div>
+        <div class="location-block">
+            <h3>The new luxury</h3>
+            <p>Among century-old pines with panoramic views over M&aacute;laga and the Mediterranean, Pinares de San Ant&oacute;n is everything a generic development is not: irreplaceable, rooted in its place, designed for the life you actually want to live.</p>
+            <p>One of the most prestigious private residential enclaves in M&aacute;laga Este. 24-hour security, a private tennis club and a private social club create a self-contained world of calm and exclusivity.</p>
+            <div class="location-highlights">
+                <div><div class="lh-value">500m</div><div class="lh-label">To the beach</div></div>
+                <div><div class="lh-value">10 min</div><div class="lh-label">To M&aacute;laga center</div></div>
+                <div><div class="lh-value">20 min</div><div class="lh-label">To the airport</div></div>
+            </div>
+        </div>
+
+        <div class="section-label">Partners</div>
+        <div class="partners-block">
+            <h3>Crafted by award-winning professionals</h3>
+            <div class="partners-grid">
+                <div><div class="partner-role">Architecture</div><div class="partner-name">MR Arq</div></div>
+                <div><div class="partner-role">Interior design</div><div class="partner-name">Studio 1969</div></div>
+                <div><div class="partner-role">Landscaping</div><div class="partner-name">Landscapers</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-block">
+        <h3>Interested in Villa Azahar?</h3>
+        <p>Our process starts with a conversation, not a brochure. Let's talk.</p>
+        <div class="contact-row">
+            <div class="contact-item"><strong>Email</strong>info@sadala.com</div>
+            <div class="contact-item"><strong>Phone</strong>+34 639 675 315</div>
+            <div class="contact-item"><strong>WhatsApp</strong>wa.me/34639675315</div>
+            <div class="contact-item"><strong>Web</strong>sadala.com</div>
+        </div>
+    </div>
+
+    <div class="brochure-footer">
+        <span class="logo">Sadala</span>
+        <span>&copy; 2026 Kakarot Ventures S.L. &middot; All information subject to change</span>
+    </div>
+</div>
+
+</body>
+</html>
