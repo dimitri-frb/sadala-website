@@ -153,6 +153,15 @@
             font-size: 10px; font-weight: 500; letter-spacing: 2px;
             text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
         }
+        .project-card-status.sold { color: var(--grey); }
+        .project-card.sold .project-card-image { opacity: .85; }
+        .project-card.sold .project-card-image::after {
+            content: 'SOLD'; position: absolute; top: 16px; right: 16px;
+            background: var(--black); color: var(--off-white);
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            padding: 4px 12px;
+        }
+        .project-card-image { position: relative; }
         .project-card-title {
             font-family: var(--serif); font-size: 22px; font-weight: 400;
             color: var(--black); margin-bottom: 4px;
@@ -251,6 +260,14 @@
             <div class="project-card-status">Construction to begin shortly</div>
             <div class="project-card-title">Villa Bouganvilleas</div>
             <div class="project-card-sub">570 m&sup2; &middot; 4 rooms &middot; Pinares de San Ant&oacute;n</div>
+        </a>
+        <a class="project-card sold reveal" href="villa-leoni-benabu.html" data-status="completed">
+            <div class="project-card-image">
+                <img src="../img/leoni-benabu/main.jpeg" alt="Villa Leoni Benabu among the pines">
+            </div>
+            <div class="project-card-status sold">Sold</div>
+            <div class="project-card-title">Villa Leoni Benabu</div>
+            <div class="project-card-sub">620 m&sup2; &middot; 6 rooms &middot; Pinares de San Ant&oacute;n</div>
         </a>
     </div>
 </section>
