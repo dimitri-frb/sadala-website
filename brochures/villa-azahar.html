@@ -334,26 +334,22 @@
             display: block; font-weight: 400; color: #fff; margin-bottom: 1px;
         }
 
-        /* Project by / Promotion footer */
-        .brochure-footer {
-            margin-top: 24px; padding-top: 16px;
-            border-top: 1px solid rgba(44,44,44,.06);
-            display: flex; justify-content: center; align-items: center; gap: 48px;
+        /* Credits inside contact block */
+        .contact-credits {
+            display: flex; align-items: center; gap: 32px;
+            margin-top: 20px; padding-top: 16px;
+            border-top: 1px solid rgba(225,216,204,.1);
         }
-        .brochure-credit {
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
+        .contact-credit {
+            display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
         }
-        .brochure-credit .credit-label {
+        .contact-credit-label {
             font-size: 8px; font-weight: 500; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--grey-light);
+            text-transform: uppercase; color: rgba(255,255,255,.35);
         }
-        .brochure-credit img { height: 28px; width: auto; }
-        .brochure-credit .credit-text {
-            font-family: var(--serif); font-size: 13px; font-weight: 400;
-            letter-spacing: 3px; text-transform: uppercase; color: var(--grey);
-        }
-        .credit-divider {
-            width: 1px; height: 40px; background: rgba(44,44,44,.1);
+        .contact-credit img { height: 24px; width: auto; }
+        .contact-credit-divider {
+            width: 1px; height: 32px; background: rgba(225,216,204,.12);
         }
         .legal-line {
             text-align: center; margin-top: 12px;
@@ -552,7 +548,7 @@
             </div>
         </div>
         <div class="loc-img">
-            <img src="../img/azahar/azahar-aerial-plan.png" alt="Aerial view of the plot">
+            <img src="../img/azahar/vista-pinares.jpg" alt="Panoramic view from Pinares de San Ant&oacute;n" style="object-position: right center;">
         </div>
     </div>
 
@@ -609,19 +605,22 @@
             <div class="contact-item"><strong>WhatsApp</strong>wa.me/34639675315</div>
             <div class="contact-item"><strong>Web</strong>sadala.com</div>
         </div>
+        <div class="contact-credits">
+            <div class="contact-credit">
+                <span class="contact-credit-label">Project by</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="../img/logo/sadala-logo.png" alt="Sadala" style="height: 20px; filter: invert(1);">
+                    <span style="font-family: var(--serif); font-size: 12px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.7);">Sadala</span>
+                </div>
+            </div>
+            <div class="contact-credit-divider"></div>
+            <div class="contact-credit">
+                <span class="contact-credit-label">Construction &amp; promotion</span>
+                <img src="../img/logo/coral-shield.png" alt="Coral Shield" style="height: 24px;">
+            </div>
+        </div>
     </div>
 
-    <div class="brochure-footer">
-        <div class="brochure-credit">
-            <span class="credit-label">Project by</span>
-            <img src="../img/logo/sadala-logo.png" alt="Sadala">
-        </div>
-        <div class="credit-divider"></div>
-        <div class="brochure-credit">
-            <span class="credit-label">Construction &amp; promotion</span>
-            <img src="../img/logo/logo_coral_shield_positivo_block.png" alt="Coral Shield" style="height: 32px;">
-        </div>
-    </div>
     <div class="legal-line">&copy; 2026 Sadala Homes S.L. &middot; All information subject to change without notice</div>
 </div>
 
