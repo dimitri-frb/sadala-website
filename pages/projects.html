@@ -23,7 +23,8 @@
 
         /* NAV */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--grey-border); }
-        .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .nav-logo img { height: 28px; width: auto; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
@@ -235,7 +236,7 @@
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-logo">Sadala</a>
+    <a href="../index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
         <a href="projects.html" class="active">Projects</a>
         <a href="approach.html">Our approach</a>
