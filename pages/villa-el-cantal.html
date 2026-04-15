@@ -139,6 +139,24 @@
         .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
         .footer-bottom a:hover { color: var(--grey); }
 
+        /* PROJECT TIMELINE */
+        .timeline { padding: 48px 48px 60px; border-bottom: 1px solid var(--grey-border); }
+        .timeline-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; }
+        .timeline-track { display: flex; align-items: flex-start; justify-content: space-between; max-width: 900px; margin: 0 auto; position: relative; }
+        .timeline-track::before { content: ''; position: absolute; top: 12px; left: 0; right: 0; height: 2px; background: var(--grey-border); z-index: 0; }
+        .timeline-track::after { content: ''; position: absolute; top: 12px; left: 0; height: 2px; background: var(--accent); z-index: 1; width: var(--progress, 0%); transition: width 1.2s cubic-bezier(.25,.1,.25,1); }
+        .timeline-step { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; flex: 1; }
+        .timeline-dot { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--grey-border); background: var(--white); transition: all .5s; display: flex; align-items: center; justify-content: center; }
+        .timeline-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: transparent; transition: all .5s; }
+        .timeline-step.completed .timeline-dot { border-color: var(--accent); background: var(--accent); }
+        .timeline-step.completed .timeline-dot::after { background: #fff; }
+        .timeline-step.current .timeline-dot { border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 4px rgba(193,135,107,.15); animation: pulse-dot 2s ease-in-out infinite; }
+        .timeline-step.current .timeline-dot::after { background: var(--accent); }
+        @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 4px rgba(193,135,107,.15); } 50% { box-shadow: 0 0 0 8px rgba(193,135,107,.08); } }
+        .timeline-step-label { margin-top: 10px; font-size: 11px; font-weight: 300; color: var(--grey-light); text-align: center; transition: color .5s; }
+        .timeline-step.completed .timeline-step-label { color: var(--black); font-weight: 400; }
+        .timeline-step.current .timeline-step-label { color: var(--accent); font-weight: 500; }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -148,6 +166,9 @@
             .villa-hero { height: 60vh; margin-top: 64px; } .villa-hero-content { left: 24px; bottom: 40px; }
             .villa-intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 12px; }
             .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .timeline { padding: 32px 24px 48px; }
+            .timeline-step-label { font-size: 9px; }
+            .timeline-dot { width: 20px; height: 20px; }
             .features { padding: 60px 24px; } .features-grid { grid-template-columns: 1fr; }
             .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
             .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
@@ -194,6 +215,33 @@
         <div><div class="kpi-value">5</div><div class="kpi-label">Rooms</div></div>
         <div><div class="kpi-value">1,000</div><div class="kpi-label">m&sup2; plot</div></div>
         <div><div class="kpi-value">2028</div><div class="kpi-label">Delivery</div></div>
+    </div>
+</section>
+
+<!-- PROJECT TIMELINE -->
+<section class="timeline reveal" id="timeline">
+    <div class="timeline-label">Project status</div>
+    <div class="timeline-track" style="--progress: 25%;">
+        <div class="timeline-step completed">
+            <div class="timeline-dot"></div>
+            <span class="timeline-step-label">Land<br>acquired</span>
+        </div>
+        <div class="timeline-step current">
+            <div class="timeline-dot"></div>
+            <span class="timeline-step-label">Project<br>approved</span>
+        </div>
+        <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <span class="timeline-step-label">Construction</span>
+        </div>
+        <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <span class="timeline-step-label">Finishing</span>
+        </div>
+        <div class="timeline-step">
+            <div class="timeline-dot"></div>
+            <span class="timeline-step-label">Delivery<br>2028</span>
+        </div>
     </div>
 </section>
 
