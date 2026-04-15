@@ -48,13 +48,20 @@
             border-bottom: 1px solid var(--grey-border);
         }
         .nav-logo {
+            display: flex; align-items: center; gap: 10px;
             font-family: var(--serif);
             font-size: 20px; font-weight: 400; letter-spacing: 4px;
             text-transform: uppercase; color: #fff;
             text-decoration: none;
             transition: color .4s;
         }
+        .nav-logo img {
+            height: 28px; width: auto;
+            filter: brightness(0) invert(1);
+            transition: filter .4s;
+        }
         nav.solid .nav-logo { color: var(--black); }
+        nav.solid .nav-logo img { filter: none; }
 
         .nav-links {
             display: flex; gap: 32px; align-items: center;
@@ -511,7 +518,7 @@
 <!-- NAV                                         -->
 <!-- ═══════════════════════════════════════════ -->
 <nav id="mainNav">
-    <a href="index.html" class="nav-logo">Sadala</a>
+    <a href="index.html" class="nav-logo"><img src="img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
         <a href="pages/projects.html">Projects</a>
         <a href="pages/approach.html">Our approach</a>
