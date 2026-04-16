@@ -66,9 +66,15 @@
             padding: 48px; z-index: 1;
         }
         .cover-logo {
+            display: inline-flex; align-items: center; gap: 10px;
             font-family: var(--serif); font-size: 13px; font-weight: 400;
             letter-spacing: 4px; text-transform: uppercase;
             color: rgba(255,255,255,.4); margin-bottom: 20px;
+        }
+        .cover-logo img {
+            height: 22px; width: auto;
+            filter: brightness(0) invert(1); opacity: .5;
+            display: block;
         }
         .cover-title {
             font-family: var(--serif); font-size: 52px; font-weight: 400;
@@ -372,7 +378,7 @@
         <img src="../img/azahar/azahar-sunset.png" alt="San Ant&oacute;n 50">
     </div>
     <div class="cover-content">
-        <div class="cover-logo"><img src="../img/logo/sadala-logo.png" alt="" style="height: 24px; filter: brightness(0) invert(1); opacity: .5; vertical-align: middle; margin-right: 8px;">Sadala</div>
+        <div class="cover-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</div>
         <h1 class="cover-title">San Ant&oacute;n 50</h1>
         <div class="cover-tagline">Between Pines and Sea &middot; Pinares de San Ant&oacute;n, M&aacute;laga</div>
         <div class="cover-specs">
