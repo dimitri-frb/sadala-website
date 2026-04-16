@@ -281,6 +281,51 @@
 
 
         /* ═══════════════════════════════════════════ */
+        /* PRINCIPLES BAND                             */
+        /* ═══════════════════════════════════════════ */
+        .principles {
+            padding: 100px 48px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .principles-label {
+            font-size: 11px; font-weight: 400; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+        }
+        .principles-title {
+            font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
+            font-weight: 300; line-height: 1.15; margin-bottom: 48px;
+            max-width: 700px;
+        }
+        .principles-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+        }
+        .principle-card {
+            display: block; text-decoration: none; color: inherit;
+            padding: 40px 32px; border: 1px solid var(--grey-border);
+            background: #fff; transition: all .4s;
+        }
+        .principle-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .principle-num {
+            font-family: var(--serif); font-size: 32px; font-weight: 300;
+            color: var(--accent); opacity: .5; margin-bottom: 20px;
+        }
+        .principle-title {
+            font-family: var(--serif); font-size: 28px; font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .principle-sub {
+            font-size: 11px; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--grey); margin-bottom: 16px;
+        }
+        .principle-desc {
+            font-size: 13px; font-weight: 300; line-height: 1.7;
+            color: var(--grey);
+        }
+
+        /* ═══════════════════════════════════════════ */
         /* ABOUT STRIP                                 */
         /* ═══════════════════════════════════════════ */
         .about-strip {
@@ -497,6 +542,9 @@
 
             .section-intro { padding: 80px 24px; }
             .projects { padding: 0 24px 80px; }
+            .principles { padding: 60px 24px; }
+            .principles-grid { grid-template-columns: 1fr; gap: 16px; }
+            .principle-card { padding: 28px 24px; }
             .projects-grid { grid-template-columns: 1fr; gap: 40px; }
             .about-strip { padding: 60px 24px; grid-template-columns: 1fr; gap: 32px; }
             .about-strip-image img { height: 280px; }
@@ -643,6 +691,34 @@
             <div class="project-card-category" style="color:var(--grey);">Sold</div>
             <div class="project-card-title">Villa Leoni Benabu</div>
             <div class="project-card-sub">620 m&sup2; &middot; 6 rooms &middot; Pinares de San Ant&oacute;n</div>
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- THREE PRINCIPLES                            -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="principles reveal">
+    <div class="principles-label">Our approach</div>
+    <h2 class="principles-title">Three principles. One singular commitment.</h2>
+    <div class="principles-grid">
+        <a href="pages/approach.html#andalucia" class="principle-card reveal">
+            <div class="principle-num">01</div>
+            <div class="principle-title">Andaluc&iacute;a</div>
+            <div class="principle-sub">Where we build</div>
+            <div class="principle-desc">We don't build anywhere. We build in places chosen by centuries of sun, sea and stone &mdash; Pinares de San Ant&oacute;n, and the quiet corners of the Costa del Sol.</div>
+        </a>
+        <a href="pages/approach.html#homes" class="principle-card reveal">
+            <div class="principle-num">02</div>
+            <div class="principle-title">Our homes</div>
+            <div class="principle-sub">What we build</div>
+            <div class="principle-desc">Natural stone, solid wood, floor-to-ceiling glass. Homes designed to last, crafted by the best, shaped entirely by the land they sit on.</div>
+        </a>
+        <a href="pages/approach.html#sadala" class="principle-card reveal">
+            <div class="principle-num">03</div>
+            <div class="principle-title">Sadala</div>
+            <div class="principle-sub">How we build</div>
+            <div class="principle-desc">Not a developer. A studio. One site, one vision, one team. Every decision from land to handover passes through our hands.</div>
         </a>
     </div>
 </section>

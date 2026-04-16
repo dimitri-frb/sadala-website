@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Approach - Sadala</title>
+    <title>Our Approach - Andaluc&iacute;a, Our Homes, Sadala</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,6 +168,96 @@
         .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
         .footer-bottom a:hover { color: var(--grey); }
 
+        /* PILLAR ANCHOR NAV */
+        .pillar-nav {
+            padding: 0 48px 80px;
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .pillar-nav-item {
+            display: block; padding: 24px 20px;
+            border: 1px solid var(--grey-border);
+            text-decoration: none; color: var(--black);
+            transition: all .4s;
+        }
+        .pillar-nav-item:hover {
+            border-color: var(--accent); transform: translateY(-2px);
+        }
+        .pillar-nav-num {
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            color: var(--accent); margin-bottom: 8px;
+        }
+        .pillar-nav-title {
+            font-family: var(--serif); font-size: 20px; font-weight: 400;
+            margin-bottom: 4px;
+        }
+        .pillar-nav-sub {
+            font-size: 11px; font-weight: 300; color: var(--grey);
+        }
+
+        /* PILLAR SECTION HEADER */
+        .pillar-section {
+            padding: 120px 48px 80px;
+            max-width: 1100px; margin: 0 auto;
+            scroll-margin-top: 60px;
+        }
+        .pillar-section-header {
+            display: flex; align-items: baseline; gap: 20px;
+            margin-bottom: 40px; padding-bottom: 24px;
+            border-bottom: 1px solid var(--grey-border);
+        }
+        .pillar-section-num {
+            font-family: var(--serif); font-size: 20px; font-weight: 400;
+            color: var(--accent);
+        }
+        .pillar-section-title {
+            font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px);
+            font-weight: 300; line-height: 1.1;
+        }
+        .pillar-section-sub {
+            font-size: 13px; font-weight: 300; color: var(--grey);
+            margin-left: auto; letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        /* ANDALUCIA CONTENT */
+        .andalucia-intro {
+            font-family: var(--serif); font-size: clamp(22px, 2.5vw, 30px);
+            font-weight: 300; font-style: italic; line-height: 1.5;
+            max-width: 780px; margin-bottom: 48px;
+        }
+        .andalucia-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+            margin-bottom: 60px;
+        }
+        .andalucia-block h3 {
+            font-family: var(--serif); font-size: 22px; font-weight: 400;
+            margin-bottom: 12px;
+        }
+        .andalucia-block p {
+            font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey);
+            margin-bottom: 10px;
+        }
+        .andalucia-image {
+            width: 100%; height: 400px; overflow: hidden; margin-bottom: 40px;
+        }
+        .andalucia-image img { width: 100%; height: 100%; object-fit: cover; }
+        .andalucia-facts {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 32px; padding: 40px 0;
+            border-top: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
+            margin-bottom: 48px;
+        }
+        .a-fact { text-align: center; }
+        .a-fact-value {
+            font-family: var(--serif); font-size: 36px; font-weight: 400;
+            color: var(--black); margin-bottom: 4px;
+        }
+        .a-fact-label {
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--grey);
+        }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -176,6 +266,14 @@
             .nav-hamburger { display: block; }
             .page-header { padding: 120px 24px 60px; }
             .image-band { height: 40vh; }
+            .pillar-nav { padding: 0 24px 60px; grid-template-columns: 1fr; gap: 12px; }
+            .pillar-section { padding: 80px 24px 60px; }
+            .pillar-section-header { flex-wrap: wrap; gap: 10px; }
+            .pillar-section-sub { margin-left: 0; width: 100%; }
+            .andalucia-grid { grid-template-columns: 1fr; gap: 24px; }
+            .andalucia-image { height: 280px; }
+            .andalucia-facts { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+            .a-fact-value { font-size: 24px; }
             .philosophy { padding: 60px 24px; }
             .philosophy-block { grid-template-columns: 1fr; gap: 12px; }
             .pillars { padding: 60px 24px; }
@@ -204,42 +302,120 @@
 
 <section class="page-header reveal">
     <div class="page-header-label">Our approach</div>
-    <h1>We are not a volume developer.</h1>
-    <p class="page-sub">Each project is a singular commitment - one site, one vision, one team. From land acquisition through to handover, every decision passes through our hands.</p>
+    <h1>Three principles. One singular commitment.</h1>
+    <p class="page-sub">Every Sadala home sits at the intersection of three certainties: the place that shaped it, the craft that built it, and the studio that stands behind it.</p>
+</section>
+
+<!-- PILLAR ANCHOR NAV -->
+<section class="pillar-nav reveal">
+    <a href="#andalucia" class="pillar-nav-item">
+        <div class="pillar-nav-num">01</div>
+        <div class="pillar-nav-title">Andaluc&iacute;a</div>
+        <div class="pillar-nav-sub">Where we build</div>
+    </a>
+    <a href="#homes" class="pillar-nav-item">
+        <div class="pillar-nav-num">02</div>
+        <div class="pillar-nav-title">Our homes</div>
+        <div class="pillar-nav-sub">What we build</div>
+    </a>
+    <a href="#sadala" class="pillar-nav-item">
+        <div class="pillar-nav-num">03</div>
+        <div class="pillar-nav-title">Sadala</div>
+        <div class="pillar-nav-sub">How we build</div>
+    </a>
 </section>
 
 <section class="image-band">
-    <img src="../img/cantal/cantal-interior.jpg" alt="Villa El Cantal outdoor living space">
+    <img src="../img/azahar/vista-pinares.jpg" alt="Panoramic view over M&aacute;laga from Pinares de San Ant&oacute;n" style="object-position: right center;">
 </section>
 
-<section class="philosophy">
-    <div class="philosophy-block reveal">
-        <div class="phil-label">How we work</div>
-        <div class="phil-content">
-            <h2>A conversation before a transaction</h2>
-            <p>We don't list properties for mass distribution. Before anything is built, there is a dialogue - about how you live, what you value, and what a home should feel like when you walk through the door.</p>
-            <p>We select sites for their irreplaceability: the mature trees, the slope, the morning light. The land writes the brief. Everything else follows.</p>
+<!-- ═══ PILLAR 01: ANDALUCIA ═══ -->
+<section class="pillar-section reveal" id="andalucia">
+    <div class="pillar-section-header">
+        <span class="pillar-section-num">01</span>
+        <h2 class="pillar-section-title">Andaluc&iacute;a</h2>
+        <span class="pillar-section-sub">Where we build</span>
+    </div>
+
+    <p class="andalucia-intro">We don't build anywhere. We build in places that have already been chosen by centuries of sun, sea and stone.</p>
+
+    <div class="andalucia-grid">
+        <div class="andalucia-block">
+            <h3>The region</h3>
+            <p>Andaluc&iacute;a is Europe's southernmost coast and its oldest story. Moorish courtyards, Roman roads, Phoenician harbours. A land that has been lived in, refined and loved for three thousand years.</p>
+            <p>The light here is different. The food is different. The pace is different. Andaluc&iacute;a is not a version of somewhere else. It is itself.</p>
+        </div>
+        <div class="andalucia-block">
+            <h3>M&aacute;laga</h3>
+            <p>The quiet capital of the new Costa del Sol. Birthplace of Picasso, gastronomy hub with Michelin-starred kitchens, international airport with direct flights across Europe, and an increasingly dynamic tech and expat community.</p>
+            <p>45 minutes from Marbella, yet a world apart. One of Europe's most desirable emerging cities, still unspoiled.</p>
         </div>
     </div>
+
+    <div class="andalucia-facts">
+        <div class="a-fact"><div class="a-fact-value">320</div><div class="a-fact-label">Days of sun per year</div></div>
+        <div class="a-fact"><div class="a-fact-value">10 min</div><div class="a-fact-label">From Pinares to city center</div></div>
+        <div class="a-fact"><div class="a-fact-value">500m</div><div class="a-fact-label">From our projects to the sea</div></div>
+    </div>
+
+    <div class="andalucia-image">
+        <img src="../img/azahar/vista-pinares.jpg" alt="View over M&aacute;laga from Pinares de San Ant&oacute;n" style="object-position: right center;">
+    </div>
+
+    <div class="andalucia-grid">
+        <div class="andalucia-block">
+            <h3>Pinares de San Ant&oacute;n</h3>
+            <p>Our current enclave. One of the most prestigious private residential communities in M&aacute;laga Este. 24-hour security, a private tennis club, a private social club, and century-old pines that make every plot feel like its own world.</p>
+            <p>Panoramic views over the Mediterranean. Silence. Proximity. Everything a generic development is not.</p>
+        </div>
+        <div class="andalucia-block">
+            <h3>Where we look next</h3>
+            <p>Sadala builds where the land has already done the work. We scout quietly across Andaluc&iacute;a: the hills above M&aacute;laga, the pine forests of Marbella, the timeless pueblos of Sotogrande, the olive groves of the Serran&iacute;a.</p>
+            <p>We don't force sites. We wait for them.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PILLAR 02: OUR HOMES ═══ -->
+<section class="pillar-section reveal" id="homes" style="background: var(--off-white);">
+    <div class="pillar-section-header">
+        <span class="pillar-section-num">02</span>
+        <h2 class="pillar-section-title">Our homes</h2>
+        <span class="pillar-section-sub">What we build</span>
+    </div>
+
+    <p class="andalucia-intro">Homes designed to last, crafted by the best, and shaped entirely by the land they sit on.</p>
+
+    <div class="philosophy-block reveal" style="margin-top: 40px;">
+        <div class="phil-label">The brief</div>
+        <div class="phil-content">
+            <h2>The land writes it</h2>
+            <p>We select sites for their irreplaceability: the mature trees, the slope, the morning light, the view at sunset. Before a single line is drawn, we listen to what the plot is already telling us.</p>
+            <p>While others demolish, we preserve. A stone wall, a century-old pine, the natural contour of a hillside - these are the starting points, not obstacles to remove.</p>
+        </div>
+    </div>
+
     <div class="philosophy-block reveal">
-        <div class="phil-label">What we build</div>
+        <div class="phil-label">The craft</div>
         <div class="phil-content">
             <h2>Heritage meets contemporary design</h2>
-            <p>While others demolish, we preserve. We find value in what already exists - a stone wall, a century-old tree, the natural contour of a hillside - and build around it. Not out of sentiment, but because these elements are irreplaceable.</p>
-            <p>We work with award-winning architects and local artisans who share our belief that the best buildings are those that belong to their place.</p>
+            <p>Natural stone from local quarries. Solid wood joinery. Lime plasters applied by hand. Materials that age beautifully, shaped by craftspeople who still know how to work with them.</p>
+            <p>We work with award-winning architects, interior designers and landscape specialists chosen for one defining quality: the ability to create spaces that are exceptional and deeply liveable.</p>
         </div>
     </div>
+
     <div class="philosophy-block reveal">
-        <div class="phil-label">How we deliver</div>
+        <div class="phil-label">The result</div>
         <div class="phil-content">
-            <h2>End-to-end, in our hands</h2>
-            <p>From land identification and acquisition, through design, permitting, construction, and final handover - every stage is managed directly by our team. No intermediaries. No corners cut. One point of responsibility from beginning to end.</p>
+            <h2>Homes, not houses</h2>
+            <p>Every Sadala villa is a one-time creation. No plan is recycled, no project is ever repeated. Each home carries the memory of a specific site, a specific team, a specific moment in time.</p>
+            <p>That's the only way we know how to build.</p>
         </div>
     </div>
 </section>
 
 <section class="pillars">
-    <div class="pillars-label">Our four pillars</div>
+    <div class="pillars-label">Four principles that guide every project</div>
     <div class="pillars-grid">
         <div class="pillar reveal">
             <div class="pillar-num">01</div>
@@ -260,6 +436,34 @@
             <div class="pillar-num">04</div>
             <div class="pillar-title">Nature as brief</div>
             <div class="pillar-desc">The land writes the program. The architecture listens.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PILLAR 03: SADALA ═══ -->
+<section class="pillar-section reveal" id="sadala">
+    <div class="pillar-section-header">
+        <span class="pillar-section-num">03</span>
+        <h2 class="pillar-section-title">Sadala</h2>
+        <span class="pillar-section-sub">How we build</span>
+    </div>
+
+    <p class="andalucia-intro">Not a developer. A studio. One site, one vision, one team.</p>
+
+    <div class="philosophy-block reveal" style="margin-top: 40px;">
+        <div class="phil-label">Our philosophy</div>
+        <div class="phil-content">
+            <h2>A conversation before a transaction</h2>
+            <p>We don't list properties for mass distribution. Before anything is built, there is a dialogue - about how you live, what you value, and what a home should feel like when you walk through the door.</p>
+            <p>We are not a volume developer. Each project is a singular commitment. We accept the constraint willingly, because it's the only way to build something that deserves to be built.</p>
+        </div>
+    </div>
+
+    <div class="philosophy-block reveal">
+        <div class="phil-label">Our process</div>
+        <div class="phil-content">
+            <h2>End-to-end, in our hands</h2>
+            <p>From land identification and acquisition, through architecture, permitting, construction, interior design and landscaping, to final handover - every stage is managed directly by our team. No intermediaries. No corners cut. One point of responsibility from beginning to end.</p>
         </div>
     </div>
 </section>
