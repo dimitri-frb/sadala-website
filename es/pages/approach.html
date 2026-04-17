@@ -22,7 +22,8 @@
         body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
 
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--grey-border); }
-        .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .nav-logo img { height: 28px; width: auto; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
@@ -184,19 +185,46 @@
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
+
+        /* Mobile menu overlay */
+        @media (max-width: 900px) {
+            nav.nav-open .nav-links {
+                display: flex !important;
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: var(--white);
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 28px; padding: 0; z-index: 999;
+            }
+            nav.nav-open .nav-links a {
+                font-family: var(--serif); font-size: 24px; font-weight: 400;
+                letter-spacing: 2px; text-transform: none; color: var(--black);
+                padding: 8px 0;
+            }
+            nav.nav-open .nav-links a.nav-contact,
+            nav.nav-open .nav-links a.nav-lang {
+                border: 1px solid var(--grey-light); padding: 10px 28px;
+                font-size: 13px; letter-spacing: 1px;
+            }
+            nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
+            nav.nav-open .nav-hamburger span { background: var(--black); }
+            nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+            nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            body.nav-open-body { overflow: hidden; }
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-logo">Sadala</a>
+    <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
         <a href="projects.html">Proyectos</a>
         <a href="approach.html">Nuestro Enfoque</a>
         <a href="../../pages/approach.html" class="nav-lang">EN</a>
         <a href="contact.html" class="nav-contact">Contacto</a>
     </div>
-    <div class="nav-hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';">
+    <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
         <span></span><span></span><span></span>
     </div>
 </nav>
@@ -216,7 +244,7 @@
         <div class="phil-label">C&oacute;mo Trabajamos</div>
         <div class="phil-content">
             <h2>Una conversaci&oacute;n antes de una transacci&oacute;n</h2>
-            <p>No ponemos propiedades en venta masiva. Antes de construir nada, hay un di&aacute;logo &mdash; sobre c&oacute;mo vives, qu&eacute; valoras y c&oacute;mo deber&iacute;a sentirse un hogar cuando cruzas la puerta.</p>
+            <p>No ponemos propiedades en venta masiva. Antes de construir nada, hay un di&aacute;logo: sobre c&oacute;mo vives, qu&eacute; valoras y c&oacute;mo deber&iacute;a sentirse un hogar cuando cruzas la puerta.</p>
             <p>Seleccionamos parcelas por su car&aacute;cter irremplazable: los &aacute;rboles centenarios, la pendiente, la luz de la ma&ntilde;ana. El terreno define el proyecto. Todo lo dem&aacute;s viene despu&eacute;s.</p>
         </div>
     </div>
@@ -224,7 +252,7 @@
         <div class="phil-label">Qu&eacute; Construimos</div>
         <div class="phil-content">
             <h2>Patrimonio y dise&ntilde;o contempor&aacute;neo</h2>
-            <p>Mientras otros demuelen, nosotros preservamos. Encontramos valor en lo que ya existe &mdash; un muro de piedra, un &aacute;rbol centenario, el contorno natural de una ladera &mdash; y construimos alrededor. No por sentimentalismo, sino porque estos elementos son irremplazables.</p>
+            <p>Mientras otros demuelen, nosotros preservamos. Encontramos valor en lo que ya existe (un muro de piedra, un &aacute;rbol centenario, el contorno natural de una ladera) y construimos alrededor. No por sentimentalismo, sino porque estos elementos son irremplazables.</p>
             <p>Trabajamos con arquitectos premiados y artesanos locales que comparten nuestra convicci&oacute;n de que las mejores construcciones son aquellas que pertenecen a su lugar.</p>
         </div>
     </div>
@@ -232,7 +260,7 @@
         <div class="phil-label">C&oacute;mo Entregamos</div>
         <div class="phil-content">
             <h2>De principio a fin, en nuestras manos</h2>
-            <p>Desde la identificaci&oacute;n y adquisici&oacute;n del terreno, pasando por el dise&ntilde;o, las licencias, la construcci&oacute;n y la entrega final &mdash; cada fase la gestiona directamente nuestro equipo. Sin intermediarios. Sin atajos. Un &uacute;nico punto de responsabilidad de principio a fin.</p>
+            <p>Desde la identificaci&oacute;n y adquisici&oacute;n del terreno, pasando por el dise&ntilde;o, las licencias, la construcci&oacute;n y la entrega final, cada fase la gestiona directamente nuestro equipo. Sin intermediarios. Sin atajos. Un &uacute;nico punto de responsabilidad de principio a fin.</p>
         </div>
     </div>
 </section>
