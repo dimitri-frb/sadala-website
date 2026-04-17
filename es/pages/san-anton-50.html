@@ -279,15 +279,18 @@
                 flex-direction: column; justify-content: center; align-items: center;
                 gap: 28px; padding: 0; z-index: 999;
             }
-            nav.nav-open .nav-links a {
-                font-family: var(--serif); font-size: 24px; font-weight: 400;
-                letter-spacing: 2px; text-transform: none; color: var(--black);
-                padding: 8px 0;
-            }
+            nav.nav-open .nav-links a,
             nav.nav-open .nav-links a.nav-contact,
             nav.nav-open .nav-links a.nav-lang {
-                border: 1px solid var(--grey-light); padding: 10px 28px;
-                font-size: 13px; letter-spacing: 1px;
+                font-family: var(--serif) !important;
+                font-size: 24px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2px;
+                text-transform: none;
+                color: var(--black) !important;
+                padding: 8px 0 !important;
+                border: none !important;
+                background: none !important;
             }
             nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
             nav.nav-open .nav-hamburger span { background: var(--black); }
