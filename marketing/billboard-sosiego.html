@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
-        @page { size: 6000px 3000px; margin: 0; }
+        @page { size: 420mm 236mm landscape; margin: 0; }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --white: #E8E2D5;
@@ -31,7 +31,22 @@
         .bar .ghost { background: transparent; border: 1px solid rgba(225,216,204,.25); color: var(--off-white); }
         .bar .ghost:hover { background: rgba(225,216,204,.05); }
 
-        @media print { .bar { display: none !important; } body { padding: 0; background: transparent; } }
+        @media print {
+            body { padding: 0 !important; background: #fff !important; min-height: auto !important; display: block !important; }
+            .bar, .notes, .swap-hint { display: none !important; }
+            .billboard {
+                width: 420mm !important; height: 236mm !important;
+                max-width: none !important; aspect-ratio: auto !important;
+                box-shadow: none !important; margin: 0 !important;
+                page-break-after: avoid;
+            }
+            /* Fonts sized relative to the 420mm page width so they match the preview */
+            .bb-logo img { height: 18mm !important; }
+            .bb-logo-text { font-size: 9mm !important; letter-spacing: 2.5mm !important; }
+            .bb-status { font-size: 4.5mm !important; padding: 3mm 7.5mm !important; letter-spacing: 1.2mm !important; }
+            .bb-headline { font-size: 27mm !important; }
+            .bb-sub { font-size: 5mm !important; max-width: 60% !important; }
+        }
 
         /* Billboard */
         .billboard {
