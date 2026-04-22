@@ -282,10 +282,11 @@
         .garden-plan-wrapper img { width: 100%; height: auto; display: block; }
         .garden-pin { position: absolute; z-index: 3; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 15px; font-weight: 400; box-shadow: 0 4px 14px rgba(193,135,107,.4); transform: translate(-50%, -50%); cursor: pointer; transition: transform .3s; }
         .garden-pin:hover { transform: translate(-50%, -50%) scale(1.15); }
-        .garden-zones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-        .garden-zone { padding-top: 24px; border-top: 1px solid rgba(44,44,44,.15); }
-        .garden-zone-num { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--accent); margin-bottom: 8px; }
-        .garden-zone h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 10px; }
+        .garden-zones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+        .garden-zone { display: flex; flex-direction: column; }
+        .garden-zone-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; margin-bottom: 18px; }
+        .garden-zone-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--accent); margin-bottom: 6px; line-height: 1; }
+        .garden-zone h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 8px; }
         .garden-zone p { font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--grey); }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
@@ -483,21 +484,25 @@
 
         <div class="garden-zones">
             <div class="garden-zone">
+                <img src="../../img/sosiego/exterior-gym.jpg" alt="Gimnasio interior-exterior" class="garden-zone-img">
                 <div class="garden-zone-num">01</div>
                 <h3>Gimnasio interior-exterior</h3>
                 <p>Un espacio de entrenamiento totalmente equipado con paredes de cristal retr&aacute;ctiles. El ejercicio pasa a ser al aire libre con solo abrir las puertas. Climatizado en invierno, sombreado en verano.</p>
             </div>
             <div class="garden-zone">
+                <img src="../../img/sosiego/sosiego-rooftop.png" alt="Plataforma exterior" class="garden-zone-img">
                 <div class="garden-zone-num">02</div>
                 <h3>Plataforma exterior</h3>
                 <p>Una cubierta dedicada a TRX, yoga, meditaci&oacute;n y estiramientos, bajo la copa de pinos centenarios. El bosque como compa&ntilde;ero de entrenamiento.</p>
             </div>
             <div class="garden-zone">
+                <img src="../../img/sosiego/sosiego-jardin.webp" alt="Jard&iacute;n japon&eacute;s" class="garden-zone-img">
                 <div class="garden-zone-num">03</div>
                 <h3>Jard&iacute;n japon&eacute;s</h3>
                 <p>Situado bajo la terraza principal. Agua, piedra, musgo, sombra. Un lugar para leer, descansar o simplemente no hacer nada: el lujo m&aacute;s raro de la vida moderna.</p>
             </div>
             <div class="garden-zone">
+                <img src="../../img/sosiego/sosiego-garden-landscape.png" alt="Huerto KM0" class="garden-zone-img">
                 <div class="garden-zone-num">04</div>
                 <h3>Huerto KM0</h3>
                 <p>Paisaje productivo: verduras de temporada, hierbas arom&aacute;ticas para la cocina, olivos m&aacute;s viejos que la casa. Tu mesa empieza a veinte metros de la puerta.</p>

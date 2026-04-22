@@ -431,18 +431,22 @@
         }
         .garden-pin:hover { transform: translate(-50%, -50%) scale(1.15); }
         .garden-zones {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
         }
         .garden-zone {
-            padding-top: 24px; border-top: 1px solid rgba(44,44,44,.15);
+            display: flex; flex-direction: column;
+        }
+        .garden-zone-img {
+            width: 100%; aspect-ratio: 4/5; object-fit: cover;
+            margin-bottom: 18px;
         }
         .garden-zone-num {
-            font-family: var(--serif); font-size: 32px; font-weight: 300;
-            color: var(--accent); margin-bottom: 8px;
+            font-family: var(--serif); font-size: 28px; font-weight: 300;
+            color: var(--accent); margin-bottom: 6px; line-height: 1;
         }
         .garden-zone h3 {
             font-family: var(--serif); font-size: 18px; font-weight: 400;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .garden-zone p {
             font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--grey);
@@ -670,21 +674,25 @@
 
         <div class="garden-zones">
             <div class="garden-zone">
+                <img src="../img/sosiego/exterior-gym.jpg" alt="Indoor-outdoor gym" class="garden-zone-img">
                 <div class="garden-zone-num">01</div>
                 <h3>Indoor-outdoor gym</h3>
                 <p>A fully-equipped training space with retractable glass walls. The workout becomes outdoor the moment you open the doors. Heated in winter, shaded in summer.</p>
             </div>
             <div class="garden-zone">
+                <img src="../img/sosiego/sosiego-rooftop.png" alt="Outdoor platform" class="garden-zone-img">
                 <div class="garden-zone-num">02</div>
                 <h3>Outdoor platform</h3>
                 <p>A dedicated deck for TRX, yoga, meditation and stretching, beneath the canopy of century-old pines. The forest as your training partner.</p>
             </div>
             <div class="garden-zone">
+                <img src="../img/sosiego/sosiego-jardin.webp" alt="Japanese chill garden" class="garden-zone-img">
                 <div class="garden-zone-num">03</div>
                 <h3>Japanese chill garden</h3>
                 <p>Set below the main terrace. Water, stone, moss, shade. A place to read, rest, or simply do nothing. The rarest luxury in modern life.</p>
             </div>
             <div class="garden-zone">
+                <img src="../img/sosiego/sosiego-garden-landscape.png" alt="KM0 garden" class="garden-zone-img">
                 <div class="garden-zone-num">04</div>
                 <h3>KM0 garden</h3>
                 <p>Productive landscape: seasonal vegetables, herbs for the kitchen, olive trees older than the house. Your table starts twenty metres from your door.</p>
