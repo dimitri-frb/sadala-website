@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosiego Billboard - Coming Soon</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @page { size: 6000px 3000px; margin: 0; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white: #E8E2D5;
+            --off-white: #E1D8CC;
+            --black: #2C2C2C;
+            --grey: #7A7570;
+            --grey-light: #B5AFA8;
+            --accent: #C1876B;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+        }
+        body { background: #111; color: #fff; font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 24px; }
+
+        /* Control bar */
+        .bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .bar .title { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--off-white); }
+        .bar .meta { font-size: 12px; color: var(--grey-light); }
+        .bar .actions { display: flex; gap: 12px; }
+        .bar button, .bar a { background: var(--accent); color: #fff; border: none; padding: 10px 20px; font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: .5px; cursor: pointer; text-decoration: none; transition: background .3s; }
+        .bar button:hover, .bar a:hover { background: #d49a7e; }
+        .bar .ghost { background: transparent; border: 1px solid rgba(225,216,204,.25); color: var(--off-white); }
+        .bar .ghost:hover { background: rgba(225,216,204,.05); }
+
+        @media print { .bar { display: none !important; } body { padding: 0; background: transparent; } }
+
+        /* Billboard */
+        .billboard {
+            /* 16:9 landscape — works for most hoarding panels. Scales to viewport. */
+            width: 100%; max-width: 1400px;
+            aspect-ratio: 16 / 9;
+            position: relative; overflow: hidden;
+            background: var(--black);
+            box-shadow: 0 4px 40px rgba(0,0,0,.4);
+        }
+        .billboard-img { position: absolute; inset: 0; }
+        .billboard-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.85); }
+        .billboard-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.7) 100%);
+        }
+
+        /* Content */
+        .billboard-content {
+            position: absolute; inset: 0; z-index: 2;
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 5% 5.5%;
+        }
+
+        /* Top row: Sadala logo + coming soon */
+        .bb-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .bb-logo { display: flex; align-items: center; gap: 1.4vw; }
+        .bb-logo img { height: 4.2vw; width: auto; filter: brightness(0) invert(1); opacity: .85; }
+        .bb-logo-text {
+            font-family: var(--serif); font-size: 2.2vw; font-weight: 400;
+            letter-spacing: .6vw; text-transform: uppercase; color: #fff;
+        }
+        .bb-status {
+            font-size: 1.1vw; font-weight: 500; letter-spacing: .3vw;
+            text-transform: uppercase; color: rgba(255,255,255,.85);
+            border: 1px solid rgba(255,255,255,.35); padding: .8vw 1.8vw;
+            backdrop-filter: blur(6px);
+        }
+
+        /* Bottom: tagline */
+        .bb-bottom { max-width: 72%; }
+        .bb-eyebrow {
+            font-family: var(--serif); font-size: 1.3vw; font-weight: 400;
+            letter-spacing: .35vw; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 1.2vw;
+        }
+        .bb-headline {
+            font-family: var(--serif); font-style: italic;
+            font-size: 6.5vw; font-weight: 300; line-height: .95;
+            color: #fff; margin-bottom: 1.6vw;
+        }
+        .bb-headline em { font-style: normal; color: var(--accent); font-weight: 400; }
+        .bb-sub {
+            font-size: 1.2vw; font-weight: 300; letter-spacing: .08vw;
+            color: rgba(255,255,255,.72); max-width: 50%;
+            line-height: 1.6;
+        }
+
+        /* Image swap hint */
+        .swap-hint {
+            position: absolute; top: 12px; left: 12px; z-index: 10;
+            background: rgba(193,135,107,.9); color: #fff;
+            padding: 6px 12px; font-size: 11px; letter-spacing: .5px;
+            text-transform: uppercase; font-weight: 500;
+        }
+        @media print { .swap-hint { display: none; } }
+
+        /* Print size notes */
+        .notes { max-width: 1400px; margin-top: 20px; color: var(--grey-light); font-size: 12px; line-height: 1.7; }
+        .notes strong { color: var(--off-white); }
+        .notes ul { margin-top: 6px; padding-left: 20px; }
+        @media print { .notes { display: none; } }
+
+    </style>
+</head>
+<body>
+
+<div class="bar">
+    <div>
+        <div class="title">Sosiego · Billboard mockup</div>
+        <div class="meta">16 : 9 &middot; For site hoarding at Calle Azahar 14</div>
+    </div>
+    <div class="actions">
+        <button onclick="window.print()">Save as PDF</button>
+        <a href="../index.html" class="ghost">Back to site</a>
+    </div>
+</div>
+
+<!-- ═════ THE BILLBOARD ═════ -->
+<div class="billboard">
+    <div class="swap-hint">Placeholder image — swap for a yoga-on-deck render when ready</div>
+
+    <div class="billboard-img">
+        <!-- Placeholder: rooftop/deck image. Swap src with a yoga-on-deck render when available. -->
+        <img src="../img/sosiego/sosiego-rooftop.png" alt="Yoga on the Sosiego deck">
+    </div>
+
+    <div class="billboard-content">
+        <div class="bb-top">
+            <div class="bb-logo">
+                <img src="../img/logo/sadala-logo.png" alt="Sadala">
+                <span class="bb-logo-text">Sadala</span>
+            </div>
+            <div class="bb-status">Coming soon</div>
+        </div>
+
+        <div class="bb-bottom">
+            <div class="bb-eyebrow">Sosiego &middot; Pinares de San Ant&oacute;n</div>
+            <h1 class="bb-headline">The life you've<br>been <em>postponing</em>.</h1>
+            <p class="bb-sub">A home designed around your longevity. Construction beginning 2026 &middot; sadala.com</p>
+        </div>
+    </div>
+</div>
+
+<div class="notes">
+    <strong>For production:</strong>
+    <ul>
+        <li>Current design is 16:9 landscape — the most common format for construction site hoardings. If you need a different ratio (6-sheet portrait, 48-sheet wide, bespoke), let me know.</li>
+        <li>"Save as PDF" in the top right gives you a print-ready file. For a billboard printer, tell them the target dimensions and ask for a high-res export (ideally re-mock at final ratio first).</li>
+        <li>Currently using <code>sosiego-rooftop.png</code> as a placeholder. Swap the image source inside <code>.billboard-img &gt; img</code> when you have a yoga-on-deck render.</li>
+        <li>Text scales with viewport (<code>vw</code> units), so it always looks right regardless of print size.</li>
+    </ul>
+</div>
+
+</body>
+</html>
