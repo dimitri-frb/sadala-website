@@ -140,6 +140,47 @@
         .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
         .footer-bottom a:hover { color: var(--grey); }
 
+        /* ═══ ORIGIN STORY ═══ */
+        .origin-section { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
+        .origin-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .origin-quote {
+            font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
+            font-weight: 300; line-height: 1.2; font-style: italic; margin-bottom: 40px;
+        }
+        .origin-body p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
+        .origin-body p:first-child { font-size: 17px; color: var(--black); }
+
+        /* ═══ THE PLOT — full-bleed image + text ═══ */
+        .plot-band { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
+        .plot-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .plot-img { overflow: hidden; aspect-ratio: 4/5; }
+        .plot-img img { width: 100%; height: 100%; object-fit: cover; }
+        .plot-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+        .plot-text h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
+        .plot-text p { font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 12px; }
+
+        /* ═══ WHAT WE LEARNED — 4 principles dark band ═══ */
+        .lessons { padding: 120px 48px; background: var(--black); color: var(--off-white); }
+        .lessons-inner { max-width: 1100px; margin: 0 auto; }
+        .lessons-header { max-width: 640px; margin-bottom: 64px; }
+        .lessons-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .lessons-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1.15; }
+        .lessons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; }
+        .lesson-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
+        .lesson h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
+        .lesson p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+
+        /* ═══ LEGACY — bridge to current projects ═══ */
+        .legacy { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
+        .legacy h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.2; margin-bottom: 24px; }
+        .legacy p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
+        .legacy-links { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+        .legacy-link { display: block; padding: 24px; border: 1px solid var(--grey-border); text-decoration: none; color: inherit; transition: all .4s; }
+        .legacy-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .legacy-link-label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+        .legacy-link-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
+        .legacy-link-sub { font-size: 12px; font-weight: 300; color: var(--grey); }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -153,6 +194,13 @@
             .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
             .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
+            .origin-section { padding: 72px 24px; }
+            .plot-band { padding: 72px 24px; }
+            .plot-inner { grid-template-columns: 1fr; gap: 32px; }
+            .lessons { padding: 72px 24px; }
+            .lessons-grid { grid-template-columns: 1fr; gap: 40px; }
+            .legacy { padding: 72px 24px; }
+            .legacy-links { grid-template-columns: 1fr; gap: 16px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -208,16 +256,20 @@
     <img src="../img/leoni-benabu/main.jpeg" alt="Origen among century-old pines">
     <div class="villa-hero-content">
         <span class="status-tag status-tag--completed">Sold</span>
-        <div class="villa-hero-cat">Pinares de San Ant&oacute;n &middot; M&aacute;laga</div>
+        <div class="villa-hero-cat">Where Sadala began &middot; Pinares de San Ant&oacute;n</div>
         <h1 class="villa-hero-title">Origen</h1>
     </div>
 </section>
 
-<section class="villa-intro reveal">
-    <div class="villa-intro-label">The project</div>
-    <p class="villa-intro-text">
-        A 3,076 m&sup2; plot nestled among century-old pines in one of M&aacute;laga's most exclusive enclaves. The first Sadala project - conceived, developed and delivered as a singular home rooted in its landscape.
-    </p>
+<!-- ORIGIN STORY -->
+<section class="origin-section reveal">
+    <div class="origin-label">The origin</div>
+    <p class="origin-quote">Every studio has a first project. The one where the philosophy is still being invented while it's being built.</p>
+    <div class="origin-body">
+        <p>Origen is ours.</p>
+        <p>A 3,076 m&sup2; plot among century-old pines in Pinares de San Ant&oacute;n. A home we conceived, designed, built and delivered end-to-end, because we couldn't yet trust anyone else to do it the way we wanted.</p>
+        <p>It sold before it was finished. That quiet success gave us the permission to keep going. More importantly, it taught us what Sadala would become.</p>
+    </div>
 </section>
 
 <section class="kpi-strip reveal">
@@ -225,7 +277,54 @@
         <div><div class="kpi-value">620</div><div class="kpi-label">m&sup2; built</div></div>
         <div><div class="kpi-value">6</div><div class="kpi-label">Rooms</div></div>
         <div><div class="kpi-value">3,076</div><div class="kpi-label">m&sup2; plot</div></div>
-        <div><div class="kpi-value">Sold</div><div class="kpi-label">Status</div></div>
+        <div><div class="kpi-value">2023</div><div class="kpi-label">Delivered</div></div>
+    </div>
+</section>
+
+<!-- THE PLOT -->
+<section class="plot-band reveal">
+    <div class="plot-inner">
+        <div class="plot-img">
+            <img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="The original plot in Pinares de San Ant&oacute;n">
+        </div>
+        <div class="plot-text">
+            <div class="plot-label">The plot</div>
+            <h2>The land chose us. Not the other way around.</h2>
+            <p>A hillside shaded by pines older than the city. When we first walked it, nothing was built. There was only light through branches, the smell of resin, and silence.</p>
+            <p>We committed before we had a plan. That commitment, to the site before the program, became the first principle of Sadala.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT ORIGEN TAUGHT US -->
+<section class="lessons reveal">
+    <div class="lessons-inner">
+        <div class="lessons-header">
+            <div class="lessons-label">What Origen taught us</div>
+            <h2 class="lessons-title">Four lessons became the Sadala method.</h2>
+        </div>
+        <div class="lessons-grid">
+            <div class="lesson">
+                <div class="lesson-num">01</div>
+                <h3>Integrated, not imposed</h3>
+                <p>We don't place a house on the land. We let the land shape the house. The slope, the mature trees, the direction of the morning sun: these aren't constraints, they're the program. Every Sadala project starts by listening to the site.</p>
+            </div>
+            <div class="lesson">
+                <div class="lesson-num">02</div>
+                <h3>Unique, never repeated</h3>
+                <p>One site, one vision, one time. We don't reuse plans, and we don't run parallel projects. Each Sadala home is conceived as if it were the only one we will ever build, because for us, that's exactly what it is.</p>
+            </div>
+            <div class="lesson">
+                <div class="lesson-num">03</div>
+                <h3>Local craft, local materials</h3>
+                <p>Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight. The new luxury isn't imported marble. It's a home built by people who care because they live nearby.</p>
+            </div>
+            <div class="lesson">
+                <div class="lesson-num">04</div>
+                <h3>End-to-end, in our hands</h3>
+                <p>From land acquisition to the day we hand over the keys, every decision passes through our team. No intermediaries. No corners cut. It's slower. It's also the only way we know how to protect a vision across years of work.</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -258,11 +357,31 @@
     </div>
 </section>
 
+<!-- LEGACY -->
+<section class="legacy reveal">
+    <div class="origin-label">The legacy</div>
+    <h2>Everything Sadala builds today rests on Origen's foundations.</h2>
+    <p>Origen sold. What it gave us can't be.</p>
+    <p>Every project since carries its DNA: the same discipline of site-first thinking, the same one-at-a-time commitment, the same refusal to hand the work over to anyone else.</p>
+    <div class="legacy-links">
+        <a href="sosiego.html" class="legacy-link">
+            <div class="legacy-link-label">Current project</div>
+            <div class="legacy-link-title">Sosiego</div>
+            <div class="legacy-link-sub">A home designed around your longevity</div>
+        </a>
+        <a href="villa-el-cantal.html" class="legacy-link">
+            <div class="legacy-link-label">Approved</div>
+            <div class="legacy-link-title">El Cantal</div>
+            <div class="legacy-link-sub">Architecture that dissolves into the hillside</div>
+        </a>
+    </div>
+</section>
+
 <section class="cta-band">
-    <h2>Interested in our current projects?</h2>
-    <p>Origen has been sold. Discover our projects in progress.</p>
-    <a href="projects.html" class="btn">View projects</a>
-    <a href="contact.html" class="btn btn-accent">Get in touch</a>
+    <h2>The next Sadala home is always the most important one.</h2>
+    <p>Want to know what we're working on next?</p>
+    <a href="contact.html" class="btn">Start a conversation</a>
+    <a href="https://wa.me/34639675315" class="btn btn-accent">WhatsApp us</a>
 </section>
 
 <footer>
