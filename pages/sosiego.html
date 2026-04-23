@@ -827,30 +827,8 @@
     </div>
 </section>
 
-<!-- FLOOR LAYOUT SLIDER -->
-<section class="slider-section reveal" id="floorLayout">
-    <div class="slider-section-header">
-        <h2>Floor layout</h2>
-        <span class="slider-counter" id="floorCounter">1 / 2</span>
-    </div>
-    <div class="slider-track">
-        <div class="slider-inner" id="floorSlider">
-            <div class="slider-slide">
-                <img src="../img/sosiego/planta-baja-sosiego.png" alt="Sosiego planta baja">
-                <div class="slide-caption">Ground floor: 4 bedrooms, pool, terrace and garden</div>
-            </div>
-            <div class="slider-slide">
-                <img src="../img/sosiego/planta-primera.png" alt="Sosiego first floor">
-                <div class="slide-caption">First floor: living room, kitchen, entrance hall and terrace</div>
-            </div>
-        </div>
-    </div>
-    <div class="slider-controls">
-        <button class="slider-btn" onclick="slideFloor(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <div class="slider-dots" id="floorDots"></div>
-        <button class="slider-btn" onclick="slideFloor(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
-    </div>
-</section>
+<!-- FLOOR LAYOUT SLIDER — removed for now -->
+<!-- (Kept floorSlider JS harmless by pointing to no-op; section will be restored later) -->
 
 <!-- CTA -->
 <section class="cta-band">
@@ -931,10 +909,10 @@ function createSlider(sliderId, counterId, dotsId) {
     return { next: () => goTo(current + 1), prev: () => goTo(current - 1) };
 }
 
-const floorNav = createSlider('floorSlider', 'floorCounter', 'floorDots');
+const floorNav = document.getElementById('floorSlider') ? createSlider('floorSlider', 'floorCounter', 'floorDots') : null;
 const galleryNav = createSlider('gallerySlider', 'galleryCounter', 'galleryDots');
 
-function slideFloor(dir) { dir > 0 ? floorNav.next() : floorNav.prev(); }
+function slideFloor(dir) { if (!floorNav) return; dir > 0 ? floorNav.next() : floorNav.prev(); }
 function slideGallery(dir) { dir > 0 ? galleryNav.next() : galleryNav.prev(); }
 
 /* Keyboard arrows control whichever slider is currently in view */
@@ -944,11 +922,11 @@ const sliderObserver = new IntersectionObserver(entries => {
         if (e.isIntersecting && e.intersectionRatio > 0.4) {
             const id = e.target.id;
             if (id === 'gallery') activeSlider = galleryNav;
-            else if (id === 'floorLayout') activeSlider = floorNav;
+            else if (id === 'floorLayout' && floorNav) activeSlider = floorNav;
         }
     });
 }, { threshold: [0.4, 0.6] });
-document.querySelectorAll('#floorLayout, #gallery').forEach(el => sliderObserver.observe(el));
+document.querySelectorAll('#gallery').forEach(el => sliderObserver.observe(el));
 
 document.addEventListener('keydown', e => {
     if (!activeSlider) return;
