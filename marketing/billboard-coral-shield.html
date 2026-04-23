@@ -39,9 +39,11 @@
                 box-shadow: none !important; margin: 0 !important;
             }
             .bb-eyebrow { font-size: 7mm !important; letter-spacing: 6mm !important; }
+            .bb-logo { height: 65mm !important; overflow: hidden !important; }
             .bb-logo img { height: 90mm !important; }
-            .bb-tagline { font-size: 8mm !important; letter-spacing: 2.5mm !important; margin-top: 18mm !important; }
-            .bb-divider { width: 50mm !important; height: 0.4mm !important; margin: 16mm auto !important; }
+            .bb-tagline { font-size: 8mm !important; letter-spacing: 2.5mm !important; margin-top: 16mm !important; }
+            .bb-divider { width: 50mm !important; height: 0.4mm !important; margin: 12mm auto !important; }
+            .bb-phone { font-size: 7mm !important; letter-spacing: 2mm !important; margin-top: 8mm !important; }
         }
 
         /* Billboard */
@@ -76,21 +78,20 @@
         }
 
         .bb-logo {
-            display: flex; align-items: center; justify-content: center;
+            display: flex; align-items: flex-start; justify-content: center;
+            overflow: hidden;
+            height: 12vw; /* crops out the "ASSET MANAGEMENT" subtitle baked in the logo file */
         }
         .bb-logo img {
             height: 16vw; width: auto;
             filter: brightness(0) invert(1);
-            /* Preserve the coral icon colour */
+            display: block;
         }
-        /* Alternative: use the icon in brand colour + white wordmark. Since
-           we only have the full positive logo, we invert to white and accept
-           monochrome treatment — most powerful/minimalist choice. */
 
         .bb-divider {
             width: 10vw; height: 1px;
             background: rgba(255,255,255,.3);
-            margin: 2.5vw 0;
+            margin: 2.2vw 0;
         }
 
         .bb-tagline {
@@ -99,6 +100,14 @@
             letter-spacing: .5vw;
             color: rgba(255,255,255,.75);
             text-transform: uppercase;
+        }
+
+        .bb-phone {
+            font-family: var(--sans);
+            font-size: 1.3vw; font-weight: 400;
+            letter-spacing: .35vw;
+            color: rgba(255,255,255,.5);
+            margin-top: 1.4vw;
         }
 
         /* Notes */
@@ -132,6 +141,7 @@
         </div>
         <div class="bb-divider"></div>
         <div class="bb-tagline">Asset management &amp; engineering</div>
+        <div class="bb-phone">+34 681 871 874</div>
     </div>
 </div>
 
