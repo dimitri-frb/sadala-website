@@ -222,6 +222,18 @@
         .slider-dot.active { background: var(--accent); border-color: var(--accent); }
 
         /* CTA BAND */
+        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
+        .method-band { padding: 100px 48px; background: var(--off-white); }
+        .method-inner { max-width: 1200px; margin: 0 auto; }
+        .method-header { max-width: 640px; margin-bottom: 48px; }
+        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .method-title { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.25; }
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-top: 32px; border-top: 1px solid var(--grey-border); }
+        .method-word { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 8px; }
+        .method-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+        .method-cta { display: inline-block; margin-top: 40px; font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--grey-light); padding-bottom: 4px; transition: border-color .3s; }
+        .method-cta:hover { border-color: var(--black); }
+
         .cta-band { background: var(--black); padding: 80px 48px; text-align: center; }
         .cta-band h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--off-white); margin-bottom: 12px; }
         .cta-band p { font-size: 14px; font-weight: 300; color: var(--grey); margin-bottom: 28px; }
@@ -480,6 +492,8 @@
             .garden-experience { padding: 72px 24px; }
             .garden-zones { grid-template-columns: 1fr; gap: 24px; }
             .garden-pin { width: 28px; height: 28px; font-size: 12px; }
+            .method-band { padding: 60px 24px; }
+            .method-grid { grid-template-columns: 1fr; gap: 32px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -831,6 +845,31 @@
 <!-- (Kept floorSlider JS harmless by pointing to no-op; section will be restored later) -->
 
 <!-- CTA -->
+<!-- THE SADALA METHOD — closing signature -->
+<section class="method-band reveal">
+    <div class="method-inner">
+        <div class="method-header">
+            <div class="method-label">The Sadala Method</div>
+            <h2 class="method-title">Sosiego is Sadala's method made home.</h2>
+        </div>
+        <div class="method-grid">
+            <div class="method-col">
+                <div class="method-word">Rooted</div>
+                <p class="method-desc">Shaped by the slope, the century-old pines, the direction of the Andalusian sun.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-word">Singular</div>
+                <p class="method-desc">One site, one vision, one time. Sosiego will never be repeated.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-word">Local</div>
+                <p class="method-desc">Andalusian stone, solid wood, craftspeople from within an hour's drive.</p>
+            </div>
+        </div>
+        <a href="approach.html" class="method-cta">How Sadala works &rarr;</a>
+    </div>
+</section>
+
 <section class="cta-band">
     <h2>A home designed around your longevity.</h2>
     <p>Sosiego is for those ready to optimise their life. Let's talk.</p>

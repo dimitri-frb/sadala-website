@@ -167,6 +167,24 @@
         .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
         .footer-bottom a:hover { color: var(--grey); }
 
+        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
+        .method-band { padding: 120px 48px; }
+        .method-band.dark { background: var(--black); color: var(--off-white); }
+        .method-band.light { background: var(--off-white); color: var(--black); }
+        .method-inner { max-width: 1200px; margin: 0 auto; }
+        .method-header { max-width: 680px; margin-bottom: 64px; }
+        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .method-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; line-height: 1.15; }
+        .method-band.dark .method-title { color: var(--off-white); }
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+        .method-col { display: flex; flex-direction: column; }
+        .method-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
+        .method-word { font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 14px; }
+        .method-band.dark .method-word { color: var(--off-white); }
+        .method-desc { font-size: 13.5px; font-weight: 300; line-height: 1.8; }
+        .method-band.dark .method-desc { color: var(--grey); }
+        .method-band.light .method-desc { color: var(--grey); }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -182,6 +200,8 @@
             .pillar { border-left: none; border-top: 1px solid rgba(225,216,204,.06); }
             .pillar:nth-child(-n+2) { border-top: none; }
             .team { padding: 60px 24px; }
+            .method-band { padding: 72px 24px; }
+            .method-grid { grid-template-columns: 1fr; gap: 40px; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
@@ -234,69 +254,44 @@
 
 <section class="page-header reveal">
     <div class="page-header-label">Nuestro enfoque</div>
-    <h1>Lo irrepetible no se compra. Se crea.</h1>
-    <p class="page-sub">No somos una promotora. Somos un estudio. Cada proyecto es un compromiso singular. Desde la adquisici&oacute;n del terreno hasta la entrega de llaves, cada decisi&oacute;n pasa por nuestras manos.</p>
+    <h1>Un nuevo tipo de estudio inmobiliario.</h1>
+    <p class="page-sub">No somos una promotora. Somos un estudio. Un hogar a la vez, concebido, dise&ntilde;ado, construido y entregado por un mismo equipo. Sadala construye donde la tierra ya ha hecho el trabajo, en parcelas elegidas por lo que son.</p>
 </section>
 
 <section class="image-band">
     <img src="../../img/cantal/cantal-interior.jpg" alt="El Cantal espacio exterior">
 </section>
 
-<section class="philosophy">
-    <div class="philosophy-block reveal">
-        <div class="phil-label">C&oacute;mo trabajamos</div>
-        <div class="phil-content">
-            <h2>Una conversaci&oacute;n antes de una transacci&oacute;n</h2>
-            <p>No ponemos propiedades en venta masiva. Antes de construir nada, hay un di&aacute;logo: sobre c&oacute;mo vives, qu&eacute; valoras y c&oacute;mo deber&iacute;a sentirse un hogar cuando cruzas la puerta.</p>
-            <p>Seleccionamos parcelas por su car&aacute;cter irremplazable: los &aacute;rboles centenarios, la pendiente, la luz de la ma&ntilde;ana. El terreno define el proyecto. Todo lo dem&aacute;s viene despu&eacute;s.</p>
+<!-- ═══ THE SADALA METHOD — el triptico ═══ -->
+<section class="method-band dark reveal">
+    <div class="method-inner">
+        <div class="method-header">
+            <div class="method-label">The Sadala Method</div>
+            <h2 class="method-title">Tres principios en cada proyecto. Sin excepciones.</h2>
         </div>
-    </div>
-    <div class="philosophy-block reveal">
-        <div class="phil-label">Qu&eacute; construimos</div>
-        <div class="phil-content">
-            <h2>Patrimonio y dise&ntilde;o contempor&aacute;neo</h2>
-            <p>Mientras otros demuelen, nosotros preservamos. Encontramos valor en lo que ya existe (un muro de piedra, un &aacute;rbol centenario, el contorno natural de una ladera) y construimos alrededor. No por sentimentalismo, sino porque estos elementos son irremplazables.</p>
-            <p>Trabajamos con arquitectos premiados y artesanos locales que comparten nuestra convicci&oacute;n de que las mejores construcciones son aquellas que pertenecen a su lugar.</p>
-        </div>
-    </div>
-    <div class="philosophy-block reveal">
-        <div class="phil-label">C&oacute;mo entregamos</div>
-        <div class="phil-content">
-            <h2>De principio a fin, en nuestras manos</h2>
-            <p>Desde la identificaci&oacute;n y adquisici&oacute;n del terreno, pasando por el dise&ntilde;o, las licencias, la construcci&oacute;n y la entrega final, cada fase la gestiona directamente nuestro equipo. Sin intermediarios. Sin atajos. Un &uacute;nico punto de responsabilidad de principio a fin.</p>
-        </div>
-    </div>
-</section>
-
-<section class="pillars">
-    <div class="pillars-label">Nuestros cuatro pilares</div>
-    <div class="pillars-grid">
-        <div class="pillar reveal">
-            <div class="pillar-num">01</div>
-            <div class="pillar-title">Cero replicaci&oacute;n</div>
-            <div class="pillar-desc">Cada hogar es una creaci&oacute;n irrepetible. Ning&uacute;n proyecto se repite, ning&uacute;n plano se recicla.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">02</div>
-            <div class="pillar-title">Patrimonio primero</div>
-            <div class="pillar-desc">Preservamos lo que los siglos han formado. No por sentimentalismo, sino por su car&aacute;cter irremplazable.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">03</div>
-            <div class="pillar-title">Artesan&iacute;a</div>
-            <div class="pillar-desc">Piedra local, madera recuperada, enlucido de cal aplicado a mano. Materiales con memoria.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">04</div>
-            <div class="pillar-title">La naturaleza como Gu&iacute;a</div>
-            <div class="pillar-desc">El terreno define el programa. La arquitectura escucha.</div>
+        <div class="method-grid">
+            <div class="method-col">
+                <div class="method-num">01</div>
+                <div class="method-word">Rooted</div>
+                <p class="method-desc">No colocamos una casa sobre el terreno. Dejamos que el terreno la forme. La pendiente, los pinos, la direcci&oacute;n de la luz de la ma&ntilde;ana: no son limitaciones, son el programa. La arquitectura escucha.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-num">02</div>
+                <div class="method-word">Singular</div>
+                <p class="method-desc">Una parcela, una visi&oacute;n, una sola vez. Sin planos reutilizados, sin proyectos en paralelo. Cada hogar Sadala se concibe como si fuera el &uacute;nico que construiremos, porque para nosotros lo es.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-num">03</div>
+                <div class="method-word">Local</div>
+                <p class="method-desc">Piedra de canteras andaluzas. Madera maciza de molinos de confianza. Socios elegidos a pocos kil&oacute;metros, nunca a muchos vuelos. El nuevo lujo no es el m&aacute;rmol importado. Es un hogar construido por personas que se implican porque viven cerca.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="team reveal">
-    <h2>Construido por un equipo que se involucra</h2>
-    <p>Sadala est&aacute; liderado por un peque&ntilde;o equipo dedicado con base en M&aacute;laga. Trabajamos estrechamente con arquitectos, ingenieros y artesanos que comparten nuestra visi&oacute;n de una construcci&oacute;n reflexiva y singular.</p>
+    <h2>El estudio</h2>
+    <p>Sadala est&aacute; liderado por un peque&ntilde;o equipo dedicado con base en M&aacute;laga. Buscamos parcelas en silencio por toda Andaluc&iacute;a: los pinos de M&aacute;laga Este, las colinas de Marbella, los pueblos blancos de Sotogrande. No forzamos los lugares. Los esperamos.</p>
     <a href="contact.html" class="team-cta">Iniciar una conversaci&oacute;n</a>
 </section>
 

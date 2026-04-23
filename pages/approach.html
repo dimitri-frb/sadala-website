@@ -258,6 +258,24 @@
             text-transform: uppercase; color: var(--grey);
         }
 
+        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
+        .method-band { padding: 120px 48px; }
+        .method-band.dark { background: var(--black); color: var(--off-white); }
+        .method-band.light { background: var(--off-white); color: var(--black); }
+        .method-inner { max-width: 1200px; margin: 0 auto; }
+        .method-header { max-width: 680px; margin-bottom: 64px; }
+        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .method-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; line-height: 1.15; }
+        .method-band.dark .method-title { color: var(--off-white); }
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+        .method-col { display: flex; flex-direction: column; }
+        .method-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
+        .method-word { font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 14px; }
+        .method-band.dark .method-word { color: var(--off-white); }
+        .method-desc { font-size: 13.5px; font-weight: 300; line-height: 1.8; }
+        .method-band.dark .method-desc { color: var(--grey); }
+        .method-band.light .method-desc { color: var(--grey); }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -281,6 +299,8 @@
             .pillar { border-left: none; border-top: 1px solid rgba(225,216,204,.06); }
             .pillar:nth-child(-n+2) { border-top: none; }
             .team { padding: 60px 24px; }
+            .method-band { padding: 72px 24px; }
+            .method-grid { grid-template-columns: 1fr; gap: 40px; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
@@ -333,176 +353,45 @@
 
 <section class="page-header reveal">
     <div class="page-header-label">Our approach</div>
-    <h1>Three principles. One singular commitment.</h1>
-    <p class="page-sub">Every Sadala home sits at the intersection of three certainties: the place that shaped it, the craft that built it, and the studio that stands behind it.</p>
-</section>
-
-<!-- PILLAR ANCHOR NAV -->
-<section class="pillar-nav reveal">
-    <a href="#andalucia" class="pillar-nav-item">
-        <div class="pillar-nav-num">01</div>
-        <div class="pillar-nav-title">Andaluc&iacute;a</div>
-        <div class="pillar-nav-sub">Where we build</div>
-    </a>
-    <a href="#homes" class="pillar-nav-item">
-        <div class="pillar-nav-num">02</div>
-        <div class="pillar-nav-title">Our homes</div>
-        <div class="pillar-nav-sub">What we build</div>
-    </a>
-    <a href="#sadala" class="pillar-nav-item">
-        <div class="pillar-nav-num">03</div>
-        <div class="pillar-nav-title">Sadala</div>
-        <div class="pillar-nav-sub">How we build</div>
-    </a>
+    <h1>A new kind of real estate studio.</h1>
+    <p class="page-sub">Not a developer. A studio. One home at a time, conceived, designed, built and delivered by a single team. Sadala builds where the land has already done the work, on sites chosen for what they already are.</p>
 </section>
 
 <section class="image-band">
     <img src="../img/general/malaga-vista-aerea.jpg" alt="Aerial view over M&aacute;laga and the Andalusian coastline" style="object-position: center center;">
 </section>
 
-<!-- ═══ PILLAR 01: ANDALUCIA ═══ -->
-<section class="pillar-section reveal" id="andalucia">
-    <div class="pillar-section-header">
-        <span class="pillar-section-num">01</span>
-        <h2 class="pillar-section-title">Andaluc&iacute;a</h2>
-        <span class="pillar-section-sub">Where we build</span>
-    </div>
-
-    <p class="andalucia-intro">We don't build anywhere. We build in places that have already been chosen by centuries of sun, sea and stone.</p>
-
-    <div class="andalucia-grid">
-        <div class="andalucia-block">
-            <h3>The region</h3>
-            <p>Andaluc&iacute;a is Europe's southernmost coast and its oldest story. Moorish courtyards, Roman roads, Phoenician harbours. A land that has been lived in, refined and loved for three thousand years.</p>
-            <p>The light here is different. The food is different. The pace is different. Andaluc&iacute;a is not a version of somewhere else. It is itself.</p>
+<!-- ═══ THE SADALA METHOD — the triptych ═══ -->
+<section class="method-band dark reveal">
+    <div class="method-inner">
+        <div class="method-header">
+            <div class="method-label">The Sadala Method</div>
+            <h2 class="method-title">Three principles in every project. No exceptions.</h2>
         </div>
-        <div class="andalucia-block">
-            <h3>M&aacute;laga</h3>
-            <p>The quiet capital of the new Costa del Sol. Birthplace of Picasso, gastronomy hub with Michelin-starred kitchens, international airport with direct flights across Europe, and an increasingly dynamic tech and expat community.</p>
-            <p>45 minutes from Marbella, yet a world apart. One of Europe's most desirable emerging cities, still unspoiled.</p>
-        </div>
-    </div>
-
-    <div class="andalucia-facts">
-        <div class="a-fact"><div class="a-fact-value">320</div><div class="a-fact-label">Days of sun per year</div></div>
-        <div class="a-fact"><div class="a-fact-value">10 min</div><div class="a-fact-label">From Pinares to city center</div></div>
-        <div class="a-fact"><div class="a-fact-value">500m</div><div class="a-fact-label">From our projects to the sea</div></div>
-    </div>
-
-    <div class="andalucia-image">
-        <img src="../img/general/malaga-vista-aerea.jpg" alt="Aerial view over M&aacute;laga and the Andalusian coastline" style="object-position: center center;">
-    </div>
-
-    <div class="andalucia-grid">
-        <div class="andalucia-block">
-            <h3>Pinares de San Ant&oacute;n</h3>
-            <p>Our current enclave. One of the most prestigious private residential communities in M&aacute;laga Este. 24-hour security, a private tennis club, a private social club, and century-old pines that make every plot feel like its own world.</p>
-            <p>Panoramic views over the Mediterranean. Silence. Proximity. Everything a generic development is not.</p>
-        </div>
-        <div class="andalucia-block">
-            <h3>Where we look next</h3>
-            <p>Sadala builds where the land has already done the work. We scout quietly across Andaluc&iacute;a: the hills above M&aacute;laga, the pine forests of Marbella, the timeless pueblos of Sotogrande, the olive groves of the Serran&iacute;a.</p>
-            <p>We don't force sites. We wait for them.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ PILLAR 02: OUR HOMES ═══ -->
-<section class="pillar-section reveal" id="homes" style="background: var(--off-white);">
-    <div class="pillar-section-header">
-        <span class="pillar-section-num">02</span>
-        <h2 class="pillar-section-title">Our homes</h2>
-        <span class="pillar-section-sub">What we build</span>
-    </div>
-
-    <p class="andalucia-intro">Homes designed to last, crafted by the best, and shaped entirely by the land they sit on.</p>
-
-    <div class="philosophy-block reveal" style="margin-top: 40px;">
-        <div class="phil-label">The brief</div>
-        <div class="phil-content">
-            <h2>The land writes it</h2>
-            <p>We select sites for their irreplaceability: the mature trees, the slope, the morning light, the view at sunset. Before a single line is drawn, we listen to what the plot is already telling us.</p>
-            <p>While others demolish, we preserve. A stone wall, a century-old pine, the natural contour of a hillside - these are the starting points, not obstacles to remove.</p>
-        </div>
-    </div>
-
-    <div class="philosophy-block reveal">
-        <div class="phil-label">The craft</div>
-        <div class="phil-content">
-            <h2>Heritage meets contemporary design</h2>
-            <p>Natural stone from local quarries. Solid wood joinery. Lime plasters applied by hand. Materials that age beautifully, shaped by craftspeople who still know how to work with them.</p>
-            <p>We work with award-winning architects, interior designers and landscape specialists chosen for one defining quality: the ability to create spaces that are exceptional and deeply liveable.</p>
-        </div>
-    </div>
-
-    <div class="philosophy-block reveal">
-        <div class="phil-label">The result</div>
-        <div class="phil-content">
-            <h2>Homes, not houses</h2>
-            <p>Every Sadala villa is a one-time creation. No plan is recycled, no project is ever repeated. Each home carries the memory of a specific site, a specific team, a specific moment in time.</p>
-            <p>That's the only way we know how to build.</p>
-        </div>
-    </div>
-</section>
-
-<section class="pillars">
-    <div class="pillars-label">Four principles that guide every project</div>
-    <div class="pillars-grid">
-        <div class="pillar reveal">
-            <div class="pillar-num">01</div>
-            <div class="pillar-title">Zero replication</div>
-            <div class="pillar-desc">Every home is a one-time creation. No project is ever repeated, no plan recycled.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">02</div>
-            <div class="pillar-title">Heritage first</div>
-            <div class="pillar-desc">We preserve what centuries formed. Not sentiment - irreplaceability.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">03</div>
-            <div class="pillar-title">Artisan craft</div>
-            <div class="pillar-desc">Local stone, reclaimed timber, hand-applied lime plaster. Materials with memory.</div>
-        </div>
-        <div class="pillar reveal">
-            <div class="pillar-num">04</div>
-            <div class="pillar-title">Nature as brief</div>
-            <div class="pillar-desc">The land writes the program. The architecture listens.</div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ PILLAR 03: SADALA ═══ -->
-<section class="pillar-section reveal" id="sadala">
-    <div class="pillar-section-header">
-        <span class="pillar-section-num">03</span>
-        <h2 class="pillar-section-title">Sadala</h2>
-        <span class="pillar-section-sub">How we build</span>
-    </div>
-
-    <p class="andalucia-intro">Not a developer. A studio.</p>
-
-    <div class="philosophy-block reveal" style="margin-top: 40px;">
-        <div class="phil-label">Our philosophy</div>
-        <div class="phil-content">
-            <h2>A conversation before a transaction</h2>
-            <p>We don't list properties for mass distribution. Before anything is built, there is a dialogue - about how you live, what you value, and what a home should feel like when you walk through the door.</p>
-            <p>We are not a volume developer. Each project is a singular commitment. We accept the constraint willingly, because it's the only way to build something that deserves to be built.</p>
-        </div>
-    </div>
-
-    <div class="philosophy-block reveal">
-        <div class="phil-label">Our process</div>
-        <div class="phil-content">
-            <h2>End-to-end, in our hands</h2>
-            <p>From land identification and acquisition, through architecture, permitting, construction, interior design and landscaping, to final handover - every stage is managed directly by our team. No intermediaries. No corners cut. One point of responsibility from beginning to end.</p>
+        <div class="method-grid">
+            <div class="method-col">
+                <div class="method-num">01</div>
+                <div class="method-word">Rooted</div>
+                <p class="method-desc">We don't place a house on the land. We let the land shape the house. The slope, the pines, the direction of the morning sun: these aren't constraints, they're the brief. The architecture listens.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-num">02</div>
+                <div class="method-word">Singular</div>
+                <p class="method-desc">One site, one vision, one time. No reused plans, no parallel projects. Each Sadala home is conceived as if it were the only one we will ever build, because for us, that's exactly what it is.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-num">03</div>
+                <div class="method-word">Local</div>
+                <p class="method-desc">Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight. The new luxury isn't imported marble. It's a home built by people who care because they live nearby.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="team reveal">
-    <h2>Built by a team that cares</h2>
-    <img src="../img/general/mark-farber-on-site.jpg" alt="Mark Farber on site" style="width: 280px; height: 280px; object-fit: cover; border-radius: 50%; margin: 24px auto;">
-    <p>Sadala is led by a small, dedicated team based in M&aacute;laga. We work closely with architects, engineers, and artisans who share our vision for thoughtful, singular construction.</p>
+    <h2>The studio</h2>
+    <img src="../img/general/mark-farber-on-site.jpg" alt="Mark Farber on site" style="width: 240px; height: 240px; object-fit: cover; border-radius: 50%; margin: 24px auto;">
+    <p>Sadala is led by a small, dedicated team based in M&aacute;laga. We scout quietly across Andaluc&iacute;a, from the pines of M&aacute;laga Este to the hills of Marbella and the pueblos of Sotogrande. We don't force sites. We wait for them.</p>
     <a href="contact.html" class="team-cta">Start a conversation</a>
 </section>
 

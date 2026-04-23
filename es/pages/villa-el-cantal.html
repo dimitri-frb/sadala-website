@@ -109,6 +109,18 @@
         .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-border); border: 1px solid var(--grey-light); cursor: pointer; transition: all .3s; }
         .slider-dot.active { background: var(--accent); border-color: var(--accent); }
 
+        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
+        .method-band { padding: 100px 48px; background: var(--off-white); }
+        .method-inner { max-width: 1200px; margin: 0 auto; }
+        .method-header { max-width: 640px; margin-bottom: 48px; }
+        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .method-title { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.25; }
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-top: 32px; border-top: 1px solid var(--grey-border); }
+        .method-word { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 8px; }
+        .method-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+        .method-cta { display: inline-block; margin-top: 40px; font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--grey-light); padding-bottom: 4px; transition: border-color .3s; }
+        .method-cta:hover { border-color: var(--black); }
+
         .cta-band { background: var(--black); padding: 80px 48px; text-align: center; }
         .cta-band h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--off-white); margin-bottom: 12px; }
         .cta-band p { font-size: 14px; font-weight: 300; color: var(--grey); margin-bottom: 28px; }
@@ -151,6 +163,8 @@
             .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
             .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
+            .method-band { padding: 60px 24px; }
+            .method-grid { grid-template-columns: 1fr; gap: 32px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -355,6 +369,31 @@
         <button class="slider-btn" onclick="slideGallery(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="slider-dots" id="galleryDots"></div>
         <button class="slider-btn" onclick="slideGallery(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div>
+</section>
+
+<!-- THE SADALA METHOD — firma de cierre -->
+<section class="method-band reveal">
+    <div class="method-inner">
+        <div class="method-header">
+            <div class="method-label">The Sadala Method</div>
+            <h2 class="method-title">El Cantal es el m&eacute;todo Sadala hecho hogar.</h2>
+        </div>
+        <div class="method-grid">
+            <div class="method-col">
+                <div class="method-word">Rooted</div>
+                <p class="method-desc">Un volumen de acero corten que flota sobre la ladera, con la cubierta vegetal prolongando la pendiente.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-word">Singular</div>
+                <p class="method-desc">Dise&ntilde;ado por Flow81, uno de los estudios de arquitectura m&aacute;s originales de M&aacute;laga. No se repetir&aacute;.</p>
+            </div>
+            <div class="method-col">
+                <div class="method-word">Local</div>
+                <p class="method-desc">Estudio nacido en M&aacute;laga, piedra local, paisaje andaluz. Construido por quienes viven al lado.</p>
+            </div>
+        </div>
+        <a href="approach.html" class="method-cta">C&oacute;mo trabaja Sadala &rarr;</a>
     </div>
 </section>
 
