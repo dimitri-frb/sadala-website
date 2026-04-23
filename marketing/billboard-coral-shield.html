@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral Shield Billboard - Built by</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @page { size: 420mm 236mm landscape; margin: 0; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #1A1A1A;
+            --cream: #E8E2D5;
+            --grey: #7A7570;
+            --grey-light: #B5AFA8;
+            --coral: #E76F51;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+        }
+        body { background: #111; color: #fff; font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 24px; }
+
+        /* Control bar */
+        .bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .bar .title { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--cream); }
+        .bar .meta { font-size: 12px; color: var(--grey-light); }
+        .bar .actions { display: flex; gap: 12px; }
+        .bar button, .bar a { background: var(--coral); color: #fff; border: none; padding: 10px 20px; font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: .5px; cursor: pointer; text-decoration: none; transition: background .3s; }
+        .bar button:hover, .bar a:hover { background: #d65a3d; }
+        .bar .ghost { background: transparent; border: 1px solid rgba(225,216,204,.25); color: var(--cream); }
+        .bar .ghost:hover { background: rgba(225,216,204,.05); }
+
+        @media print {
+            .bar { display: none !important; }
+            body { padding: 0 !important; background: transparent !important; min-height: auto !important; display: block !important; }
+            .billboard {
+                width: 420mm !important; height: 236mm !important;
+                max-width: none !important; aspect-ratio: auto !important;
+                box-shadow: none !important; margin: 0 !important;
+            }
+            .bb-eyebrow { font-size: 7mm !important; letter-spacing: 6mm !important; }
+            .bb-logo img { height: 90mm !important; }
+            .bb-tagline { font-size: 8mm !important; letter-spacing: 2.5mm !important; margin-top: 18mm !important; }
+            .bb-divider { width: 50mm !important; height: 0.4mm !important; margin: 16mm auto !important; }
+        }
+
+        /* Billboard */
+        .billboard {
+            width: 100%; max-width: 1400px;
+            aspect-ratio: 16 / 9;
+            position: relative; overflow: hidden;
+            background: var(--ink);
+            box-shadow: 0 4px 40px rgba(0,0,0,.4);
+        }
+
+        /* Subtle radial vignette so the center pops */
+        .billboard::before {
+            content: ''; position: absolute; inset: 0; z-index: 1;
+            background: radial-gradient(ellipse at center, rgba(40,40,40,.4) 0%, rgba(15,15,15,1) 90%);
+        }
+
+        .billboard-content {
+            position: absolute; inset: 0; z-index: 2;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+        }
+
+        .bb-eyebrow {
+            font-family: var(--sans);
+            font-size: 1.3vw; font-weight: 400;
+            letter-spacing: 1.1vw;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-bottom: 4vw;
+        }
+
+        .bb-logo {
+            display: flex; align-items: center; justify-content: center;
+        }
+        .bb-logo img {
+            height: 16vw; width: auto;
+            filter: brightness(0) invert(1);
+            /* Preserve the coral icon colour */
+        }
+        /* Alternative: use the icon in brand colour + white wordmark. Since
+           we only have the full positive logo, we invert to white and accept
+           monochrome treatment — most powerful/minimalist choice. */
+
+        .bb-divider {
+            width: 10vw; height: 1px;
+            background: rgba(255,255,255,.3);
+            margin: 2.5vw 0;
+        }
+
+        .bb-tagline {
+            font-family: var(--serif);
+            font-size: 1.6vw; font-weight: 300;
+            letter-spacing: .5vw;
+            color: rgba(255,255,255,.75);
+            text-transform: uppercase;
+        }
+
+        /* Notes */
+        .notes { max-width: 1400px; margin-top: 20px; color: var(--grey-light); font-size: 12px; line-height: 1.7; }
+        .notes strong { color: var(--cream); }
+        .notes ul { margin-top: 6px; padding-left: 20px; }
+        @media print { .notes { display: none; } }
+
+    </style>
+</head>
+<body>
+
+<div class="bar">
+    <div>
+        <div class="title">Coral Shield &middot; Billboard mockup</div>
+        <div class="meta">16 : 9 &middot; For site hoarding, "Built by" panel</div>
+    </div>
+    <div class="actions">
+        <button onclick="window.print()">Save as PDF</button>
+        <a href="billboard-sosiego.html" class="ghost">Sosiego billboard</a>
+        <a href="../index.html" class="ghost">Back to site</a>
+    </div>
+</div>
+
+<!-- ═════ THE BILLBOARD ═════ -->
+<div class="billboard">
+    <div class="billboard-content">
+        <div class="bb-eyebrow">Built by</div>
+        <div class="bb-logo">
+            <img src="../img/logo/logo_coral_shield_positivo_block.png" alt="Coral Shield">
+        </div>
+        <div class="bb-divider"></div>
+        <div class="bb-tagline">Asset management &amp; engineering</div>
+    </div>
+</div>
+
+<div class="notes">
+    <strong>Design notes:</strong>
+    <ul>
+        <li>Format: 16:9, same as the Sosiego billboard. Pairs as a diptych on the site hoarding (Sosiego left, Coral Shield right).</li>
+        <li>Logo is inverted to pure white on charcoal for maximum impact. If you prefer the original coral-red icon kept in colour, I can create an alternate version using a separate icon + wordmark.</li>
+        <li>Typography is minimal on purpose: one eyebrow, the logo, one tagline. Let the logo do the work.</li>
+        <li>Subtle radial vignette draws the eye to the centre.</li>
+    </ul>
+</div>
+
+</body>
+</html>
