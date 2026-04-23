@@ -165,7 +165,7 @@
         .lessons-header { max-width: 640px; margin-bottom: 64px; }
         .lessons-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
         .lessons-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1.15; }
-        .lessons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; }
+        .lessons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 48px; }
         .lesson-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
         .lesson h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
         .lesson p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
@@ -198,7 +198,7 @@
             .plot-band { padding: 72px 24px; }
             .plot-inner { grid-template-columns: 1fr; gap: 32px; }
             .lessons { padding: 72px 24px; }
-            .lessons-grid { grid-template-columns: 1fr; gap: 40px; }
+            .lessons-grid { grid-template-columns: 1fr !important; gap: 40px; }
             .legacy { padding: 72px 24px; }
             .legacy-links { grid-template-columns: 1fr; gap: 16px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
@@ -261,14 +261,14 @@
     </div>
 </section>
 
-<!-- ORIGIN STORY -->
+<!-- ORIGIN STORY (merged with "The plot") -->
 <section class="origin-section reveal">
     <div class="origin-label">The origin</div>
     <p class="origin-quote">Every studio has a first project. The one where the philosophy is still being invented while it's being built.</p>
     <div class="origin-body">
-        <p>Origen is ours.</p>
-        <p>A 3,076 m&sup2; plot among century-old pines in Pinares de San Ant&oacute;n. A home we conceived, designed, built and delivered end-to-end, because we couldn't yet trust anyone else to do it the way we wanted.</p>
-        <p>It sold before it was finished. That quiet success gave us the permission to keep going. More importantly, it taught us what Sadala would become.</p>
+        <p>Origen is ours. A 3,076 m&sup2; plot among century-old pines in Pinares de San Ant&oacute;n.</p>
+        <p>When we first walked it, nothing was built. There was only light through branches, the smell of resin, and silence. We committed before we had a plan. That commitment, to the site before the program, became the first principle of Sadala.</p>
+        <p>The home we conceived, designed, built and delivered end-to-end sold before it was finished. That quiet success gave us the permission to keep going. More importantly, it taught us what Sadala would become.</p>
     </div>
 </section>
 
@@ -281,27 +281,12 @@
     </div>
 </section>
 
-<!-- THE PLOT -->
-<section class="plot-band reveal">
-    <div class="plot-inner">
-        <div class="plot-img">
-            <img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="The original plot in Pinares de San Ant&oacute;n">
-        </div>
-        <div class="plot-text">
-            <div class="plot-label">The plot</div>
-            <h2>The land chose us. Not the other way around.</h2>
-            <p>A hillside shaded by pines older than the city. When we first walked it, nothing was built. There was only light through branches, the smell of resin, and silence.</p>
-            <p>We committed before we had a plan. That commitment, to the site before the program, became the first principle of Sadala.</p>
-        </div>
-    </div>
-</section>
-
 <!-- WHAT ORIGEN TAUGHT US -->
 <section class="lessons reveal">
     <div class="lessons-inner">
         <div class="lessons-header">
             <div class="lessons-label">What Origen taught us</div>
-            <h2 class="lessons-title">Four lessons became the Sadala method.</h2>
+            <h2 class="lessons-title">Three principles became the Sadala method.</h2>
         </div>
         <div class="lessons-grid">
             <div class="lesson">
@@ -318,11 +303,6 @@
                 <div class="lesson-num">03</div>
                 <h3>Local</h3>
                 <p>Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight. The new luxury isn't imported marble. It's a home built by people who care because they live nearby.</p>
-            </div>
-            <div class="lesson">
-                <div class="lesson-num">04</div>
-                <h3>End-to-end</h3>
-                <p>From land acquisition to the day we hand over the keys, every decision passes through our team. No intermediaries. No corners cut. It's slower. It's also the only way we know how to protect a vision across years of work.</p>
             </div>
         </div>
     </div>
