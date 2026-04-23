@@ -280,16 +280,11 @@
 
 
         /* ═══════════════════════════════════════════ */
-        /* METHOD BAND (homepage teaser)               */
+        /* MINI METHOD (inside about-strip)            */
         /* ═══════════════════════════════════════════ */
-        .method-band-home { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
-        .method-home-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        .method-home-title { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.25; max-width: 640px; margin-bottom: 48px; }
-        .method-home-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-top: 32px; border-top: 1px solid var(--grey-border); }
-        .method-home-col .m-word { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 8px; }
-        .method-home-col .m-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
-        .method-home-cta { display: inline-block; margin-top: 40px; font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--grey-light); padding-bottom: 4px; transition: border-color .3s; }
-        .method-home-cta:hover { border-color: var(--black); }
+        .mini-method { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 24px 0; margin: 8px 0 24px; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
+        .mini-method-col .mini-word { font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--black); margin-bottom: 4px; }
+        .mini-method-col p { font-size: 11px !important; font-weight: 300; line-height: 1.5; color: var(--grey); margin: 0 !important; }
 
         /* ═══════════════════════════════════════════ */
         /* ABOUT STRIP                                 */
@@ -506,8 +501,7 @@
             .section-intro { padding: 80px 24px; }
             .projects { padding: 0 24px 80px; }
             .projects-grid { grid-template-columns: 1fr; gap: 40px; }
-            .method-band-home { padding: 60px 24px; }
-            .method-home-grid { grid-template-columns: 1fr; gap: 32px; }
+            .mini-method { grid-template-columns: 1fr; gap: 16px; }
             .about-strip { padding: 60px 24px; grid-template-columns: 1fr; gap: 32px; }
             .about-strip-image img { height: 280px; }
             .contact { padding: 60px 24px; }
@@ -680,28 +674,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
-    <!-- METHOD TEASER -->
-    <!-- ═══════════════════════════════════════════ -->
-<section class="method-band-home reveal">
-    <div class="method-home-label">The Sadala Method</div>
-    <h2 class="method-home-title">Tres principios en cada proyecto. Sin excepciones.</h2>
-    <div class="method-home-grid">
-        <div class="method-home-col">
-            <div class="m-word">Rooted</div>
-            <p class="m-desc">El terreno da forma a la casa. No al rev&eacute;s.</p>
-        </div>
-        <div class="method-home-col">
-            <div class="m-word">Singular</div>
-            <p class="m-desc">Una parcela, una visi&oacute;n, una sola vez. Sin planos reutilizados.</p>
-        </div>
-        <div class="method-home-col">
-            <div class="m-word">Local</div>
-            <p class="m-desc">Piedra andaluza, madera andaluza, oficios andaluces.</p>
-        </div>
-    </div>
-    <a href="pages/approach.html" class="method-home-cta">Descubre nuestro m&eacute;todo &rarr;</a>
-</section>
-
 <!-- ABOUT                                       -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="about-strip reveal" id="about">
@@ -710,8 +682,22 @@
     </div>
     <div class="about-strip-text">
         <h3>Un estudio, no una promotora.</h3>
-        <p>Un hogar a la vez, concebido y entregado por un mismo equipo. Cada proyecto Sadala es Rooted, Singular, Local.</p>
-        <a href="pages/approach.html">Descubre nuestro m&eacute;todo &rarr;</a>
+        <p>Un hogar a la vez, concebido y entregado por un mismo equipo. Cada proyecto Sadala sigue tres principios.</p>
+        <div class="mini-method">
+            <div class="mini-method-col">
+                <div class="mini-word">Rooted</div>
+                <p>El terreno da forma a la casa.</p>
+            </div>
+            <div class="mini-method-col">
+                <div class="mini-word">Singular</div>
+                <p>Un hogar, nunca repetido.</p>
+            </div>
+            <div class="mini-method-col">
+                <div class="mini-word">Local</div>
+                <p>Oficios andaluces, nunca importados.</p>
+            </div>
+        </div>
+        <a href="pages/approach.html">Descubre nuestro enfoque &rarr;</a>
     </div>
 </section>
 

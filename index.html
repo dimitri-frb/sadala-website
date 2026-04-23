@@ -326,42 +326,24 @@
         }
 
         /* ═══════════════════════════════════════════ */
-        /* METHOD BAND (homepage teaser)               */
+        /* MINI METHOD (inside about-strip)            */
         /* ═══════════════════════════════════════════ */
-        .method-band-home {
-            padding: 100px 48px;
-            max-width: 1200px; margin: 0 auto;
+        .mini-method {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 24px 0;
+            margin: 8px 0 24px;
+            border-top: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
         }
-        .method-home-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 14px;
+        .mini-method-col .mini-word {
+            font-family: var(--serif); font-size: 16px; font-weight: 400;
+            color: var(--black); margin-bottom: 4px;
         }
-        .method-home-title {
-            font-family: var(--serif); font-size: clamp(24px, 3vw, 36px);
-            font-weight: 300; line-height: 1.25; max-width: 640px;
-            margin-bottom: 48px;
+        .mini-method-col p {
+            font-size: 11px !important; font-weight: 300; line-height: 1.5;
+            color: var(--grey); margin: 0 !important;
         }
-        .method-home-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
-            padding-top: 32px; border-top: 1px solid var(--grey-border);
-        }
-        .method-home-col .m-word {
-            font-family: var(--serif); font-size: 26px; font-weight: 400;
-            margin-bottom: 8px;
-        }
-        .method-home-col .m-desc {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey);
-        }
-        .method-home-cta {
-            display: inline-block; margin-top: 40px;
-            font-size: 12px; font-weight: 400; letter-spacing: .5px;
-            color: var(--black); text-decoration: none;
-            border-bottom: 1px solid var(--grey-light);
-            padding-bottom: 4px; transition: border-color .3s;
-        }
-        .method-home-cta:hover { border-color: var(--black); }
 
         /* ═══════════════════════════════════════════ */
         /* ABOUT STRIP                                 */
@@ -584,8 +566,7 @@
             .principles-grid { grid-template-columns: 1fr; gap: 16px; }
             .principle-card { padding: 28px 24px; }
             .projects-grid { grid-template-columns: 1fr; gap: 40px; }
-            .method-band-home { padding: 60px 24px; }
-            .method-home-grid { grid-template-columns: 1fr; gap: 32px; }
+            .mini-method { grid-template-columns: 1fr; gap: 16px; }
             .about-strip { padding: 60px 24px; grid-template-columns: 1fr; gap: 32px; }
             .about-strip-image img { height: 280px; }
             .contact { padding: 60px 24px; }
@@ -767,29 +748,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
-<!-- METHOD TEASER                               -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="method-band-home reveal">
-    <div class="method-home-label">The Sadala Method</div>
-    <h2 class="method-home-title">Three principles in every project. No exceptions.</h2>
-    <div class="method-home-grid">
-        <div class="method-home-col">
-            <div class="m-word">Rooted</div>
-            <p class="m-desc">The land shapes the house. Not the other way around.</p>
-        </div>
-        <div class="method-home-col">
-            <div class="m-word">Singular</div>
-            <p class="m-desc">One site, one vision, one time. No reused plans, ever.</p>
-        </div>
-        <div class="method-home-col">
-            <div class="m-word">Local</div>
-            <p class="m-desc">Andalusian stone, Andalusian wood, Andalusian craft.</p>
-        </div>
-    </div>
-    <a href="pages/approach.html" class="method-home-cta">Read our method &rarr;</a>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
 <!-- ABOUT                                       -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="about-strip reveal" id="about">
@@ -798,8 +756,22 @@
     </div>
     <div class="about-strip-text">
         <h3>A studio, not a developer.</h3>
-        <p>One home at a time, conceived and delivered by a single team. Every Sadala project is Rooted, Singular, Local.</p>
-        <a href="pages/approach.html">Read our method &rarr;</a>
+        <p>One home at a time, conceived and delivered by a single team. Every Sadala project follows three principles.</p>
+        <div class="mini-method">
+            <div class="mini-method-col">
+                <div class="mini-word">Rooted</div>
+                <p>The land shapes the house.</p>
+            </div>
+            <div class="mini-method-col">
+                <div class="mini-word">Singular</div>
+                <p>One home, never repeated.</p>
+            </div>
+            <div class="mini-method-col">
+                <div class="mini-word">Local</div>
+                <p>Andalusian craft, never imported.</p>
+            </div>
+        </div>
+        <a href="pages/approach.html">Read our approach &rarr;</a>
     </div>
 </section>
 
