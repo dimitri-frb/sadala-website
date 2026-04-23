@@ -109,6 +109,20 @@
         .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-border); border: 1px solid var(--grey-light); cursor: pointer; transition: all .3s; }
         .slider-dot.active { background: var(--accent); border-color: var(--accent); }
 
+        /* ═══ CONCEPT PILLARS (dark, 3-col with images) ═══ */
+        .concept-pillars { padding: 120px 48px; background: var(--black); color: var(--off-white); }
+        .concept-inner { max-width: 1200px; margin: 0 auto; }
+        .concept-intro { max-width: 700px; margin-bottom: 72px; }
+        .concept-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .concept-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 52px); font-weight: 300; line-height: 1.15; color: var(--off-white); margin-bottom: 20px; }
+        .concept-lead { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+        .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .concept-col { display: flex; flex-direction: column; }
+        .concept-col img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 24px; }
+        .concept-col .c-num { font-family: var(--serif); font-size: 13px; font-weight: 400; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+        .concept-col .c-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
+        .concept-col .c-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+
         /* ═══ THE SADALA METHOD (shared triptych) ═══ */
         .method-band { padding: 100px 48px; background: var(--off-white); }
         .method-inner { max-width: 1200px; margin: 0 auto; }
@@ -165,6 +179,8 @@
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
             .method-band { padding: 60px 24px; }
             .method-grid { grid-template-columns: 1fr; gap: 32px; }
+            .concept-pillars { padding: 72px 24px; }
+            .concept-grid { grid-template-columns: 1fr; gap: 48px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -235,10 +251,41 @@
 
 <section class="kpi-strip reveal">
     <div class="kpi-grid">
-        <div><div class="kpi-value">350</div><div class="kpi-label">m&sup2; construidos</div></div>
+        <div><div class="kpi-value">550</div><div class="kpi-label">m&sup2; construidos</div></div>
         <div><div class="kpi-value">5</div><div class="kpi-label">Dormitorios</div></div>
-        <div><div class="kpi-value">1.200</div><div class="kpi-label">m&sup2; parcela</div></div>
-        <div><div class="kpi-value">2026</div><div class="kpi-label">Finalizaci&oacute;n</div></div>
+        <div><div class="kpi-value">1.000</div><div class="kpi-label">m&sup2; parcela</div></div>
+        <div><div class="kpi-value">2028</div><div class="kpi-label">Entrega</div></div>
+    </div>
+</section>
+
+<!-- EL CONCEPTO -->
+<section class="concept-pillars reveal">
+    <div class="concept-inner">
+        <div class="concept-intro">
+            <div class="concept-label">El concepto</div>
+            <h2 class="concept-title">Un hogar que se disuelve en la ladera.</h2>
+            <p class="concept-lead">El Cantal no se coloca sobre el terreno. Se convierte en &eacute;l. Un volumen perforado de acero corten flota sobre la pendiente; una cubierta vegetal prolonga la ladera; los acristalamientos de suelo a techo disuelven la frontera entre interior y jard&iacute;n. Tres ideas dan forma a la arquitectura.</p>
+        </div>
+        <div class="concept-grid">
+            <div class="concept-col">
+                <img src="../../img/cantal/cantal-aerial.jpg" alt="Cubierta vegetal">
+                <div class="c-num">01 &middot; Paisaje</div>
+                <div class="c-title">La cubierta es la ladera.</div>
+                <p class="c-desc">La cubierta entera se planta con gram&iacute;neas aut&oacute;ctonas y especies mediterr&aacute;neas, continuando la pendiente por encima de la casa. Vista desde arriba, la villa desaparece.</p>
+            </div>
+            <div class="concept-col">
+                <img src="../../img/cantal/cantal-garden.jpg" alt="Fachada de corten">
+                <div class="c-num">02 &middot; Luz</div>
+                <div class="c-title">Una fachada que respira.</div>
+                <p class="c-desc">Paneles perforados de acero autopatinante filtran la luz andaluza y proyectan sombras cambiantes a lo largo del d&iacute;a. La fachada evoluciona con las estaciones.</p>
+            </div>
+            <div class="concept-col">
+                <img src="../../img/cantal/cantal-interior.jpg" alt="Vida interior-exterior">
+                <div class="c-num">03 &middot; Integraci&oacute;n</div>
+                <div class="c-title">El dentro se vuelve fuera.</div>
+                <p class="c-desc">Acristalamiento de suelo a techo y muros retr&aacute;ctiles borran la l&iacute;nea entre sal&oacute;n y jard&iacute;n. Las formaciones rocosas existentes se preservan y se integran en el dise&ntilde;o paisaj&iacute;stico.</p>
+            </div>
+        </div>
     </div>
 </section>
 

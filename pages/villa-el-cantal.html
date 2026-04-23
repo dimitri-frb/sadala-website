@@ -111,6 +111,20 @@
         .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-border); border: 1px solid var(--grey-light); cursor: pointer; transition: all .3s; }
         .slider-dot.active { background: var(--accent); border-color: var(--accent); }
 
+        /* ═══ CONCEPT PILLARS (dark, 3-col with images) ═══ */
+        .concept-pillars { padding: 120px 48px; background: var(--black); color: var(--off-white); }
+        .concept-inner { max-width: 1200px; margin: 0 auto; }
+        .concept-intro { max-width: 700px; margin-bottom: 72px; }
+        .concept-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .concept-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 52px); font-weight: 300; line-height: 1.15; color: var(--off-white); margin-bottom: 20px; }
+        .concept-lead { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+        .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .concept-col { display: flex; flex-direction: column; }
+        .concept-col img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 24px; }
+        .concept-col .c-num { font-family: var(--serif); font-size: 13px; font-weight: 400; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+        .concept-col .c-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
+        .concept-col .c-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+
         /* ═══ THE SADALA METHOD (shared triptych) ═══ */
         .method-band { padding: 100px 48px; background: var(--off-white); }
         .method-inner { max-width: 1200px; margin: 0 auto; }
@@ -188,6 +202,8 @@
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
             .method-band { padding: 60px 24px; }
             .method-grid { grid-template-columns: 1fr; gap: 32px; }
+            .concept-pillars { padding: 72px 24px; }
+            .concept-grid { grid-template-columns: 1fr; gap: 48px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -283,6 +299,37 @@
         <div class="timeline-step">
             <div class="timeline-dot"></div>
             <span class="timeline-step-label">Delivery<br>2028</span>
+        </div>
+    </div>
+</section>
+
+<!-- THE CONCEPT -->
+<section class="concept-pillars reveal">
+    <div class="concept-inner">
+        <div class="concept-intro">
+            <div class="concept-label">The concept</div>
+            <h2 class="concept-title">A home that dissolves into the hillside.</h2>
+            <p class="concept-lead">El Cantal is not placed on the land. It becomes the land. A perforated corten-steel volume floats above the slope; a living roof continues the hillside above it; full-height glazing dissolves the boundary between interior and garden. Three ideas shape the architecture.</p>
+        </div>
+        <div class="concept-grid">
+            <div class="concept-col">
+                <img src="../img/cantal/cantal-aerial.jpg" alt="Living roof">
+                <div class="c-num">01 &middot; Landscape</div>
+                <div class="c-title">The roof is the hillside.</div>
+                <p class="c-desc">The entire roof is planted with native grasses and Mediterranean species, continuing the slope above the house. Seen from above, the villa disappears.</p>
+            </div>
+            <div class="concept-col">
+                <img src="../img/cantal/cantal-garden.jpg" alt="Corten facade">
+                <div class="c-num">02 &middot; Light</div>
+                <div class="c-title">A facade that breathes.</div>
+                <p class="c-desc">Perforated weathering steel panels filter the Andalusian light and cast shifting shadows throughout the day. The facade evolves with the seasons.</p>
+            </div>
+            <div class="concept-col">
+                <img src="../img/cantal/cantal-interior.jpg" alt="Indoor-outdoor living">
+                <div class="c-num">03 &middot; Integration</div>
+                <div class="c-title">Inside becomes outside.</div>
+                <p class="c-desc">Full-height glazing and retractable walls erase the line between living room and garden. The existing rock formations are preserved and woven into the landscape design.</p>
+            </div>
         </div>
     </div>
 </section>
