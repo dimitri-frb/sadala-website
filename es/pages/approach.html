@@ -206,6 +206,18 @@
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
 
+        /* Language dropdown */
+        .nav-lang-wrap { position: relative; }
+        .nav-lang-wrap summary { list-style: none; cursor: pointer; font-size: 13px; font-weight: 300; color: var(--grey); padding: 4px 0; transition: color .3s; user-select: none; }
+        .nav-lang-wrap summary::-webkit-details-marker, .nav-lang-wrap summary::marker { display: none; }
+        .nav-lang-wrap summary:hover { color: var(--black); }
+        .nav-lang-wrap summary::after { content: '\2009\25BE'; font-size: 9px; opacity: .6; margin-left: 2px; }
+        .nav-lang-wrap[open] summary::after { content: '\2009\25B4'; }
+        .nav-lang-menu { position: absolute; top: calc(100% + 14px); right: 0; background: var(--white); border: 1px solid var(--grey-border); min-width: 84px; padding: 6px 0; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(44,44,44,.06); z-index: 1001; }
+        .nav-lang-menu a { padding: 8px 18px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s, background .3s; letter-spacing: 0; text-transform: none; }
+        .nav-lang-menu a:hover { color: var(--black); background: var(--off-white); }
+        .nav-lang-menu a.is-current { color: var(--black); font-weight: 400; }
+
         /* Mobile menu overlay */
         @media (max-width: 900px) {
             nav.nav-open .nav-links {
@@ -228,6 +240,10 @@
                 border: none !important;
                 background: none !important;
             }
+            nav.nav-open .nav-lang-wrap { width: auto; }
+            nav.nav-open .nav-lang-wrap summary { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; color: var(--black) !important; padding: 8px 0 !important; }
+            nav.nav-open .nav-lang-menu { position: static; border: none; box-shadow: none; padding: 4px 0 0; align-items: center; background: none; }
+            nav.nav-open .nav-lang-menu a { font-family: var(--serif) !important; font-size: 18px !important; padding: 4px 0 !important; }
             nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
             nav.nav-open .nav-hamburger span { background: var(--black); }
             nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -244,10 +260,16 @@
     <div class="nav-links">
         <a href="projects.html">Proyectos</a>
         <a href="approach.html">Nuestro enfoque</a>
-        <a href="../../pages/approach.html" class="nav-lang">EN</a>
-        <a href="../../nl/pages/approach.html" class="nav-lang">NL</a>
-        <a href="../../fi/pages/approach.html" class="nav-lang">FI</a>
-        <a href="../../da/pages/approach.html" class="nav-lang">DA</a>
+        <details class="nav-lang-wrap">
+            <summary>ES</summary>
+            <div class="nav-lang-menu">
+                <a href="../../pages/approach.html">EN</a>
+                <a href="../../es/pages/approach.html" class="is-current">ES</a>
+                <a href="../../nl/pages/approach.html">NL</a>
+                <a href="../../fi/pages/approach.html">FI</a>
+                <a href="../../da/pages/approach.html">DA</a>
+            </div>
+        </details>
         <a href="contact.html" class="nav-contact">Contacto</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
