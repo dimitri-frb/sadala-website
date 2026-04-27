@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadala - Builders of the Unique</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/logo/apple-touch-icon.png">
+    <title>Sadala - Bouwers van het Unieke</title>
+    <meta name="description" content="Sadala is een studio uit M&aacute;laga die unieke villa's ontwerpt en bouwt in het Andalusische landschap. Geen replica's. Geen sjablonen.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -33,9 +34,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ═══════════════════════════════════════════ */
-        /* NAVIGATION - Fixed, transparent             */
-        /* ═══════════════════════════════════════════ */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -63,9 +61,7 @@
         nav.solid .nav-logo { color: var(--black); }
         nav.solid .nav-logo img { filter: none; }
 
-        .nav-links {
-            display: flex; gap: 32px; align-items: center;
-        }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a {
             font-size: 13px; font-weight: 300; color: rgba(255,255,255,.7);
             text-decoration: none; transition: color .4s, opacity .3s;
@@ -96,7 +92,6 @@
             border-color: var(--black) !important;
         }
 
-        /* Hamburger for mobile */
         .nav-hamburger {
             display: none; cursor: pointer;
             width: 24px; height: 16px;
@@ -112,37 +107,14 @@
         .nav-hamburger span:nth-child(2) { top: 7px; }
         .nav-hamburger span:nth-child(3) { top: 14px; }
 
-        /* ═══════════════════════════════════════════ */
-        /* HERO - Full-screen image slider             */
-        /* ═══════════════════════════════════════════ */
-        .slider {
-            position: relative; height: 100vh; overflow: hidden;
-            background: var(--black);
-        }
-        .slide {
-            position: absolute; inset: 0;
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-        }
-        .slide.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .slide-image {
-            position: absolute; inset: 0;
-        }
-        .slide-image img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
+        .slider { position: relative; height: 100vh; overflow: hidden; background: var(--black); }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; pointer-events: none; }
+        .slide.active { opacity: 1; pointer-events: auto; }
+        .slide-image { position: absolute; inset: 0; }
+        .slide-image img { width: 100%; height: 100%; object-fit: cover; }
         .slide-image::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,.1) 0%,
-                rgba(0,0,0,.02) 40%,
-                rgba(0,0,0,.45) 100%
-            );
+            background: linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.02) 40%, rgba(0,0,0,.45) 100%);
         }
 
         .slide-content {
@@ -174,7 +146,6 @@
         }
         .slide-cta:hover { border-color: #fff; }
 
-        /* Slider arrows */
         .slider-arrows {
             position: absolute; bottom: 80px; right: 48px;
             display: flex; gap: 8px; z-index: 10;
@@ -190,31 +161,18 @@
             background: rgba(255,255,255,.1);
             border-color: rgba(255,255,255,.5);
         }
-        .slider-arrow svg {
-            width: 16px; height: 16px;
-            stroke: #fff; stroke-width: 1.5; fill: none;
-        }
+        .slider-arrow svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 1.5; fill: none; }
 
-        /* Slide counter */
         .slider-counter {
             position: absolute; bottom: 40px; left: 48px;
             font-size: 11px; font-weight: 300; letter-spacing: 1px;
             color: rgba(255,255,255,.35);
         }
 
-        /* ═══════════════════════════════════════════ */
-        /* SECTIONS - Clean, generous whitespace       */
-        /* ═══════════════════════════════════════════ */
-        .section-intro {
-            padding: 120px 48px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        .section-intro { padding: 120px 48px; max-width: 800px; margin: 0 auto; text-align: center; }
         .section-label {
             font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 24px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
         }
         .section-headline {
             font-family: var(--serif);
@@ -223,12 +181,7 @@
             font-style: italic;
         }
 
-        /* ═══════════════════════════════════════════ */
-        /* PROJECTS GRID - 2-column, clean             */
-        /* ═══════════════════════════════════════════ */
-        .projects {
-            padding: 0 48px 120px;
-        }
+        .projects { padding: 0 48px 120px; }
         .projects-header {
             display: flex; justify-content: space-between; align-items: baseline;
             margin-bottom: 40px;
@@ -241,98 +194,58 @@
         }
         .projects-header a {
             font-size: 12px; font-weight: 300; color: var(--grey);
-            text-decoration: none;
-            transition: color .3s;
+            text-decoration: none; transition: color .3s;
         }
         .projects-header a:hover { color: var(--black); }
 
-        .projects-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-        .project-card {
-            cursor: pointer; text-decoration: none; color: inherit;
-            display: block;
-        }
-        .project-card-image {
-            overflow: hidden; aspect-ratio: 3/2;
-            margin-bottom: 16px;
-        }
+        .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .project-card { cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .project-card-image { overflow: hidden; aspect-ratio: 3/2; margin-bottom: 16px; }
         .project-card-image img {
             width: 100%; height: 100%; object-fit: cover;
             transition: transform .8s cubic-bezier(.25,.1,.25,1);
         }
-        .project-card:hover .project-card-image img {
-            transform: scale(1.04);
-        }
+        .project-card:hover .project-card-image img { transform: scale(1.04); }
         .project-card-category {
             font-size: 10px; font-weight: 400; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 6px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
         }
         .project-card-title {
             font-family: var(--serif);
-            font-size: 22px; font-weight: 400; color: var(--black);
-            margin-bottom: 4px;
+            font-size: 22px; font-weight: 400; color: var(--black); margin-bottom: 4px;
         }
-        .project-card-sub {
-            font-size: 13px; font-weight: 300; color: var(--grey);
-        }
+        .project-card-sub { font-size: 13px; font-weight: 300; color: var(--grey); }
 
-
-        /* ═══════════════════════════════════════════ */
-        /* PRINCIPLES BAND                             */
-        /* ═══════════════════════════════════════════ */
-        .principles {
-            padding: 100px 48px;
-            max-width: 1200px; margin: 0 auto;
-        }
+        .principles { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
         .principles-label {
             font-size: 11px; font-weight: 400; letter-spacing: 3px;
             text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
         }
         .principles-title {
             font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
-            font-weight: 300; line-height: 1.15; margin-bottom: 48px;
-            max-width: 700px;
+            font-weight: 300; line-height: 1.15; margin-bottom: 48px; max-width: 700px;
         }
-        .principles-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-        }
+        .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .principle-card {
             display: block; text-decoration: none; color: inherit;
             padding: 40px 32px; border: 1px solid var(--grey-border);
             background: #fff; transition: all .4s;
         }
-        .principle-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
+        .principle-card:hover { border-color: var(--accent); transform: translateY(-3px); }
         .principle-num {
             font-family: var(--serif); font-size: 32px; font-weight: 300;
             color: var(--accent); opacity: .5; margin-bottom: 20px;
         }
-        .principle-title {
-            font-family: var(--serif); font-size: 28px; font-weight: 400;
-            margin-bottom: 8px;
-        }
+        .principle-title { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 8px; }
         .principle-sub {
             font-size: 11px; font-weight: 500; letter-spacing: 2px;
             text-transform: uppercase; color: var(--grey); margin-bottom: 16px;
         }
-        .principle-desc {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey);
-        }
+        .principle-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
 
-        /* ═══════════════════════════════════════════ */
-        /* MINI METHOD (inside about-strip)            */
-        /* ═══════════════════════════════════════════ */
         .mini-method {
             display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 24px 0;
-            margin: 8px 0 24px;
+            gap: 20px; padding: 24px 0; margin: 8px 0 24px;
             border-top: 1px solid var(--grey-border);
             border-bottom: 1px solid var(--grey-border);
         }
@@ -345,9 +258,6 @@
             color: var(--grey); margin: 0 !important;
         }
 
-        /* ═══════════════════════════════════════════ */
-        /* ABOUT STRIP                                 */
-        /* ═══════════════════════════════════════════ */
         .about-strip {
             padding: 100px 48px;
             display: grid; grid-template-columns: 1fr 1fr;
@@ -355,13 +265,8 @@
             align-items: center;
         }
         .about-strip-image { overflow: hidden; }
-        .about-strip-image img {
-            width: 100%; height: 420px; object-fit: cover;
-        }
-        .about-strip-text h3 {
-            font-family: var(--serif);
-            font-size: 28px; font-weight: 400; margin-bottom: 16px;
-        }
+        .about-strip-image img { width: 100%; height: 420px; object-fit: cover; }
+        .about-strip-text h3 { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 16px; }
         .about-strip-text p {
             font-size: 14px; font-weight: 300; line-height: 1.8;
             color: var(--grey); margin-bottom: 24px;
@@ -369,26 +274,16 @@
         .about-strip-text a {
             font-size: 12px; font-weight: 400; color: var(--black);
             text-decoration: none; border-bottom: 1px solid var(--grey-light);
-            padding-bottom: 4px;
-            transition: border-color .3s;
+            padding-bottom: 4px; transition: border-color .3s;
         }
         .about-strip-text a:hover { border-color: var(--black); }
 
-        /* ═══════════════════════════════════════════ */
-        /* CONTACT - Clean split layout                */
-        /* ═══════════════════════════════════════════ */
-        .contact {
-            padding: 100px 48px;
-            border-top: 1px solid var(--grey-border);
-        }
+        .contact { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
         .contact-inner {
             display: grid; grid-template-columns: 1fr 1.3fr;
             gap: 80px; max-width: 1100px; margin: 0 auto;
         }
-        .contact-left h2 {
-            font-family: var(--serif);
-            font-size: 28px; font-weight: 400; margin-bottom: 12px;
-        }
+        .contact-left h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
         .contact-left p {
             font-size: 13px; font-weight: 300; line-height: 1.8;
             color: var(--grey); margin-bottom: 28px;
@@ -423,12 +318,8 @@
             color: var(--black); outline: none;
             transition: border-color .3s;
         }
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-bottom-color: var(--accent);
-        }
-        .contact-form input::placeholder, .contact-form textarea::placeholder {
-            color: var(--grey-light);
-        }
+        .contact-form input:focus, .contact-form textarea:focus { border-bottom-color: var(--accent); }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--grey-light); }
         .contact-form textarea { resize: none; min-height: 72px; }
         .contact-form button {
             margin-top: 8px; padding: 12px 28px;
@@ -439,75 +330,45 @@
         }
         .contact-form button:hover { background: var(--accent); }
 
-        /* ═══════════════════════════════════════════ */
-        /* FOOTER - Minimal                            */
-        /* ═══════════════════════════════════════════ */
-        /* ═══════════════════════════════════════════ */
-        /* FOOTER                                      */
-        /* ═══════════════════════════════════════════ */
-        footer {
-            background: var(--black);
-            color: var(--off-white);
-            padding: 80px 48px 0;
-        }
+        footer { background: var(--black); color: var(--off-white); padding: 80px 48px 0; }
         .footer-main {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 60px;
+            display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px;
         }
         .footer-brand .footer-logo {
             font-family: var(--serif);
             font-size: 24px; font-weight: 400;
             letter-spacing: 4px; text-transform: uppercase;
-            color: var(--off-white);
-            display: block; margin-bottom: 16px;
+            color: var(--off-white); display: block; margin-bottom: 16px;
         }
         .footer-brand .footer-tagline {
             font-size: 13px; font-weight: 300; line-height: 1.7;
             color: var(--grey); margin-bottom: 20px;
         }
-        .footer-brand .footer-location {
-            font-size: 12px; font-weight: 300;
-            color: var(--grey-light);
-        }
+        .footer-brand .footer-location { font-size: 12px; font-weight: 300; color: var(--grey-light); }
         .footer-col h4 {
             font-family: var(--serif);
             font-size: 14px; font-weight: 400;
-            color: var(--off-white);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            color: var(--off-white); margin-bottom: 20px; letter-spacing: 1px;
         }
         .footer-col a, .footer-col span {
-            display: block;
-            font-size: 13px; font-weight: 300;
-            color: var(--grey);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color .3s;
+            display: block; font-size: 13px; font-weight: 300;
+            color: var(--grey); text-decoration: none;
+            margin-bottom: 10px; transition: color .3s;
         }
         .footer-col a:hover { color: var(--off-white); }
-        .footer-social {
-            display: flex; gap: 16px; margin-bottom: 24px;
-        }
+        .footer-social { display: flex; gap: 16px; margin-bottom: 24px; }
         .footer-social a {
             display: flex; align-items: center; justify-content: center;
             width: 40px; height: 40px;
             border: 1px solid rgba(225,216,204,.12);
-            margin-bottom: 0;
-            transition: all .3s;
+            margin-bottom: 0; transition: all .3s;
         }
         .footer-social a:hover {
             border-color: rgba(225,216,204,.3);
             background: rgba(225,216,204,.05);
         }
-        .footer-social a svg {
-            width: 16px; height: 16px;
-            fill: var(--grey);
-            transition: fill .3s;
-        }
+        .footer-social a svg { width: 16px; height: 16px; fill: var(--grey); transition: fill .3s; }
         .footer-social a:hover svg { fill: var(--off-white); }
         .footer-whatsapp {
             display: inline-flex; align-items: center; gap: 8px;
@@ -521,45 +382,27 @@
         .footer-whatsapp svg { fill: #fff !important; width: 14px; height: 14px; }
         .footer-bottom {
             border-top: 1px solid rgba(225,216,204,.06);
-            padding: 24px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 24px 0; max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .footer-bottom span {
-            font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25);
-        }
+        .footer-bottom span { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); }
         .footer-bottom a {
             font-size: 11px; font-weight: 300;
             color: rgba(225,216,204,.25);
-            text-decoration: none;
-            transition: color .3s;
+            text-decoration: none; transition: color .3s;
         }
         .footer-bottom a:hover { color: var(--grey); }
 
-        /* ═══════════════════════════════════════════ */
-        /* REVEAL                                      */
-        /* ═══════════════════════════════════════════ */
-        .reveal {
-            opacity: 0; transform: translateY(20px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* ═══════════════════════════════════════════ */
-        /* RESPONSIVE                                  */
-        /* ═══════════════════════════════════════════ */
         @media (max-width: 900px) {
             nav { padding: 20px 24px; }
             .nav-links { display: none; }
             .nav-hamburger { display: block; }
-
             .slide-content { left: 24px; right: 24px; bottom: 60px; flex-direction: column; align-items: flex-start; }
             .slider-arrows { position: static; margin-top: 24px; }
             .slider-counter { left: 24px; }
-
             .section-intro { padding: 80px 24px; }
             .projects { padding: 0 24px 80px; }
             .principles { padding: 60px 24px; }
@@ -576,11 +419,8 @@
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
 
-        @media (max-width: 600px) {
-            .values-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .values-grid { grid-template-columns: 1fr; } }
 
-        /* Mobile menu overlay */
         @media (max-width: 900px) {
             nav.nav-open .nav-links {
                 display: flex !important;
@@ -613,18 +453,15 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- NAV                                         -->
-<!-- ═══════════════════════════════════════════ -->
 <nav id="mainNav">
-    <a href="index.html" class="nav-logo"><img src="img/logo/sadala-logo.png" alt="">Sadala</a>
+    <a href="index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="pages/projects.html">Projects</a>
-        <a href="pages/approach.html">Our approach</a>
-        <a href="es/index.html" class="nav-lang">ES</a>
-        <a href="nl/index.html" class="nav-lang">NL</a>
-        <a href="fi/index.html" class="nav-lang">FI</a>
-        <a href="da/index.html" class="nav-lang">DA</a>
+        <a href="pages/projects.html">Projecten</a>
+        <a href="pages/approach.html">Onze aanpak</a>
+        <a href="../index.html" class="nav-lang">EN</a>
+        <a href="../es/index.html" class="nav-lang">ES</a>
+        <a href="../fi/index.html" class="nav-lang">FI</a>
+        <a href="../da/index.html" class="nav-lang">DA</a>
         <a href="pages/contact.html" class="nav-contact">Contact</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
@@ -632,68 +469,65 @@
     </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- HERO SLIDER                                 -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="slider" id="slider">
     <div class="slide active">
         <div class="slide-image">
-            <img src="img/cantal/cantal-hero.jpg" alt="El Cantal among Mediterranean pines">
+            <img src="../img/cantal/cantal-hero.jpg" alt="El Cantal tussen mediterrane pijnbomen">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">M&aacute;laga, Southern Spain</div>
-                <h2 class="slide-title">Builders of the Unique</h2>
-                <p class="slide-desc">We conceive, build and deliver singular homes in the Andalusian landscape. No replications. No templates.</p>
-                <a href="#projects" class="slide-cta">View projects</a>
+                <div class="slide-category">M&aacute;laga, Zuid-Spanje</div>
+                <h2 class="slide-title">Bouwers van het Unieke</h2>
+                <p class="slide-desc">Wij bedenken, bouwen en leveren bijzondere woningen in het Andalusische landschap. Geen replica's. Geen sjablonen.</p>
+                <a href="#projects" class="slide-cta">Bekijk projecten</a>
             </div>
         </div>
     </div>
     <div class="slide">
         <div class="slide-image">
-            <img src="img/cantal/cantal-aerial.jpg" alt="El Cantal aerial view with green roof and pool">
+            <img src="../img/cantal/cantal-aerial.jpg" alt="El Cantal vanuit de lucht met groen dak en zwembad">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Current project</div>
+                <div class="slide-category">Lopend project</div>
                 <h2 class="slide-title">El Cantal</h2>
-                <p class="slide-desc">Corten steel and living roof merge with the hillside. A home that disappears into its landscape.</p>
-                <a href="pages/villa-el-cantal.html" class="slide-cta">Read more</a>
+                <p class="slide-desc">Cortenstaal en een levend dak versmelten met de heuvel. Een woning die opgaat in haar landschap.</p>
+                <a href="pages/villa-el-cantal.html" class="slide-cta">Lees meer</a>
             </div>
         </div>
     </div>
     <div class="slide">
         <div class="slide-image">
-            <img src="img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset with infinity pool">
+            <img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego bij zonsondergang met infinity pool">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Current project</div>
+                <div class="slide-category">Lopend project</div>
                 <h2 class="slide-title">Sosiego</h2>
-                <p class="slide-desc">A home designed around your longevity. State-of-the-art gym, sauna, cold plunge, infinity pool, meditation garden. Wellness as a way of life, in Pinares de San Ant&oacute;n.</p>
-                <a href="pages/sosiego.html" class="slide-cta">Read more</a>
+                <p class="slide-desc">Een woning ontworpen rond uw vitaliteit. Hoogwaardige fitnessruimte, sauna, koudwaterbad, infinity pool, meditatietuin. Welzijn als levenswijze, in Pinares de San Ant&oacute;n.</p>
+                <a href="pages/sosiego.html" class="slide-cta">Lees meer</a>
             </div>
         </div>
     </div>
     <div class="slide">
         <div class="slide-image">
-            <img src="img/cantal/cantal-interior.jpg" alt="El Cantal outdoor living at golden hour">
+            <img src="../img/cantal/cantal-interior.jpg" alt="El Cantal buitenleefruimte tijdens het gouden uur">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Our approach</div>
-                <h2 class="slide-title">Design Matters</h2>
-                <p class="slide-desc">We select sites for their irreplaceability. The land writes the brief. Everything else follows.</p>
-                <a href="pages/approach.html" class="slide-cta">Learn more</a>
+                <div class="slide-category">Onze aanpak</div>
+                <h2 class="slide-title">Ontwerp doet ertoe</h2>
+                <p class="slide-desc">Wij kiezen locaties om hun onvervangbaarheid. Het land schrijft de opdracht. Al het andere volgt.</p>
+                <a href="pages/approach.html" class="slide-cta">Meer ontdekken</a>
             </div>
         </div>
     </div>
 
     <div class="slider-arrows">
-        <button class="slider-arrow" id="prevBtn" aria-label="Previous slide">
+        <button class="slider-arrow" id="prevBtn" aria-label="Vorige slide">
             <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button class="slider-arrow" id="nextBtn" aria-label="Next slide">
+        <button class="slider-arrow" id="nextBtn" aria-label="Volgende slide">
             <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
         </button>
     </div>
@@ -703,151 +537,133 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- MISSION                                     -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="section-intro reveal">
-    <div class="section-label">Villa development, redefined</div>
+    <div class="section-label">Villa-ontwikkeling, opnieuw gedefinieerd</div>
     <p class="section-headline">
-        The soul of a home can't be fabricated. It must be discovered - in the slope of the land, the direction of light, and the silence between the pines.
+        De ziel van een huis laat zich niet fabriceren. Ze moet worden ontdekt - in de helling van het land, de richting van het licht en de stilte tussen de pijnbomen.
     </p>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- PROJECTS                                    -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="projects" id="projects">
     <div class="projects-header">
-        <h2>Projects</h2>
-        <a href="pages/projects.html">View all &rarr;</a>
+        <h2>Projecten</h2>
+        <a href="pages/projects.html">Bekijk alles &rarr;</a>
     </div>
     <div class="projects-grid">
         <a class="project-card reveal" href="pages/villa-el-cantal.html">
             <div class="project-card-image">
-                <img src="img/cantal/cantal-hero.jpg" alt="El Cantal">
+                <img src="../img/cantal/cantal-hero.jpg" alt="El Cantal">
             </div>
-            <div class="project-card-category">Project approved</div>
+            <div class="project-card-category">Project goedgekeurd</div>
             <div class="project-card-title">El Cantal</div>
-            <div class="project-card-sub">550 m&sup2; &middot; 5 rooms &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">550 m&sup2; &middot; 5 kamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
         <a class="project-card reveal" href="pages/sosiego.html">
             <div class="project-card-image">
-                <img src="img/sosiego/sosiego-sunset.png" alt="Sosiego">
+                <img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego">
             </div>
-            <div class="project-card-category">Construction to begin shortly</div>
+            <div class="project-card-category">Bouw begint binnenkort</div>
             <div class="project-card-title">Sosiego</div>
-            <div class="project-card-sub">570 m&sup2; &middot; 4 rooms &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">570 m&sup2; &middot; 4 kamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
         <a class="project-card reveal" href="pages/villa-leoni-benabu.html">
             <div class="project-card-image" style="position:relative;">
-                <img src="img/leoni-benabu/main.jpeg" alt="Origen">
-                <span style="position:absolute;top:16px;right:16px;background:var(--black);color:var(--off-white);font-size:10px;font-weight:500;letter-spacing:2px;padding:4px 12px;">SOLD</span>
+                <img src="../img/leoni-benabu/main.jpeg" alt="Origen">
+                <span style="position:absolute;top:16px;right:16px;background:var(--black);color:var(--off-white);font-size:10px;font-weight:500;letter-spacing:2px;padding:4px 12px;">VERKOCHT</span>
             </div>
-            <div class="project-card-category" style="color:var(--grey);">Sold</div>
+            <div class="project-card-category" style="color:var(--grey);">Verkocht</div>
             <div class="project-card-title">Origen</div>
-            <div class="project-card-sub">620 m&sup2; &middot; 6 rooms &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">620 m&sup2; &middot; 6 kamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- ABOUT                                       -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="about-strip reveal" id="about">
     <div class="about-strip-image">
-        <img src="img/cantal/cantal-interior.jpg" alt="El Cantal outdoor living">
+        <img src="../img/cantal/cantal-interior.jpg" alt="El Cantal buitenleefruimte">
     </div>
     <div class="about-strip-text">
-        <h3>A studio, not a developer.</h3>
-        <p>One home at a time, conceived and delivered by a single team. Every Sadala project follows three principles.</p>
+        <h3>Een studio, geen projectontwikkelaar.</h3>
+        <p>E&eacute;n woning per keer, bedacht en opgeleverd door &eacute;&eacute;n team. Elk Sadala-project volgt drie principes.</p>
         <div class="mini-method">
             <div class="mini-method-col">
                 <div class="mini-word">Rooted</div>
-                <p>The land shapes the house.</p>
+                <p>Het land vormt het huis.</p>
             </div>
             <div class="mini-method-col">
                 <div class="mini-word">Singular</div>
-                <p>One home, never repeated.</p>
+                <p>E&eacute;n huis, nooit herhaald.</p>
             </div>
             <div class="mini-method-col">
                 <div class="mini-word">Local</div>
-                <p>Andalusian craft.</p>
+                <p>Andalusisch ambacht.</p>
             </div>
         </div>
-        <a href="pages/approach.html">Read our approach &rarr;</a>
+        <a href="pages/approach.html">Lees onze aanpak &rarr;</a>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- WHY MALAGA                                  -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="section-intro reveal" style="padding-bottom: 60px;">
     <div class="section-label">M&aacute;laga</div>
     <p class="section-headline" style="font-style: normal; font-size: clamp(20px, 2.5vw, 28px);">
-        320 days of sun. International airport with direct flights across Europe. A gastronomy capital with Michelin-starred restaurants. 45 minutes from Marbella, yet a world apart. A growing tech and expat scene that's making it one of Europe's most desirable cities. This is the real definition of Mediterranean living.
+        320 dagen zon. Een internationale luchthaven met directe verbindingen door heel Europa. Een gastronomische hoofdstad met door Michelin bekroonde restaurants. 45 minuten van Marbella, en toch een wereld apart. Een groeiende tech- en expat-gemeenschap maakt het tot een van de meest gewilde steden van Europa. Dit is mediterraan leven in zijn ware vorm.
     </p>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- CONTACT                                     -->
-<!-- ═══════════════════════════════════════════ -->
 <section class="contact" id="contact">
     <div class="contact-inner">
         <div class="contact-left reveal">
             <h2>Contact</h2>
-            <p>Our process starts with a conversation, not a brochure. If our approach resonates, let's talk.</p>
+            <p>Ons proces begint met een gesprek, niet met een brochure. Als onze aanpak u aanspreekt, laten we praten.</p>
             <a href="mailto:info@sadala.com" class="contact-detail">info@sadala.com</a>
             <a href="tel:+34639675315" class="contact-detail">+34 639 675 315</a>
-            <span class="contact-detail" style="margin-top: 12px; cursor: default; color: var(--grey-light);">M&aacute;laga, Spain</span>
+            <span class="contact-detail" style="margin-top: 12px; cursor: default; color: var(--grey-light);">M&aacute;laga, Spanje</span>
             <a href="https://wa.me/34639675315" class="contact-whatsapp">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
                 WhatsApp
             </a>
         </div>
         <form class="contact-form reveal" action="https://formsubmit.co/dimitri@sadala.com" method="POST">
-            <input type="hidden" name="_subject" value="New contact from Sadala website">
+            <input type="hidden" name="_subject" value="Nieuw bericht via Sadala-website">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://sadala.com/index.html#contact">
+            <input type="hidden" name="_next" value="https://sadala.com/nl/index.html#contact">
             <input type="hidden" name="_template" value="table">
             <div class="form-row">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Your full name" required>
+                <label>Naam</label>
+                <input type="text" name="name" placeholder="Uw volledige naam" required>
             </div>
             <div class="form-row">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="you@example.com" required>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="u@voorbeeld.com" required>
             </div>
             <div class="form-row">
-                <label>Phone</label>
-                <input type="tel" name="phone" placeholder="+34 ...">
+                <label>Telefoon</label>
+                <input type="tel" name="phone" placeholder="+31 ...">
             </div>
             <div class="form-row">
-                <label>Message</label>
-                <textarea name="message" placeholder="Tell us about your project..."></textarea>
+                <label>Bericht</label>
+                <textarea name="message" placeholder="Vertel ons over uw project..."></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">Versturen</button>
         </form>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- FOOTER                                      -->
-<!-- ═══════════════════════════════════════════ -->
 <footer>
     <div class="footer-main">
         <div class="footer-brand">
             <span class="footer-logo">Sadala</span>
-            <p class="footer-tagline">Builders of the Unique. Singular homes conceived, built and delivered in the Andalusian landscape.</p>
+            <p class="footer-tagline">Bouwers van het Unieke. Bijzondere woningen bedacht, gebouwd en opgeleverd in het Andalusische landschap.</p>
         </div>
         <div class="footer-col">
             <h4>Contact</h4>
             <a href="mailto:info@sadala.com">info@sadala.com</a>
             <a href="tel:+34639675315">+34 639 675 315</a>
             <span>Leoni Benabu 31</span>
-            <span>29018 M&aacute;laga, Spain</span>
+            <span>29018 M&aacute;laga, Spanje</span>
         </div>
         <div class="footer-col">
-            <h4>Connect</h4>
+            <h4>Volg ons</h4>
             <div class="footer-social">
                 <a href="#" aria-label="Instagram">
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -863,15 +679,11 @@
     </div>
     <div class="footer-bottom">
         <span>&copy; 2026 Sadala Homes S.L.</span>
-        <a href="#">Privacy Policy</a>
+        <a href="#">Privacybeleid</a>
     </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- SCRIPTS                                     -->
-<!-- ═══════════════════════════════════════════ -->
 <script>
-/* Slider */
 const slides = document.querySelectorAll('.slide');
 const slideNum = document.getElementById('slideNum');
 const prevBtn = document.getElementById('prevBtn');
@@ -894,7 +706,6 @@ prevBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current 
 nextBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current + 1); startAuto(); });
 startAuto();
 
-/* Touch/swipe on hero slider */
 const sliderEl = document.getElementById('slider');
 let startX = 0, heroSwiping = false;
 sliderEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; heroSwiping = true; }, { passive: true });
@@ -912,13 +723,11 @@ sliderEl.addEventListener('mouseup', e => {
     else if (diff > 50) { clearInterval(autoPlay); goTo(current - 1); startAuto(); }
 });
 
-/* Nav solid on scroll */
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
     nav.classList.toggle('solid', window.scrollY > 80);
 }, { passive: true });
 
-/* Reveal */
 const obs = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('visible');
 }), { threshold: .08 });

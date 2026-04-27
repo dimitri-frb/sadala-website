@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos - Sadala</title>
+    <title>Projektit - Sadala</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,6 +168,15 @@
             font-size: 10px; font-weight: 500; letter-spacing: 2px;
             text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
         }
+        .project-card-status.sold { color: var(--grey); }
+        .project-card.sold .project-card-image { opacity: .85; }
+        .project-card.sold .project-card-image::after {
+            content: 'MYYTY'; position: absolute; top: 16px; right: 16px;
+            background: var(--black); color: var(--off-white);
+            font-size: 10px; font-weight: 500; letter-spacing: 2px;
+            padding: 4px 12px;
+        }
+        .project-card-image { position: relative; }
         .project-card-title {
             font-family: var(--serif); font-size: 22px; font-weight: 400;
             color: var(--black); margin-bottom: 4px;
@@ -259,13 +268,13 @@
 <nav>
     <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html" class="active">Proyectos</a>
-        <a href="approach.html">Nuestro enfoque</a>
+        <a href="projects.html" class="active">Projektit</a>
+        <a href="approach.html">Lähestymistapamme</a>
         <a href="../../pages/projects.html" class="nav-lang">EN</a>
+        <a href="../../es/pages/projects.html" class="nav-lang">ES</a>
         <a href="../../nl/pages/projects.html" class="nav-lang">NL</a>
-        <a href="../../fi/pages/projects.html" class="nav-lang">FI</a>
         <a href="../../da/pages/projects.html" class="nav-lang">DA</a>
-        <a href="contact.html" class="nav-contact">Contacto</a>
+        <a href="contact.html" class="nav-contact">Yhteystiedot</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
         <span></span><span></span><span></span>
@@ -275,82 +284,84 @@
 <!-- HEADER -->
 <section class="page-header reveal">
     <div class="page-header-label">Portfolio</div>
-    <h1>Nuestros proyectos</h1>
-    <p>Tres hogares. Tres firmas del mismo m&eacute;todo: Rooted, Singular, Local. Aqu&iacute; est&aacute; cada proyecto Sadala, pasado y presente.</p>
+    <h1>Projektimme</h1>
+    <p>Kolme kotia. Kolme saman menetelmän tulkintaa: Rooted, Singular, Local. Tässä jokainen Sadala-projekti, mennyt ja nykyinen.</p>
 </section>
 
 <!-- FILTER TABS -->
 <div class="filter-tabs">
-    <span class="filter-tab active">Todos</span>
-    <span class="filter-tab">Actuales</span>
-    <span class="filter-tab">Completados</span>
+    <span class="filter-tab active" data-filter="all">Kaikki</span>
+    <span class="filter-tab" data-filter="current">Käynnissä</span>
+    <span class="filter-tab" data-filter="completed">Valmistuneet</span>
 </div>
 
 <!-- PROJECTS -->
 <section class="projects-list">
-
-    <!-- FEATURED: El Cantal -->
-    <a href="villa-el-cantal.html" class="project-featured reveal">
-        <div class="project-featured-image">
-            <img src="../../img/cantal/cantal-hero.jpg" alt="El Cantal entre pinos mediterr&aacute;neos">
-        </div>
-        <div class="project-featured-info">
-            <div class="pf-status">En construcci&oacute;n</div>
-            <h2>El Cantal</h2>
-            <div class="pf-location">Monte de M&aacute;laga, Pinares de San Ant&oacute;n</div>
-            <p class="pf-desc">Un volumen en voladizo de acero corten perforado, suspendido sobre la ladera. La cubierta vegetal disuelve el l&iacute;mite entre arquitectura y paisaje.</p>
-            <div class="pf-kpis">
-                <div><div class="pf-kpi-value">350</div><div class="pf-kpi-label">m&sup2;</div></div>
-                <div><div class="pf-kpi-value">5</div><div class="pf-kpi-label">Hab.</div></div>
-                <div><div class="pf-kpi-value">2025</div><div class="pf-kpi-label">Entrega</div></div>
-            </div>
-            <span class="pf-cta">Ver proyecto &rarr;</span>
-        </div>
-    </a>
-
-    <hr class="section-divider">
-
-    <!-- GRID: Other projects -->
     <div class="projects-grid-small">
-        <a class="project-card reveal" href="sosiego.html">
+        <a class="project-card reveal" href="villa-el-cantal.html" data-status="current">
             <div class="project-card-image">
-                <img src="../../img/sosiego/sosiego-sunset.png" alt="Sosiego al atardecer">
+                <img src="../../img/cantal/cantal-hero.jpg" alt="El Cantal Välimeren mäntyjen keskellä">
             </div>
-            <div class="project-card-status">En construcci&oacute;n</div>
-            <div class="project-card-title">Sosiego</div>
-            <div class="project-card-sub">570 m&sup2; &middot; 4 hab. &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-status">Projekti hyväksytty</div>
+            <div class="project-card-title">El Cantal</div>
+            <div class="project-card-sub">550 m&sup2; &middot; 5 huonetta &middot; Pinares de San Ant&oacute;n</div>
         </a>
-        <a class="project-card reveal" href="sosiego.html">
+        <a class="project-card reveal" href="sosiego.html" data-status="current">
             <div class="project-card-image">
-                <img src="../../img/sosiego/sosiego-entrance-dusk.png" alt="Entrada Sosiego al anochecer">
+                <img src="../../img/sosiego/sosiego-sunset.png" alt="Sosiego auringonlaskussa">
             </div>
-            <div class="project-card-status">En construcci&oacute;n</div>
-            <div class="project-card-title">Sosiego - Detalle</div>
-            <div class="project-card-sub">Puerta de lat&oacute;n &middot; Olivos &middot; Iluminaci&oacute;n de escalones</div>
+            <div class="project-card-status">Rakentaminen alkaa pian</div>
+            <div class="project-card-title">Sosiego</div>
+            <div class="project-card-sub">570 m&sup2; &middot; 4 huonetta &middot; Pinares de San Ant&oacute;n</div>
+        </a>
+        <a class="project-card sold reveal" href="villa-leoni-benabu.html" data-status="completed">
+            <div class="project-card-image">
+                <img src="../../img/leoni-benabu/main.jpeg" alt="Origen mäntyjen keskellä">
+            </div>
+            <div class="project-card-status sold">Myyty</div>
+            <div class="project-card-title">Origen</div>
+            <div class="project-card-sub">620 m&sup2; &middot; 6 huonetta &middot; Pinares de San Ant&oacute;n</div>
         </a>
     </div>
-
 </section>
 
 <!-- CTA -->
 <section class="cta-band">
-    <h2>&iquest;Buscas algo &uacute;nico?</h2>
-    <p>Siempre estamos explorando nuevas ubicaciones. Si quieres ser el primero en conocer nuestro pr&oacute;ximo proyecto, cont&aacute;ctanos.</p>
-    <a href="contact.html" class="btn">Iniciar una conversaci&oacute;n</a>
+    <h2>Etsitkö jotain ainutlaatuista?</h2>
+    <p>Etsimme jatkuvasti uusia tontteja. Jos haluat kuulla seuraavasta projektistamme ensimmäisenä, ota yhteyttä.</p>
+    <a href="contact.html" class="btn">Aloita keskustelu</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
     <div class="footer-main">
-        <div class="footer-col"><h4>Contacto</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espa&ntilde;a</span></div>
-        <div class="footer-col"><h4>Conecta</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
+        <div class="footer-col"><h4>Yhteystiedot</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espanja</span></div>
+        <div class="footer-col"><h4>Seuraa</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Pol&iacute;tica de Privacidad</a></div>
+    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Tietosuojakäytäntö</a></div>
 </footer>
 
 <script>
 const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Filter tabs
+const tabs = document.querySelectorAll('.filter-tab');
+const cards = document.querySelectorAll('.project-card');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+            if (filter === 'all' || card.dataset.status === filter) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
 </script>
 </body>
 </html>

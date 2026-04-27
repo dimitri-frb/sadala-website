@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Cantal - Sadala</title>
+    <title>Origen - Sadala</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +27,7 @@
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
+        .nav-links a.active { color: var(--black); font-weight: 400; }
                 .nav-hamburger {
             display: none; cursor: pointer;
             width: 24px; height: 16px;
@@ -95,8 +96,9 @@
         .slider-section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
         .slider-section-header h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; }
         .slider-section-header .slider-counter { font-size: 12px; font-weight: 300; color: var(--grey); }
-        .slider-track { position: relative; overflow: hidden; }
-        .slider-inner { display: flex; transition: transform .5s cubic-bezier(.25,.1,.25,1); }
+        .slider-track { position: relative; overflow: hidden; cursor: grab; touch-action: pan-y; }
+        .slider-track:active { cursor: grabbing; }
+        .slider-inner { display: flex; transition: transform .5s cubic-bezier(.25,.1,.25,1); user-select: none; -webkit-user-select: none; }
         .slider-slide { flex: 0 0 100%; min-width: 0; }
         .slider-slide img { width: 100%; height: 500px; object-fit: contain; background: var(--off-white); }
         .slider-slide.cover img { object-fit: cover; }
@@ -108,32 +110,6 @@
         .slider-dots { display: flex; gap: 8px; align-items: center; }
         .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-border); border: 1px solid var(--grey-light); cursor: pointer; transition: all .3s; }
         .slider-dot.active { background: var(--accent); border-color: var(--accent); }
-
-        /* ═══ CONCEPT PILLARS (dark, 3-col with images) ═══ */
-        .concept-pillars { padding: 120px 48px; background: var(--black); color: var(--off-white); }
-        .concept-inner { max-width: 1200px; margin: 0 auto; }
-        .concept-intro { max-width: 700px; margin-bottom: 72px; }
-        .concept-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-        .concept-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 52px); font-weight: 300; line-height: 1.15; color: var(--off-white); margin-bottom: 20px; }
-        .concept-lead { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--grey); }
-        .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-        .concept-col { display: flex; flex-direction: column; }
-        .concept-col img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 24px; }
-        .concept-col .c-num { font-family: var(--serif); font-size: 13px; font-weight: 400; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-        .concept-col .c-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
-        .concept-col .c-desc { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
-
-        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
-        .method-band { padding: 100px 48px; background: var(--off-white); }
-        .method-inner { max-width: 1200px; margin: 0 auto; }
-        .method-header { max-width: 640px; margin-bottom: 48px; }
-        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        .method-title { font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 300; line-height: 1.25; }
-        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-top: 32px; border-top: 1px solid var(--grey-border); }
-        .method-word { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 8px; }
-        .method-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
-        .method-cta { display: inline-block; margin-top: 40px; font-size: 12px; font-weight: 400; letter-spacing: .5px; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--grey-light); padding-bottom: 4px; transition: border-color .3s; }
-        .method-cta:hover { border-color: var(--black); }
 
         .cta-band { background: var(--black); padding: 80px 48px; text-align: center; }
         .cta-band h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--off-white); margin-bottom: 12px; }
@@ -164,6 +140,47 @@
         .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
         .footer-bottom a:hover { color: var(--grey); }
 
+        /* ═══ ORIGIN STORY ═══ */
+        .origin-section { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
+        .origin-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .origin-quote {
+            font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
+            font-weight: 300; line-height: 1.2; font-style: italic; margin-bottom: 40px;
+        }
+        .origin-body p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
+        .origin-body p:first-child { font-size: 17px; color: var(--black); }
+
+        /* ═══ THE PLOT — full-bleed image + text ═══ */
+        .plot-band { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
+        .plot-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .plot-img { overflow: hidden; aspect-ratio: 4/5; }
+        .plot-img img { width: 100%; height: 100%; object-fit: cover; }
+        .plot-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+        .plot-text h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
+        .plot-text p { font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 12px; }
+
+        /* ═══ WHAT WE LEARNED — 4 principles dark band ═══ */
+        .lessons { padding: 120px 48px; background: var(--black); color: var(--off-white); }
+        .lessons-inner { max-width: 1100px; margin: 0 auto; }
+        .lessons-header { max-width: 640px; margin-bottom: 64px; }
+        .lessons-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .lessons-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1.15; }
+        .lessons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 48px; }
+        .lesson-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
+        .lesson h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
+        .lesson p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
+
+        /* ═══ LEGACY — bridge to current projects ═══ */
+        .legacy { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
+        .legacy h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.2; margin-bottom: 24px; }
+        .legacy p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
+        .legacy-links { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+        .legacy-link { display: block; padding: 24px; border: 1px solid var(--grey-border); text-decoration: none; color: inherit; transition: all .4s; }
+        .legacy-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .legacy-link-label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+        .legacy-link-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
+        .legacy-link-sub { font-size: 12px; font-weight: 300; color: var(--grey); }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -177,10 +194,13 @@
             .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
             .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
             .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
-            .method-band { padding: 60px 24px; }
-            .method-grid { grid-template-columns: 1fr; gap: 32px; }
-            .concept-pillars { padding: 72px 24px; }
-            .concept-grid { grid-template-columns: 1fr; gap: 48px; }
+            .origin-section { padding: 72px 24px; }
+            .plot-band { padding: 72px 24px; }
+            .plot-inner { grid-template-columns: 1fr; gap: 32px; }
+            .lessons { padding: 72px 24px; }
+            .lessons-grid { grid-template-columns: 1fr !important; gap: 40px; }
+            .legacy { padding: 72px 24px; }
+            .legacy-links { grid-template-columns: 1fr; gap: 16px; }
             .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
             footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -222,13 +242,13 @@
 <nav>
     <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html">Proyectos</a>
-        <a href="approach.html">Nuestro enfoque</a>
-        <a href="../../pages/villa-el-cantal.html" class="nav-lang">EN</a>
-        <a href="../../nl/pages/villa-el-cantal.html" class="nav-lang">NL</a>
-        <a href="../../fi/pages/villa-el-cantal.html" class="nav-lang">FI</a>
-        <a href="../../da/pages/villa-el-cantal.html" class="nav-lang">DA</a>
-        <a href="contact.html" class="nav-contact">Contacto</a>
+        <a href="projects.html" class="active">Projektit</a>
+        <a href="approach.html">Lähestymistapamme</a>
+        <a href="../../pages/villa-leoni-benabu.html" class="nav-lang">EN</a>
+        <a href="../../es/pages/villa-leoni-benabu.html" class="nav-lang">ES</a>
+        <a href="../../nl/pages/villa-leoni-benabu.html" class="nav-lang">NL</a>
+        <a href="../../da/pages/villa-leoni-benabu.html" class="nav-lang">DA</a>
+        <a href="contact.html" class="nav-contact">Yhteystiedot</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
         <span></span><span></span><span></span>
@@ -236,182 +256,80 @@
 </nav>
 
 <section class="villa-hero">
-    <img src="../../img/cantal/cantal-hero.jpg" alt="El Cantal entre pinos mediterr&aacute;neos">
+    <img src="../../img/leoni-benabu/main.jpeg" alt="Origen satavuotiaiden mäntyjen lomassa">
     <div class="villa-hero-content">
-        <span class="status-tag status-tag--approved">Proyecto aprobado</span>
-        <div class="villa-hero-cat">Monte de M&aacute;laga &middot; Pinares de San Ant&oacute;n</div>
-        <h1 class="villa-hero-title">El Cantal</h1>
-        <p class="villa-hero-sub">Donde el acero corten se encuentra con la ladera</p>
+        <span class="status-tag status-tag--completed">Myyty</span>
+        <div class="villa-hero-cat">Sieltä, mistä Sadala alkoi &middot; Pinares de San Ant&oacute;n</div>
+        <h1 class="villa-hero-title">Origen</h1>
     </div>
 </section>
 
-<section class="villa-intro reveal">
-    <div class="villa-intro-label">La visi&oacute;n</div>
-    <p class="villa-intro-text">
-        Un volumen en voladizo de acero corten perforado, suspendido sobre la ladera como un puente entre la tierra y el cielo. La cubierta vegetal disuelve el l&iacute;mite entre arquitectura y paisaje, mientras la estructura se abre completamente al jard&iacute;n inferior.
-    </p>
+<!-- ORIGIN STORY (merged with "The plot") -->
+<section class="origin-section reveal">
+    <div class="origin-label">Alkuperä</div>
+    <p class="origin-quote">Jokaisella studiolla on ensimmäinen projekti. Se, jossa filosofiaa keksitään vielä rakennettaessa.</p>
+    <div class="origin-body">
+        <p>Origen on meidän. 3 076 m&sup2;:n tontti satavuotiaiden mäntyjen lomassa Pinares de San Ant&oacute;nissa.</p>
+        <p>Kun ensi kertaa kävelimme sen läpi, mitään ei ollut vielä rakennettu. Oli vain valoa oksien lävitse, pihkan tuoksu ja hiljaisuus. Sitouduimme ennen kuin meillä oli suunnitelmaa. Tästä sitoutumisesta – tonttiin ennen ohjelmaa – tuli Sadalan ensimmäinen periaate.</p>
+        <p>Koti, jonka suunnittelimme, piirsimme, rakensimme ja luovutimme alusta loppuun, myytiin ennen kuin se oli valmis. Tämä hiljainen menestys antoi meille luvan jatkaa. Vielä tärkeämpää: se opetti meille, mitä Sadalasta tulisi.</p>
+    </div>
 </section>
 
 <section class="kpi-strip reveal">
     <div class="kpi-grid">
-        <div><div class="kpi-value">550</div><div class="kpi-label">m&sup2; construidos</div></div>
-        <div><div class="kpi-value">5</div><div class="kpi-label">Dormitorios</div></div>
-        <div><div class="kpi-value">1.000</div><div class="kpi-label">m&sup2; parcela</div></div>
-        <div><div class="kpi-value">2028</div><div class="kpi-label">Entrega</div></div>
+        <div><div class="kpi-value">620</div><div class="kpi-label">m&sup2; rakennettua</div></div>
+        <div><div class="kpi-value">6</div><div class="kpi-label">Huonetta</div></div>
+        <div><div class="kpi-value">3 076</div><div class="kpi-label">m&sup2; tonttia</div></div>
+        <div><div class="kpi-value">2023</div><div class="kpi-label">Luovutettu</div></div>
     </div>
 </section>
 
-<!-- EL CONCEPTO -->
-<section class="concept-pillars reveal">
-    <div class="concept-inner">
-        <div class="concept-intro">
-            <div class="concept-label">El concepto</div>
-            <h2 class="concept-title">Un hogar que se disuelve en la ladera.</h2>
-            <p class="concept-lead">El Cantal no se coloca sobre el terreno. Se convierte en &eacute;l. Un volumen perforado de acero corten flota sobre la pendiente; una cubierta vegetal prolonga la ladera; los acristalamientos de suelo a techo disuelven la frontera entre interior y jard&iacute;n. Tres ideas dan forma a la arquitectura.</p>
+<!-- WHAT ORIGEN TAUGHT US -->
+<section class="lessons reveal">
+    <div class="lessons-inner">
+        <div class="lessons-header">
+            <div class="lessons-label">Mitä Origen opetti meille</div>
+            <h2 class="lessons-title">Kolmesta periaatteesta tuli Sadalan menetelmä.</h2>
         </div>
-        <div class="concept-grid">
-            <div class="concept-col">
-                <img src="../../img/cantal/cantal-aerial.jpg" alt="Cubierta vegetal">
-                <div class="c-num">01 &middot; Paisaje</div>
-                <div class="c-title">La cubierta es la ladera.</div>
-                <p class="c-desc">La cubierta entera se planta con gram&iacute;neas aut&oacute;ctonas y especies mediterr&aacute;neas, continuando la pendiente por encima de la casa. Vista desde arriba, la villa desaparece.</p>
+        <div class="lessons-grid">
+            <div class="lesson">
+                <div class="lesson-num">01</div>
+                <h3>Rooted</h3>
+                <p>Emme aseta taloa maan päälle. Annamme maan muotoilla talon. Rinne, täysikasvuiset puut, aamuauringon suunta: nämä eivät ole rajoituksia, ne ovat ohjelma. Jokainen Sadala-projekti alkaa tontin kuuntelusta.</p>
             </div>
-            <div class="concept-col">
-                <img src="../../img/cantal/cantal-garden.jpg" alt="Fachada de corten">
-                <div class="c-num">02 &middot; Luz</div>
-                <div class="c-title">Una fachada que respira.</div>
-                <p class="c-desc">Paneles perforados de acero autopatinante filtran la luz andaluza y proyectan sombras cambiantes a lo largo del d&iacute;a. La fachada evoluciona con las estaciones.</p>
+            <div class="lesson">
+                <div class="lesson-num">02</div>
+                <h3>Singular</h3>
+                <p>Yksi tontti, yksi visio, yksi kerta. Emme kierrätä suunnitelmia emmekä pyöritä rinnakkaisia projekteja. Jokainen Sadala-koti suunnitellaan kuin se olisi ainoa, jonka koskaan rakennamme – sillä juuri sitä se meille on.</p>
             </div>
-            <div class="concept-col">
-                <img src="../../img/cantal/cantal-interior.jpg" alt="Vida interior-exterior">
-                <div class="c-num">03 &middot; Integraci&oacute;n</div>
-                <div class="c-title">El dentro se vuelve fuera.</div>
-                <p class="c-desc">Acristalamiento de suelo a techo y muros retr&aacute;ctiles borran la l&iacute;nea entre sal&oacute;n y jard&iacute;n. Las formaciones rocosas existentes se preservan y se integran en el dise&ntilde;o paisaj&iacute;stico.</p>
+            <div class="lesson">
+                <div class="lesson-num">03</div>
+                <h3>Local</h3>
+                <p>Kiveä andalusialaisista louhoksista. Massiivipuuta luotetuilta sahoilta. Yhteistyökumppanit valitaan lyhyen ajomatkan päästä, ei kaukaisten lentojen takaa. Uusi luksus ei ole tuontimarmoria. Se on koti, jonka rakentavat ihmiset, jotka välittävät – koska he asuvat lähellä.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="features reveal">
-    <div class="features-header">Nuestra experiencia</div>
-    <div class="features-grid">
-        <div><div class="feature-title">Cubierta vegetal</div><div class="feature-desc">Toda la cubierta es una prolongaci&oacute;n de la ladera, plantada con gram&iacute;neas aut&oacute;ctonas y especies mediterr&aacute;neas, invisible desde arriba.</div></div>
-        <div><div class="feature-title">Fachada de acero corten</div><div class="feature-desc">Paneles perforados de acero autopatinante que filtran luz y sombra, creando una fachada viva que evoluciona con las estaciones.</div></div>
-        <div><div class="feature-title">Estructura en voladizo</div><div class="feature-desc">El volumen principal flota sobre la pendiente natural, preservando el terreno y los &aacute;rboles centenarios bajo &eacute;l.</div></div>
-        <div><div class="feature-title">Vida interior-exterior</div><div class="feature-desc">Acristalamiento de suelo a techo y muros retr&aacute;ctiles que disuelven el l&iacute;mite entre el interior y la terraza ajardinada.</div></div>
-        <div><div class="feature-title">Piscina infinity</div><div class="feature-desc">Integrada en la ladera con vistas al Mediterr&aacute;neo, parece fundirse con el paisaje inferior.</div></div>
-        <div><div class="feature-title">Integraci&oacute;n de roca natural</div><div class="feature-desc">Las formaciones rocosas existentes se preservan e incorporan al dise&ntilde;o del jard&iacute;n, anclando la casa a su emplazamiento.</div></div>
-    </div>
-</section>
-
-<!-- PARTNERS -->
-<section class="partners-section reveal">
-    <h2 class="partners-header">Creado por profesionales premiados</h2>
-    <p class="partners-sub">Cada proyecto de Sadala re&uacute;ne un equipo &uacute;nico de especialistas, seleccionados por su oficio. Para El Cantal, colaboramos con:</p>
-    <div class="partners-grid">
-        <div class="partner-card">
-            <div class="partner-role">Arquitectura</div>
-            <div class="partner-name">Flow81</div>
-            <div class="partner-desc">Laboratorio de arquitectura experiencial que dise&ntilde;a hogares que reconectan con la naturaleza. Reconocidos por espacios sensoriales que involucran los cinco sentidos.</div>
-        </div>
-        <div class="partner-card">
-            <div class="partner-role">Dise&ntilde;o Interior</div>
-            <div class="partner-name">Studio 1969</div>
-            <div class="partner-desc">Estudio de dise&ntilde;o interior contempor&aacute;neo que crea espacios donde materialidad, luz y proporci&oacute;n trabajan en silenciosa armon&iacute;a.</div>
-        </div>
-        <div class="partner-card">
-            <div class="partner-role">Paisajismo</div>
-            <div class="partner-name">Landscapers</div>
-            <div class="partner-desc">Arquitectos paisajistas mediterr&aacute;neos que dise&ntilde;an espacios exteriores que extienden el hogar hacia la ladera, preservando ecosistemas aut&oacute;ctonos.</div>
-        </div>
-    </div>
-</section>
-
-<!-- LOCATION -->
-<section class="location-section reveal">
-    <h2 class="location-header">La ubicaci&oacute;n</h2>
-    <div class="location-grid">
-        <div>
-            <iframe class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198!2d-4.367!3d36.735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72585b8e4b0e87%3A0x1!2sPinares+de+San+Ant%C3%B3n!5e1!3m2!1sen!2ses!4v1" allowfullscreen loading="lazy"></iframe>
-            <div class="location-highlights">
-                <div class="lh-item"><div class="lh-value">500m</div><div class="lh-label">A la playa</div></div>
-                <div class="lh-item"><div class="lh-value">10 min</div><div class="lh-label">Al centro de M&aacute;laga</div></div>
-                <div class="lh-item"><div class="lh-value">20 min</div><div class="lh-label">Al aeropuerto</div></div>
-            </div>
-        </div>
-        <div class="location-text">
-            <h3>El nuevo lujo</h3>
-            <p>Ubicada en el Monte de M&aacute;laga con vistas panor&aacute;micas a la ciudad y al Mediterr&aacute;neo, El Cantal ocupa una de las posiciones m&aacute;s privilegiadas de M&aacute;laga Este.</p>
-            <p>La parcela se sit&uacute;a en Pinares de San Ant&oacute;n, un enclave residencial protegido rodeado de pinares centenarios. Seguridad 24 horas, club de tenis privado y club social privado crean un mundo aut&oacute;nomo de calma.</p>
-            <p>El centro de M&aacute;laga est&aacute; a 10 minutos. El Mediterr&aacute;neo a 5 minutos. El aeropuerto a 20. Todo lo dem&aacute;s queda fuera.</p>
-        </div>
-    </div>
-</section>
-
-<!-- FLOOR LAYOUT SLIDER -->
-<section class="slider-section reveal" id="floorLayout">
-    <div class="slider-section-header">
-        <h2>Distribuci&oacute;n</h2>
-        <span class="slider-counter" id="floorCounter">1 / 4</span>
-    </div>
-    <div class="slider-track">
-        <div class="slider-inner" id="floorSlider">
-            <div class="slider-slide">
-                <img src="../../img/cantal/cantal-aerial.jpg" alt="Plano del emplazamiento">
-                <div class="slide-caption">Plano de Situaci&oacute;n. Vista general de la parcela y huella del edificio</div>
-            </div>
-            <div class="slider-slide">
-                <img src="../../img/cantal/cantal-garden.jpg" alt="Planta baja">
-                <div class="slide-caption">Nivel 0. Zona de estar principal, cocina, suite principal, terraza ajardinada</div>
-            </div>
-            <div class="slider-slide">
-                <img src="../../img/cantal/cantal-interior.jpg" alt="Planta superior">
-                <div class="slide-caption">Nivel 1. 4 dormitorios, ba&ntilde;o familiar, terraza de acero corten</div>
-            </div>
-            <div class="slider-slide">
-                <img src="../../img/cantal/cantal-hero.jpg" alt="Planta inferior">
-                <div class="slide-caption">Nivel -1. Garaje, sala de instalaciones, almac&eacute;n, acceso a piscina</div>
-            </div>
-        </div>
-    </div>
-    <div class="slider-controls">
-        <button class="slider-btn" onclick="slideFloor(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <div class="slider-dots" id="floorDots"></div>
-        <button class="slider-btn" onclick="slideFloor(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
     </div>
 </section>
 
 <!-- GALLERY SLIDER -->
 <section class="slider-section reveal" id="gallery">
     <div class="slider-section-header">
-        <h2>Galer&iacute;a</h2>
-        <span class="slider-counter" id="galleryCounter">1 / 6</span>
+        <h2>Galleria</h2>
+        <span class="slider-counter" id="galleryCounter">1 / 3</span>
     </div>
     <div class="slider-track">
         <div class="slider-inner" id="gallerySlider">
             <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-hero.jpg" alt="Llegada a El Cantal con Mercedes cl&aacute;sico">
-                <div class="slide-caption">Acceso. Llegando a El Cantal a trav&eacute;s de los pinos</div>
+                <img src="../../img/leoni-benabu/main.jpeg" alt="Origen mäntyjen lomassa">
+                <div class="slide-caption">Tontti satavuotiaiden mäntyjen lomassa</div>
             </div>
             <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-aerial.jpg" alt="Vista a&eacute;rea de El Cantal">
-                <div class="slide-caption">A&eacute;rea. Cubierta vegetal y piscina integradas en la ladera</div>
+                <img src="../../img/leoni-benabu/leoni-deck.jpeg" alt="Origenin puuterassi">
+                <div class="slide-caption">Puuterassi Pinares de San Ant&oacute;niin avautuvine näkymineen</div>
             </div>
             <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-garden.jpg" alt="Fachada del jard&iacute;n de El Cantal">
-                <div class="slide-caption">Jard&iacute;n. Estructura de acero corten con integraci&oacute;n de roca natural</div>
-            </div>
-            <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-interior.jpg" alt="El Cantal espacio exterior">
-                <div class="slide-caption">Estar. Espacio de entretenimiento al aire libre en la hora dorada</div>
-            </div>
-            <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-aerial.jpg" alt="Detalle de la piscina de El Cantal">
-                <div class="slide-caption">Piscina. Borde infinito con vistas al Mediterr&aacute;neo</div>
-            </div>
-            <div class="slider-slide cover">
-                <img src="../../img/cantal/cantal-garden.jpg" alt="Detalle estructural de El Cantal">
-                <div class="slide-caption">Detalle. Acero corten envejecido contra roca natural</div>
+                <img src="../../img/leoni-benabu/leoni-walkway.jpeg" alt="Origenin puutarhakulkureitti">
+                <div class="slide-caption">Suunniteltu kulkureitti mäntypuutarhan halki</div>
             </div>
         </div>
     </div>
@@ -422,19 +340,39 @@
     </div>
 </section>
 
+<!-- LEGACY -->
+<section class="legacy reveal">
+    <div class="origin-label">Perintö</div>
+    <h2>Kaikki, mitä Sadala rakentaa tänään, lepää Origenin perustuksilla.</h2>
+    <p>Origen myytiin. Sitä, mitä se meille antoi, ei voi myydä.</p>
+    <p>Jokainen sen jälkeinen projekti kantaa samaa DNA:ta: samaa tonttilähtöisen ajattelun kuria, samaa yksi kerrallaan -sitoutumista, samaa kieltäytymistä luovuttaa työtä kenenkään toisen käsiin.</p>
+    <div class="legacy-links">
+        <a href="sosiego.html" class="legacy-link">
+            <div class="legacy-link-label">Käynnissä oleva projekti</div>
+            <div class="legacy-link-title">Sosiego</div>
+            <div class="legacy-link-sub">Pitkäikäisyyden ympärille suunniteltu koti</div>
+        </a>
+        <a href="villa-el-cantal.html" class="legacy-link">
+            <div class="legacy-link-label">Hyväksytty</div>
+            <div class="legacy-link-title">El Cantal</div>
+            <div class="legacy-link-sub">Arkkitehtuuria, joka sulautuu rinteeseen</div>
+        </a>
+    </div>
+</section>
+
 <section class="cta-band">
-    <h2>&iquest;Interesado en El Cantal?</h2>
-    <p>Este es un proyecto singular. Habl&eacute;moslo en persona.</p>
-    <a href="contact.html" class="btn">Cont&aacute;ctanos</a>
-    <a href="https://wa.me/34639675315" class="btn btn-accent">Escr&iacute;benos por WhatsApp</a>
+    <h2>Seuraava Sadala-koti on aina tärkein.</h2>
+    <p>Haluatko tietää, mitä työstämme seuraavaksi?</p>
+    <a href="contact.html" class="btn">Aloita keskustelu</a>
+    <a href="https://wa.me/34639675315" class="btn btn-accent">Lähetä WhatsApp</a>
 </section>
 
 <footer>
     <div class="footer-main">
-        <div class="footer-col"><h4>Contacto</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espa&ntilde;a</span></div>
-        <div class="footer-col"><h4>Conecta</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
+        <div class="footer-col"><h4>Yhteystiedot</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espanja</span></div>
+        <div class="footer-col"><h4>Seuraa</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Pol&iacute;tica de Privacidad</a></div>
+    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Tietosuojakäytäntö</a></div>
 </footer>
 
 <script>
@@ -443,6 +381,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 function createSlider(sliderId, counterId, dotsId) {
     const inner = document.getElementById(sliderId);
+    const track = inner.parentElement;
     const counter = document.getElementById(counterId);
     const dotsContainer = document.getElementById(dotsId);
     const slides = inner.children;
@@ -460,12 +399,47 @@ function createSlider(sliderId, counterId, dotsId) {
         counter.textContent = `${current + 1} / ${total}`;
         dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === current));
     }
+    let startX = 0, isDragging = false;
+    function onStart(x) { startX = x; isDragging = true; inner.style.transition = 'none'; }
+    function onMove(x) { if (!isDragging) return; const diff = x - startX; inner.style.transform = `translateX(calc(-${current * 100}% + ${diff}px))`; }
+    function onEnd(x) {
+        if (!isDragging) return; isDragging = false;
+        inner.style.transition = 'transform .5s cubic-bezier(.25,.1,.25,1)';
+        const diff = x - startX;
+        if (diff < -50) goTo(current + 1); else if (diff > 50) goTo(current - 1); else goTo(current);
+    }
+    track.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchmove', e => onMove(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchend', e => onEnd(e.changedTouches[0].clientX));
+    track.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX); });
+    window.addEventListener('mousemove', e => onMove(e.clientX));
+    window.addEventListener('mouseup', e => onEnd(e.clientX));
+    track.querySelectorAll('img').forEach(img => img.addEventListener('dragstart', e => e.preventDefault()));
     return { next: () => goTo(current + 1), prev: () => goTo(current - 1) };
 }
-const floorNav = createSlider('floorSlider', 'floorCounter', 'floorDots');
+const floorNav = document.getElementById('floorSlider') ? createSlider('floorSlider', 'floorCounter', 'floorDots') : null;
 const galleryNav = createSlider('gallerySlider', 'galleryCounter', 'galleryDots');
-function slideFloor(dir) { dir > 0 ? floorNav.next() : floorNav.prev(); }
+function slideFloor(dir) { if (floorNav) dir > 0 ? floorNav.next() : floorNav.prev(); }
 function slideGallery(dir) { dir > 0 ? galleryNav.next() : galleryNav.prev(); }
+
+/* Keyboard arrows control whichever slider is currently in view */
+let activeSlider = galleryNav;
+const sliderObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+            const id = e.target.id;
+            if (id === 'gallery') activeSlider = galleryNav;
+            else if (id === 'floorLayout' && floorNav) activeSlider = floorNav;
+        }
+    });
+}, { threshold: [0.4, 0.6] });
+document.querySelectorAll('#gallery, #floorLayout').forEach(el => sliderObserver.observe(el));
+
+document.addEventListener('keydown', e => {
+    if (!activeSlider) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); activeSlider.prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); activeSlider.next(); }
+});
 </script>
 </body>
 </html>
