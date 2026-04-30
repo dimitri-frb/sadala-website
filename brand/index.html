@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>Sadala · Brand Book</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/logo/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white: #E8E2D5; --off-white: #E1D8CC; --black: #2C2C2C;
+            --grey: #7A7570; --grey-light: #B5AFA8; --grey-border: rgba(44,44,44,.08);
+            --accent: #C1876B;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+        /* Top bar — minimal, hidden-page treatment */
+        .topbar { display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; border-bottom: 1px solid var(--grey-border); }
+        .topbar-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 18px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .topbar-logo img { height: 24px; width: auto; }
+        .topbar-meta { font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+
+        /* Cover */
+        .cover { padding: 140px 48px 120px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--grey-border); }
+        .cover-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+        .cover-title { font-family: var(--serif); font-size: clamp(56px, 9vw, 120px); font-weight: 300; line-height: 1; margin-bottom: 32px; letter-spacing: -0.5px; }
+        .cover-sub { font-family: var(--serif); font-size: clamp(20px, 2.6vw, 30px); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--grey); max-width: 720px; }
+        .cover-meta { margin-top: 80px; font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+
+        /* Section shared */
+        section.chapter { padding: 120px 48px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--grey-border); }
+        .ch-num { font-family: var(--serif); font-size: 13px; font-weight: 400; letter-spacing: 4px; color: var(--accent); margin-bottom: 24px; }
+        .ch-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; margin-bottom: 56px; letter-spacing: -0.3px; }
+        .ch-body { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--black); max-width: 720px; }
+        .ch-body p { margin-bottom: 20px; }
+        .ch-body p strong { font-weight: 400; color: var(--black); }
+        .ch-body em { font-style: italic; color: var(--grey); }
+
+        /* Manifesto — extra weight on the lead */
+        .manifesto-lead { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.25; margin-bottom: 56px; max-width: 880px; letter-spacing: -0.2px; }
+        .manifesto-lead strong { font-weight: 400; }
+        .signature-line { margin-top: 56px; font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 300; color: var(--accent); }
+        .signature-line strong { font-style: normal; font-weight: 400; }
+
+        /* Origin — 4-block grid */
+        .origin-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 64px; max-width: 920px; }
+        .origin-block .block-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .origin-block p { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--black); }
+
+        /* Architectural fingerprint — 4 column */
+        .fingerprint-intro { font-family: var(--serif); font-size: 22px; font-weight: 300; line-height: 1.5; color: var(--grey); margin-bottom: 56px; max-width: 720px; font-style: italic; }
+        .fingerprint-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 64px; max-width: 920px; margin-bottom: 80px; }
+        .fp-item h3 { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 12px; }
+        .fp-item p { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); }
+
+        .rule-block { padding: 56px 0; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); margin: 64px 0; max-width: 880px; }
+        .rule-quote { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); font-weight: 300; font-style: italic; line-height: 1.3; color: var(--black); }
+        .rule-attribution { margin-top: 20px; font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+
+        .practice-list { max-width: 720px; }
+        .practice-list li { font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--black); padding: 14px 0; border-bottom: 1px solid var(--grey-border); list-style: none; padding-left: 28px; position: relative; }
+        .practice-list li::before { content: '·'; position: absolute; left: 0; top: 12px; color: var(--accent); font-size: 28px; line-height: 1; }
+        .practice-list li:first-child { border-top: 1px solid var(--grey-border); }
+
+        /* Voice — two-column comparison */
+        .voice-row { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 28px 0; border-bottom: 1px solid var(--grey-border); align-items: baseline; }
+        .voice-row:first-child { border-top: 1px solid var(--grey-border); }
+        .voice-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+        .voice-value { font-family: var(--serif); font-size: 20px; font-weight: 300; line-height: 1.5; color: var(--black); }
+        .voice-value em { font-style: italic; color: var(--grey); }
+
+        .words-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 80px; max-width: 920px; }
+        .words-col h4 { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+        .words-col.no h4 { color: #B85450; }
+        .word-pill { display: inline-block; font-family: var(--serif); font-size: 18px; font-weight: 300; padding: 6px 14px 6px 0; color: var(--black); }
+        .words-col.no .word-pill { color: var(--grey); text-decoration: line-through; text-decoration-color: rgba(184, 84, 80, .55); text-decoration-thickness: 1px; }
+
+        .brandline { margin-top: 80px; padding: 64px 0; text-align: center; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
+        .brandline-label { font-size: 11px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .brandline-value { font-family: var(--serif); font-size: clamp(36px, 5.5vw, 64px); font-weight: 300; font-style: italic; line-height: 1; }
+
+        /* Audience tiers */
+        .tiers { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 920px; }
+        .tier { padding: 36px 0; border-bottom: 1px solid var(--grey-border); display: grid; grid-template-columns: 80px 220px 1fr; gap: 32px; align-items: baseline; }
+        .tier:first-child { border-top: 1px solid var(--grey-border); }
+        .tier-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--accent); }
+        .tier-name { font-family: var(--serif); font-size: 22px; font-weight: 400; }
+        .tier-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); }
+
+        .negative-block { margin-top: 64px; padding: 36px; background: var(--off-white); max-width: 920px; }
+        .negative-block .block-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .negative-block p { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--black); }
+
+        /* Visual — palette swatches (the building's colors, NOT the site's) */
+        .subhead { font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 64px 0 24px; padding-top: 24px; border-top: 1px solid var(--grey-border); }
+        .subhead:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+        .palette-note { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 720px; margin-bottom: 36px; font-style: italic; }
+        .swatches { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 1px solid var(--grey-border); }
+        .swatch { aspect-ratio: 3/4; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; }
+        .swatch-name { font-family: var(--serif); font-size: 16px; font-weight: 400; margin-bottom: 4px; }
+        .swatch-hex { font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; opacity: .7; margin-bottom: 6px; }
+        .swatch-use { font-size: 11px; font-weight: 300; line-height: 1.5; opacity: .8; }
+        .swatch.dark { color: var(--off-white); }
+        .swatch.light { color: var(--black); }
+
+        .typography-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 36px 0; border-top: 1px solid var(--grey-border); align-items: start; }
+        .typography-grid:last-child { border-bottom: 1px solid var(--grey-border); }
+        .type-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); padding-top: 16px; }
+        .type-display { font-family: var(--serif); font-size: 56px; font-weight: 300; line-height: 1; margin-bottom: 8px; }
+        .type-body { font-family: var(--sans); font-size: 16px; font-weight: 300; line-height: 1.6; }
+        .type-meta { font-size: 12px; font-weight: 400; letter-spacing: 1px; color: var(--grey); margin-top: 12px; }
+
+        .photo-note, .materials-note { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--black); max-width: 720px; margin-bottom: 16px; }
+        .materials-list { font-family: var(--serif); font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.6; color: var(--grey); max-width: 720px; }
+
+        /* Forbidden — strikethrough list */
+        .forbidden-intro { font-family: var(--serif); font-size: 28px; font-weight: 300; font-style: italic; color: var(--grey); margin-bottom: 48px; }
+        .forbidden-list { max-width: 720px; }
+        .forbidden-list li { font-size: 16px; font-weight: 300; line-height: 1.6; color: var(--black); padding: 18px 0 18px 36px; border-bottom: 1px solid var(--grey-border); list-style: none; position: relative; }
+        .forbidden-list li:first-child { border-top: 1px solid var(--grey-border); }
+        .forbidden-list li::before { content: '×'; position: absolute; left: 0; top: 18px; color: #B85450; font-size: 18px; font-weight: 400; line-height: 1; opacity: .7; }
+        .forbidden-list li em { color: var(--grey); }
+
+        /* Applications */
+        .applications-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px; max-width: 920px; }
+        .application-item { padding: 18px 0; border-bottom: 1px solid var(--grey-border); font-size: 14px; font-weight: 300; line-height: 1.5; color: var(--black); }
+        .application-item span { display: block; font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+
+        /* Closing */
+        .closing { padding: 120px 48px; text-align: center; background: var(--off-white); border-bottom: 1px solid var(--grey-border); }
+        .closing-mark { font-family: var(--serif); font-size: 16px; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; color: var(--black); margin-bottom: 16px; }
+        .closing-line { font-family: var(--serif); font-size: clamp(20px, 2.5vw, 28px); font-weight: 300; font-style: italic; color: var(--grey); }
+
+        footer { background: var(--black); color: var(--off-white); padding: 56px 48px; text-align: center; }
+        footer .f-mark { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--off-white); }
+        footer .f-meta { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.4); margin-top: 12px; letter-spacing: 1px; }
+        footer .f-back { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.6); text-decoration: none; margin-top: 24px; display: inline-block; letter-spacing: 2px; text-transform: uppercase; transition: color .3s; }
+        footer .f-back:hover { color: var(--off-white); }
+
+        @media (max-width: 900px) {
+            .topbar { padding: 20px 24px; }
+            .cover { padding: 80px 24px 60px; }
+            section.chapter { padding: 80px 24px; }
+            .origin-grid, .fingerprint-grid, .words-grid { grid-template-columns: 1fr; gap: 40px; }
+            .swatches { grid-template-columns: repeat(2, 1fr); }
+            .voice-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+            .voice-label { padding-bottom: 4px; }
+            .typography-grid { grid-template-columns: 1fr; gap: 16px; }
+            .type-label { padding-top: 0; }
+            .type-display { font-size: 40px; }
+            .tier { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+            .applications-grid { grid-template-columns: 1fr; gap: 0; }
+            .closing { padding: 80px 24px; }
+            footer { padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <a href="../index.html" class="topbar-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
+    <span class="topbar-meta">Brand Book &middot; v1 &middot; Internal</span>
+</header>
+
+<!-- COVER -->
+<section class="cover">
+    <div class="cover-eyebrow">Sadala &middot; Brand Book</div>
+    <h1 class="cover-title">Builders<br>of the<br>Unique.</h1>
+    <p class="cover-sub">A working document for everyone building, writing for, photographing, or representing Sadala.</p>
+    <div class="cover-meta">v1 &middot; Internal &middot; April 2026 &middot; sadala.com/brand</div>
+</section>
+
+<!-- 1 / MANIFESTO -->
+<section class="chapter">
+    <div class="ch-num">1 &nbsp;&middot;&nbsp; Manifesto</div>
+    <h2 class="ch-title">One-of-one Mediterranean homes, built by people who want them to last.</h2>
+    <div class="ch-body">
+        <p class="manifesto-lead">Most villas in M&aacute;laga today are <em>products.</em> White, flat, replicable. The same villa you'd find in Ibiza, in Marbella, in Miami. The plot is treated as something to flatten before building. The architecture argues with the land instead of listening to it.</p>
+        <p>We come from a family of real estate developers. We grew up in M&aacute;laga. We left for eighteen years, built and renovated abroad, and came back to find a city we love being filled with houses that could be anywhere.</p>
+        <p>We started Sadala to build the opposite. <strong>One-of-one Mediterranean homes</strong>, made for the plot they sit on, by the family who lives in the same neighbourhood as the people who buy them. A team of experts behind us, but always operator-led, always hands-on.</p>
+        <p class="signature-line">We are <strong>Builders of the Unique.</strong> And we mean it.</p>
+    </div>
+</section>
+
+<!-- 2 / ORIGIN -->
+<section class="chapter">
+    <div class="ch-num">2 &nbsp;&middot;&nbsp; Origin</div>
+    <h2 class="ch-title">A family story, an Andalusian return.</h2>
+    <div class="origin-grid">
+        <div class="origin-block">
+            <div class="block-label">A family story</div>
+            <p>We come from a family of real estate developers. We grew up in M&aacute;laga, drawn to the sea, the sun, the landscape. After eighteen years abroad, renovating, building, doing projects, we came back.</p>
+        </div>
+        <div class="origin-block">
+            <div class="block-label">What we found</div>
+            <p>Luxury villas in M&aacute;laga today look the same. White, flat, generic. The same villa, copy-pasted from Ibiza to Dubai. The plot is treated as an obstacle, not the brief.</p>
+        </div>
+        <div class="origin-block">
+            <div class="block-label">Our conviction</div>
+            <p>Real luxury is uniqueness. A villa worth buying is one made for <em>its</em> plot. Not adapted from a template. The constraints of the land are the architecture's opportunities.</p>
+        </div>
+        <div class="origin-block">
+            <div class="block-label">Today</div>
+            <p>Sadala is a family business: me, my wife, our two young kids. Backed by a team of experts. Rooted in <strong>Pinares de San Ant&oacute;n</strong>, where we live.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 3 / FINGERPRINT -->
+<section class="chapter">
+    <div class="ch-num">3 &nbsp;&middot;&nbsp; What makes a villa a Sadala villa</div>
+    <h2 class="ch-title">The architectural fingerprint.</h2>
+    <p class="fingerprint-intro">Four things appear in every Sadala project.</p>
+    <div class="fingerprint-grid">
+        <div class="fp-item">
+            <h3>Acero Corten</h3>
+            <p>The dialogue between industrial and natural. Corten weathers, evolves, ages, like nature does. It belongs in a Mediterranean landscape because it changes with it.</p>
+        </div>
+        <div class="fp-item">
+            <h3>Stone</h3>
+            <p>Local, hand-cut, made to outlast us. The material every Mediterranean home worth keeping has been built from for a thousand years. At the threshold, on the floor, around the pool.</p>
+        </div>
+        <div class="fp-item">
+            <h3>Olive trees</h3>
+            <p>The heart and soul of Andaluc&iacute;a. Every Sadala villa makes a place for them.</p>
+        </div>
+        <div class="fp-item">
+            <h3>Pines</h3>
+            <p>Pines are native to Pinares de San Ant&oacute;n. They are our heritage. The trees we grew up under. Every Sadala villa keeps them, plants them, or frames them.</p>
+        </div>
+    </div>
+
+    <div class="rule-block">
+        <p class="rule-quote">We adapt the project to the plot, not the plot to the project.</p>
+        <div class="rule-attribution">The operative rule</div>
+    </div>
+
+    <h3 class="subhead">What this means in practice</h3>
+    <ul class="practice-list">
+        <li>No template plans across projects.</li>
+        <li>Materials chosen for the specific plot, not from a catalogue.</li>
+        <li>Mature trees on site stay.</li>
+        <li>Topography becomes program. Slopes become terraces, rocks become features.</li>
+        <li>Light is studied for the actual orientation, never assumed.</li>
+    </ul>
+</section>
+
+<!-- 4 / VOICE -->
+<section class="chapter">
+    <div class="ch-num">4 &nbsp;&middot;&nbsp; Voice</div>
+    <h2 class="ch-title">How Sadala speaks.</h2>
+
+    <div class="voice-row">
+        <div class="voice-label">Tone</div>
+        <div class="voice-value">Confident. Warm. Specific. Considered. Honest. <em>Never salesy. Never corporate. Never marketing-school.</em></div>
+    </div>
+    <div class="voice-row">
+        <div class="voice-label">Founder voice</div>
+        <div class="voice-value">Sadala is family-led, founder-visible. <em>We</em> in brand communication. <em>I</em> in personal letters. Never corporate third person.</div>
+    </div>
+
+    <div class="words-grid">
+        <div class="words-col yes">
+            <h4>Words we use</h4>
+            <span class="word-pill">villa</span>
+            <span class="word-pill">plot</span>
+            <span class="word-pill">made</span>
+            <span class="word-pill">considered</span>
+            <span class="word-pill">place</span>
+            <span class="word-pill">rooted</span>
+            <span class="word-pill">hand</span>
+            <span class="word-pill">craft</span>
+        </div>
+        <div class="words-col no">
+            <h4>Words we don't</h4>
+            <span class="word-pill">luxury</span>
+            <span class="word-pill">lifestyle</span>
+            <span class="word-pill">dream home</span>
+            <span class="word-pill">investment opportunity</span>
+            <span class="word-pill">smart home</span>
+            <span class="word-pill">exclusive</span>
+            <span class="word-pill">bespoke</span>
+            <span class="word-pill">world-class</span>
+        </div>
+    </div>
+
+    <div class="brandline">
+        <div class="brandline-label">Brand line</div>
+        <div class="brandline-value">Builders of the Unique.</div>
+    </div>
+</section>
+
+<!-- 5 / AUDIENCE -->
+<section class="chapter">
+    <div class="ch-num">5 &nbsp;&middot;&nbsp; Audience</div>
+    <h2 class="ch-title">Who we build for.</h2>
+    <div class="tiers">
+        <div class="tier">
+            <div class="tier-num">01</div>
+            <div class="tier-name">North European<br>relocators</div>
+            <div class="tier-desc">NL &middot; BE &middot; DE &middot; Nordics. 45&ndash;60. Drives a Volvo. Reads <em>Cereal</em>, <em>Wallpaper</em>, <em>Apartamento</em>. Wears Lemaire. Beckham Law conscious.</div>
+        </div>
+        <div class="tier">
+            <div class="tier-num">02</div>
+            <div class="tier-name">UK / Irish<br>lifestyle</div>
+            <div class="tier-desc">50+. Post-Brexit. Design-aware. Wants quiet, not flash.</div>
+        </div>
+        <div class="tier">
+            <div class="tier-num">03</div>
+            <div class="tier-name">US remote<br>/ FIRE</div>
+            <div class="tier-desc">40&ndash;55. First Spanish villa. Discovered M&aacute;laga via design media.</div>
+        </div>
+    </div>
+
+    <div class="negative-block">
+        <div class="block-label">Who we don't build for</div>
+        <p>Flippers. Buyers chasing &ldquo;the most luxurious villa in M&aacute;laga&rdquo;. Buyers who see the plot as background.</p>
+    </div>
+</section>
+
+<!-- 6 / VISUAL -->
+<section class="chapter">
+    <div class="ch-num">6 &nbsp;&middot;&nbsp; Visual</div>
+    <h2 class="ch-title">The brand inherits the building.</h2>
+
+    <h3 class="subhead">Mark</h3>
+    <p class="photo-note">Moving toward a wordmark-led identity. Restraint over icon. Current pictorial mark to be retired with v2. Three directions for the designer to explore: <em>(1) pure wordmark in editorial serif, (2) single arch + wordmark, (3) place-rooted symbol + wordmark (pine, olive, coordinates).</em></p>
+
+    <h3 class="subhead">Color palette</h3>
+    <p class="palette-note">The brand palette is the villa's palette. These are the colors of lime plaster, travertine, oak, brass, and shadow &mdash; not screen colors invented for the website.</p>
+    <div class="swatches">
+        <div class="swatch light" style="background:#e8e1d5;">
+            <div class="swatch-name">Putty</div>
+            <div class="swatch-hex">#E8E1D5</div>
+            <div class="swatch-use">Lime plaster walls</div>
+        </div>
+        <div class="swatch light" style="background:#d4c8a8;">
+            <div class="swatch-name">Sand</div>
+            <div class="swatch-hex">#D4C8A8</div>
+            <div class="swatch-use">Travertine floor</div>
+        </div>
+        <div class="swatch dark" style="background:#a88a5e;">
+            <div class="swatch-name">Oak warm</div>
+            <div class="swatch-hex">#A88A5E</div>
+            <div class="swatch-use">Millwork</div>
+        </div>
+        <div class="swatch dark" style="background:#b89568;">
+            <div class="swatch-name">Brass</div>
+            <div class="swatch-hex">#B89568</div>
+            <div class="swatch-use">Hardware</div>
+        </div>
+        <div class="swatch dark" style="background:#3a3530;">
+            <div class="swatch-name">Espresso</div>
+            <div class="swatch-hex">#3A3530</div>
+            <div class="swatch-use">Leather, accents</div>
+        </div>
+        <div class="swatch dark" style="background:#1a1510;">
+            <div class="swatch-name">Deep</div>
+            <div class="swatch-hex">#1A1510</div>
+            <div class="swatch-use">Text, frames</div>
+        </div>
+        <div class="swatch light" style="background:#fafaf7;">
+            <div class="swatch-name">Off-white</div>
+            <div class="swatch-hex">#FAFAF7</div>
+            <div class="swatch-use">Canvas</div>
+        </div>
+    </div>
+
+    <h3 class="subhead">Typography</h3>
+    <div class="typography-grid">
+        <div class="type-label">Display</div>
+        <div>
+            <div class="type-display">Cormorant Garamond</div>
+            <div class="type-meta">or Garamond Premier &middot; GT Sectra &middot; Editorial serif &middot; Light weight</div>
+        </div>
+    </div>
+    <div class="typography-grid">
+        <div class="type-label">Body</div>
+        <div>
+            <div class="type-body" style="font-size: 28px; line-height: 1.4;">Inter &mdash; modern sans, set 14&ndash;16px, line-height 1.6+.</div>
+            <div class="type-meta">or S&ouml;hne &middot; Neue Haas Grotesk</div>
+        </div>
+    </div>
+
+    <h3 class="subhead">Photography</h3>
+    <p class="photo-note">Natural light only. Warm grading. Close on materials, wide on context: pines, olives, light. Architecture often without people. When people: anonymous, in shadow, hand on stone.</p>
+
+    <h3 class="subhead">Materials</h3>
+    <p class="materials-list">Lime plaster &middot; travertine &middot; oak grain &middot; brass patina &middot; linen &middot; leather &middot; corten steel.</p>
+    <p class="photo-note" style="margin-top: 16px;">Print the brand book on uncoated paper. Bind in linen.</p>
+</section>
+
+<!-- 7 / FORBIDDEN -->
+<section class="chapter">
+    <div class="ch-num">7 &nbsp;&middot;&nbsp; Forbidden</div>
+    <h2 class="ch-title">We never.</h2>
+    <p class="forbidden-intro">A short list, taken seriously.</p>
+    <ul class="forbidden-list">
+        <li>Show sunsets in marketing.</li>
+        <li>Use the words <em>luxury &middot; exclusive &middot; dream home.</em></li>
+        <li>Use stock photography of beaches or palm trees.</li>
+        <li>Promise a &ldquo;lifestyle&rdquo;.</li>
+        <li>Compare ourselves to other developers in copy.</li>
+        <li>Use cool fluorescent lighting in branded space.</li>
+        <li>Photograph villas with people in the hero shot.</li>
+        <li>Refer to buyers as <em>&ldquo;clients&rdquo;</em>. They are <strong>owners</strong>.</li>
+    </ul>
+</section>
+
+<!-- 8 / APPLICATIONS -->
+<section class="chapter">
+    <div class="ch-num">8 &nbsp;&middot;&nbsp; Applications</div>
+    <h2 class="ch-title">Where the brand lives.</h2>
+    <div class="applications-grid">
+        <div class="application-item"><span>Web</span>sadala.com + per-villa subdomains <em>(sosiego.sadala.com)</em></div>
+        <div class="application-item"><span>Print</span>Buyer dossier <em>(PDF + leather-bound print)</em></div>
+        <div class="application-item"><span>Print</span>One-pager per villa <em>(EN &middot; ES &middot; DE &middot; NL &middot; FR)</em></div>
+        <div class="application-item"><span>Space</span>Sadala HQ &mdash; basement office</div>
+        <div class="application-item"><span>Space</span>Construction signage</div>
+        <div class="application-item"><span>Stationery</span>Letterhead, business cards</div>
+        <div class="application-item"><span>Print</span>Welcome envelope at handover</div>
+        <div class="application-item"><span>Social</span>Instagram primarily</div>
+    </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+    <div class="closing-mark">Sadala</div>
+    <p class="closing-line">Builders of the Unique &middot; M&aacute;laga</p>
+</section>
+
+<footer>
+    <div class="f-mark">Sadala SL</div>
+    <div class="f-meta">Brand Book v1 &middot; Internal &middot; April 2026</div>
+    <a href="../index.html" class="f-back">&larr; Back to sadala.com</a>
+</footer>
+
+</body>
+</html>
