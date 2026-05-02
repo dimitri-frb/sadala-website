@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Sosiego — Mockup: Founder's Voice (project page)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --white:#E8E2D5; --off-white:#E1D8CC; --paper:#F0EBDD; --black:#2C2C2C; --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1); --accent:#C1876B; --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',sans-serif; --hand:'Caveat',cursive; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+        .mock-banner { background: var(--accent); color: #fff; text-align: center; padding: 8px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .mock-banner a { color: #fff; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; background: var(--white); border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); }
+        .logo { font-family: var(--serif); font-size: 20px; letter-spacing: 4px; text-transform: uppercase; }
+        .nav-r { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 300; color: var(--grey); }
+        .nav-r .lang { color: var(--accent); }
+        .crumb { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+        .crumb a { color: var(--accent); text-decoration: none; }
+
+        /* HERO */
+        .hero { position: relative; height: 84vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,.55) 100%); }
+        .hero-content { position: absolute; bottom: 60px; left: 48px; right: 48px; color: #fff; z-index: 2; }
+        .hero-eyebrow { display: flex; gap: 14px; align-items: center; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 18px; }
+        .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+        .hero-title { font-family: var(--serif); font-size: clamp(56px, 9vw, 120px); font-weight: 300; line-height: 1; letter-spacing: -1px; }
+        .hero-sub { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); font-style: italic; color: rgba(255,255,255,.85); margin-top: 16px; max-width: 600px; line-height: 1.4; }
+
+        .hand-stamp { position: absolute; top: 100px; right: 48px; padding: 10px 18px; background: rgba(255,255,255,.92); color: var(--accent); font-family: var(--hand); font-size: 22px; transform: rotate(-3deg); box-shadow: 0 8px 24px rgba(0,0,0,.18); z-index: 3; line-height: 1; }
+
+        /* OPENING — first-person introduction */
+        .open { padding: 100px 48px; max-width: 880px; margin: 0 auto; }
+        .open-byline { display: flex; gap: 16px; align-items: center; margin-bottom: 36px; }
+        .open-byline .avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--off-white); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 24px; color: var(--accent); border: 1px solid var(--grey-border); }
+        .open-byline .meta { font-size: 13px; color: var(--grey); line-height: 1.5; }
+        .open-byline .meta strong { color: var(--black); font-weight: 400; }
+        .open p { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.65; color: var(--black); margin-bottom: 22px; }
+        .open p:first-of-type { font-size: 26px; line-height: 1.5; font-style: italic; }
+        .open p em { color: var(--accent); }
+
+        /* PHOTO MOMENT — render with polaroid */
+        .moment { padding: 30px 48px 80px; max-width: 1200px; margin: 0 auto; position: relative; }
+        .moment-main { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+        .moment-main img { width: 100%; height: 100%; object-fit: cover; }
+        .moment .polaroid { position: absolute; bottom: 40px; left: 80px; width: 220px; padding: 14px 14px 44px; background: #f5efe2; box-shadow: 0 14px 36px rgba(0,0,0,.2); transform: rotate(-3deg); z-index: 2; }
+        .moment .polaroid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; filter: saturate(.85) contrast(1.05); }
+        .moment .polaroid .cap { font-family: var(--hand); font-size: 19px; color: var(--black); margin-top: 10px; line-height: 1.2; }
+
+        /* FIELD NOTES — why this plot */
+        .notes { padding: 100px 48px; background: var(--paper); border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
+        .notes-inner { max-width: 800px; margin: 0 auto; }
+        .notes-eyebrow { font-family: var(--hand); font-size: 28px; color: var(--accent); margin-bottom: 8px; transform: rotate(-1deg); display: inline-block; }
+        .notes-h { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 300; margin-bottom: 48px; line-height: 1.2; letter-spacing: -0.3px; }
+        .note { display: grid; grid-template-columns: 130px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--grey-border); align-items: start; }
+        .note:last-child { border-bottom: 1px solid var(--grey-border); }
+        .note-date { font-family: var(--serif); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); padding-top: 4px; }
+        .note-body { font-family: var(--serif); font-size: 18px; font-weight: 400; line-height: 1.6; color: var(--black); font-style: italic; }
+        .note-body strong { color: var(--accent); font-weight: 500; font-style: normal; }
+        .note-sig { display: block; font-family: var(--hand); font-size: 22px; color: var(--accent); margin-top: 10px; font-style: normal; }
+
+        /* BODY · MIND · SOUL — brand band, kept */
+        .pillars { padding: 120px 48px; background: var(--black); color: var(--off-white); }
+        .pillars-inner { max-width: 1200px; margin: 0 auto; }
+        .pillars-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .pillars-title { font-family: var(--serif); font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 1; margin-bottom: 22px; letter-spacing: -0.5px; }
+        .pillars-intro { font-size: 15px; line-height: 1.8; color: rgba(225,216,204,.7); max-width: 620px; font-weight: 300; }
+        .pillars-intro em { color: var(--accent); font-style: normal; }
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+        .pillar { display: flex; flex-direction: column; }
+        .pillar-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 24px; }
+        .pillar-img img { width: 100%; height: 100%; object-fit: cover; }
+        .pillar-tag { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .pillar-name { font-family: var(--serif); font-size: 28px; font-weight: 400; margin-bottom: 10px; color: var(--off-white); }
+        .pillar-desc { font-size: 13px; line-height: 1.85; color: rgba(225,216,204,.7); font-weight: 300; }
+        .pillar .aside { font-family: var(--hand); font-size: 19px; color: var(--accent); margin-top: 16px; line-height: 1.2; }
+        .pillar .aside::before { content: '↑ '; }
+
+        /* KPI strip — but personally framed */
+        .kpis-band { padding: 100px 48px; max-width: 1100px; margin: 0 auto; position: relative; }
+        .kpis-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .kpis-h { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 300; line-height: 1.15; margin-bottom: 48px; max-width: 700px; letter-spacing: -0.3px; }
+        .kpis-h em { color: var(--accent); font-style: italic; }
+        .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 36px 0; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
+        .kpi-v { font-family: var(--serif); font-size: 48px; font-weight: 300; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+        .kpi-l { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 12px; }
+        .kpi-aside { font-family: var(--hand); font-size: 17px; color: var(--accent); line-height: 1.2; }
+
+        /* THE GARDEN STORY */
+        .garden { padding: 120px 48px; background: var(--off-white); }
+        .garden-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .garden-img { width: 100%; aspect-ratio: 4/5; overflow: hidden; position: relative; }
+        .garden-img img { width: 100%; height: 100%; object-fit: cover; }
+        .garden-img .marker { position: absolute; top: 24px; left: 24px; padding: 8px 14px; background: var(--white); font-family: var(--hand); font-size: 18px; color: var(--accent); transform: rotate(-2deg); box-shadow: 0 6px 16px rgba(0,0,0,.1); }
+        .garden-text .eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .garden-text h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.3px; }
+        .garden-text h2 em { color: var(--accent); font-style: italic; }
+        .garden-text p { font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--black); margin-bottom: 16px; }
+        .garden-text .signed { display: inline-block; font-family: var(--hand); font-size: 22px; color: var(--accent); margin-top: 12px; }
+
+        /* CHRONOLOGY — short, journal-style */
+        .chrono { padding: 100px 48px; max-width: 880px; margin: 0 auto; }
+        .chrono-eyebrow { font-family: var(--hand); font-size: 26px; color: var(--accent); margin-bottom: 8px; transform: rotate(-1deg); display: inline-block; }
+        .chrono h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 300; line-height: 1.15; margin-bottom: 40px; letter-spacing: -0.3px; }
+        .chrono-list { position: relative; padding-left: 36px; }
+        .chrono-list::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--grey-border); }
+        .chrono-item { position: relative; padding-bottom: 28px; }
+        .chrono-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 13px; height: 13px; border-radius: 50%; background: var(--white); border: 2px solid var(--accent); }
+        .chrono-item.now::before { background: var(--accent); box-shadow: 0 0 0 5px rgba(193,135,107,.18); }
+        .chrono-date { font-family: var(--serif); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+        .chrono-title { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
+        .chrono-body { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+
+        /* CLOSING LETTER */
+        .closing { padding: 120px 48px; background: var(--paper); border-top: 1px solid var(--grey-border); }
+        .closing-inner { max-width: 720px; margin: 0 auto; }
+        .closing .greeting { font-family: var(--hand); font-size: 32px; color: var(--accent); margin-bottom: 24px; }
+        .closing p { font-family: var(--serif); font-size: 21px; line-height: 1.7; color: var(--black); margin-bottom: 20px; }
+        .closing p em { color: var(--accent); }
+        .closing .signature { font-family: var(--hand); font-size: 56px; color: var(--accent); line-height: 1; margin-top: 32px; }
+        .closing .signed-by { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 12px; }
+        .closing .actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+        .closing .actions a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .25s; }
+        .closing .actions .primary { background: var(--accent); color: #fff; }
+        .closing .actions .primary:hover { background: #d49a7e; }
+        .closing .actions .ghost { color: var(--black); border: 1px solid var(--grey-border); }
+        .closing .actions .ghost:hover { border-color: var(--accent); }
+        .closing .actions svg { width: 14px; height: 14px; fill: currentColor; }
+
+        footer { padding: 48px; text-align: center; font-size: 12px; color: var(--grey); background: var(--white); border-top: 1px solid var(--grey-border); }
+        footer .live { display: inline-block; padding: 6px 14px; background: var(--off-white); border-radius: 999px; margin-bottom: 12px; font-size: 11px; }
+        footer .live::before { content: '●'; color: #5a7a5a; margin-right: 6px; }
+
+        /* Floating CTA — kept from live site */
+        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
+        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
+        .float-cta:hover svg { fill: #fff; }
+
+        @media (max-width: 800px) {
+            nav { padding: 16px 20px; } .nav-r { display: none; }
+            .hero-content { left: 20px; right: 20px; bottom: 40px; }
+            .hand-stamp { right: 20px; top: 70px; font-size: 18px; }
+            .open { padding: 60px 20px; }
+            .open p { font-size: 18px; } .open p:first-of-type { font-size: 21px; }
+            .moment { padding: 20px; } .moment .polaroid { width: 130px; left: 16px; bottom: 24px; padding: 8px 8px 28px; }
+            .moment .polaroid .cap { font-size: 14px; }
+            .notes { padding: 60px 20px; } .note { grid-template-columns: 1fr; gap: 8px; }
+            .pillars { padding: 60px 20px; } .pillars-grid { grid-template-columns: 1fr; gap: 32px; }
+            .kpis-band { padding: 60px 20px; } .kpi-row { grid-template-columns: 1fr 1fr; gap: 32px 16px; padding: 28px 0; }
+            .garden { padding: 60px 20px; } .garden-inner { grid-template-columns: 1fr; gap: 32px; }
+            .chrono { padding: 60px 20px; }
+            .closing { padding: 60px 20px; } .closing .signature { font-size: 42px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup · Sosiego project page in Founder's Voice · <a href="index.html">Back to all options</a></div>
+
+<nav>
+    <div class="logo">Sadala</div>
+    <div class="nav-r">
+        <span class="crumb"><a href="index.html">Projects</a> · Sosiego</span>
+        <span>Approach</span>
+        <span>Contact</span>
+        <span class="lang">EN ▾</span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="../img/sosiego/sosiego-entrance-dusk.png" alt="Sosiego at dusk">
+    <div class="hand-stamp">we're on site this week</div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">The villa I'm building this year · Pinares de San Antón</div>
+        <h1 class="hero-title">Sosiego</h1>
+        <p class="hero-sub"><em>sosiego (n.), Spanish</em> — a state of deep calm and clarity.</p>
+    </div>
+</section>
+
+<!-- OPENING -->
+<section class="open">
+    <div class="open-byline">
+        <div class="avatar">D</div>
+        <div class="meta">
+            <strong>Dimitri</strong> · founder, Sadala<br>
+            Writing from the plot. April 30, 2026.
+        </div>
+    </div>
+    <p>I drove past this plot for three years before I bought it. <em>1,096 square metres of pine shade, eight minutes from Málaga centre, surrounded by the kind of silence you usually have to drive an hour to find.</em></p>
+    <p>I bought it before I had a plan. The plan came afterwards — slowly, with the trees, the slope, and the way the morning sun moves across the south corner deciding most of it for me.</p>
+    <p>This page is the project. Not a brochure. <em>A working document I'll keep updating until the keys are handed over.</em></p>
+</section>
+
+<!-- PHOTO MOMENT — polaroid + render -->
+<section class="moment">
+    <div class="moment-main"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset"></div>
+    <div class="polaroid">
+        <img src="../img/sosiego/jardin-zen.png" alt="zen garden">
+        <div class="cap">the carob tree<br>stays.</div>
+    </div>
+</section>
+
+<!-- FIELD NOTES -->
+<section class="notes">
+    <div class="notes-inner">
+        <span class="notes-eyebrow">why this plot</span>
+        <h2 class="notes-h">Three things you only know if you walk it at sunrise.</h2>
+
+        <div class="note">
+            <div class="note-date">Note 01</div>
+            <div class="note-body">
+                The eight stone pines on the south side are <strong>more than seventy years old</strong>. We're building around them, not through them. The kitchen window faces east because that's where their morning shadows already pointed.
+                <span class="note-sig">— D.</span>
+            </div>
+        </div>
+
+        <div class="note">
+            <div class="note-date">Note 02</div>
+            <div class="note-body">
+                You can hear cicadas before you see the road. <strong>Eight minutes from Málaga, but the city stops at the second bend.</strong> I tested it with a sound meter — 32 dB at noon. That's library quiet. In a city.
+                <span class="note-sig">— D.</span>
+            </div>
+        </div>
+
+        <div class="note">
+            <div class="note-date">Note 03</div>
+            <div class="note-body">
+                The plot has a natural fall of three metres from the road to the south corner. We're using that drop to embed the gym, sauna and cold plunge below grade — <strong>so that the living floor sits at the height of the pine canopy, not below it.</strong>
+                <span class="note-sig">— D.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BODY · MIND · SOUL -->
+<section class="pillars">
+    <div class="pillars-inner">
+        <div class="pillars-eyebrow">The concept</div>
+        <h2 class="pillars-title">Body. Mind. Soul.</h2>
+        <p class="pillars-intro">Health is the new luxury. <em>Sosiego is conceived as an instrument for living longer, clearer, calmer.</em> Three pillars inform every square metre — the body you move through, the mind you sharpen, the soul you settle.</p>
+
+        <div class="pillars-grid">
+            <div class="pillar">
+                <div class="pillar-img"><img src="../img/sosiego/zona-fitness.png" alt="Body"></div>
+                <div class="pillar-tag">01 · Body</div>
+                <div class="pillar-name">Move. Recover. Repeat.</div>
+                <p class="pillar-desc">Indoor + outdoor gym, lap pool, cold plunge, sauna, infrared cabin. Movement built into the architecture, not added later.</p>
+                <div class="aside">below grade. quieter. cooler.</div>
+            </div>
+            <div class="pillar">
+                <div class="pillar-img"><img src="../img/sosiego/jardin-zen.png" alt="Mind"></div>
+                <div class="pillar-tag">02 · Mind</div>
+                <div class="pillar-name">Think better. Rest deeper.</div>
+                <p class="pillar-desc">Library, meditation room, cinema, a Zen garden carved between the pines. Light studied for the actual orientation, never assumed.</p>
+                <div class="aside">my favourite room.</div>
+            </div>
+            <div class="pillar">
+                <div class="pillar-img"><img src="../img/sosiego/sosiego-firepit-lounge.png" alt="Soul"></div>
+                <div class="pillar-tag">03 · Soul</div>
+                <div class="pillar-name">Slow down. Tune in.</div>
+                <p class="pillar-desc">KM0 vegetable garden, olive grove, fire pit, summer kitchen. The Andalusian table, returned to the centre of the home.</p>
+                <div class="aside">where dinner happens.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KPIs -->
+<section class="kpis-band">
+    <div class="kpis-eyebrow">In numbers</div>
+    <h2 class="kpis-h">Every figure here exists <em>because of the plot</em> — not despite it.</h2>
+    <div class="kpi-row">
+        <div>
+            <div class="kpi-v">570</div>
+            <div class="kpi-l">m² built</div>
+            <div class="kpi-aside">we could have built more.<br>we chose not to.</div>
+        </div>
+        <div>
+            <div class="kpi-v">1,096</div>
+            <div class="kpi-l">m² of plot</div>
+            <div class="kpi-aside">8 pines preserved.</div>
+        </div>
+        <div>
+            <div class="kpi-v">4</div>
+            <div class="kpi-l">bedrooms</div>
+            <div class="kpi-aside">family-sized.<br>not hotel-sized.</div>
+        </div>
+        <div>
+            <div class="kpi-v">2027</div>
+            <div class="kpi-l">delivery</div>
+            <div class="kpi-aside">if it rains, longer.</div>
+        </div>
+    </div>
+</section>
+
+<!-- THE GARDEN -->
+<section class="garden">
+    <div class="garden-inner">
+        <div class="garden-img">
+            <img src="../img/sosiego/view-sosiego-zen.png" alt="KM0 garden">
+            <div class="marker">where dinner grows</div>
+        </div>
+        <div class="garden-text">
+            <div class="eyebrow">The KM0 garden</div>
+            <h2>The salad for tonight grows <em>fifteen metres from the table.</em></h2>
+            <p>Tomatoes, herbs, citrus, an olive grove that already throws shadow. The kind of small daily ritual you can't outsource — and the kind that makes you feel rooted somewhere within a week of moving in.</p>
+            <p>We're working with a local horticulturist from Casabermeja. She picked the varieties. They'll be in the ground before the keys are handed over.</p>
+            <div class="signed">— D.</div>
+        </div>
+    </div>
+</section>
+
+<!-- CHRONOLOGY -->
+<section class="chrono">
+    <span class="chrono-eyebrow">the project, so far</span>
+    <h2>From plot to home, in public.</h2>
+
+    <div class="chrono-list">
+        <div class="chrono-item">
+            <div class="chrono-date">Oct 2024</div>
+            <div class="chrono-title">Plot identified</div>
+            <p class="chrono-body">After three years of driving past it.</p>
+        </div>
+        <div class="chrono-item">
+            <div class="chrono-date">Dec 2024</div>
+            <div class="chrono-title">First sketch</div>
+            <p class="chrono-body">Pencil on tracing paper. Kitchen window facing east before any wall existed.</p>
+        </div>
+        <div class="chrono-item">
+            <div class="chrono-date">Apr 2025</div>
+            <div class="chrono-title">Project approved</div>
+            <p class="chrono-body">Building permit issued. Zero variance from the original concept.</p>
+        </div>
+        <div class="chrono-item">
+            <div class="chrono-date">Nov 2025</div>
+            <div class="chrono-title">Groundbreaking</div>
+            <p class="chrono-body">Three pines we feared we'd lose all stayed.</p>
+        </div>
+        <div class="chrono-item now">
+            <div class="chrono-date">Apr 2026 · today</div>
+            <div class="chrono-title">Cantilever poured</div>
+            <p class="chrono-body">Week 18 of 134. The structure that defines the southern terrace is in. From here on, it starts looking like the renders.</p>
+        </div>
+        <div class="chrono-item">
+            <div class="chrono-date">Q3 2027</div>
+            <div class="chrono-title">Keys handed over</div>
+            <p class="chrono-body">If everything goes the way we plan it. It usually mostly does.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSING LETTER -->
+<section class="closing">
+    <div class="closing-inner">
+        <div class="greeting">If you've read this far,</div>
+        <p>you've probably been looking at houses long enough to recognise the feeling that none of them are quite right. The kitchen is in the wrong place. The garden is too small. The light is wrong. The people who built it didn't think about you.</p>
+        <p>Sosiego is the only home I'm building this year. <em>It is being built by someone who would happily live in it himself.</em> If that's not the right villa for you, I'll tell you so. If it is, we'll talk often — and you'll know the house long before the keys are in your hand.</p>
+        <p>Either way, the right way to start is a coffee on the plot. The pines say more in five minutes than this page does.</p>
+        <div class="signature">— Dimitri</div>
+        <div class="signed-by">dimitri@sadala.com · +34 639 675 315</div>
+
+        <div class="actions">
+            <a href="#" class="primary">Walk the plot with me</a>
+            <a href="#" class="ghost">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+                WhatsApp Dimitri directly
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="live">Pinares de San Antón · 22°C · sunset 21:14</div>
+    <div>© 2026 Sadala SL · Builders of the Unique · Málaga, Spain</div>
+</footer>
+
+<a href="#" class="float-cta">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Talk to Dimitri</span>
+</a>
+
+</body>
+</html>
