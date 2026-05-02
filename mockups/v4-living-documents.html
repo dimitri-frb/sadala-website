@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Sadala — Mockup: Living Documents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C; --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1); --accent:#C1876B; --green:#5A7A5A; --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+        .mock-banner { background: var(--accent); color: #fff; text-align: center; padding: 8px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .mock-banner a { color: #fff; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: var(--white); border-bottom: 1px solid var(--grey-border); }
+        .logo { font-family: var(--serif); font-size: 20px; letter-spacing: 4px; text-transform: uppercase; }
+        .nav-r { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 300; color: var(--grey); }
+
+        /* HERO — small, journal-like opener */
+        .hero { padding: 60px 48px 30px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .hero-l h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 64px); font-weight: 300; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.3px; }
+        .hero-l h1 em { font-style: italic; color: var(--accent); }
+        .hero-l p { font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--grey); max-width: 460px; }
+        .hero-r { position: relative; }
+        .hero-r .img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; }
+        .hero-r .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .stamp { position: absolute; top: 20px; right: 20px; padding: 8px 14px; background: var(--accent); color: #fff; font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; transform: rotate(-3deg); box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+
+        /* TODAY ON SITE — featured live update */
+        .today { padding: 80px 48px; background: var(--off-white); border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
+        .today-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
+        .today-l .pulse { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; background: var(--white); border: 1px solid var(--green); color: var(--green); font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border-radius: 999px; margin-bottom: 24px; }
+        .today-l .pulse::before { content: '●'; animation: pulse 2s ease infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+        .today-l .week { font-family: var(--mono); font-size: 13px; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px; }
+        .today-l h2 { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 20px; letter-spacing: -0.2px; }
+        .today-l p { font-family: var(--serif); font-size: 17px; font-weight: 400; font-style: italic; line-height: 1.6; color: var(--grey); margin-bottom: 16px; }
+        .today-l .signed { font-size: 12px; letter-spacing: 1px; color: var(--accent); }
+        .today-r { position: relative; }
+        .today-r img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .today-r .meta { position: absolute; bottom: -18px; left: 18px; padding: 8px 16px; background: var(--white); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+        /* TIMELINE — vertical chronology of the living project */
+        .timeline { padding: 100px 48px; }
+        .timeline-inner { max-width: 920px; margin: 0 auto; }
+        .tl-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .tl-head { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; line-height: 1.15; margin-bottom: 56px; max-width: 720px; letter-spacing: -0.3px; }
+        .tl-head em { font-style: italic; color: var(--accent); }
+        .tl { position: relative; padding-left: 40px; }
+        .tl::before { content: ''; position: absolute; left: 7px; top: 12px; bottom: 12px; width: 1px; background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 50%, var(--grey-border) 50%, var(--grey-border) 100%); }
+        .tl-item { position: relative; padding: 0 0 48px; }
+        .tl-item::before { content: ''; position: absolute; left: -40px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 2px solid var(--accent); }
+        .tl-item.future::before { border-color: var(--grey-light); background: var(--grey-light); }
+        .tl-item.now::before { background: var(--accent); box-shadow: 0 0 0 6px rgba(193,135,107,.18); }
+        .tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); margin-bottom: 6px; }
+        .tl-item.now .tl-date { color: var(--accent); font-weight: 400; }
+        .tl-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
+        .tl-body { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); max-width: 560px; }
+        .tl-body strong { color: var(--black); font-weight: 400; }
+        .tl-thumb { margin-top: 14px; width: 240px; aspect-ratio: 4/3; overflow: hidden; }
+        .tl-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* PROJECTS — three living documents */
+        .projects { padding: 100px 48px; background: var(--off-white); border-top: 1px solid var(--grey-border); }
+        .pj-inner { max-width: 1200px; margin: 0 auto; }
+        .pj-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .pj-h { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 56px; max-width: 700px; letter-spacing: -0.3px; }
+        .pj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .pj-card { background: var(--white); padding: 0; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform .3s; }
+        .pj-card:hover { transform: translateY(-4px); }
+        .pj-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+        .pj-img img { width: 100%; height: 100%; object-fit: cover; }
+        .pj-body { padding: 24px; }
+        .pj-status { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .pj-status.sold { color: var(--grey); }
+        .pj-status.live::before { content: '●'; color: var(--green); animation: pulse 2s ease infinite; }
+        .pj-status.sold::before { content: '✓'; }
+        .pj-status.future::before { content: '◯'; }
+        .pj-title { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+        .pj-sub { font-size: 13px; color: var(--grey); margin-bottom: 16px; }
+        .pj-progress { height: 3px; background: var(--off-white); margin-bottom: 12px; position: relative; overflow: hidden; }
+        .pj-progress .bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); }
+        .pj-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--grey); }
+
+        /* CTA */
+        .cta { padding: 100px 48px; text-align: center; background: var(--black); color: var(--off-white); }
+        .cta h2 { font-family: var(--serif); font-size: clamp(28px, 4.2vw, 44px); font-weight: 300; line-height: 1.15; max-width: 800px; margin: 0 auto 16px; letter-spacing: -0.3px; }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta p { font-size: 15px; line-height: 1.7; color: rgba(225,216,204,.65); max-width: 540px; margin: 0 auto 32px; font-weight: 300; }
+        .cta a { display: inline-block; padding: 14px 32px; background: var(--accent); color: #fff; text-decoration: none; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; transition: background .25s; }
+        .cta a:hover { background: #d49a7e; }
+
+        footer { padding: 36px 48px; text-align: center; font-size: 12px; color: var(--grey); background: var(--white); border-top: 1px solid var(--grey-border); }
+        .live { display: inline-block; padding: 6px 14px; background: var(--off-white); border-radius: 999px; margin-bottom: 12px; font-size: 11px; }
+        .live::before { content: '●'; color: var(--green); margin-right: 6px; }
+
+        @media (max-width: 800px) {
+            nav { padding: 16px 20px; } .nav-r { display: none; }
+            .hero { padding: 32px 20px; grid-template-columns: 1fr; gap: 32px; }
+            .today { padding: 60px 20px; } .today-inner { grid-template-columns: 1fr; gap: 32px; }
+            .timeline { padding: 60px 20px; }
+            .tl-thumb { width: 100%; max-width: 280px; }
+            .projects { padding: 60px 20px; } .pj-grid { grid-template-columns: 1fr; gap: 24px; }
+            .cta { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup · Option 4: Living Documents · <a href="index.html">Back to all options</a></div>
+
+<nav>
+    <div class="logo">Sadala</div>
+    <div class="nav-r"><span>Projects</span><span>Approach</span><span>Contact</span><span style="color:var(--accent);">EN ▾</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-l">
+        <h1>Each home is a <em>living document.</em><br>Updated every week.</h1>
+        <p>Most luxury developers hide construction. We do the opposite. Every Sadala project is published in real time — sketch, permit, foundation, finished room — so you see exactly how the house you might own is being built.</p>
+    </div>
+    <div class="hero-r">
+        <div class="img-wrap"><img src="../img/sosiego/sosiego-entrance-dusk.png" alt=""></div>
+        <div class="stamp">Sosiego · today</div>
+    </div>
+</section>
+
+<!-- TODAY ON SITE -->
+<section class="today">
+    <div class="today-inner">
+        <div class="today-l">
+            <span class="pulse">Live · this week on site</span>
+            <div class="week">Sosiego · week 18 of 134</div>
+            <h2>The cantilever is finished. The view we promised is actually there.</h2>
+            <p>"We took the doorway out at the last minute. The morning light comes in 30 minutes earlier this way. Worth the rework."</p>
+            <div class="signed">— Dimitri · April 30, 2026</div>
+        </div>
+        <div class="today-r">
+            <img src="../img/sosiego/zona-fitness.png" alt="">
+            <div class="meta">IMG_0218.JPG · 30 Apr 2026 · 14:22</div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+    <div class="timeline-inner">
+        <div class="tl-eyebrow">Sosiego · the chronology</div>
+        <h2 class="tl-head">From a plot to a home, <em>in public.</em></h2>
+
+        <div class="tl">
+            <div class="tl-item">
+                <div class="tl-date">2024 · OCT</div>
+                <div class="tl-title">Plot identified</div>
+                <p class="tl-body">1,096 m² in Pinares de San Antón. <strong>Eight stone pines on the south side, all to be preserved.</strong> The plot wrote the brief before the architect saw a sheet of paper.</p>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-date">2024 · DEC</div>
+                <div class="tl-title">First sketch</div>
+                <p class="tl-body">A pencil drawing on tracing paper. The kitchen window already pointed east — defined by where the pines threw morning shadows.</p>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-date">2025 · APR</div>
+                <div class="tl-title">Project approved</div>
+                <p class="tl-body">Building permit issued. <strong>Zero variance from the original concept.</strong> The plot decides — and the municipality, that day, agreed.</p>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-date">2025 · NOV</div>
+                <div class="tl-title">Groundbreaking</div>
+                <p class="tl-body">First spade in the ground on a Wednesday. Three pines we feared we'd lose all stayed.</p>
+                <div class="tl-thumb"><img src="../img/sosiego/jardin-zen.png" alt=""></div>
+            </div>
+
+            <div class="tl-item now">
+                <div class="tl-date">2026 · APR · TODAY</div>
+                <div class="tl-title">Cantilever poured</div>
+                <p class="tl-body">Week 18 of 134. The structure that defines the southern terrace is in place. <strong>From here on, the house starts looking like the renders.</strong></p>
+            </div>
+
+            <div class="tl-item future">
+                <div class="tl-date">2026 · OCT</div>
+                <div class="tl-title">Watertight shell</div>
+                <p class="tl-body">Walls, roof, openings. The interior fit-out begins.</p>
+            </div>
+
+            <div class="tl-item future">
+                <div class="tl-date">2027 · Q3</div>
+                <div class="tl-title">Keys handed over</div>
+                <p class="tl-body">Delivery. Olive grove planted. The kitchen takes its first morning light.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS — living/sold/future -->
+<section class="projects">
+    <div class="pj-inner">
+        <div class="pj-eyebrow">Three projects · three documents</div>
+        <h2 class="pj-h">Each one published in full. From the empty plot to the keys.</h2>
+
+        <div class="pj-grid">
+            <a href="#" class="pj-card">
+                <div class="pj-img"><img src="../img/leoni-benabu/main.jpeg" alt="Origen"></div>
+                <div class="pj-body">
+                    <div class="pj-status sold">Origen · delivered & sold</div>
+                    <div class="pj-title">The first one</div>
+                    <div class="pj-sub">620 m² · Pinares de San Antón</div>
+                    <div class="pj-progress"><div class="bar" style="width:100%; background:var(--grey);"></div></div>
+                    <div class="pj-meta"><span>2021 — 2023</span><span>Read the full diary</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="pj-card">
+                <div class="pj-img"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
+                <div class="pj-body">
+                    <div class="pj-status live">Sosiego · live · week 18</div>
+                    <div class="pj-title">A home for longevity</div>
+                    <div class="pj-sub">570 m² · Pinares de San Antón</div>
+                    <div class="pj-progress"><div class="bar" style="width:13%;"></div></div>
+                    <div class="pj-meta"><span>13% built</span><span>Delivery 2027</span></div>
+                </div>
+            </a>
+
+            <a href="#" class="pj-card">
+                <div class="pj-img"><img src="../img/cantal/cantal-aerial.jpg" alt="El Cantal"></div>
+                <div class="pj-body">
+                    <div class="pj-status future">El Cantal · approved</div>
+                    <div class="pj-title">A house that becomes hill</div>
+                    <div class="pj-sub">550 m² · Monte de Málaga</div>
+                    <div class="pj-progress"><div class="bar" style="width:5%;"></div></div>
+                    <div class="pj-meta"><span>Permits secured</span><span>Groundbreaking Q4 2026</span></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>You'll see this home <em>before it exists.</em><br>That's the point.</h2>
+    <p>Subscribe to the Sosiego diary, or write to us directly. Either way, you'll meet the house long before the keys are handed over.</p>
+    <a href="#">Start a conversation</a>
+</section>
+
+<footer>
+    <div class="live">Pinares de San Antón · 22°C · sunset 21:14</div>
+    <div>© 2026 Sadala SL · Builders of the Unique · Málaga, Spain</div>
+</footer>
+
+</body>
+</html>

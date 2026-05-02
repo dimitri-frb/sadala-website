@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Sadala — Homepage Direction Mockups</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C; --grey:#7A7570;
+            --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1); --accent:#C1876B;
+            --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',sans-serif;
+        }
+        body { font-family: var(--sans); background: var(--white); color: var(--black); padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+        h1 { font-family: var(--serif); font-size: 56px; font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+        .lead { font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--grey); max-width: 680px; margin-bottom: 64px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .card { display: block; padding: 36px; background: var(--off-white); text-decoration: none; color: inherit; transition: all .3s; border-left: 3px solid transparent; }
+        .card:hover { border-left-color: var(--accent); transform: translateY(-4px); }
+        .card .num { font-family: var(--serif); font-size: 14px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+        .card h2 { font-family: var(--serif); font-size: 30px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
+        .card p { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); margin-bottom: 18px; }
+        .card .open { font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+        .footnote { margin-top: 64px; font-size: 12px; color: var(--grey); }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } body { padding: 48px 24px; } h1 { font-size: 40px; } }
+    </style>
+</head>
+<body>
+    <h1>Four homepages. One Sadala.</h1>
+    <p class="lead">Each mockup applies one creative direction to the homepage. They are intentionally different from each other so you can feel the contrast. Pick one — or one with elements borrowed from another. None of these touch the live site.</p>
+
+    <div class="grid">
+        <a href="v1-founders-voice.html" class="card">
+            <div class="num">Option 1</div>
+            <h2>The Founder's Voice</h2>
+            <p>Editorial, first-person, signed. The site sounds like Dimitri wrote it, not a developer. Polaroids beside renders. A scanned signature.</p>
+            <span class="open">Open mockup &rarr;</span>
+        </a>
+        <a href="v2-site-speaks-first.html" class="card">
+            <div class="num">Option 2</div>
+            <h2>The Site Speaks First</h2>
+            <p>Earth-rooted palette: terracotta, olive, granite. Topographic dividers. Tree species as section labels. Filtered grain on every photo.</p>
+            <span class="open">Open mockup &rarr;</span>
+        </a>
+        <a href="v3-one-just-one.html" class="card">
+            <div class="num">Option 3</div>
+            <h2>One. Just One.</h2>
+            <p>Radical restraint. Homepage shows only the current villa, full-screen, one sentence at a time. Past projects live in the footer.</p>
+            <span class="open">Open mockup &rarr;</span>
+        </a>
+        <a href="v4-living-documents.html" class="card">
+            <div class="num">Option 4</div>
+            <h2>Living Documents</h2>
+            <p>Construction as proof. Vertical timeline of the project's actual chronology. A "today on site" block with the latest week's photo and note.</p>
+            <span class="open">Open mockup &rarr;</span>
+        </a>
+    </div>
+
+    <p class="footnote">Mockups live at /mockups/, hidden from search and not linked from the site. Reload after edits to see changes.</p>
+</body>
+</html>
