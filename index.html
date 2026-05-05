@@ -69,10 +69,10 @@
 
         /* ════ QUOTE HERO - no image, brand statement first ════ */
         .quote-hero {
-            min-height: calc(100vh - 80px);
+            min-height: calc(90vh - 80px);
             display: flex; flex-direction: column;
             align-items: center;
-            padding: 56px 48px 40px;
+            padding: 56px 48px 24px;
             text-align: center;
         }
         .quote-content {
@@ -104,7 +104,7 @@
         }
         .quote-author strong { color: var(--black); font-weight: 400; }
         .scroll-hint {
-            margin-top: 48px;
+            margin-top: 24px;
             font-family: var(--mono);
             font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
             color: var(--grey);
@@ -114,6 +114,7 @@
             content: ''; width: 1px; height: 36px;
             background: var(--accent); opacity: .4;
             animation: drop 2.4s ease infinite;
+            margin-top: 0;
         }
         @keyframes drop {
             0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; }
@@ -191,7 +192,7 @@
         .work-card:hover .work-card-arrow { background: var(--accent); border-color: var(--accent); }
 
         /* ════ THE FILM (video placeholder) ════ */
-        .film-band { padding: 80px 48px 0; max-width: 1200px; margin: 0 auto; }
+        .film-band { padding: 32px 48px 0; max-width: 1200px; margin: 0 auto; }
         .film-card {
             display: block; position: relative; aspect-ratio: 21/9; overflow: hidden;
             text-decoration: none; cursor: pointer;
@@ -272,10 +273,10 @@
             .quote-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 36px; }
             .quote-text { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: -0.4px; }
             .quote-author { font-size: 10px; letter-spacing: 2px; margin-top: 36px; }
-            .scroll-hint { margin-top: 32px; }
+            .scroll-hint { margin-top: 16px; }
 
             .method-band, .work-band { padding: 64px 20px; }
-            .film-band { padding: 48px 20px 0; }
+            .film-band { padding: 24px 20px 0; }
             .method-band { padding: 64px 20px; }
             .method-words { font-size: clamp(36px, 11vw, 64px); }
             .method-sub { font-size: 16px; margin-top: 20px; }
