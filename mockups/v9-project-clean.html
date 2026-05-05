@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>El Cantal (clean v9) - Mockup</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C;
+            --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1);
+            --accent:#C1876B;
+            --serif:'Cormorant Garamond',Georgia,serif;
+            --sans:'Inter',sans-serif;
+            --mono:'JetBrains Mono',monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+        .mock-banner { background: var(--accent); color: #fff; text-align: center; padding: 8px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .mock-banner a { color: #fff; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; background: var(--white); border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .nav-logo img { height: 28px; width: auto; }
+        .nav-r { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 300; color: var(--grey); }
+
+        /* HERO */
+        .hero { position: relative; height: 88vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,.6) 100%); }
+        .hero-content { position: absolute; bottom: 60px; left: 48px; right: 48px; color: #fff; z-index: 2; }
+        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 18px; }
+        .hero-title { font-family: var(--serif); font-size: clamp(64px, 11vw, 160px); font-weight: 300; line-height: .95; letter-spacing: -2px; }
+        .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2vw, 24px); color: rgba(255,255,255,.85); margin-top: 16px; max-width: 640px; line-height: 1.4; }
+
+        /* SECTIONS - soft labels, no chapter numbers */
+        section.band { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+
+        /* ════ THE HOME ════ */
+        .home-band { padding: 100px 48px 80px; }
+        .home-inner { max-width: 1200px; margin: 0 auto; }
+        .home-title {
+            font-family: var(--serif);
+            font-size: clamp(40px, 6vw, 76px);
+            font-weight: 300; line-height: 1.05; letter-spacing: -0.7px;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+        .home-paragraph {
+            font-family: var(--serif); font-size: clamp(19px, 2vw, 24px);
+            font-weight: 400; font-style: italic; line-height: 1.55;
+            color: var(--grey);
+            max-width: 720px;
+            margin-bottom: 64px;
+        }
+        .kpi-strip {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
+            margin-bottom: 80px;
+        }
+        .kpi-strip > div {
+            padding: 36px 24px; text-align: center;
+            border-right: 1px solid var(--grey-border);
+        }
+        .kpi-strip > div:last-child { border-right: none; }
+        .kpi-v { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; line-height: 1; letter-spacing: -0.8px; }
+        .kpi-l { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 12px; }
+
+        /* TRIFECTA - desktop grid, mobile horizontal scroll-snap */
+        .trifecta {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .tri {
+            display: flex; flex-direction: column;
+        }
+        .tri-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 22px; }
+        .tri-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+        .tri:hover .tri-img img { transform: scale(1.04); }
+        .tri-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .tri-h { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.25; }
+
+        /* GALLERY */
+        .gallery {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
+        }
+        .tile { overflow: hidden; }
+        .tile img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .tile:hover img { transform: scale(1.04); }
+        .tile-1 { grid-column: span 4; aspect-ratio: 16/9; }
+        .tile-1 img { aspect-ratio: 16/9; }
+        .tile-2, .tile-3, .tile-4, .tile-5 { grid-column: span 2; aspect-ratio: 1; }
+        .tile-6 { grid-column: span 6; aspect-ratio: 21/9; }
+        .tile-6 img { aspect-ratio: 21/9; }
+
+        /* MEDIA (3D + Video) */
+        .media-band { padding: 0 48px; max-width: 1200px; margin: 64px auto 0; }
+        .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .media-card { position: relative; aspect-ratio: 16/9; overflow: hidden; text-decoration: none; cursor: pointer; transition: transform .4s; }
+        .media-card:hover { transform: translateY(-2px); }
+        .media-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(.55); transition: filter .4s, transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .media-card:hover .media-bg { filter: brightness(.4); transform: scale(1.04); }
+        .media-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; gap: 14px; padding: 24px; }
+        .media-icon { width: 52px; height: 52px; border: 1.5px solid rgba(255,255,255,.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .25s; }
+        .media-card:hover .media-icon { background: rgba(255,255,255,.12); border-color: #fff; }
+        .media-icon svg { width: 22px; height: 22px; fill: #fff; }
+        .media-label { font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 400; line-height: 1; }
+        .media-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
+        .media-soon { position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); border-radius: 999px; }
+
+        /* THE MAKERS - combined craft + team */
+        .makers-band { padding: 100px 48px; }
+        .makers-inner { max-width: 1100px; margin: 0 auto; }
+        .makers-title {
+            font-family: var(--serif); font-size: clamp(36px, 5vw, 56px);
+            font-weight: 300; line-height: 1.1; letter-spacing: -0.5px;
+            margin-bottom: 56px; max-width: 720px;
+        }
+        .makers-group {
+            margin-bottom: 56px;
+        }
+        .makers-group:last-child { margin-bottom: 0; }
+        .makers-group-h {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--grey);
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--grey-border);
+        }
+        .maker-row {
+            display: grid; grid-template-columns: 200px 1.2fr 1.4fr;
+            gap: 32px; padding: 22px 0;
+            align-items: baseline;
+        }
+        .maker-row + .maker-row { border-top: 1px solid var(--grey-border); }
+        .m-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 4px; }
+        .m-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.2px; }
+        .m-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+
+        /* TIMELINE */
+        .timeline-band { padding: 80px 48px; background: var(--off-white); border-top: 1px solid var(--grey-border); }
+        .timeline-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .timeline-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; }
+        .timeline-track { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; max-width: 880px; margin: 0 auto; }
+        .timeline-track::before {
+            content: ''; position: absolute; top: 6px; left: 12.5%; right: 12.5%; height: 2px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent) 33.33%, var(--grey-border) 33.33%, var(--grey-border) 100%);
+            z-index: 0;
+        }
+        .ts { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+        .ts-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 1.5px solid var(--grey-border); box-sizing: border-box; margin-bottom: 16px; flex-shrink: 0; }
+        .ts.done .ts-dot { background: var(--accent); border-color: var(--accent); }
+        .ts.now .ts-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px rgba(193,135,107,.2); }
+        .ts-when { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); margin-bottom: 4px; text-transform: uppercase; }
+        .ts.now .ts-when { color: var(--accent); }
+        .ts-name { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.2; }
+
+        /* CTA */
+        .cta { background: var(--black); color: var(--off-white); padding: 100px 48px; text-align: center; }
+        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta p { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
+        .cta .primary { background: var(--accent); color: #fff; }
+        .cta .primary:hover { background: #d49a7e; }
+        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
+        .cta .ghost:hover { border-color: var(--off-white); }
+        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
+
+        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
+
+        /* Floating WhatsApp */
+        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
+        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
+        .float-cta:hover svg { fill: #fff; }
+
+        /* ════ RESPONSIVE ════ */
+        @media (max-width: 1024px) {
+            section.band, .home-band, .makers-band, .media-band, .timeline-band, .cta { padding-left: 32px; padding-right: 32px; }
+        }
+
+        @media (max-width: 760px) {
+            nav { padding: 14px 20px; } .nav-r { display: none; }
+            .hero { height: 78vh; }
+            .hero-content { left: 20px; right: 20px; bottom: 28px; }
+            .hero-title { font-size: clamp(48px, 13vw, 84px); letter-spacing: -1px; }
+            .hero-sub { font-size: 16px; margin-top: 12px; }
+
+            section.band, .home-band, .makers-band { padding: 64px 20px; }
+            .media-band { padding: 0 20px; margin-top: 40px; }
+            .home-paragraph { margin-bottom: 40px; }
+
+            /* KPIs: 2x2 */
+            .kpi-strip { grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
+            .kpi-strip > div:nth-child(2) { border-right: none; }
+            .kpi-strip > div:nth-child(1), .kpi-strip > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
+            .kpi-strip > div { padding: 24px 16px; }
+
+            /* Trifecta: horizontal scroll-snap */
+            .trifecta {
+                grid-template-columns: none;
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-padding: 20px;
+                margin: 0 -20px;
+                padding: 0 20px 8px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .trifecta::-webkit-scrollbar { display: none; }
+            .tri {
+                flex: 0 0 78%; scroll-snap-align: start;
+                min-width: 0;
+            }
+            .tri-img { aspect-ratio: 4/5; margin-bottom: 16px; }
+
+            /* Gallery: 2-col with hero tiles full-width */
+            .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
+            .tile-1, .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
+            .tile-1 img, .tile-6 img { aspect-ratio: 4/3; }
+            .tile-2, .tile-3, .tile-4, .tile-5 { aspect-ratio: 1; }
+
+            /* Media: stack */
+            .media-grid { grid-template-columns: 1fr; }
+            .media-card { aspect-ratio: 4/3; }
+
+            /* Makers: stack */
+            .maker-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+            .m-role { padding-top: 0; }
+            .m-name { font-size: 22px; }
+
+            /* Timeline */
+            .timeline-band { padding: 56px 20px; }
+            .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+            .timeline-track::before { display: none; }
+
+            /* CTA */
+            .cta { padding: 64px 20px; }
+            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+            .cta-actions a { justify-content: center; }
+
+            footer { padding: 28px 20px; font-size: 10px; }
+            .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup &middot; v9 Project page (clean, no chapters) &middot; <a href="index.html">Back to all options</a></div>
+
+<nav>
+    <a href="../index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
+    <div class="nav-r">
+        <span>Projects</span>
+        <span>Approach</span>
+        <span>Contact</span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="../img/cantal/cantal-hero.jpg" alt="El Cantal among Mediterranean pines">
+    <div class="hero-content">
+        <div class="hero-meta">Pinares de San Ant&oacute;n &middot; Project approved &middot; Delivery 2028</div>
+        <h1 class="hero-title">El Cantal</h1>
+        <p class="hero-sub">A house cut into the hillside. Corten skin, living roof, the slope as the program.</p>
+    </div>
+</section>
+
+<!-- ════ THE HOME (concept + facts + trifecta) ════ -->
+<section class="home-band">
+    <div class="home-inner">
+        <div class="section-label">The home</div>
+        <h2 class="home-title">Landscape. Light. Integration.</h2>
+        <p class="home-paragraph">
+            Three principles, three responses to the hillside. The roof becomes the slope, the facade dissolves into corten, the inside opens entirely to the garden below. A house that disappears into the hill it sits on.
+        </p>
+
+        <!-- 4 KPIs -->
+        <div class="kpi-strip">
+            <div>
+                <div class="kpi-v">550</div>
+                <div class="kpi-l">m&sup2; built</div>
+            </div>
+            <div>
+                <div class="kpi-v">1,000</div>
+                <div class="kpi-l">m&sup2; plot</div>
+            </div>
+            <div>
+                <div class="kpi-v">5</div>
+                <div class="kpi-l">bedrooms</div>
+            </div>
+            <div>
+                <div class="kpi-v">2028</div>
+                <div class="kpi-l">delivery</div>
+            </div>
+        </div>
+
+        <!-- Trifecta (mobile slider) -->
+        <div class="trifecta">
+            <div class="tri">
+                <div class="tri-img"><img src="../img/cantal/cantal-aerial.jpg" alt="Landscape"></div>
+                <div class="tri-tag">01 &middot; Landscape</div>
+                <h3 class="tri-h">The roof is the hillside. Native grasses planted to match the slope around it.</h3>
+            </div>
+            <div class="tri">
+                <div class="tri-img"><img src="../img/cantal/cantal-garden.jpg" alt="Light"></div>
+                <div class="tri-tag">02 &middot; Light</div>
+                <h3 class="tri-h">A perforated corten skin that filters the south sun. The patina deepens season by season.</h3>
+            </div>
+            <div class="tri">
+                <div class="tri-img"><img src="../img/cantal/cantal-interior.jpg" alt="Integration"></div>
+                <div class="tri-tag">03 &middot; Integration</div>
+                <h3 class="tri-h">Inside becomes outside. The southern facade slides open, the garden lives inside the room.</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ GALLERY ════ -->
+<section class="band" style="padding-top: 0;">
+    <div class="section-label">The renders</div>
+    <div class="gallery">
+        <div class="tile tile-1"><img src="../img/cantal/cantal-hero.jpg" alt=""></div>
+        <div class="tile tile-2"><img src="../img/cantal/cantal-aerial.jpg" alt=""></div>
+        <div class="tile tile-3"><img src="../img/cantal/cantal-garden.jpg" alt=""></div>
+        <div class="tile tile-4"><img src="../img/cantal/cantal-interior.jpg" alt=""></div>
+        <div class="tile tile-5"><img src="../img/cantal/cantal-hero.jpg" alt=""></div>
+        <div class="tile tile-6"><img src="../img/cantal/cantal-interior.jpg" alt=""></div>
+    </div>
+</section>
+
+<!-- ════ MEDIA (3D + Video) ════ -->
+<section class="media-band">
+    <div class="media-grid">
+        <a href="#" class="media-card" aria-label="3D Visit">
+            <div class="media-bg" style="background-image: url('../img/cantal/cantal-aerial.jpg');"></div>
+            <span class="media-soon">Coming soon</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.2L19.5 8 12 11.8 4.5 8 12 4.2zM4 9.4l7 3.5v7.7l-7-3.5V9.4zm9 11.2v-7.7l7-3.5v7.7l-7 3.5z"/></svg></div>
+                <div class="media-label">3D Visit</div>
+                <div class="media-sub">Take the virtual tour</div>
+            </div>
+        </a>
+        <a href="#" class="media-card" aria-label="Video">
+            <div class="media-bg" style="background-image: url('../img/cantal/cantal-interior.jpg');"></div>
+            <span class="media-soon">Coming soon</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                <div class="media-label">Video</div>
+                <div class="media-sub">Watch the film</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- ════ THE MAKERS (designers + suppliers in one section) ════ -->
+<section class="makers-band">
+    <div class="makers-inner">
+        <div class="section-label">The makers</div>
+        <h2 class="makers-title">Every hand on this house, by name.</h2>
+
+        <div class="makers-group">
+            <div class="makers-group-h">Designed by</div>
+            <div class="maker-row">
+                <div class="m-role">Architecture</div>
+                <div class="m-name">Flow81</div>
+                <p class="m-desc">An award-winning experiential architecture lab based in M&aacute;laga. Architecture, interiors and landscape conceived as one piece.</p>
+            </div>
+        </div>
+
+        <div class="makers-group">
+            <div class="makers-group-h">Built with</div>
+            <div class="maker-row">
+                <div class="m-role">Corten steel</div>
+                <div class="m-name">A metalsmith in M&aacute;laga Este</div>
+                <p class="m-desc">The perforated facade is custom-forged sheet by sheet. The patina is left to the Andalusian weather to finish.</p>
+            </div>
+            <div class="maker-row">
+                <div class="m-role">Living roof</div>
+                <div class="m-name">A nursery in Nerja</div>
+                <p class="m-desc">Native grasses and drought-tolerant species selected to match the surrounding hillside.</p>
+            </div>
+            <div class="maker-row">
+                <div class="m-role">Stone</div>
+                <div class="m-name">Cantera de Mijas</div>
+                <p class="m-desc">Local granitic stone from a quarry within fifteen kilometres. The same colour as the cliff face the corten is cut into.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ TIMELINE ════ -->
+<section class="timeline-band">
+    <div class="timeline-inner">
+        <div class="timeline-label">El Cantal, today</div>
+        <div class="timeline-track">
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2024</div>
+                <div class="ts-name">Land<br>acquired</div>
+            </div>
+            <div class="ts now">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2026 &middot; now</div>
+                <div class="ts-name">Project<br>approved</div>
+            </div>
+            <div class="ts">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2027</div>
+                <div class="ts-name">Construction<br>begins</div>
+            </div>
+            <div class="ts">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2028</div>
+                <div class="ts-name">Keys<br>handed over</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ CTA ════ -->
+<section class="cta">
+    <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
+    <p>Our process starts with a conversation, not a brochure. We live where we build.</p>
+    <div class="cta-actions">
+        <a href="#" class="primary">Walk the plot</a>
+        <a href="https://wa.me/34639675315" class="ghost">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+            WhatsApp
+        </a>
+    </div>
+</section>
+
+<footer>SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A</footer>
+
+<a href="https://wa.me/34639675315" class="float-cta" aria-label="Contact us">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Contact us</span>
+</a>
+
+</body>
+</html>
