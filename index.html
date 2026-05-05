@@ -8,20 +8,85 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --white: #E8E2D5;
-            --off-white: #E1D8CC;
-            --black: #2C2C2C;
-            --grey: #7A7570;
+            /* Earth palette (v2: site-speaks-first) */
+            --white: #EDE6D7;          /* warm paper */
+            --off-white: #E1D8C7;      /* bone */
+            --black: #262320;          /* warm ink */
+            --grey: #8C8578;           /* warm grey */
             --grey-light: #B5AFA8;
-            --grey-border: rgba(44,44,44,.08);
-            --accent: #C1876B;
+            --grey-border: rgba(38,35,32,.1);
+            --accent: #B85A3F;         /* terracotta */
+            --accent-soft: #C97757;    /* soft terracotta */
+            --olive: #6B6F4C;
             --serif: 'Cormorant Garamond', Georgia, serif;
             --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        /* Topographic divider */
+        .topo {
+            height: 56px; background: var(--white);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q 150 10 300 30 T 600 30 T 900 30 T 1200 30' stroke='%23B85A3F' fill='none' stroke-width='.6' opacity='.4'/%3E%3Cpath d='M0 36 Q 150 16 300 36 T 600 36 T 900 36 T 1200 36' stroke='%23B85A3F' fill='none' stroke-width='.5' opacity='.3'/%3E%3Cpath d='M0 42 Q 150 22 300 42 T 600 42 T 900 42 T 1200 42' stroke='%23B85A3F' fill='none' stroke-width='.4' opacity='.2'/%3E%3C/svg%3E");
+            background-size: 100% 100%; background-repeat: no-repeat;
+        }
+
+        /* Subtle grain overlay for hero photos */
+        .grainy { position: relative; }
+        .grainy::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+            opacity: .5; mix-blend-mode: multiply; z-index: 1;
+        }
+        .grainy img { filter: saturate(.92) contrast(1.03) sepia(.05); }
+
+        /* Ambient sound toggle */
+        .ambient-toggle {
+            position: absolute; top: 100px; right: 48px; z-index: 20;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 10px 16px; border: 1px solid rgba(225,216,199,.25);
+            border-radius: 999px;
+            background: rgba(38,35,32,.32); backdrop-filter: blur(10px);
+            color: rgba(237,230,215,.85);
+            font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer; user-select: none;
+            transition: all .25s;
+        }
+        .ambient-toggle:hover { border-color: rgba(225,216,199,.5); color: #fff; }
+        .ambient-toggle.on { border-color: var(--accent-soft); color: #fff; }
+        .ambient-toggle .wave { display: flex; gap: 2px; align-items: center; }
+        .ambient-toggle .wave span { display: block; width: 2px; background: var(--accent-soft); border-radius: 1px; }
+        .ambient-toggle .wave span:nth-child(1) { height: 6px; }
+        .ambient-toggle .wave span:nth-child(2) { height: 10px; }
+        .ambient-toggle .wave span:nth-child(3) { height: 4px; }
+        .ambient-toggle.on .wave span { animation: bob 1.2s ease-in-out infinite; }
+        .ambient-toggle.on .wave span:nth-child(2) { animation-delay: .2s; }
+        .ambient-toggle.on .wave span:nth-child(3) { animation-delay: .4s; }
+        @keyframes bob { 0%,100% { transform: scaleY(.7); } 50% { transform: scaleY(1.4); } }
+
+        /* Floating WhatsApp CTA — same pattern as project pages */
+        .floating-cta {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 13px 22px;
+            background: var(--black); color: var(--off-white);
+            font-family: var(--sans); font-size: 13px; font-weight: 400;
+            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(38,35,32,.18);
+            transition: background .25s, transform .25s;
+        }
+        .floating-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .floating-cta svg { width: 16px; height: 16px; fill: #25D366; flex-shrink: 0; }
+        .floating-cta:hover svg { fill: #fff; }
+        @media (max-width: 600px) {
+            .floating-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; gap: 8px; }
+            .floating-cta svg { width: 14px; height: 14px; }
+            .ambient-toggle { right: 16px; top: 76px; padding: 8px 12px; font-size: 9px; }
         }
 
         html { scroll-behavior: smooth; }
@@ -661,55 +726,59 @@
 <!-- HERO SLIDER                                 -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="slider" id="slider">
+    <div class="ambient-toggle" id="ambientToggle" role="button" tabindex="0" aria-label="Toggle ambient sound">
+        <div class="wave"><span></span><span></span><span></span></div>
+        <span id="ambientLabel">cicadas &middot; pine wind</span>
+    </div>
     <div class="slide active">
-        <div class="slide-image">
+        <div class="slide-image grainy">
             <img src="img/cantal/cantal-hero.jpg" alt="El Cantal among Mediterranean pines">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">M&aacute;laga, Southern Spain</div>
-                <h2 class="slide-title">Builders of the Unique</h2>
-                <p class="slide-desc">We conceive, build and deliver singular homes in the Andalusian landscape. No replications. No templates.</p>
-                <a href="#projects" class="slide-cta">View projects</a>
+                <div class="slide-category" style="font-family: var(--mono);">36.7367&deg; N &middot; 4.3833&deg; W &middot; Pinares de San Ant&oacute;n</div>
+                <h2 class="slide-title">The plot was here before us. <em style="color: var(--accent-soft);">The plot decides.</em></h2>
+                <p class="slide-desc">We conceive, build and deliver singular homes in the Andalusian landscape. One site. One vision. One time.</p>
+                <a href="#projects" class="slide-cta">Three plots, three signatures</a>
             </div>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-image">
+        <div class="slide-image grainy">
             <img src="img/cantal/cantal-aerial.jpg" alt="El Cantal aerial view with green roof and pool">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Current project</div>
+                <div class="slide-category" style="font-family: var(--mono);">Quercus suber &middot; Pinus pinea &middot; Monte de M&aacute;laga</div>
                 <h2 class="slide-title">El Cantal</h2>
-                <p class="slide-desc">Corten steel and living roof merge with the hillside. A home that disappears into its landscape.</p>
+                <p class="slide-desc">Corten steel and living roof, cut into the hillside. A house that becomes the slope it sits on.</p>
                 <a href="pages/villa-el-cantal.html" class="slide-cta">Read more</a>
             </div>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-image">
+        <div class="slide-image grainy">
             <img src="img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset with infinity pool">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Current project</div>
+                <div class="slide-category" style="font-family: var(--mono);">Pinus pinea &middot; 70 yrs &middot; Pinares de San Ant&oacute;n</div>
                 <h2 class="slide-title">Sosiego</h2>
-                <p class="slide-desc">A home designed around your longevity. State-of-the-art gym, sauna, cold plunge, infinity pool, meditation garden. Wellness as a way of life, in Pinares de San Ant&oacute;n.</p>
+                <p class="slide-desc">A home conceived around how long, how clear, how calm you want to live. Body. Mind. Soul. Among century-old pines.</p>
                 <a href="pages/sosiego.html" class="slide-cta">Read more</a>
             </div>
         </div>
     </div>
     <div class="slide">
-        <div class="slide-image">
+        <div class="slide-image grainy">
             <img src="img/cantal/cantal-interior.jpg" alt="El Cantal outdoor living at golden hour">
         </div>
         <div class="slide-content">
             <div class="slide-text">
-                <div class="slide-category">Our approach</div>
-                <h2 class="slide-title">Design Matters</h2>
-                <p class="slide-desc">We select sites for their irreplaceability. The land writes the brief. Everything else follows.</p>
-                <a href="pages/approach.html" class="slide-cta">Learn more</a>
+                <div class="slide-category" style="font-family: var(--mono);">Granite &middot; sand &middot; Andalucian quarry</div>
+                <h2 class="slide-title">Local stone, never imported.</h2>
+                <p class="slide-desc">The new luxury isn't imported marble. It's a home built by people who care because they live nearby.</p>
+                <a href="pages/approach.html" class="slide-cta">Our approach</a>
             </div>
         </div>
     </div>
@@ -728,15 +797,19 @@
     </div>
 </section>
 
+<div class="topo"></div>
+
 <!-- ═══════════════════════════════════════════ -->
 <!-- MISSION                                     -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="section-intro reveal">
-    <div class="section-label">Villa development, redefined</div>
+    <div class="section-label" style="font-family: var(--mono); letter-spacing: 3px;">What was here first</div>
     <p class="section-headline">
-        The soul of a home can't be fabricated. It must be discovered - in the slope of the land, the direction of light, and the silence between the pines.
+        A site reads as <em style="color: var(--accent); font-style: normal;">terrain, light, and species</em> long before it reads as a plan. The slope of the land, the direction of the morning sun, the silence between the pines: the program is already there. We listen first.
     </p>
 </section>
+
+<div class="topo"></div>
 
 <!-- ═══════════════════════════════════════════ -->
 <!-- PROJECTS                                    -->
@@ -803,13 +876,15 @@
     </div>
 </section>
 
+<div class="topo"></div>
+
 <!-- ═══════════════════════════════════════════ -->
 <!-- WHY MALAGA                                  -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="section-intro reveal" style="padding-bottom: 60px;">
-    <div class="section-label">M&aacute;laga</div>
+    <div class="section-label" style="font-family: var(--mono); letter-spacing: 3px;">36.7&deg; N &middot; The Andalusian coast</div>
     <p class="section-headline" style="font-style: normal; font-size: clamp(20px, 2.5vw, 28px);">
-        320 days of sun. International airport with direct flights across Europe. A gastronomy capital with Michelin-starred restaurants. 45 minutes from Marbella, yet a world apart. A growing tech and expat scene that's making it one of Europe's most desirable cities. This is the real definition of Mediterranean living.
+        320 days of sun. An international airport with direct flights across Europe. A gastronomy capital, 45 minutes from Marbella, a world apart. A growing tech and expat scene quietly making M&aacute;laga one of Europe's most livable cities.
     </p>
 </section>
 
@@ -948,7 +1023,76 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('visible');
 }), { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ═══ Ambient sound — generated cicadas + pine wind ═══ */
+let ambCtx = null, ambNodes = [];
+function startAmbient() {
+    ambCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const ac = ambCtx;
+    const master = ac.createGain();
+    master.gain.value = 0;
+    master.gain.linearRampToValueAtTime(0.18, ac.currentTime + 1.4);
+    master.connect(ac.destination);
+
+    /* Pine wind = filtered pink-ish noise */
+    const buf = ac.createBuffer(1, 2 * ac.sampleRate, ac.sampleRate);
+    const d = buf.getChannelData(0);
+    let b0=0,b1=0,b2=0;
+    for (let i=0;i<d.length;i++){const w=Math.random()*2-1; b0=.99*b0+w*.029; b1=.96*b1+w*.084; b2=.74*b2+w*.31; d[i]=(b0+b1+b2)*.18;}
+    const noise = ac.createBufferSource(); noise.buffer = buf; noise.loop = true;
+    const flt = ac.createBiquadFilter(); flt.type = 'bandpass'; flt.frequency.value = 700; flt.Q.value = .55;
+    noise.connect(flt).connect(master);
+    noise.start();
+    ambNodes.push(noise);
+
+    /* Cicada bursts */
+    function cicada() {
+        if (!ambCtx) return;
+        const t = ac.currentTime;
+        const osc = ac.createOscillator();
+        const g = ac.createGain();
+        const lfo = ac.createOscillator();
+        const lfoG = ac.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = 4200 + Math.random() * 2800;
+        lfo.frequency.value = 16 + Math.random() * 16;
+        lfoG.gain.value = 0.5;
+        lfo.connect(lfoG).connect(g.gain);
+        g.gain.value = 0;
+        const dur = 0.35 + Math.random() * 0.7;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.035, t + 0.06);
+        g.gain.linearRampToValueAtTime(0, t + dur);
+        const filt = ac.createBiquadFilter(); filt.type = 'bandpass'; filt.frequency.value = 5400; filt.Q.value = 5.5;
+        osc.connect(filt).connect(g).connect(master);
+        lfo.start(t); osc.start(t);
+        osc.stop(t + dur); lfo.stop(t + dur);
+        ambNodes.push(osc, lfo);
+        setTimeout(cicada, 420 + Math.random() * 800);
+    }
+    cicada();
+}
+function stopAmbient() {
+    if (!ambCtx) return;
+    try { ambCtx.close(); } catch(e){}
+    ambCtx = null; ambNodes = [];
+}
+const ambBtn = document.getElementById('ambientToggle');
+const ambLabel = document.getElementById('ambientLabel');
+let ambOn = false;
+function toggleAmb() {
+    ambOn = !ambOn;
+    if (ambOn) { startAmbient(); ambBtn.classList.add('on'); ambLabel.textContent = 'listening'; }
+    else { stopAmbient(); ambBtn.classList.remove('on'); ambLabel.innerHTML = 'cicadas &middot; pine wind'; }
+}
+ambBtn.addEventListener('click', toggleAmb);
+ambBtn.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAmb(); } });
 </script>
+
+<a href="https://wa.me/34639675315" class="floating-cta" aria-label="Contact us via WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Contact us</span>
+</a>
 
 </body>
 </html>
