@@ -377,6 +377,51 @@
             font-size: 22px; color: var(--ink-soft); margin-top: 24px;
         }
 
+        /* ════ CINEMATIC IMAGE BAND (between sections) ════ */
+        .cinema { position: relative; height: 90vh; overflow: hidden; }
+        .cinema img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.04) saturate(.95); }
+        .cinema::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(28,26,23,.18) 0%, rgba(28,26,23,.05) 30%, rgba(28,26,23,.55) 100%); }
+        .cinema-overlay { position: absolute; bottom: 56px; left: 48px; right: 48px; color: var(--bone); z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+        .cinema-q { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 3vw, 38px); font-weight: 300; line-height: 1.3; max-width: 680px; }
+        .cinema-q em { color: var(--copper); font-style: normal; }
+        .cinema-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: rgba(237,229,211,.7); text-transform: uppercase; text-align: right; }
+        .cinema-meta strong { display: block; color: var(--bone); font-size: 14px; letter-spacing: 1.5px; margin-bottom: 4px; }
+
+        /* ════ THE HOUSE — gallery sequence ════ */
+        .house-band { padding: 120px 0 0; background: var(--bone); }
+        .house-head { padding: 0 48px 80px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+        .house-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--copper); margin-bottom: 22px; }
+        .house-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; }
+        .house-h em { font-style: italic; color: var(--copper); }
+        .house-intro { font-family: var(--serif); font-size: 19px; font-weight: 400; line-height: 1.7; color: var(--ink-soft); }
+        .house-intro em { color: var(--copper); font-style: italic; }
+
+        /* Mosaic grid — varied tile sizes */
+        .house-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            padding: 0 4px;
+        }
+        .tile { position: relative; overflow: hidden; }
+        .tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .tile:hover img { transform: scale(1.04); }
+        .tile-cap { position: absolute; bottom: 16px; left: 18px; right: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(237,229,211,.85); z-index: 2; }
+        .tile-cap::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--copper); border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+        .tile.dark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,26,23,.55) 0%, transparent 50%); }
+
+        .tile-large  { grid-column: span 4; aspect-ratio: 16/9; }
+        .tile-tall   { grid-column: span 2; aspect-ratio: 3/4; grid-row: span 2; }
+        .tile-square { grid-column: span 2; aspect-ratio: 1/1; }
+        .tile-wide   { grid-column: span 4; aspect-ratio: 16/9; }
+
+        /* Chronicle card — image background overlay */
+        .ch-card-img { position: absolute; inset: 0; z-index: 0; opacity: .35; transition: opacity .4s; }
+        .ch-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .ch-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,26,23,.5) 0%, rgba(28,26,23,.92) 100%); }
+        .ch-card:hover .ch-card-img { opacity: .55; }
+        .ch-card > div { position: relative; z-index: 1; }
+
         /* ════ FINAL CTA ════ */
         .final {
             padding: 140px 48px; background: var(--bone);
@@ -423,6 +468,13 @@
             .plot-band { padding: 60px 20px; } .waveform-wrap { padding: 32px 20px; }
             .chronicle { padding: 60px 20px; } .ch-grid { grid-template-columns: 1fr; }
             .ch-num { font-size: 84px; }
+            .cinema { height: 70vh; } .cinema-overlay { left: 20px; right: 20px; bottom: 32px; flex-direction: column; align-items: flex-start; }
+            .cinema-meta { text-align: left; }
+            .house-band { padding: 60px 0 0; } .house-head { padding: 0 20px 48px; grid-template-columns: 1fr; gap: 24px; }
+            .house-grid { grid-template-columns: repeat(2, 1fr); }
+            .tile-large, .tile-wide { grid-column: span 2; aspect-ratio: 4/3; }
+            .tile-tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 3/4; }
+            .tile-square { grid-column: span 1; }
             .letter { padding: 60px 20px; }
             .final { padding: 80px 20px; }
         }
@@ -465,6 +517,19 @@
     <div class="o-fineprint" id="heroFineprint">F♯₃ · 184.99 Hz · stone struck once · plot at dawn · 30 sec</div>
 
     <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ════ 1.5 · CINEMATIC ════ -->
+<section class="cinema">
+    <img src="../img/sosiego/sosiego-entrance-dusk.png" alt="Sosiego at dusk">
+    <div class="cinema-overlay">
+        <p class="cinema-q">The plot was here before us. <em>The plot decides.</em></p>
+        <div class="cinema-meta">
+            <strong>Sosiego · Pinares de San Antón</strong>
+            36.7367° N · 4.3833° W<br>
+            Plot acquired October 2024
+        </div>
+    </div>
 </section>
 
 <!-- ════ 2 · THE STONE ════ -->
@@ -586,6 +651,44 @@
     </div>
 </section>
 
+<!-- ════ 3.5 · THE HOUSE — gallery mosaic ════ -->
+<section class="house-band">
+    <div class="house-head">
+        <div>
+            <div class="house-eyebrow">N° 02 · The house this stone is from</div>
+            <h2 class="house-h">Sosiego is what <em>F♯₃</em> looks like.</h2>
+        </div>
+        <p class="house-intro">A 570 m² home on a 1,096 m² pine plot, eight minutes from Málaga centre. <em>Body. Mind. Soul.</em> Conceived around how long, how clear, and how calm you want to live.</p>
+    </div>
+
+    <div class="house-grid">
+        <div class="tile tile-large dark">
+            <img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset">
+            <div class="tile-cap">Western façade · sunset</div>
+        </div>
+        <div class="tile tile-tall dark">
+            <img src="../img/sosiego/jardin-zen.png" alt="Zen garden">
+            <div class="tile-cap">The Zen garden · Mind</div>
+        </div>
+        <div class="tile tile-square dark">
+            <img src="../img/sosiego/zona-fitness.png" alt="Fitness zone">
+            <div class="tile-cap">Below grade gym · Body</div>
+        </div>
+        <div class="tile tile-square dark">
+            <img src="../img/sosiego/sosiego-firepit-lounge.png" alt="Fire pit lounge">
+            <div class="tile-cap">Fire pit · Soul</div>
+        </div>
+        <div class="tile tile-wide dark">
+            <img src="../img/sosiego/living-dining-sunset.png" alt="Living-dining">
+            <div class="tile-cap">Living-dining · golden hour</div>
+        </div>
+        <div class="tile tile-square dark">
+            <img src="../img/sosiego/view-sosiego-zen.png" alt="KM0 garden">
+            <div class="tile-cap">KM0 garden · where dinner grows</div>
+        </div>
+    </div>
+</section>
+
 <!-- ════ 4 · THE PLOT ════ -->
 <section class="plot-band">
     <div class="plot-inner">
@@ -611,6 +714,7 @@
 
         <div class="ch-grid">
             <a href="#" class="ch-card sold">
+                <div class="ch-card-img"><img src="../img/leoni-benabu/main.jpeg" alt="Origen"></div>
                 <div>
                     <div class="ch-num"><small>N°</small>01</div>
                     <div class="ch-name">Origen</div>
@@ -621,6 +725,7 @@
                 </div>
             </a>
             <a href="#" class="ch-card">
+                <div class="ch-card-img"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
                 <div>
                     <div class="ch-num"><small>N°</small>02</div>
                     <div class="ch-name">Sosiego</div>
@@ -631,6 +736,7 @@
                 </div>
             </a>
             <a href="#" class="ch-card future">
+                <div class="ch-card-img"><img src="../img/cantal/cantal-aerial.jpg" alt="El Cantal"></div>
                 <div>
                     <div class="ch-num"><small>N°</small>03</div>
                     <div class="ch-name">El Cantal</div>
