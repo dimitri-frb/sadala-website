@@ -114,17 +114,17 @@
         .media-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
         .media-soon { position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); border-radius: 999px; }
 
-        /* COLOPHON - flowing credits paragraph (sits below timeline in same band) */
+        /* COLOPHON - flowing credits paragraph (sits above timeline in same band) */
         .colophon-text {
-            max-width: 880px; margin: 56px auto 0;
+            max-width: 880px; margin: 28px auto 56px;
             text-align: center;
             font-family: var(--serif);
             font-size: clamp(20px, 2.2vw, 26px);
             font-weight: 300; font-style: italic;
             line-height: 1.55; letter-spacing: -0.2px;
             color: var(--black);
-            padding-top: 56px;
-            border-top: 1px solid var(--grey-border);
+            padding-bottom: 56px;
+            border-bottom: 1px solid var(--grey-border);
         }
         .colophon-text strong {
             font-style: normal; font-weight: 400;
@@ -138,7 +138,7 @@
         .timeline-track { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; max-width: 880px; margin: 0 auto; }
         .timeline-track::before {
             content: ''; position: absolute; top: 6px; left: 12.5%; right: 12.5%; height: 2px;
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent) 33.33%, var(--grey-border) 33.33%, var(--grey-border) 100%);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent) 8%, var(--grey-border) 8%, var(--grey-border) 100%);
             z-index: 0;
         }
         .ts { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
@@ -244,7 +244,7 @@
                 top: 0; bottom: 0;
                 left: 6px; right: auto;
                 width: 2px; height: auto;
-                background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 33.33%, var(--grey-border) 33.33%, var(--grey-border) 100%);
+                background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 8%, var(--grey-border) 8%, var(--grey-border) 100%);
             }
             .ts {
                 flex-direction: row;
@@ -380,36 +380,37 @@
     </div>
 </section>
 
-<!-- ════ TIMELINE + COLOPHON (one section) ════ -->
+<!-- ════ COLOPHON + TIMELINE (one section, colophon first) ════ -->
 <section class="timeline-band">
     <div class="timeline-inner">
-        <div class="timeline-label">El Cantal, today</div>
+        <div class="timeline-label">El Cantal</div>
+
+        <p class="colophon-text">
+            Designed by award-winning architects <strong>Merino &amp; Arregui</strong> at <strong>Flow81</strong>. The home is built with <strong>acero corten</strong> hand-forged by a metalsmith in M&aacute;laga, <strong>stone</strong> quarried in Mijas, and <strong>plants native to the mountains of M&aacute;laga</strong>.
+        </p>
+
         <div class="timeline-track">
             <div class="ts done">
                 <div class="ts-dot"></div>
-                <div class="ts-when">2024</div>
+                <div class="ts-when">2025</div>
                 <div class="ts-name">Land<br>acquired</div>
             </div>
-            <div class="ts done">
+            <div class="ts">
                 <div class="ts-dot"></div>
-                <div class="ts-when">2026</div>
+                <div class="ts-when">imminent</div>
                 <div class="ts-name">Project<br>approved</div>
             </div>
             <div class="ts">
                 <div class="ts-dot"></div>
-                <div class="ts-when">2027</div>
+                <div class="ts-when">est. end 2026</div>
                 <div class="ts-name">Construction<br>begins</div>
             </div>
             <div class="ts">
                 <div class="ts-dot"></div>
-                <div class="ts-when">2028</div>
-                <div class="ts-name">Keys<br>handed over</div>
+                <div class="ts-when">est. 2028</div>
+                <div class="ts-name">Your home<br>ready</div>
             </div>
         </div>
-
-        <p class="colophon-text">
-            Designed by award-winning architects <strong>Merino &amp; Arregui</strong> of <strong>Flow81</strong>. True to our values, the home is built with <strong>acero corten</strong> hand-made by a metalsmith in M&aacute;laga Este, <strong>stone</strong> from a quarry in Mijas, and <strong>local plants and vegetation</strong> that grow wild on the mountains of M&aacute;laga.
-        </p>
     </div>
 </section>
 
