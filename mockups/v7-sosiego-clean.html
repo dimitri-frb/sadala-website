@@ -262,32 +262,102 @@
         .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
         .float-cta:hover svg { fill: #fff; }
 
-        @media (max-width: 800px) {
+        /* ════ TABLET (1024px) - soften the desktop grids ════ */
+        @media (max-width: 1024px) {
+            nav { padding: 18px 28px; }
+            .opener { padding: 80px 32px 48px; grid-template-columns: 160px 1fr; gap: 32px; }
+            .opener .num { font-size: 140px; }
+            .chapter-body { padding: 0 32px 80px; }
+            .plot-facts > div { grid-template-columns: 180px 1fr; gap: 24px; }
+            .craft-row { grid-template-columns: 60px 1fr 1.6fr; gap: 24px; padding: 30px 0; }
+            .credit-row { grid-template-columns: 160px 1fr 1.4fr; gap: 24px; }
+            .timeline-band { padding: 64px 32px; }
+        }
+
+        /* ════ MOBILE (760px) - stack everything cleanly ════ */
+        @media (max-width: 760px) {
             nav { padding: 14px 20px; }
             .nav-r { display: none; }
-            .hero-content { left: 20px; right: 20px; bottom: 32px; }
-            .toc-inner { gap: 16px; padding: 12px 16px; }
-            .toc a { font-size: 10px; letter-spacing: 1.5px; }
-            .opener { padding: 56px 20px 32px; grid-template-columns: 1fr; gap: 16px; }
-            .opener .num { font-size: 100px; }
-            .chapter-body { padding: 0 20px 64px; }
-            .plot-facts > div { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
-            .home-kpis { grid-template-columns: 1fr 1fr; }
+            .hero { height: 78vh; }
+            .hero-content { left: 20px; right: 20px; bottom: 28px; }
+            .hero-title { font-size: clamp(52px, 14vw, 96px); letter-spacing: -1px; }
+            .hero-sub { font-size: 16px; margin-top: 12px; }
+            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
+            .toc { top: 64px; }
+            .toc-inner { gap: 14px; padding: 12px 14px; }
+            .toc a { font-size: 10px; letter-spacing: 1.2px; }
+            .toc a .n { font-size: 12px; margin-right: 4px; }
+
+            .opener { padding: 48px 20px 24px; grid-template-columns: 1fr; gap: 8px; }
+            .opener .num { font-size: 88px; line-height: .9; }
+            .opener .name { font-size: 30px; }
+
+            .chapter-body { padding: 0 20px 56px; }
+
+            /* Plot facts: stack each row */
+            .plot-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+            .pf-label { padding-top: 0; font-size: 10px; }
+            .pf-value { font-size: 22px; }
+
+            /* Plot image: smaller aspect ratio */
+            .plot-image { aspect-ratio: 16/10; margin-bottom: 40px; }
+
+            /* Plot narrative */
+            .plot-narrative { font-size: 18px; }
+
+            /* KPIs: 2x2 grid */
+            .home-kpis { grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
+            .home-kpis > div { padding: 22px 12px; }
             .home-kpis > div:nth-child(2) { border-right: none; }
             .home-kpis > div:nth-child(1), .home-kpis > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
-            .pillars { grid-template-columns: 1fr; gap: 32px; }
+            .kpi-v { font-size: 34px; }
+
+            /* Concept */
+            .home-concept { margin-bottom: 48px; }
+            .home-concept p { font-size: 16px; }
+
+            /* Pillars: stack */
+            .pillars { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
+            .pillar-img { aspect-ratio: 16/9; margin-bottom: 16px; }
+
+            /* Gallery: 2-col with hero tiles full width */
             .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
             .gallery .tile-1, .gallery .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
             .gallery .tile-1 img, .gallery .tile-6 img { aspect-ratio: 4/3; }
-            .craft-row { grid-template-columns: 60px 1fr; gap: 16px; padding: 24px 0; }
-            .craft-row .cr-num { grid-row: span 1; }
-            .craft-row .cr-role-name { grid-column: 2; }
-            .credit-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; }
-            .timeline-band { padding: 48px 20px; }
+
+            /* Craft list - stack vertically per row */
+            .craft-row {
+                grid-template-columns: 1fr;
+                gap: 6px; padding: 28px 0;
+            }
+            .cr-num { font-size: 30px; margin-bottom: 4px; }
+            .cr-name { font-size: 22px; }
+            .cr-desc { margin-top: 4px; }
+
+            /* Team credits - stack vertically per row */
+            .credit-row {
+                grid-template-columns: 1fr;
+                gap: 4px; padding: 24px 0;
+            }
+            .credit-role { padding-top: 0; font-size: 10px; }
+            .credit-name { font-size: 26px; }
+            .credit-desc { margin-top: 4px; }
+
+            /* Timeline */
+            .timeline-band { padding: 56px 20px; }
+            .timeline-label { margin-bottom: 28px; font-size: 10px; }
             .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
             .timeline-track::before { display: none; }
-            .cta { padding: 60px 20px; }
+            .ts-name { font-size: 14px; }
+
+            /* CTA */
+            .cta { padding: 64px 20px; }
+            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+            .cta-actions a { justify-content: center; }
+
+            /* Floating */
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
+            footer { padding: 28px 20px; font-size: 10px; }
         }
     </style>
 </head>
