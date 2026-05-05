@@ -1,212 +1,48 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro enfoque - Sadala</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../img/logo/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <title>Our approach - Sadala</title>
+    <meta name="description" content="The Sadala approach: studio, method, process. Rooted, Singular, Local.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --white: #E8E2D5; --off-white: #E1D8CC; --black: #2C2C2C;
-            --grey: #7A7570; --grey-light: #B5AFA8; --grey-border: rgba(44,44,44,.08);
-            --accent: #C1876B;
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+            --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C;
+            --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1);
+            --accent:#C1876B;
+            --serif:'Cormorant Garamond',Georgia,serif;
+            --sans:'Inter',sans-serif;
+            --mono:'JetBrains Mono',monospace;
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
 
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--grey-border); }
+
+
+        /* === Live nav (logo, links, language dropdown, hamburger) === */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 22px 48px;
+            background: rgba(232,226,213,.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--grey-border);
+        }
         .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
         .nav-logo img { height: 28px; width: auto; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
-                .nav-hamburger {
-            display: none; cursor: pointer;
-            width: 24px; height: 16px;
-            position: relative; z-index: 1001;
-        }
-        .nav-hamburger span {
-            display: block; width: 100%; height: 1.5px;
-            background: var(--black); position: absolute; left: 0;
-            transition: all .3s;
-        }
+        .nav-links a.active { color: var(--black); font-weight: 400; }
+        .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
+        .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
+        .nav-hamburger { display: none; cursor: pointer; width: 24px; height: 16px; position: relative; z-index: 1001; }
+        .nav-hamburger span { display: block; width: 100%; height: 1.5px; background: var(--black); position: absolute; left: 0; transition: all .3s; }
         .nav-hamburger span:nth-child(1) { top: 0; }
         .nav-hamburger span:nth-child(2) { top: 7px; }
         .nav-hamburger span:nth-child(3) { top: 14px; }
-
-        .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
-        .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
-
-        /* PAGE HEADER */
-        .page-header {
-            padding: 160px 48px 80px;
-            max-width: 900px; margin: 0 auto;
-        }
-        .page-header-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-        }
-        .page-header h1 {
-            font-family: var(--serif); font-size: clamp(36px, 5vw, 56px);
-            font-weight: 300; line-height: 1.15;
-        }
-        .page-header .page-sub {
-            font-size: 15px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); margin-top: 20px; max-width: 600px;
-        }
-
-        /* IMAGE BAND */
-        .image-band {
-            height: 55vh; overflow: hidden;
-        }
-        .image-band img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* PHILOSOPHY */
-        .philosophy {
-            padding: 100px 48px;
-            max-width: 1000px; margin: 0 auto;
-        }
-        .philosophy-block {
-            display: grid; grid-template-columns: 180px 1fr; gap: 60px;
-            margin-bottom: 80px;
-        }
-        .philosophy-block:last-child { margin-bottom: 0; }
-        .phil-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent); padding-top: 6px;
-        }
-        .phil-content h2 {
-            font-family: var(--serif); font-size: 28px; font-weight: 400;
-            margin-bottom: 16px;
-        }
-        .phil-content p {
-            font-size: 14px; font-weight: 300; line-height: 1.9;
-            color: var(--grey); margin-bottom: 12px;
-        }
-
-        /* PILLARS */
-        .pillars {
-            padding: 100px 48px;
-            background: var(--black);
-        }
-        .pillars-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 48px; max-width: 1100px; margin-left: auto; margin-right: auto;
-        }
-        .pillars-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 0; max-width: 1100px; margin: 0 auto;
-        }
-        .pillar {
-            padding: 40px 32px;
-            border-left: 1px solid rgba(225,216,204,.06);
-        }
-        .pillar:first-child { border-left: none; }
-        .pillar-num {
-            font-family: var(--serif); font-size: 32px; font-weight: 300;
-            color: var(--accent); opacity: .4; margin-bottom: 20px;
-        }
-        .pillar-title {
-            font-family: var(--serif); font-size: 20px; font-weight: 400;
-            color: var(--off-white); margin-bottom: 10px;
-        }
-        .pillar-desc {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey);
-        }
-
-        /* TEAM */
-        .team {
-            padding: 100px 48px;
-            max-width: 900px; margin: 0 auto;
-            text-align: center;
-        }
-        .team h2 {
-            font-family: var(--serif); font-size: 32px; font-weight: 400;
-            margin-bottom: 16px;
-        }
-        .team p {
-            font-size: 14px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); max-width: 600px; margin: 0 auto 32px;
-        }
-        .team-cta {
-            display: inline-block; padding: 14px 32px;
-            font-family: var(--sans); font-size: 12px; font-weight: 400;
-            color: var(--black); text-decoration: none;
-            border: 1px solid var(--grey-light); transition: all .3s;
-        }
-        .team-cta:hover { background: var(--black); color: var(--white); border-color: var(--black); }
-
-        /* FOOTER */
-        footer { background: var(--black); color: var(--off-white); padding: 80px 48px 0; }
-        .footer-main { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; }
-        .footer-brand .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--off-white); display: block; margin-bottom: 16px; }
-        .footer-brand .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); margin-bottom: 20px; }
-        .footer-brand .footer-location { font-size: 12px; font-weight: 300; color: var(--grey-light); }
-        .footer-col h4 { font-family: var(--serif); font-size: 14px; font-weight: 400; color: var(--off-white); margin-bottom: 20px; letter-spacing: 1px; }
-        .footer-col a, .footer-col span { display: block; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; margin-bottom: 10px; transition: color .3s; }
-        .footer-col a:hover { color: var(--off-white); }
-        .footer-social { display: flex; gap: 16px; margin-bottom: 24px; }
-        .footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(225,216,204,.12); margin-bottom: 0; transition: all .3s; }
-        .footer-social a:hover { border-color: rgba(225,216,204,.3); background: rgba(225,216,204,.05); }
-        .footer-social a svg { width: 16px; height: 16px; fill: var(--grey); transition: fill .3s; }
-        .footer-social a:hover svg { fill: var(--off-white); }
-        .footer-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #25D366; color: #fff !important; font-size: 12px; font-weight: 400; border-radius: 4px; margin-bottom: 0 !important; transition: background .3s; }
-        .footer-whatsapp:hover { background: #1DA851 !important; color: #fff !important; }
-        .footer-whatsapp svg { fill: #fff !important; width: 14px; height: 14px; }
-        .footer-bottom { border-top: 1px solid rgba(225,216,204,.06); padding: 24px 0; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .footer-bottom span { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); }
-        .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
-        .footer-bottom a:hover { color: var(--grey); }
-
-        /* ═══ THE SADALA METHOD (shared triptych) ═══ */
-        .method-band { padding: 120px 48px; }
-        .method-band.dark { background: var(--black); color: var(--off-white); }
-        .method-band.light { background: var(--off-white); color: var(--black); }
-        .method-inner { max-width: 1200px; margin: 0 auto; }
-        .method-header { max-width: 680px; margin-bottom: 64px; }
-        .method-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
-        .method-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; line-height: 1.15; }
-        .method-band.dark .method-title { color: var(--off-white); }
-        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-        .method-col { display: flex; flex-direction: column; }
-        .method-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
-        .method-word { font-family: var(--serif); font-size: 32px; font-weight: 400; margin-bottom: 14px; }
-        .method-band.dark .method-word { color: var(--off-white); }
-        .method-desc { font-size: 13.5px; font-weight: 300; line-height: 1.8; }
-        .method-band.dark .method-desc { color: var(--grey); }
-        .method-band.light .method-desc { color: var(--grey); }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 900px) {
-            nav { padding: 20px 24px; } .nav-links { display: none; }
-            .nav-hamburger { display: block; }
-            .page-header { padding: 120px 24px 60px; }
-            .image-band { height: 40vh; }
-            .philosophy { padding: 60px 24px; }
-            .philosophy-block { grid-template-columns: 1fr; gap: 12px; }
-            .pillars { padding: 60px 24px; }
-            .pillars-grid { grid-template-columns: 1fr 1fr; }
-            .pillar { border-left: none; border-top: 1px solid rgba(225,216,204,.06); }
-            .pillar:nth-child(-n+2) { border-top: none; }
-            .team { padding: 60px 24px; }
-            .method-band { padding: 72px 24px; }
-            .method-grid { grid-template-columns: 1fr; gap: 40px; }
-            footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-        }
-
-        /* Language dropdown */
         .nav-lang-wrap { position: relative; }
         .nav-lang-wrap summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); padding: 4px 0; transition: color .3s; user-select: none; }
         .nav-lang-wrap summary::-webkit-details-marker, .nav-lang-wrap summary::marker { display: none; }
@@ -217,121 +53,432 @@
         .nav-lang-menu a { padding: 6px 18px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; letter-spacing: 0; text-transform: none; }
         .nav-lang-menu a:hover { color: var(--black); background: none; }
         .nav-lang-menu a.is-current { display: none; }
-
-        /* Mobile menu overlay */
         @media (max-width: 900px) {
-            nav.nav-open .nav-links {
-                display: flex !important;
-                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                background: var(--white);
-                flex-direction: column; justify-content: center; align-items: center;
-                gap: 28px; padding: 0; z-index: 999;
-            }
-            nav.nav-open .nav-links a,
-            nav.nav-open .nav-links a.nav-contact,
-            nav.nav-open .nav-links a.nav-lang {
-                font-family: var(--serif) !important;
-                font-size: 24px !important;
-                font-weight: 400 !important;
-                letter-spacing: 2px;
-                text-transform: none;
-                color: var(--black) !important;
-                padding: 8px 0 !important;
-                border: none !important;
-                background: none !important;
-            }
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
+            nav.nav-open .nav-links { display: flex !important; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 28px; padding: 0; z-index: 999; }
+            nav.nav-open .nav-links a, nav.nav-open .nav-links a.nav-contact { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; letter-spacing: 2px; text-transform: none; color: var(--black) !important; padding: 8px 0 !important; border: none !important; background: none !important; }
             nav.nav-open .nav-lang-wrap { width: auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
             nav.nav-open .nav-lang-wrap summary { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; color: var(--black) !important; padding: 8px 0 !important; }
             nav.nav-open .nav-lang-menu { position: static; border: none; box-shadow: none; padding: 4px 0 0; align-items: center; background: none; }
             nav.nav-open .nav-lang-menu a { font-family: var(--serif) !important; font-size: 18px !important; padding: 4px 0 !important; }
             nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
-            nav.nav-open .nav-hamburger span { background: var(--black); }
             nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
             nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
             nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
             body.nav-open-body { overflow: hidden; }
+        }
+
+
+        /* HERO */
+        .hero { position: relative; height: 92vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(44,44,44,.6) 100%); }
+        .hero-content { position: absolute; bottom: 64px; left: 48px; right: 48px; color: #fff; z-index: 2; }
+        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 22px; }
+        .hero-title { font-family: var(--serif); font-size: clamp(56px, 10vw, 144px); font-weight: 300; line-height: .95; letter-spacing: -2px; max-width: 1100px; }
+        .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.2vw, 26px); color: rgba(255,255,255,.85); margin-top: 18px; max-width: 720px; line-height: 1.4; }
+
+        /* In-page TOC */
+        .toc { position: sticky; top: 65px; z-index: 40; background: rgba(232,226,213,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-border); }
+        .toc-inner { display: flex; gap: 36px; justify-content: center; padding: 16px 24px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+        .toc a { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; transition: all .25s; }
+        .toc a .n { color: var(--accent); margin-right: 8px; font-family: var(--serif); font-size: 13px; }
+        .toc a:hover, .toc a.active { color: var(--black); border-bottom-color: var(--accent); }
+
+        /* Chapter opener */
+        .opener {
+            padding: 96px 48px 56px;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 220px 1fr;
+            gap: 48px; align-items: baseline;
+        }
+        .opener .num { font-family: var(--serif); font-size: clamp(120px, 16vw, 200px); font-weight: 200; line-height: .85; letter-spacing: -5px; color: var(--accent); }
+        .opener .name { font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; }
+        .opener .name .label { display: block; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .opener .name em { font-style: italic; color: var(--grey); }
+
+        /* Chapter body container */
+        .chapter-body { max-width: 1200px; margin: 0 auto; padding: 0 48px 96px; }
+
+        /* ════ 01 STUDIO - fact sheet + signed paragraph ════ */
+        .studio-facts {
+            max-width: 800px; margin: 0 auto 64px;
+            border-top: 1px solid var(--grey-border);
+        }
+        .studio-facts > div {
+            display: grid; grid-template-columns: 220px 1fr;
+            gap: 32px; padding: 22px 0;
+            border-bottom: 1px solid var(--grey-border);
+            align-items: baseline;
+        }
+        .sf-label { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
+        .sf-value { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; }
+        .sf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 6px; letter-spacing: 0; }
+
+        .studio-letter {
+            max-width: 720px; margin: 0 auto;
+            font-family: var(--serif); font-size: 22px; font-weight: 400;
+            line-height: 1.6; color: var(--black); text-align: center;
+        }
+        .studio-letter em { font-style: italic; color: var(--accent); }
+        .studio-letter + .studio-letter { margin-top: 18px; }
+        .studio-sig { display: block; margin-top: 32px; font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--grey); }
+
+        /* ════ 02 THE WORK - three numbered project cards ════ */
+        .work-list { max-width: 1100px; margin: 0 auto; }
+        .work-row {
+            display: grid; grid-template-columns: 1fr 1.4fr;
+            gap: 56px; padding: 48px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: center;
+            text-decoration: none; color: inherit;
+            transition: opacity .3s;
+        }
+        .work-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .work-row:hover { opacity: .82; }
+        .work-row:nth-child(even) { grid-template-columns: 1.4fr 1fr; }
+        .work-row:nth-child(even) .work-img { order: 2; }
+        .work-img { aspect-ratio: 4/3; overflow: hidden; }
+        .work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .work-row:hover .work-img img { transform: scale(1.04); }
+        .work-meta { display: flex; flex-direction: column; gap: 12px; }
+        .work-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+        .work-name { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; line-height: 1; letter-spacing: -0.6px; margin: 4px 0 0; }
+        .work-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 8px; }
+        .work-status.sold { color: var(--grey); }
+        .work-status.live { color: var(--accent); }
+        .work-status.live::before { content: '\\25CF'; margin-right: 6px; animation: pulse 2.4s ease-in-out infinite; }
+        .work-status.future { color: #5A7A5A; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+        .work-spec { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); margin-top: 14px; max-width: 460px; }
+        .work-spec strong { color: var(--black); font-weight: 400; }
+        .work-arrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-top: 12px; }
+
+        /* ════ 03 THE METHOD - numbered editorial list ════ */
+        .method-list { max-width: 920px; margin: 0 auto; }
+        .method-row {
+            display: grid; grid-template-columns: 80px 220px 1fr;
+            gap: 32px; padding: 36px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: baseline;
+        }
+        .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
+        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; }
+        .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 580px; }
+
+        /* ════ 04 THE CONVERSATION - CTA ════ */
+        .cta {
+            background: var(--black); color: var(--off-white);
+            padding: 100px 48px; text-align: center;
+        }
+        .cta h2 {
+            font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
+            font-weight: 300; line-height: 1.1; letter-spacing: -0.4px;
+            max-width: 800px; margin: 0 auto 16px;
+        }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 40px; }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+        .cta-actions a {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px; text-decoration: none;
+            font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+            transition: all .25s;
+        }
+        .cta .primary { background: var(--accent); color: #fff; }
+        .cta .primary:hover { background: #d49a7e; }
+        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
+        .cta .ghost:hover { border-color: var(--off-white); }
+        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
+        .cta-direct { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: rgba(225,216,204,.55); }
+        .cta-direct a { color: rgba(225,216,204,.85); text-decoration: none; }
+        .cta-direct a:hover { color: var(--off-white); }
+
+        /* Footer */
+        footer {
+            padding: 36px 48px;
+            background: var(--white);
+            border-top: 1px solid var(--grey-border);
+            text-align: center;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey);
+        }
+
+        /* Floating WhatsApp */
+        .float-cta {
+            position: fixed; bottom: 24px; right: 24px; z-index: 99;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 13px 22px;
+            background: var(--black); color: var(--off-white);
+            font-family: var(--sans); font-size: 13px; font-weight: 400;
+            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(44,44,44,.18);
+            transition: all .25s;
+        }
+        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
+        .float-cta:hover svg { fill: #fff; }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .opener { padding: 80px 32px 48px; grid-template-columns: 160px 1fr; gap: 32px; }
+            .opener .num { font-size: 140px; }
+            .chapter-body { padding: 0 32px 80px; }
+            .studio-facts > div { grid-template-columns: 180px 1fr; gap: 24px; }
+            .work-row { gap: 32px; padding: 36px 0; }
+            .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+        }
+
+        /* Mobile */
+        @media (max-width: 760px) {
+            nav { padding: 14px 20px; }
+            .nav-r { display: none; }
+            .hero { height: 78vh; }
+            .hero-content { left: 20px; right: 20px; bottom: 28px; }
+            .hero-title { font-size: clamp(48px, 13vw, 88px); letter-spacing: -1px; }
+            .hero-sub { font-size: 16px; margin-top: 12px; }
+            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
+            .toc { top: 64px; }
+            .toc-inner { gap: 14px; padding: 12px 14px; }
+            .toc a { font-size: 10px; letter-spacing: 1.2px; }
+            .toc a .n { font-size: 12px; margin-right: 4px; }
+
+            .opener { padding: 48px 20px 24px; grid-template-columns: 1fr; gap: 8px; }
+            .opener .num { font-size: 88px; line-height: .9; }
+            .opener .name { font-size: 30px; }
+            .chapter-body { padding: 0 20px 56px; }
+
+            /* Studio facts: stack each row */
+            .studio-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+            .sf-label { padding-top: 0; font-size: 10px; }
+            .sf-value { font-size: 22px; }
+
+            .studio-letter { font-size: 18px; text-align: left; }
+
+            /* Work: stack image and meta */
+            .work-row, .work-row:nth-child(even) {
+                grid-template-columns: 1fr; gap: 20px; padding: 32px 0;
+            }
+            .work-row:nth-child(even) .work-img { order: 0; }
+            .work-name { font-size: 36px; }
+
+            /* Method: stack */
+            .method-row { grid-template-columns: 1fr; gap: 6px; padding: 28px 0; }
+            .m-num { font-size: 30px; margin-bottom: 4px; }
+            .m-word { font-size: 26px; }
+
+            /* CTA */
+            .cta { padding: 64px 20px; }
+            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+            .cta-actions a { justify-content: center; }
+
+            footer { padding: 28px 20px; font-size: 10px; }
+            .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
+    <a href="../index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html">Proyectos</a>
-        <a href="approach.html">Nuestro enfoque</a>
+        <a href="projects.html">Projects</a>
+        <a href="approach.html">Our approach</a>
         <details class="nav-lang-wrap">
-            <summary>ES</summary>
+            <summary>EN</summary>
             <div class="nav-lang-menu">
-                <a href="../../pages/approach.html">EN</a>
-                <a href="../../es/pages/approach.html" class="is-current">ES</a>
-                <a href="../../nl/pages/approach.html">NL</a>
-                <a href="../../fi/pages/approach.html">FI</a>
-                <a href="../../da/pages/approach.html">DA</a>
-            <a href="../../pl/pages/approach.html">PL</a>
+                <a href="../pages/approach.html" class="is-current">EN</a>
+                <a href="../es/pages/approach.html">ES</a>
+                <a href="../nl/pages/approach.html">NL</a>
+                <a href="../fi/pages/approach.html">FI</a>
+                <a href="../da/pages/approach.html">DA</a>
+                <a href="../pl/pages/approach.html">PL</a>
             </div>
         </details>
-        <a href="contact.html" class="nav-contact">Contacto</a>
+        <a href="contact.html" class="nav-contact">Contact</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
         <span></span><span></span><span></span>
     </div>
 </nav>
 
-<section class="page-header reveal">
-    <div class="page-header-label">Nuestro enfoque</div>
-    <h1>Un nuevo tipo de inmobiliaria.</h1>
-    <p class="page-sub">No somos una promotora. Somos un estudio. Un hogar a la vez, concebido, dise&ntilde;ado, construido y entregado por un mismo equipo. Sadala construye donde la tierra ya ha hecho el trabajo, en parcelas elegidas por lo que son.</p>
-</section>
-
-<section class="image-band">
-    <img src="../../img/cantal/cantal-interior.jpg" alt="El Cantal espacio exterior">
-</section>
-
-<!-- ═══ THE SADALA METHOD — el triptico ═══ -->
-<section class="method-band dark reveal">
-    <div class="method-inner">
-        <div class="method-header">
-            <div class="method-label">The Sadala Method</div>
-            <h2 class="method-title">Tres principios en cada proyecto. Sin excepciones.</h2>
-        </div>
-        <div class="method-grid">
-            <div class="method-col">
-                <div class="method-num">01</div>
-                <div class="method-word">Rooted</div>
-                <p class="method-desc">No colocamos una casa sobre el terreno. Dejamos que el terreno la forme. La pendiente, los pinos, la direcci&oacute;n de la luz de la ma&ntilde;ana: no son limitaciones, son el programa. La arquitectura escucha.</p>
-            </div>
-            <div class="method-col">
-                <div class="method-num">02</div>
-                <div class="method-word">Singular</div>
-                <p class="method-desc">Una parcela, una visi&oacute;n, una sola vez. Sin planos reutilizados, sin proyectos en paralelo. Cada hogar Sadala se concibe como si fuera el &uacute;nico que construiremos, porque para nosotros lo es.</p>
-            </div>
-            <div class="method-col">
-                <div class="method-num">03</div>
-                <div class="method-word">Local</div>
-                <p class="method-desc">Piedra de canteras andaluzas. Madera maciza de molinos de confianza. Socios elegidos a pocos kil&oacute;metros, nunca a muchos vuelos. El nuevo lujo no es el m&aacute;rmol importado. Es un hogar construido por personas que se implican porque viven cerca.</p>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+    <img src="../img/cantal/cantal-aerial.jpg" alt="A Sadala home in its landscape">
+    <div class="hero-content">
+        <div class="hero-meta">Our approach &middot; The studio, the method, the process</div>
+        <h1 class="hero-title">A studio, not<br>a developer.</h1>
+        <p class="hero-sub">The slow way to make a home, in a category that has forgotten what slow means.</p>
     </div>
 </section>
 
-<section class="team reveal">
-    <h2>El estudio</h2>
-    <p>Sadala est&aacute; liderado por un peque&ntilde;o equipo dedicado con base en M&aacute;laga. Buscamos parcelas en silencio por toda Andaluc&iacute;a: los pinos de M&aacute;laga Este, las colinas de Marbella, los pueblos blancos de Sotogrande. No forzamos los lugares. Los esperamos.</p>
-    <a href="contact.html" class="team-cta">Iniciar una conversaci&oacute;n</a>
+<!-- IN-PAGE TOC -->
+<div class="toc">
+    <div class="toc-inner">
+        <a href="#studio" data-ch="studio"><span class="n">01</span>The studio</a>
+        <a href="#method" data-ch="method"><span class="n">02</span>The method</a>
+        <a href="#process" data-ch="process"><span class="n">03</span>The process</a>
+        <a href="#talk"   data-ch="talk"><span class="n">04</span>Start a conversation</a>
+    </div>
+</div>
+
+<!-- ════ 01 / THE STUDIO ════ -->
+<section class="opener" id="studio">
+    <div class="num">01</div>
+    <h2 class="name">
+        <span class="label">Chapter 01</span>
+        The studio.<br><em>Why a studio, not a developer.</em>
+    </h2>
+</section>
+
+<div class="chapter-body">
+    <div class="studio-facts">
+        <div>
+            <div class="sf-label">Founded</div>
+            <div class="sf-value">2021<small>M&aacute;laga, Andaluc&iacute;a &middot; by Dimitri Farber &amp; Claire Caminati</small></div>
+        </div>
+        <div>
+            <div class="sf-label">Practice</div>
+            <div class="sf-value">A studio<small>Not a developer. Not a marketing platform.</small></div>
+        </div>
+        <div>
+            <div class="sf-label">Cadence</div>
+            <div class="sf-value">One villa at a time<small>Designed, built, sold, then we start the next.</small></div>
+        </div>
+        <div>
+            <div class="sf-label">Footprint</div>
+            <div class="sf-value">Within a short drive<small>Of every project, every quarry, every workshop</small></div>
+        </div>
+    </div>
+
+    <p class="studio-letter">
+        A developer optimises for repetition. They buy plots that fit a plan, paint the marketing first and the walls last, and aren't on site once the keys are handed over.
+    </p>
+    <p class="studio-letter">
+        <em>A studio works the other way around.</em> The plot writes the brief. The plan adapts to the site. One villa at a time. Built by people who live nearby. For buyers we'll meet over coffee, not over email.
+    </p>
+    <p class="studio-letter">
+        It's not a scaleable business. That's the entire point.
+        <span class="studio-sig">- Dimitri</span>
+    </p>
+</div>
+
+<!-- ════ 02 / THE WORK ════ -->
+<section class="opener" id="process">
+    <div class="num">02</div>
+    <h2 class="name">
+        <span class="label">Chapter 02</span>
+        The method.<br><em>Three principles. Every villa, every time.</em>
+    </h2>
+</section>
+
+<div class="chapter-body">
+    <div class="method-list">
+        <div class="method-row">
+            <div class="m-num">01</div>
+            <div class="m-word">Rooted</div>
+            <p class="m-desc">The land shapes the house, not the other way around. The slope, the trees, the morning sun aren't constraints. They are the program. We commit to a plot before there is a plan. The kitchen window faces east because that is where the morning shadows already pointed. The bedroom is below grade because the mature pines sit above. Every Sadala project starts by listening to the site, often for months.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">02</div>
+            <div class="m-word">Singular</div>
+            <p class="m-desc">One site, one vision, one time. We don't reuse plans, and we don't run parallel projects. Each home is conceived as if it were the only one we will ever build, because for us, that's exactly what it is. While we work on one villa, no other Sadala home is being designed. This is not a scaleable practice. That is the entire point.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">03</div>
+            <div class="m-word">Local</div>
+            <p class="m-desc">Stone from Andalusian quarries within a short drive. Solid wood from trusted mills. Native gardens from a nursery up the road. Every supplier is named, every craftsman is known. The new luxury isn't imported marble. It's a home built by people who care because they live nearby and will see the home for years after the keys change hands.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════ 03 / THE METHOD ════ -->
+<section class="opener" id="method">
+    <div class="num">03</div>
+    <h2 class="name">
+        <span class="label">Chapter 03</span>
+        The process.<br><em>From plot to keys, by hand.</em>
+    </h2>
+</section>
+
+<div class="chapter-body">
+    <div class="method-list">
+        <div class="method-row">
+            <div class="m-num">01</div>
+            <div class="m-word">The plot</div>
+            <p class="m-desc">We identify a site. We walk it at sunrise, at noon, in winter and summer. We listen to the trees, the slope, the silence. We commit before there is a plan, sometimes by months.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">02</div>
+            <div class="m-word">The drawing</div>
+            <p class="m-desc">A first sketch, by hand, on tracing paper. Often the kitchen window's orientation is decided before any wall is drawn. The plan adapts to the site, not the other way around.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">03</div>
+            <div class="m-word">The team</div>
+            <p class="m-desc">Architects, interior designers, landscapers. Craftsmen, quarry, mill, nursery. Every name on the team works within a short drive. Each Sadala project is the same set of names, where it makes sense.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">04</div>
+            <div class="m-word">The build</div>
+            <p class="m-desc">Foundation. Structure. Skin. Garden. Eighteen to thirty months on site, depending on the home. We post weekly updates because hiding the construction would betray the brand.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">05</div>
+            <div class="m-word">The keys</div>
+            <p class="m-desc">A walk through the home with the buyer. The kitchen garden is planted. The first morning light comes through the window we drew at the start. We hand over the keys. Then we start the next plot.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════ 04 / START A CONVERSATION ════ -->
+<section class="cta" id="talk">
+    <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
+    <p class="cta-sub">Our process starts with a conversation, not a brochure. We live where we build.</p>
+    <div class="cta-actions">
+        <a href="contact.html" class="primary">Start a conversation</a>
+        <a href="https://wa.me/34639675315" class="ghost">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+            WhatsApp
+        </a>
+    </div>
+    <p class="cta-direct"><a href="mailto:info@sadala.com">info@sadala.com</a> &middot; <a href="tel:+34639675315">+34 639 675 315</a></p>
 </section>
 
 <footer>
-    <div class="footer-main">
-        <div class="footer-col"><h4>Contacto</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espa&ntilde;a</span></div>
-        <div class="footer-col"><h4>Conecta</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
-    </div>
-    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Pol&iacute;tica de Privacidad</a></div>
+    SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A
 </footer>
 
+<a href="https://wa.me/34639675315" class="float-cta" aria-label="Contact us">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Contact us</span>
+</a>
+
 <script>
-const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.08});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+/* TOC scroll-spy */
+const links = document.querySelectorAll('.toc a[data-ch]');
+const sections = ['studio','method','process','talk'].map(id => document.getElementById(id));
+const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+        links.forEach(a => a.classList.toggle('active', a.dataset.ch === e.target.id));
+    }
+}), { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => s && obs.observe(s));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if (!t) return;
+        e.preventDefault();
+        const y = t.getBoundingClientRect().top + window.scrollY - 130;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+});
 </script>
+
 </body>
 </html>

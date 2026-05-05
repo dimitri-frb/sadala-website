@@ -1,212 +1,48 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Origen - Sadala</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../img/logo/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Origen - the first Sadala home, delivered and sold 2023. Pinares de San Anton, Malaga.">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --white: #E8E2D5; --off-white: #E1D8CC; --black: #2C2C2C;
-            --grey: #7A7570; --grey-light: #B5AFA8; --grey-border: rgba(44,44,44,.08);
-            --accent: #C1876B;
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
+            --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C;
+            --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1);
+            --accent:#C1876B;
+            --serif:'Cormorant Garamond',Georgia,serif;
+            --sans:'Inter',sans-serif;
+            --mono:'JetBrains Mono',monospace;
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
 
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--grey-border); }
+
+
+        /* === Live nav (logo, links, language dropdown, hamburger) === */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 22px 48px;
+            background: rgba(232,226,213,.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--grey-border);
+        }
         .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
         .nav-logo img { height: 28px; width: auto; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
         .nav-links a.active { color: var(--black); font-weight: 400; }
-                .nav-hamburger {
-            display: none; cursor: pointer;
-            width: 24px; height: 16px;
-            position: relative; z-index: 1001;
-        }
-        .nav-hamburger span {
-            display: block; width: 100%; height: 1.5px;
-            background: var(--black); position: absolute; left: 0;
-            transition: all .3s;
-        }
+        .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
+        .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
+        .nav-hamburger { display: none; cursor: pointer; width: 24px; height: 16px; position: relative; z-index: 1001; }
+        .nav-hamburger span { display: block; width: 100%; height: 1.5px; background: var(--black); position: absolute; left: 0; transition: all .3s; }
         .nav-hamburger span:nth-child(1) { top: 0; }
         .nav-hamburger span:nth-child(2) { top: 7px; }
         .nav-hamburger span:nth-child(3) { top: 14px; }
-
-        .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
-        .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
-
-        .villa-hero { height: 85vh; position: relative; overflow: hidden; margin-top: 80px; }
-        .villa-hero img { width: 100%; height: 100%; object-fit: cover; }
-        .villa-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(44,44,44,.45) 100%); }
-        .villa-hero-content { position: absolute; bottom: 60px; left: 48px; z-index: 1; }
-        .villa-hero-cat { font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 12px; }
-        .villa-hero-title { font-family: var(--serif); font-size: clamp(36px, 6vw, 72px); font-weight: 400; color: #fff; line-height: 1.05; }
-        .villa-hero-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6); margin-top: 12px; }
-
-        .status-tag { display: inline-block; padding: 6px 16px; margin-bottom: 16px; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; }
-        .status-tag--construction { background: var(--accent); color: #fff; }
-        .status-tag--approved { background: #5A7A5A; color: #fff; }
-        .status-tag--completed { background: var(--black); color: var(--off-white); }
-
-        .villa-intro { padding: 100px 48px; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 60px; }
-        .villa-intro-label { font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
-        .villa-intro-text { font-family: var(--serif); font-size: clamp(20px, 2.5vw, 28px); font-weight: 300; line-height: 1.6; font-style: italic; }
-
-        .kpi-strip { padding: 60px 48px; border-top: 1px solid var(--grey-border); border-bottom: 1px solid var(--grey-border); }
-        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .kpi-value { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--black); margin-bottom: 4px; }
-        .kpi-label { font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); }
-
-        .features { padding: 80px 48px 100px; }
-        .features-header { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; }
-        .feature-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--black); margin-bottom: 8px; }
-        .feature-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
-
-        .location-section { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
-        .location-header { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; margin-bottom: 48px; }
-        .location-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
-        .location-map { width: 100%; height: 400px; border: 0; filter: grayscale(.3) contrast(1.05); }
-        .location-highlights { display: flex; gap: 32px; margin-top: 20px; }
-        .lh-value { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--black); margin-bottom: 2px; }
-        .lh-label { font-size: 11px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); }
-        .location-text h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 16px; }
-        .location-text p { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); margin-bottom: 12px; }
-
-        .partners-section { padding: 100px 48px; background: var(--off-white); }
-        .partners-header { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; margin-bottom: 16px; max-width: 1100px; margin-left: auto; margin-right: auto; }
-        .partners-sub { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); max-width: 1100px; margin: 0 auto 48px; }
-        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .partner-card { padding: 32px; background: var(--white); text-align: center; }
-        .partner-role { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-        .partner-name { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--black); margin-bottom: 8px; }
-        .partner-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
-
-        .slider-section { padding: 80px 48px; border-top: 1px solid var(--grey-border); }
-        .slider-section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
-        .slider-section-header h2 { font-family: var(--serif); font-size: 28px; font-weight: 400; }
-        .slider-section-header .slider-counter { font-size: 12px; font-weight: 300; color: var(--grey); }
-        .slider-track { position: relative; overflow: hidden; cursor: grab; touch-action: pan-y; }
-        .slider-track:active { cursor: grabbing; }
-        .slider-inner { display: flex; transition: transform .5s cubic-bezier(.25,.1,.25,1); user-select: none; -webkit-user-select: none; }
-        .slider-slide { flex: 0 0 100%; min-width: 0; }
-        .slider-slide img { width: 100%; height: 500px; object-fit: contain; background: var(--off-white); }
-        .slider-slide.cover img { object-fit: cover; }
-        .slider-slide .slide-caption { font-size: 12px; font-weight: 300; color: var(--grey); margin-top: 12px; text-align: center; }
-        .slider-controls { display: flex; gap: 8px; margin-top: 24px; justify-content: center; }
-        .slider-btn { width: 44px; height: 44px; border: 1px solid var(--grey-border); background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .3s; }
-        .slider-btn:hover { border-color: var(--grey); }
-        .slider-btn svg { width: 14px; height: 14px; stroke: var(--grey); stroke-width: 1.5; fill: none; }
-        .slider-dots { display: flex; gap: 8px; align-items: center; }
-        .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grey-border); border: 1px solid var(--grey-light); cursor: pointer; transition: all .3s; }
-        .slider-dot.active { background: var(--accent); border-color: var(--accent); }
-
-        .cta-band { background: var(--black); padding: 80px 48px; text-align: center; }
-        .cta-band h2 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--off-white); margin-bottom: 12px; }
-        .cta-band p { font-size: 14px; font-weight: 300; color: var(--grey); margin-bottom: 28px; }
-        .cta-band .btn { display: inline-block; padding: 14px 32px; font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--off-white); text-decoration: none; border: 1px solid rgba(225,216,204,.2); transition: all .3s; }
-        .cta-band .btn:hover { background: rgba(225,216,204,.08); border-color: rgba(225,216,204,.4); }
-        .cta-band .btn-accent { background: var(--accent); border-color: var(--accent); color: #fff; margin-left: 12px; }
-        .cta-band .btn-accent:hover { background: #d49a7e; border-color: #d49a7e; }
-
-        footer { background: var(--black); color: var(--off-white); padding: 80px 48px 0; }
-        .footer-main { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; }
-        .footer-brand .footer-logo { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--off-white); display: block; margin-bottom: 16px; }
-        .footer-brand .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); margin-bottom: 20px; }
-        .footer-brand .footer-location { font-size: 12px; font-weight: 300; color: var(--grey-light); }
-        .footer-col h4 { font-family: var(--serif); font-size: 14px; font-weight: 400; color: var(--off-white); margin-bottom: 20px; letter-spacing: 1px; }
-        .footer-col a, .footer-col span { display: block; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; margin-bottom: 10px; transition: color .3s; }
-        .footer-col a:hover { color: var(--off-white); }
-        .footer-social { display: flex; gap: 16px; margin-bottom: 24px; }
-        .footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(225,216,204,.12); margin-bottom: 0; transition: all .3s; }
-        .footer-social a:hover { border-color: rgba(225,216,204,.3); background: rgba(225,216,204,.05); }
-        .footer-social a svg { width: 16px; height: 16px; fill: var(--grey); transition: fill .3s; }
-        .footer-social a:hover svg { fill: var(--off-white); }
-        .footer-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: #25D366; color: #fff !important; font-size: 12px; font-weight: 400; border-radius: 4px; margin-bottom: 0 !important; transition: background .3s; }
-        .footer-whatsapp:hover { background: #1DA851 !important; color: #fff !important; }
-        .footer-whatsapp svg { fill: #fff !important; width: 14px; height: 14px; }
-        .footer-bottom { border-top: 1px solid rgba(225,216,204,.06); padding: 24px 0; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .footer-bottom span { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); }
-        .footer-bottom a { font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25); text-decoration: none; transition: color .3s; }
-        .footer-bottom a:hover { color: var(--grey); }
-
-        /* ═══ ORIGIN STORY ═══ */
-        .origin-section { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
-        .origin-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-        .origin-quote {
-            font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
-            font-weight: 300; line-height: 1.2; font-style: italic; margin-bottom: 40px;
-        }
-        .origin-body p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
-        .origin-body p:first-child { font-size: 17px; color: var(--black); }
-
-        /* ═══ THE PLOT — full-bleed image + text ═══ */
-        .plot-band { padding: 100px 48px; border-top: 1px solid var(--grey-border); }
-        .plot-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-        .plot-img { overflow: hidden; aspect-ratio: 4/5; }
-        .plot-img img { width: 100%; height: 100%; object-fit: cover; }
-        .plot-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-        .plot-text h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
-        .plot-text p { font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 12px; }
-
-        /* ═══ WHAT WE LEARNED — 4 principles dark band ═══ */
-        .lessons { padding: 120px 48px; background: var(--black); color: var(--off-white); }
-        .lessons-inner { max-width: 1100px; margin: 0 auto; }
-        .lessons-header { max-width: 640px; margin-bottom: 64px; }
-        .lessons-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
-        .lessons-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; color: var(--off-white); line-height: 1.15; }
-        .lessons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 48px; }
-        .lesson-num { font-family: var(--serif); font-size: 40px; font-weight: 300; color: var(--accent); opacity: .6; margin-bottom: 8px; line-height: 1; }
-        .lesson h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--off-white); margin-bottom: 12px; }
-        .lesson p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--grey); }
-
-        /* ═══ LEGACY — bridge to current projects ═══ */
-        .legacy { padding: 120px 48px; max-width: 920px; margin: 0 auto; }
-        .legacy h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 300; line-height: 1.2; margin-bottom: 24px; }
-        .legacy p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--grey); margin-bottom: 16px; }
-        .legacy-links { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-        .legacy-link { display: block; padding: 24px; border: 1px solid var(--grey-border); text-decoration: none; color: inherit; transition: all .4s; }
-        .legacy-link:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .legacy-link-label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-        .legacy-link-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
-        .legacy-link-sub { font-size: 12px; font-weight: 300; color: var(--grey); }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 900px) {
-            nav { padding: 20px 24px; } .nav-links { display: none; }
-            .nav-hamburger { display: block; }
-            .villa-hero { height: 60vh; margin-top: 64px; } .villa-hero-content { left: 24px; bottom: 40px; }
-            .villa-intro { padding: 60px 24px; grid-template-columns: 1fr; gap: 12px; }
-            .kpi-grid { grid-template-columns: 1fr 1fr; }
-            .features { padding: 60px 24px; } .features-grid { grid-template-columns: 1fr; }
-            .location-section { padding: 60px 24px; } .location-grid { grid-template-columns: 1fr; } .location-map { height: 280px; }
-            .partners-section { padding: 60px 24px; } .partners-grid { grid-template-columns: 1fr; }
-            .slider-section { padding: 60px 24px; } .slider-slide img { height: 300px; }
-            .origin-section { padding: 72px 24px; }
-            .plot-band { padding: 72px 24px; }
-            .plot-inner { grid-template-columns: 1fr; gap: 32px; }
-            .lessons { padding: 72px 24px; }
-            .lessons-grid { grid-template-columns: 1fr !important; gap: 40px; }
-            .legacy { padding: 72px 24px; }
-            .legacy-links { grid-template-columns: 1fr; gap: 16px; }
-            .cta-band { padding: 60px 24px; } .cta-band .btn { display: block; margin: 8px auto; max-width: 280px; } .cta-band .btn-accent { margin-left: 0; }
-            footer { padding: 60px 24px 0; } .footer-main { grid-template-columns: 1fr; gap: 40px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-        }
-
-        /* Language dropdown */
         .nav-lang-wrap { position: relative; }
         .nav-lang-wrap summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); padding: 4px 0; transition: color .3s; user-select: none; }
         .nav-lang-wrap summary::-webkit-details-marker, .nav-lang-wrap summary::marker { display: none; }
@@ -217,279 +53,648 @@
         .nav-lang-menu a { padding: 6px 18px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; letter-spacing: 0; text-transform: none; }
         .nav-lang-menu a:hover { color: var(--black); background: none; }
         .nav-lang-menu a.is-current { display: none; }
-
-        /* Mobile menu overlay */
         @media (max-width: 900px) {
-            nav.nav-open .nav-links {
-                display: flex !important;
-                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                background: var(--white);
-                flex-direction: column; justify-content: center; align-items: center;
-                gap: 28px; padding: 0; z-index: 999;
-            }
-            nav.nav-open .nav-links a,
-            nav.nav-open .nav-links a.nav-contact,
-            nav.nav-open .nav-links a.nav-lang {
-                font-family: var(--serif) !important;
-                font-size: 24px !important;
-                font-weight: 400 !important;
-                letter-spacing: 2px;
-                text-transform: none;
-                color: var(--black) !important;
-                padding: 8px 0 !important;
-                border: none !important;
-                background: none !important;
-            }
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
+            nav.nav-open .nav-links { display: flex !important; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 28px; padding: 0; z-index: 999; }
+            nav.nav-open .nav-links a, nav.nav-open .nav-links a.nav-contact { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; letter-spacing: 2px; text-transform: none; color: var(--black) !important; padding: 8px 0 !important; border: none !important; background: none !important; }
             nav.nav-open .nav-lang-wrap { width: auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
             nav.nav-open .nav-lang-wrap summary { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; color: var(--black) !important; padding: 8px 0 !important; }
             nav.nav-open .nav-lang-menu { position: static; border: none; box-shadow: none; padding: 4px 0 0; align-items: center; background: none; }
             nav.nav-open .nav-lang-menu a { font-family: var(--serif) !important; font-size: 18px !important; padding: 4px 0 !important; }
             nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
-            nav.nav-open .nav-hamburger span { background: var(--black); }
             nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
             nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
             nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
             body.nav-open-body { overflow: hidden; }
         }
-    </style>
 
-    <style>
-        .floating-cta {
-            position: fixed; bottom: 24px; right: 24px;
-            z-index: 999;
+
+        /* HERO */
+        .hero { position: relative; height: 88vh; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,.55) 100%); }
+        .hero-content { position: absolute; bottom: 60px; left: 48px; right: 48px; color: #fff; z-index: 2; }
+        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 18px; }
+        .hero-title { font-family: var(--serif); font-size: clamp(64px, 11vw, 160px); font-weight: 300; line-height: .95; letter-spacing: -2px; }
+        .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2vw, 24px); color: rgba(255,255,255,.85); margin-top: 16px; max-width: 640px; line-height: 1.4; }
+
+        /* In-page TOC */
+        .toc { position: sticky; top: 65px; z-index: 40; background: rgba(232,226,213,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-border); }
+        .toc-inner { display: flex; gap: 36px; justify-content: center; padding: 16px 24px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+        .toc a {
+            font-family: var(--sans); font-size: 11px; font-weight: 400;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--grey); text-decoration: none; padding: 4px 0;
+            border-bottom: 1px solid transparent; transition: all .25s;
+        }
+        .toc a .n { color: var(--accent); margin-right: 8px; font-family: var(--serif); font-size: 13px; }
+        .toc a:hover, .toc a.active { color: var(--black); border-bottom-color: var(--accent); }
+
+        /* Chapter opener */
+        .opener {
+            padding: 96px 48px 56px;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 220px 1fr;
+            gap: 48px; align-items: baseline;
+        }
+        .opener .num {
+            font-family: var(--serif);
+            font-size: clamp(120px, 16vw, 200px);
+            font-weight: 200; line-height: .85;
+            letter-spacing: -5px; color: var(--accent);
+        }
+        .opener .name {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300; line-height: 1.1;
+            letter-spacing: -0.4px;
+        }
+        .opener .name .label {
+            display: block; font-family: var(--sans);
+            font-size: 11px; font-weight: 400;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 14px;
+        }
+        .opener .name em { font-style: italic; color: var(--grey); }
+
+        /* Chapter body */
+        .chapter-body { max-width: 1200px; margin: 0 auto; padding: 0 48px 96px; }
+
+        /* ════ CHAPTER 01: THE PLOT - spec sheet (vertical rows) ════ */
+        .plot-facts {
+            max-width: 800px; margin: 0 auto 64px;
+            border-top: 1px solid var(--grey-border);
+        }
+        .plot-facts > div {
+            display: grid; grid-template-columns: 220px 1fr;
+            gap: 32px; padding: 22px 0;
+            border-bottom: 1px solid var(--grey-border);
+            align-items: baseline;
+        }
+        .pf-label { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
+        .pf-value { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; }
+        .pf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 6px; letter-spacing: 0; }
+
+        .plot-image { width: 100%; aspect-ratio: 21/9; overflow: hidden; margin-bottom: 56px; }
+        .plot-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .plot-narrative {
+            max-width: 720px; margin: 0 auto;
+            font-family: var(--serif); font-size: 22px; font-weight: 400;
+            line-height: 1.6; color: var(--black);
+        }
+        .plot-narrative em { font-style: italic; color: var(--accent); }
+        .plot-narrative + .plot-narrative { margin-top: 18px; }
+
+        /* ════ CHAPTER 02: THE HOME ════ */
+        .home-kpis {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
+            margin-bottom: 80px;
+        }
+        .home-kpis > div { padding: 32px 24px; text-align: center; border-right: 1px solid var(--grey-border); }
+        .home-kpis > div:last-child { border-right: none; }
+        .kpi-v { font-family: var(--serif); font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -1px; }
+        .kpi-l { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 10px; }
+
+        .home-concept { max-width: 800px; margin: 0 auto 64px; text-align: center; }
+        .home-concept .label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        .home-concept h3 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); font-weight: 300; letter-spacing: -0.5px; line-height: 1.05; margin-bottom: 24px; }
+        .home-concept p { font-family: var(--serif); font-size: 19px; font-weight: 400; font-style: italic; color: var(--grey); line-height: 1.6; }
+
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 80px; }
+        .pillar { display: flex; flex-direction: column; }
+        .pillar-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 22px; }
+        .pillar-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s; }
+        .pillar:hover .pillar-img img { transform: scale(1.03); }
+        .pillar-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .pillar h4 { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.2; }
+
+        /* Tight gallery - 6 images, asymmetric */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+        }
+        .gallery .tile { overflow: hidden; }
+        .gallery .tile img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .gallery .tile:hover img { transform: scale(1.04); }
+        .gallery .tile-1 { grid-column: span 4; aspect-ratio: 16/9; }
+        .gallery .tile-1 img { aspect-ratio: 16/9; }
+        .gallery .tile-2 { grid-column: span 2; aspect-ratio: 1; }
+        .gallery .tile-3 { grid-column: span 2; aspect-ratio: 1; }
+        .gallery .tile-4 { grid-column: span 2; aspect-ratio: 1; }
+        .gallery .tile-5 { grid-column: span 2; aspect-ratio: 1; }
+        .gallery .tile-6 { grid-column: span 6; aspect-ratio: 21/9; }
+        .gallery .tile-6 img { aspect-ratio: 21/9; }
+
+        /* ════ CHAPTER 03: THE CRAFT - numbered editorial list ════ */
+        .craft-list { max-width: 920px; margin: 0 auto; }
+        .craft-row {
+            display: grid; grid-template-columns: 80px 200px 1fr;
+            gap: 32px; padding: 36px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: baseline;
+        }
+        .craft-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .cr-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
+        .cr-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+        .cr-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-top: 4px; }
+        .cr-desc { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); max-width: 580px; }
+
+        /* ════ CHAPTER 04: THE TEAM - colophon-style credits ════ */
+        .team-credits { max-width: 920px; margin: 0 auto; }
+        .credit-row {
+            display: grid; grid-template-columns: 200px 1fr 1.4fr;
+            gap: 40px; padding: 28px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: baseline;
+        }
+        .credit-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .credit-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 8px; }
+        .credit-name { font-family: var(--serif); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -0.3px; }
+        .credit-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+
+        /* ════ TIMELINE BAND (before CTA) ════ */
+        .timeline-band {
+            padding: 80px 48px; background: var(--off-white);
+            border-top: 1px solid var(--grey-border);
+        }
+        .timeline-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .timeline-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; }
+        .timeline-track {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            position: relative; max-width: 880px; margin: 0 auto;
+        }
+        /* Connector line - aligned through the centre of the dots */
+        .timeline-track::before {
+            content: ''; position: absolute;
+            top: 6px;             /* dot is 14px tall; centre = 7px. line height 2 -> top 6 */
+            left: 12.5%; right: 12.5%;  /* from centre of column 1 to centre of column 4 */
+            height: 2px;
+            background: linear-gradient(to right,
+                var(--accent) 0%, var(--accent) 66.67%,
+                var(--grey-border) 66.67%, var(--grey-border) 100%);
+            z-index: 0;
+        }
+        .ts {
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .ts-dot {
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--white); border: 1.5px solid var(--grey-border);
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+        .ts.done .ts-dot { background: var(--accent); border-color: var(--accent); }
+        .ts.now .ts-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px rgba(193,135,107,.2); }
+        .ts-when { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); margin-bottom: 4px; text-transform: uppercase; }
+        .ts.now .ts-when { color: var(--accent); }
+        .ts-name { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.2; }
+
+        /* ════ CTA ════ */
+        .cta {
+            background: var(--black); color: var(--off-white);
+            padding: 100px 48px; text-align: center;
+        }
+        .cta h2 {
+            font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
+            font-weight: 300; line-height: 1.1; letter-spacing: -0.4px;
+            max-width: 800px; margin: 0 auto 16px;
+        }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta p {
+            font-size: 15px; font-weight: 300; line-height: 1.7;
+            color: rgba(225,216,204,.7); max-width: 540px;
+            margin: 0 auto 36px;
+        }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .cta-actions a {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px; text-decoration: none;
+            font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+            transition: all .25s;
+        }
+        .cta .primary { background: var(--accent); color: #fff; }
+        .cta .primary:hover { background: #d49a7e; }
+        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
+        .cta .ghost:hover { border-color: var(--off-white); }
+        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
+
+        footer {
+            padding: 36px 48px;
+            background: var(--white);
+            border-top: 1px solid var(--grey-border);
+            text-align: center;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey);
+        }
+
+        /* Floating WhatsApp */
+        .float-cta {
+            position: fixed; bottom: 24px; right: 24px; z-index: 99;
             display: inline-flex; align-items: center; gap: 10px;
             padding: 13px 22px;
             background: var(--black); color: var(--off-white);
             font-family: var(--sans); font-size: 13px; font-weight: 400;
-            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-            border-radius: 999px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            text-decoration: none; border-radius: 999px;
             box-shadow: 0 8px 24px rgba(44,44,44,.18);
-            transition: background .25s, transform .25s, box-shadow .25s;
+            transition: all .25s;
         }
-        .floating-cta:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(44,44,44,.22); }
-        .floating-cta svg { width: 16px; height: 16px; fill: #25D366; flex-shrink: 0; }
-        .floating-cta:hover svg { fill: #fff; }
-        @media (max-width: 600px) {
-            .floating-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; gap: 8px; }
-            .floating-cta svg { width: 14px; height: 14px; }
+        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
+        .float-cta:hover svg { fill: #fff; }
+
+        /* ════ TABLET (1024px) - soften the desktop grids ════ */
+        @media (max-width: 1024px) {
+            nav { padding: 18px 28px; }
+            .opener { padding: 80px 32px 48px; grid-template-columns: 160px 1fr; gap: 32px; }
+            .opener .num { font-size: 140px; }
+            .chapter-body { padding: 0 32px 80px; }
+            .plot-facts > div { grid-template-columns: 180px 1fr; gap: 24px; }
+            .craft-row { grid-template-columns: 60px 1fr 1.6fr; gap: 24px; padding: 30px 0; }
+            .credit-row { grid-template-columns: 160px 1fr 1.4fr; gap: 24px; }
+            .timeline-band { padding: 64px 32px; }
+        }
+
+        /* ════ MOBILE (760px) - stack everything cleanly ════ */
+        @media (max-width: 760px) {
+            nav { padding: 14px 20px; }
+            .nav-r { display: none; }
+            .hero { height: 78vh; }
+            .hero-content { left: 20px; right: 20px; bottom: 28px; }
+            .hero-title { font-size: clamp(52px, 14vw, 96px); letter-spacing: -1px; }
+            .hero-sub { font-size: 16px; margin-top: 12px; }
+            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
+            .toc { top: 64px; }
+            .toc-inner { gap: 14px; padding: 12px 14px; }
+            .toc a { font-size: 10px; letter-spacing: 1.2px; }
+            .toc a .n { font-size: 12px; margin-right: 4px; }
+
+            .opener { padding: 48px 20px 24px; grid-template-columns: 1fr; gap: 8px; }
+            .opener .num { font-size: 88px; line-height: .9; }
+            .opener .name { font-size: 30px; }
+
+            .chapter-body { padding: 0 20px 56px; }
+
+            /* Plot facts: stack each row */
+            .plot-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+            .pf-label { padding-top: 0; font-size: 10px; }
+            .pf-value { font-size: 22px; }
+
+            /* Plot image: smaller aspect ratio */
+            .plot-image { aspect-ratio: 16/10; margin-bottom: 40px; }
+
+            /* Plot narrative */
+            .plot-narrative { font-size: 18px; }
+
+            /* KPIs: 2x2 grid */
+            .home-kpis { grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
+            .home-kpis > div { padding: 22px 12px; }
+            .home-kpis > div:nth-child(2) { border-right: none; }
+            .home-kpis > div:nth-child(1), .home-kpis > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
+            .kpi-v { font-size: 34px; }
+
+            /* Concept */
+            .home-concept { margin-bottom: 48px; }
+            .home-concept p { font-size: 16px; }
+
+            /* Pillars: stack */
+            .pillars { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
+            .pillar-img { aspect-ratio: 16/9; margin-bottom: 16px; }
+
+            /* Gallery: 2-col with hero tiles full width */
+            .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
+            .gallery .tile-1, .gallery .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
+            .gallery .tile-1 img, .gallery .tile-6 img { aspect-ratio: 4/3; }
+
+            /* Craft list - stack vertically per row */
+            .craft-row {
+                grid-template-columns: 1fr;
+                gap: 6px; padding: 28px 0;
+            }
+            .cr-num { font-size: 30px; margin-bottom: 4px; }
+            .cr-name { font-size: 22px; }
+            .cr-desc { margin-top: 4px; }
+
+            /* Team credits - stack vertically per row */
+            .credit-row {
+                grid-template-columns: 1fr;
+                gap: 4px; padding: 24px 0;
+            }
+            .credit-role { padding-top: 0; font-size: 10px; }
+            .credit-name { font-size: 26px; }
+            .credit-desc { margin-top: 4px; }
+
+            /* Timeline */
+            .timeline-band { padding: 56px 20px; }
+            .timeline-label { margin-bottom: 28px; font-size: 10px; }
+            .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+            .timeline-track::before { display: none; }
+            .ts-name { font-size: 14px; }
+
+            /* CTA */
+            .cta { padding: 64px 20px; }
+            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+            .cta-actions a { justify-content: center; }
+
+            /* Floating */
+            .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
+            footer { padding: 28px 20px; font-size: 10px; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
+    <a href="../index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html" class="active">Proyectos</a>
-        <a href="approach.html">Nuestro enfoque</a>
+        <a href="projects.html">Projects</a>
+        <a href="approach.html">Our approach</a>
         <details class="nav-lang-wrap">
-            <summary>ES</summary>
+            <summary>EN</summary>
             <div class="nav-lang-menu">
-                <a href="../../pages/villa-leoni-benabu.html">EN</a>
-                <a href="../../es/pages/villa-leoni-benabu.html" class="is-current">ES</a>
-                <a href="../../nl/pages/villa-leoni-benabu.html">NL</a>
-                <a href="../../fi/pages/villa-leoni-benabu.html">FI</a>
-                <a href="../../da/pages/villa-leoni-benabu.html">DA</a>
-            <a href="../../pl/pages/villa-leoni-benabu.html">PL</a>
+                <a href="../pages/villa-leoni-benabu.html" class="is-current">EN</a>
+                <a href="../es/pages/villa-leoni-benabu.html">ES</a>
+                <a href="../nl/pages/villa-leoni-benabu.html">NL</a>
+                <a href="../fi/pages/villa-leoni-benabu.html">FI</a>
+                <a href="../da/pages/villa-leoni-benabu.html">DA</a>
+                <a href="../pl/pages/villa-leoni-benabu.html">PL</a>
             </div>
         </details>
-        <a href="contact.html" class="nav-contact">Contacto</a>
+        <a href="contact.html" class="nav-contact">Contact</a>
     </div>
     <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
         <span></span><span></span><span></span>
     </div>
 </nav>
 
-<section class="villa-hero">
-    <img src="../../img/leoni-benabu/main.jpeg" alt="Origen among century-old pines">
-    <div class="villa-hero-content">
-        <span class="status-tag status-tag--completed">Vendido</span>
-        <div class="villa-hero-cat">Donde empez&oacute; Sadala &middot; Pinares de San Ant&oacute;n</div>
-        <h1 class="villa-hero-title">Origen</h1>
+<!-- HERO -->
+<section class="hero">
+    <img src="../img/leoni-benabu/main.jpeg" alt="Origen among century-old pines">
+    <div class="hero-content">
+        <div class="hero-meta">Pinares de San Ant&oacute;n &middot; Delivered 2023 &middot; Sold</div>
+        <h1 class="hero-title">Origen</h1>
+        <p class="hero-sub">The first Sadala home. Where the studio began. Where the method was first proven.</p>
     </div>
 </section>
 
-<!-- ORIGIN STORY (merged with "The plot") -->
-<section class="origin-section reveal">
-    <div class="origin-label">El origen</div>
-    <p class="origin-quote">Todo estudio tiene un primer proyecto. Aquel en el que la filosof&iacute;a se inventa al mismo tiempo que se construye.</p>
-    <div class="origin-body">
-        <p>Origen es el nuestro. Una parcela de 3.076 m&sup2; entre pinos centenarios en los Pinares de San Ant&oacute;n.</p>
-        <p>La primera vez que la recorrimos, no hab&iacute;a nada construido. Solo luz entre las ramas, olor a resina y silencio. Nos comprometimos antes de tener un plano. Ese compromiso &mdash; con el lugar antes que con el programa &mdash; se convirti&oacute; en el primer principio de Sadala.</p>
-        <p>La casa que concebimos, dise&ntilde;amos, construimos y entregamos de principio a fin se vendi&oacute; antes de terminarse. Ese &eacute;xito silencioso nos dio permiso para seguir. Y, sobre todo, nos ense&ntilde;&oacute; en qu&eacute; se convertir&iacute;a Sadala.</p>
+<!-- IN-PAGE TOC -->
+<div class="toc">
+    <div class="toc-inner">
+        <a href="#plot"  data-ch="plot"><span class="n">01</span>The plot</a>
+        <a href="#home"  data-ch="home"><span class="n">02</span>The home</a>
+        <a href="#craft" data-ch="craft"><span class="n">03</span>The craft</a>
+        <a href="#team"  data-ch="team"><span class="n">04</span>The team</a>
     </div>
+</div>
+
+<!-- ════ 01 / THE PLOT ════ -->
+<section class="opener" id="plot">
+    <div class="num">01</div>
+    <h2 class="name">
+        <span class="label">Chapter 01</span>
+        The plot.<br><em>What was here before us.</em>
+    </h2>
 </section>
 
-<section class="kpi-strip reveal">
-    <div class="kpi-grid">
-        <div><div class="kpi-value">620</div><div class="kpi-label">m&sup2; construidos</div></div>
-        <div><div class="kpi-value">6</div><div class="kpi-label">Estancias</div></div>
-        <div><div class="kpi-value">3.076</div><div class="kpi-label">m&sup2; de parcela</div></div>
-        <div><div class="kpi-value">2023</div><div class="kpi-label">Entregada</div></div>
-    </div>
-</section>
-
-<!-- WHAT ORIGEN TAUGHT US -->
-<section class="lessons reveal">
-    <div class="lessons-inner">
-        <div class="lessons-header">
-            <div class="lessons-label">Lo que nos ense&ntilde;&oacute; Origen</div>
-            <h2 class="lessons-title">Tres principios que se convirtieron en el m&eacute;todo Sadala.</h2>
+<div class="chapter-body">
+    <div class="plot-facts">
+        <div>
+            <div class="pf-label">Location</div>
+            <div class="pf-value">Pinares de San Ant&oacute;n<small>8 min from M&aacute;laga centre</small></div>
         </div>
-        <div class="lessons-grid">
-            <div class="lesson">
-                <div class="lesson-num">01</div>
-                <h3>Rooted</h3>
-                <p>No colocamos una casa sobre la tierra. Dejamos que la tierra d&eacute; forma a la casa. La pendiente, los &aacute;rboles maduros, la direcci&oacute;n del sol de la ma&ntilde;ana: no son l&iacute;mites, son el programa. Cada proyecto de Sadala empieza escuchando al lugar.</p>
-            </div>
-            <div class="lesson">
-                <div class="lesson-num">02</div>
-                <h3>Singular</h3>
-                <p>Un emplazamiento, una visi&oacute;n, una sola vez. No reutilizamos planos ni llevamos proyectos en paralelo. Cada casa Sadala se concibe como si fuera la &uacute;nica que vamos a construir, porque, para nosotros, lo es.</p>
-            </div>
-            <div class="lesson">
-                <div class="lesson-num">03</div>
-                <h3>Local</h3>
-                <p>Piedra de canteras andaluzas. Madera maciza de aserraderos de confianza. Colaboradores elegidos a un corto trayecto, nunca a un largo vuelo. El nuevo lujo no es el m&aacute;rmol importado. Es una casa construida por personas que se implican porque viven cerca.</p>
-            </div>
+        <div>
+            <div class="pf-label">Plot</div>
+            <div class="pf-value">3,076 m&sup2;<small>Among century-old pines</small></div>
+        </div>
+        <div>
+            <div class="pf-label">First commitment</div>
+            <div class="pf-value">2021<small>Bought before there was a plan</small></div>
+        </div>
+        <div>
+            <div class="pf-label">Orientation</div>
+            <div class="pf-value">South-east<small>Morning light through the pine canopy</small></div>
         </div>
     </div>
+
+    <div class="plot-image">
+        <img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="Origen garden walkway">
+    </div>
+
+    <p class="plot-narrative">
+        We drove past this plot for three years before buying it. <em>Nothing was built. There was only light through branches, the smell of resin, and silence.</em> We committed before we had a plan.
+    </p>
+    <p class="plot-narrative">
+        That commitment - to the site before the program - became the first principle of Sadala.
+    </p>
+</div>
+
+<!-- ════ 02 / THE HOME ════ -->
+<section class="opener" id="home">
+    <div class="num">02</div>
+    <h2 class="name">
+        <span class="label">Chapter 02</span>
+        The home.<br><em>The design response.</em>
+    </h2>
 </section>
 
-<!-- GALLERY SLIDER -->
-<section class="slider-section reveal" id="gallery">
-    <div class="slider-section-header">
-        <h2>Galer&iacute;a</h2>
-        <span class="slider-counter" id="galleryCounter">1 / 3</span>
+<div class="chapter-body">
+    <div class="home-kpis">
+        <div>
+            <div class="kpi-v">620</div>
+            <div class="kpi-l">m&sup2; built</div>
+        </div>
+        <div>
+            <div class="kpi-v">6</div>
+            <div class="kpi-l">rooms</div>
+        </div>
+        <div>
+            <div class="kpi-v">1 of 1</div>
+            <div class="kpi-l">never repeated</div>
+        </div>
+        <div>
+            <div class="kpi-v">2023</div>
+            <div class="kpi-l">delivered</div>
+        </div>
     </div>
-    <div class="slider-track">
-        <div class="slider-inner" id="gallerySlider">
-            <div class="slider-slide cover">
-                <img src="../../img/leoni-benabu/main.jpeg" alt="Origen entre los pinos">
-                <div class="slide-caption">La parcela entre pinos centenarios</div>
+
+    <div class="home-concept">
+        <div class="label">The concept</div>
+        <h3>Where the method was born.</h3>
+        <p>Origen sold before the kitchen taps were installed. The buyer asked one question: "are you building anything else like this?" That quiet success gave us permission to keep going. More importantly, it taught us what Sadala would become.</p>
+    </div>
+
+    <div class="pillars">
+        <div class="pillar">
+            <div class="pillar-img"><img src="../img/sosiego/zona-fitness.png" alt="Body"></div>
+            <div class="pillar-tag">01 &middot; Body</div>
+            <h4>A gym below grade. The forest as your training partner.</h4>
+        </div>
+        <div class="pillar">
+            <div class="pillar-img"><img src="../img/sosiego/jardin-zen.png" alt="Mind"></div>
+            <div class="pillar-tag">02 &middot; Mind</div>
+            <h4>A Zen garden carved between the pines. Light studied, never assumed.</h4>
+        </div>
+        <div class="pillar">
+            <div class="pillar-img"><img src="../img/sosiego/sosiego-firepit-lounge.png" alt="Soul"></div>
+            <div class="pillar-tag">03 &middot; Soul</div>
+            <h4>A KM0 garden, an olive grove, a fire pit. The Andalusian table at the centre.</h4>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="tile tile-1"><img src="../img/leoni-benabu/main.jpeg" alt=""></div>
+        <div class="tile tile-2"><img src="../img/leoni-benabu/leoni-deck.jpeg" alt=""></div>
+        <div class="tile tile-3"><img src="../img/leoni-benabu/leoni-walkway.jpeg" alt=""></div>
+        <div class="tile tile-4"><img src="../img/leoni-benabu/IMG_0009.jpg" alt=""></div>
+        <div class="tile tile-5"><img src="../img/leoni-benabu/main.jpeg" alt=""></div>
+        <div class="tile tile-6"><img src="../img/leoni-benabu/leoni-deck.jpeg" alt=""></div>
+    </div>
+</div>
+
+<!-- ════ 03 / THE CRAFT ════ -->
+<section class="opener" id="craft">
+    <div class="num">03</div>
+    <h2 class="name">
+        <span class="label">Chapter 03</span>
+        The craft.<br><em>Materials and makers, by name.</em>
+    </h2>
+</section>
+
+<div class="chapter-body">
+    <div class="craft-list">
+        <div class="craft-row">
+            <div class="cr-num">01</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Stone</div>
+                <div class="cr-name">Cantera de Mijas</div>
             </div>
-            <div class="slider-slide cover">
-                <img src="../../img/leoni-benabu/leoni-deck.jpeg" alt="Terraza de madera de Origen">
-                <div class="slide-caption">Terraza de madera con vistas a Pinares de San Ant&oacute;n</div>
+            <p class="cr-desc">The same Andalusian granitic stone that Sadala still uses today. The relationship started here, on Origen, and has continued on every project since.</p>
+        </div>
+        <div class="craft-row">
+            <div class="cr-num">02</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Pine garden</div>
+                <div class="cr-name">Local horticulturist</div>
             </div>
-            <div class="slider-slide cover">
-                <img src="../../img/leoni-benabu/leoni-walkway.jpeg" alt="Sendero del jard&iacute;n de Origen">
-                <div class="slide-caption">Sendero paisaj&iacute;stico a trav&eacute;s del pinar</div>
+            <p class="cr-desc">The mature pines were preserved exactly where they stood. Native ground cover and ferns selected by a gardener from the neighbourhood who walks the plot once a season, even now.</p>
+        </div>
+        <div class="craft-row">
+            <div class="cr-num">03</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Wood</div>
+                <div class="cr-name">A mill in Ronda</div>
+            </div>
+            <p class="cr-desc">Solid Andalusian oak. The same supplier still mills planks for every Sadala home delivered since.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════ 04 / THE TEAM ════ -->
+<section class="opener" id="team">
+    <div class="num">04</div>
+    <h2 class="name">
+        <span class="label">Chapter 04</span>
+        The team.<br><em>The named hands behind every detail.</em>
+    </h2>
+</section>
+
+<div class="chapter-body">
+    <div class="team-credits">
+        <div class="credit-row">
+            <div class="credit-role">Architecture &amp; interiors</div>
+            <div class="credit-name">Sadala studio</div>
+            <p class="credit-desc">The first home was conceived, designed and built by Sadala end-to-end. The team that ran Origen still runs the studio today.</p>
+        </div>
+        <div class="credit-row">
+            <div class="credit-role">Landscape</div>
+            <div class="credit-name">Local horticulturist</div>
+            <p class="credit-desc">A gardener from the neighbourhood who knew the pines before we bought the plot. He still walks it once a season.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════ TIMELINE - where Sosiego stands today ════ -->
+<section class="timeline-band">
+    <div class="timeline-inner">
+        <div class="timeline-label">Origen, the chronicle</div>
+        <div class="timeline-track">
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2021</div>
+                <div class="ts-name">Plot<br>identified</div>
+            </div>
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2022</div>
+                <div class="ts-name">Project<br>approved</div>
+            </div>
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2023</div>
+                <div class="ts-name">Delivered<br>&amp; sold</div>
+            </div>
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">today</div>
+                <div class="ts-name">The first<br>foundation stone</div>
             </div>
         </div>
     </div>
-    <div class="slider-controls">
-        <button class="slider-btn" onclick="slideGallery(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <div class="slider-dots" id="galleryDots"></div>
-        <button class="slider-btn" onclick="slideGallery(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
-    </div>
 </section>
 
-<!-- LEGACY -->
-<section class="legacy reveal">
-    <div class="origin-label">El legado</div>
-    <h2>Todo lo que Sadala construye hoy se asienta sobre los cimientos de Origen.</h2>
-    <p>Origen se vendi&oacute;. Lo que nos dej&oacute;, no.</p>
-    <p>Cada proyecto desde entonces lleva su ADN: la misma disciplina de pensar primero el lugar, el mismo compromiso de uno cada vez, la misma negativa a delegar el trabajo en otros.</p>
-    <div class="legacy-links">
-        <a href="sosiego.html" class="legacy-link">
-            <div class="legacy-link-label">Proyecto actual</div>
-            <div class="legacy-link-title">Sosiego</div>
-            <div class="legacy-link-sub">Una casa dise&ntilde;ada en torno a tu longevidad</div>
+<!-- ════ CTA ════ -->
+<section class="cta">
+    <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
+    <p>Our process starts with a conversation, not a brochure. We live where we build.</p>
+    <div class="cta-actions">
+        <a href="#" class="primary">Walk the plot</a>
+        <a href="https://wa.me/34639675315" class="ghost">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+            WhatsApp
         </a>
-        <a href="villa-el-cantal.html" class="legacy-link">
-            <div class="legacy-link-label">Aprobado</div>
-            <div class="legacy-link-title">El Cantal</div>
-            <div class="legacy-link-sub">Arquitectura que se disuelve en la ladera</div>
-        </a>
     </div>
-</section>
-
-<section class="cta-band">
-    <h2>La pr&oacute;xima casa Sadala siempre es la m&aacute;s importante.</h2>
-    <p>&iquest;Quieres saber en qu&eacute; estamos trabajando?</p>
-    <a href="contact.html" class="btn">Iniciar una conversaci&oacute;n</a>
-    <a href="https://wa.me/34639675315" class="btn btn-accent">Escr&iacute;benos por WhatsApp</a>
 </section>
 
 <footer>
-    <div class="footer-main">
-        <div class="footer-col"><h4>Contacto</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Espa&ntilde;a</span></div>
-        <div class="footer-col"><h4>S&iacute;guenos</h4><div class="footer-social"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
-    </div>
-    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Pol&iacute;tica de privacidad</a></div>
+    SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A
 </footer>
 
+<a href="https://wa.me/34639675315" class="float-cta" aria-label="Contact us">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Contact us</span>
+</a>
+
 <script>
-const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.08});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+/* TOC scroll-spy */
+const links = document.querySelectorAll('.toc a[data-ch]');
+const sections = ['plot','home','craft','team'].map(id => document.getElementById(id));
+const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+        links.forEach(a => a.classList.toggle('active', a.dataset.ch === e.target.id));
+    }
+}), { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => s && obs.observe(s));
 
-function createSlider(sliderId, counterId, dotsId) {
-    const inner = document.getElementById(sliderId);
-    const track = inner.parentElement;
-    const counter = document.getElementById(counterId);
-    const dotsContainer = document.getElementById(dotsId);
-    const slides = inner.children;
-    const total = slides.length;
-    let current = 0;
-    for (let i = 0; i < total; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => goTo(i);
-        dotsContainer.appendChild(dot);
-    }
-    function goTo(index) {
-        current = ((index % total) + total) % total;
-        inner.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = `${current + 1} / ${total}`;
-        dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-    let startX = 0, isDragging = false;
-    function onStart(x) { startX = x; isDragging = true; inner.style.transition = 'none'; }
-    function onMove(x) { if (!isDragging) return; const diff = x - startX; inner.style.transform = `translateX(calc(-${current * 100}% + ${diff}px))`; }
-    function onEnd(x) {
-        if (!isDragging) return; isDragging = false;
-        inner.style.transition = 'transform .5s cubic-bezier(.25,.1,.25,1)';
-        const diff = x - startX;
-        if (diff < -50) goTo(current + 1); else if (diff > 50) goTo(current - 1); else goTo(current);
-    }
-    track.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
-    track.addEventListener('touchmove', e => onMove(e.touches[0].clientX), { passive: true });
-    track.addEventListener('touchend', e => onEnd(e.changedTouches[0].clientX));
-    track.addEventListener('mousedown', e => { e.preventDefault(); onStart(e.clientX); });
-    window.addEventListener('mousemove', e => onMove(e.clientX));
-    window.addEventListener('mouseup', e => onEnd(e.clientX));
-    track.querySelectorAll('img').forEach(img => img.addEventListener('dragstart', e => e.preventDefault()));
-    return { next: () => goTo(current + 1), prev: () => goTo(current - 1) };
-}
-const floorNav = document.getElementById('floorSlider') ? createSlider('floorSlider', 'floorCounter', 'floorDots') : null;
-const galleryNav = createSlider('gallerySlider', 'galleryCounter', 'galleryDots');
-function slideFloor(dir) { if (floorNav) dir > 0 ? floorNav.next() : floorNav.prev(); }
-function slideGallery(dir) { dir > 0 ? galleryNav.next() : galleryNav.prev(); }
-
-/* Keyboard arrows control whichever slider is currently in view */
-let activeSlider = galleryNav;
-const sliderObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if (e.isIntersecting && e.intersectionRatio > 0.4) {
-            const id = e.target.id;
-            if (id === 'gallery') activeSlider = galleryNav;
-            else if (id === 'floorLayout' && floorNav) activeSlider = floorNav;
-        }
+/* Smooth scroll with offset for sticky nav + TOC */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const t = document.getElementById(id);
+        if (!t) return;
+        e.preventDefault();
+        const y = t.getBoundingClientRect().top + window.scrollY - 130;
+        window.scrollTo({ top: y, behavior: 'smooth' });
     });
-}, { threshold: [0.4, 0.6] });
-document.querySelectorAll('#gallery, #floorLayout').forEach(el => sliderObserver.observe(el));
-
-document.addEventListener('keydown', e => {
-    if (!activeSlider) return;
-    if (e.key === 'ArrowLeft') { e.preventDefault(); activeSlider.prev(); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); activeSlider.next(); }
 });
 </script>
 
-<a href="https://wa.me/34639675315" class="floating-cta" aria-label="Contáctanos (WhatsApp)">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-    <span>Contáctanos</span>
-</a>
 </body>
 </html>
