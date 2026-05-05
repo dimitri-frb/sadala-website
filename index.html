@@ -152,9 +152,10 @@
         /* ════ THE FILM (video placeholder) ════ */
         .film-band { padding: 80px 48px 0; max-width: 1200px; margin: 0 auto; }
         .film-card {
-            position: relative; aspect-ratio: 21/9; overflow: hidden;
+            display: block; position: relative; aspect-ratio: 21/9; overflow: hidden;
             text-decoration: none; cursor: pointer;
             transition: transform .4s;
+            background: var(--black);
         }
         .film-card:hover { transform: translateY(-2px); }
         .film-bg {
@@ -165,7 +166,7 @@
         }
         .film-card:hover .film-bg { filter: brightness(.4); transform: scale(1.04); }
         .film-overlay {
-            position: absolute; inset: 0;
+            position: absolute; inset: 0; z-index: 2;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             color: #fff; gap: 18px; padding: 32px;
@@ -189,7 +190,7 @@
             text-transform: uppercase; color: rgba(255,255,255,.7);
         }
         .film-soon {
-            position: absolute; top: 20px; right: 20px;
+            position: absolute; top: 20px; right: 20px; z-index: 3;
             font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
             padding: 6px 12px; background: rgba(255,255,255,.12);
             border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
@@ -197,7 +198,7 @@
         }
 
         /* ════ CTA ════ */
-        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; margin-top: 100px; }
+        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
         .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
         .cta h2 em { font-style: italic; color: var(--accent); }
         .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
@@ -246,7 +247,7 @@
             .film-label { font-size: 26px; }
             .film-icon { width: 52px; height: 52px; }
 
-            .cta { padding: 64px 20px; margin-top: 60px; }
+            .cta { padding: 64px 20px; }
             .cta h2 { font-size: clamp(28px, 8vw, 40px); }
             .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
             .cta-actions a { justify-content: center; padding: 14px 24px; }
@@ -283,7 +284,7 @@
 
 <!-- ════ QUOTE HERO ════ -->
 <section class="quote-hero">
-    <div class="quote-eyebrow">Sadala &middot; M&aacute;laga, Andaluc&iacute;a</div>
+    <div class="quote-eyebrow">M&aacute;laga &middot; Andaluc&iacute;a</div>
     <h1 class="quote-text">
         We don&rsquo;t build for clients.<br>
         We build the homes <em>we&rsquo;d want to live in</em> ourselves.<br>
@@ -294,6 +295,19 @@
         Second generation since 1990
     </div>
     <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ════ THE FILM ════ -->
+<section class="film-band">
+    <a href="#" class="film-card" aria-label="The studio film">
+        <div class="film-bg" style="background-image: url('img/sosiego/sosiego-entrance-dusk.png');"></div>
+        <span class="film-soon">Coming soon</span>
+        <div class="film-overlay">
+            <div class="film-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="film-label">The studio film</div>
+            <div class="film-sub">Sadala in 90 seconds</div>
+        </div>
+    </a>
 </section>
 
 <!-- ════ THE METHOD ════ -->
@@ -355,19 +369,6 @@
             </div>
         </a>
     </div>
-</section>
-
-<!-- ════ THE FILM ════ -->
-<section class="film-band">
-    <a href="#" class="film-card" aria-label="The studio film">
-        <div class="film-bg" style="background-image: url('img/sosiego/sosiego-entrance-dusk.png');"></div>
-        <span class="film-soon">Coming soon</span>
-        <div class="film-overlay">
-            <div class="film-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="film-label">The studio film</div>
-            <div class="film-sub">Sadala in 90 seconds</div>
-        </div>
-    </a>
 </section>
 
 <!-- ════ CTA ════ -->
