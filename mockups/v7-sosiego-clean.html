@@ -24,7 +24,8 @@
         .mock-banner a { color: #fff; }
 
         nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 48px; background: var(--white); border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); }
-        .logo { font-family: var(--serif); font-size: 18px; letter-spacing: 6px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
+        .logo img { height: 28px; width: auto; }
         .nav-r { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 300; color: var(--grey); }
 
         /* HERO */
@@ -78,22 +79,20 @@
         /* Chapter body */
         .chapter-body { max-width: 1200px; margin: 0 auto; padding: 0 48px 96px; }
 
-        /* ════ CHAPTER 01: THE PLOT ════ */
+        /* ════ CHAPTER 01: THE PLOT - spec sheet (vertical rows) ════ */
         .plot-facts {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 0;
+            max-width: 800px; margin: 0 auto 64px;
             border-top: 1px solid var(--grey-border);
-            border-bottom: 1px solid var(--grey-border);
-            margin-bottom: 56px;
         }
         .plot-facts > div {
-            padding: 28px 24px;
-            border-right: 1px solid var(--grey-border);
+            display: grid; grid-template-columns: 220px 1fr;
+            gap: 32px; padding: 22px 0;
+            border-bottom: 1px solid var(--grey-border);
+            align-items: baseline;
         }
-        .plot-facts > div:last-child { border-right: none; }
-        .pf-label { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }
-        .pf-value { font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.1; }
-        .pf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 4px; letter-spacing: 0; }
+        .pf-label { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
+        .pf-value { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; }
+        .pf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 6px; letter-spacing: 0; }
 
         .plot-image { width: 100%; aspect-ratio: 21/9; overflow: hidden; margin-bottom: 56px; }
         .plot-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -150,25 +149,64 @@
         .gallery .tile-6 { grid-column: span 6; aspect-ratio: 21/9; }
         .gallery .tile-6 img { aspect-ratio: 21/9; }
 
-        /* ════ CHAPTER 03: THE CRAFT ════ */
-        .craft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        .craft-card {
-            padding: 40px 32px; background: var(--off-white);
-            display: flex; flex-direction: column; min-height: 280px;
+        /* ════ CHAPTER 03: THE CRAFT - numbered editorial list ════ */
+        .craft-list { max-width: 920px; margin: 0 auto; }
+        .craft-row {
+            display: grid; grid-template-columns: 80px 200px 1fr;
+            gap: 32px; padding: 36px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: baseline;
         }
-        .craft-role { font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
-        .craft-name { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 14px; line-height: 1.15; }
-        .craft-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--grey); margin-top: auto; }
+        .craft-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .cr-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
+        .cr-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+        .cr-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-top: 4px; }
+        .cr-desc { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); max-width: 580px; }
 
-        /* ════ CHAPTER 04: THE TEAM ════ */
-        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        .team-card {
-            padding: 40px 32px; background: var(--off-white);
-            display: flex; flex-direction: column; min-height: 240px;
+        /* ════ CHAPTER 04: THE TEAM - colophon-style credits ════ */
+        .team-credits { max-width: 920px; margin: 0 auto; }
+        .credit-row {
+            display: grid; grid-template-columns: 200px 1fr 1.4fr;
+            gap: 40px; padding: 28px 0;
+            border-top: 1px solid var(--grey-border);
+            align-items: baseline;
         }
-        .team-role { font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-        .team-name { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 12px; }
-        .team-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); margin-top: auto; }
+        .credit-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .credit-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 8px; }
+        .credit-name { font-family: var(--serif); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -0.3px; }
+        .credit-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+
+        /* ════ TIMELINE BAND (before CTA) ════ */
+        .timeline-band {
+            padding: 80px 48px; background: var(--off-white);
+            border-top: 1px solid var(--grey-border);
+        }
+        .timeline-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .timeline-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; }
+        .timeline-track {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            position: relative; max-width: 880px; margin: 0 auto;
+        }
+        .timeline-track::before {
+            content: ''; position: absolute; top: 18px; left: 12.5%; right: 12.5%;
+            height: 1px; background: linear-gradient(to right,
+                var(--accent) 0%, var(--accent) 66%, var(--grey-border) 66%, var(--grey-border) 100%);
+            z-index: 0;
+        }
+        .ts {
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .ts-dot {
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--white); border: 1.5px solid var(--grey-border);
+            margin-bottom: 14px;
+        }
+        .ts.done .ts-dot { background: var(--accent); border-color: var(--accent); }
+        .ts.now .ts-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 6px rgba(193,135,107,.18); }
+        .ts-when { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); margin-bottom: 4px; text-transform: uppercase; }
+        .ts.now .ts-when { color: var(--accent); }
+        .ts-name { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.2; }
 
         /* ════ CTA ════ */
         .cta {
@@ -233,9 +271,7 @@
             .opener { padding: 56px 20px 32px; grid-template-columns: 1fr; gap: 16px; }
             .opener .num { font-size: 100px; }
             .chapter-body { padding: 0 20px 64px; }
-            .plot-facts { grid-template-columns: 1fr 1fr; }
-            .plot-facts > div:nth-child(2) { border-right: none; }
-            .plot-facts > div:nth-child(1), .plot-facts > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
+            .plot-facts > div { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
             .home-kpis { grid-template-columns: 1fr 1fr; }
             .home-kpis > div:nth-child(2) { border-right: none; }
             .home-kpis > div:nth-child(1), .home-kpis > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
@@ -243,7 +279,13 @@
             .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
             .gallery .tile-1, .gallery .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
             .gallery .tile-1 img, .gallery .tile-6 img { aspect-ratio: 4/3; }
-            .craft-grid, .team-grid { grid-template-columns: 1fr; gap: 2px; }
+            .craft-row { grid-template-columns: 60px 1fr; gap: 16px; padding: 24px 0; }
+            .craft-row .cr-num { grid-row: span 1; }
+            .craft-row .cr-role-name { grid-column: 2; }
+            .credit-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 0; }
+            .timeline-band { padding: 48px 20px; }
+            .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+            .timeline-track::before { display: none; }
             .cta { padding: 60px 20px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
@@ -254,7 +296,7 @@
 <div class="mock-banner">Mockup &middot; v7 Sosiego (clean rebuild) &middot; <a href="index.html">Back to all options</a></div>
 
 <nav>
-    <a href="../index.html" class="logo">Sadala</a>
+    <a href="../index.html" class="logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-r">
         <span>Projects</span>
         <span>Approach</span>
@@ -295,19 +337,19 @@
     <div class="plot-facts">
         <div>
             <div class="pf-label">Location</div>
-            <div class="pf-value">Pinares de San Ant&oacute;n<small>8 min from M&aacute;laga centre</small></div>
+            <div class="pf-value">Pinares de San Ant&oacute;n<small>8 min from M&aacute;laga centre &middot; 36.7367&deg; N &middot; 4.3833&deg; W</small></div>
         </div>
         <div>
             <div class="pf-label">Plot</div>
-            <div class="pf-value">1,096 m&sup2;<small>Pine-shaded slope</small></div>
+            <div class="pf-value">1,096 m&sup2;<small>Pine-shaded slope, three-metre fall</small></div>
         </div>
         <div>
             <div class="pf-label">Trees preserved</div>
-            <div class="pf-value">8<small>Pinus pinea, ~70 yrs</small></div>
+            <div class="pf-value">8 stone pines<small>Pinus pinea, ~70 years old</small></div>
         </div>
         <div>
             <div class="pf-label">Orientation</div>
-            <div class="pf-value">East-facing<small>Morning sun, afternoon shade</small></div>
+            <div class="pf-value">East-facing<small>Morning sun, afternoon shade through the canopy</small></div>
         </div>
     </div>
 
@@ -396,21 +438,30 @@
 </section>
 
 <div class="chapter-body">
-    <div class="craft-grid">
-        <div class="craft-card">
-            <div class="craft-role">Stone</div>
-            <div class="craft-name">Cantera de Mijas</div>
-            <p class="craft-desc">Granitic stone cut and finished within fifteen kilometres of the plot. Same quarry, same craftsmen, same week the foundation pours.</p>
+    <div class="craft-list">
+        <div class="craft-row">
+            <div class="cr-num">01</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Stone</div>
+                <div class="cr-name">Cantera de Mijas</div>
+            </div>
+            <p class="cr-desc">Granitic stone cut and finished within fifteen kilometres of the plot. Same quarry, same craftsmen, same week the foundation pours.</p>
         </div>
-        <div class="craft-card">
-            <div class="craft-role">Native garden</div>
-            <div class="craft-name">A nursery in Nerja</div>
-            <p class="craft-desc">Olive saplings, Mediterranean herbs, native grasses. Selected with a horticulturist from Casabermeja who plants the kitchen garden by hand before the keys are handed over.</p>
+        <div class="craft-row">
+            <div class="cr-num">02</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Native garden</div>
+                <div class="cr-name">A nursery in Nerja</div>
+            </div>
+            <p class="cr-desc">Olive saplings, Mediterranean herbs, native grasses. Selected with a horticulturist from Casabermeja who plants the kitchen garden by hand before the keys are handed over.</p>
         </div>
-        <div class="craft-card">
-            <div class="craft-role">Wood</div>
-            <div class="craft-name">A mill in Ronda</div>
-            <p class="craft-desc">Solid oak from the Sierra de las Nieves, milled to plank by the same family that has run the saw for three generations.</p>
+        <div class="craft-row">
+            <div class="cr-num">03</div>
+            <div class="cr-role-name">
+                <div class="cr-role">Wood</div>
+                <div class="cr-name">A mill in Ronda</div>
+            </div>
+            <p class="cr-desc">Solid oak from the Sierra de las Nieves, milled to plank by the same family that has run the saw for three generations.</p>
         </div>
     </div>
 </div>
@@ -425,24 +476,53 @@
 </section>
 
 <div class="chapter-body">
-    <div class="team-grid">
-        <div class="team-card">
-            <div class="team-role">Architecture</div>
-            <div class="team-name">MR Arq</div>
-            <p class="team-desc">A practice chosen for one defining quality: the ability to listen to a site and respond with precision and sensitivity.</p>
+    <div class="team-credits">
+        <div class="credit-row">
+            <div class="credit-role">Architecture</div>
+            <div class="credit-name">MR Arq</div>
+            <p class="credit-desc">A practice chosen for one defining quality: the ability to listen to a site and respond with precision and sensitivity.</p>
         </div>
-        <div class="team-card">
-            <div class="team-role">Interior design</div>
-            <div class="team-name">Studio 1969</div>
-            <p class="team-desc">Materials that age beautifully, proportions that feel generous without excess, a palette drawn from the landscape outside.</p>
+        <div class="credit-row">
+            <div class="credit-role">Interior design</div>
+            <div class="credit-name">Studio 1969</div>
+            <p class="credit-desc">Materials that age beautifully, proportions that feel generous without excess, a palette drawn from the landscape outside.</p>
         </div>
-        <div class="team-card">
-            <div class="team-role">Landscape</div>
-            <div class="team-name">Landscapers</div>
-            <p class="team-desc">Outdoor spaces conceived as a series of distinct rooms, each responding to topography and the rhythms of daily life.</p>
+        <div class="credit-row">
+            <div class="credit-role">Landscape</div>
+            <div class="credit-name">Landscapers</div>
+            <p class="credit-desc">Outdoor spaces conceived as a series of distinct rooms, each responding to topography and the rhythms of daily life.</p>
         </div>
     </div>
 </div>
+
+<!-- ════ TIMELINE - where Sosiego stands today ════ -->
+<section class="timeline-band">
+    <div class="timeline-inner">
+        <div class="timeline-label">Sosiego, today</div>
+        <div class="timeline-track">
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2024</div>
+                <div class="ts-name">Land<br>acquired</div>
+            </div>
+            <div class="ts done">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2025</div>
+                <div class="ts-name">Project<br>approved</div>
+            </div>
+            <div class="ts now">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2026 &middot; now</div>
+                <div class="ts-name">Construction<br>under way</div>
+            </div>
+            <div class="ts">
+                <div class="ts-dot"></div>
+                <div class="ts-when">2027</div>
+                <div class="ts-name">Keys<br>handed over</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ════ CTA ════ -->
 <section class="cta">
