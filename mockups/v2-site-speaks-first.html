@@ -3,1097 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadala - Builders of the Unique</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../img/logo/apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Sadala — Mockup: The Site Speaks First</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            /* Earth palette (v2: site-speaks-first) */
-            --white: #EDE6D7;          /* warm paper */
-            --off-white: #E1D8C7;      /* bone */
-            --black: #262320;          /* warm ink */
-            --grey: #8C8578;           /* warm grey */
-            --grey-light: #B5AFA8;
-            --grey-border: rgba(38,35,32,.1);
-            --accent: #B85A3F;         /* terracotta */
-            --accent-soft: #C97757;    /* soft terracotta */
-            --olive: #6B6F4C;
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Inter', -apple-system, Helvetica Neue, sans-serif;
-            --mono: 'JetBrains Mono', monospace;
+            /* Earth-shifted palette */
+            --paper:#EDE6D7; --bone:#E1D8C7; --sand:#D4C7B0;
+            --terracotta:#B85A3F; --terracotta-soft:#C97757;
+            --olive:#6B6F4C; --granite:#3A3833; --ink:#262320;
+            --grey:#8C8578; --grey-line:rgba(38,35,32,.12);
+            --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+        .mock-banner { background: var(--terracotta); color: #fff; text-align: center; padding: 8px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .mock-banner a { color: #fff; }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: var(--paper); border-bottom: 1px solid var(--grey-line); }
+        .logo { font-family: var(--serif); font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: var(--ink); }
+        .nav-r { display: flex; gap: 28px; align-items: center; font-size: 13px; font-weight: 300; color: var(--olive); }
+        .nav-r .lang { color: var(--terracotta); }
+
+        /* Universal: photos get grain + warm filter */
+        .grainy { position: relative; }
+        .grainy img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) contrast(1.05) sepia(.08); display: block; }
+        .grainy::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+            opacity: .6; mix-blend-mode: multiply;
         }
 
-        /* Topographic divider */
+        /* Topographic divider — subtle SVG repeating */
         .topo {
-            height: 56px; background: var(--white);
+            height: 60px; background: var(--paper);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q 150 10 300 30 T 600 30 T 900 30 T 1200 30' stroke='%23B85A3F' fill='none' stroke-width='.6' opacity='.4'/%3E%3Cpath d='M0 36 Q 150 16 300 36 T 600 36 T 900 36 T 1200 36' stroke='%23B85A3F' fill='none' stroke-width='.5' opacity='.3'/%3E%3Cpath d='M0 42 Q 150 22 300 42 T 600 42 T 900 42 T 1200 42' stroke='%23B85A3F' fill='none' stroke-width='.4' opacity='.2'/%3E%3C/svg%3E");
             background-size: 100% 100%; background-repeat: no-repeat;
         }
 
-        /* Subtle grain overlay for hero photos */
-        .grainy { position: relative; }
-        .grainy::after {
-            content: ''; position: absolute; inset: 0; pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-            opacity: .5; mix-blend-mode: multiply; z-index: 1;
-        }
-        .grainy img { filter: saturate(.92) contrast(1.03) sepia(.05); }
+        /* HERO — full bleed earth-toned */
+        .hero { height: 92vh; position: relative; overflow: hidden; }
+        .hero-img { position: absolute; inset: 0; }
+        .hero-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) contrast(1.05) sepia(.08); }
+        .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(38,35,32,.15) 0%, rgba(38,35,32,.55) 100%); }
+        .hero-content { position: absolute; bottom: 80px; left: 48px; right: 48px; color: var(--paper); z-index: 2; }
+        .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta-soft); margin-bottom: 18px; display: flex; align-items: center; gap: 14px; }
+        .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--terracotta-soft); }
+        .hero-title { font-family: var(--serif); font-size: clamp(48px, 7vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -0.5px; max-width: 900px; }
+        .hero-title em { font-style: italic; color: var(--terracotta-soft); }
+        .hero-meta { display: flex; gap: 36px; margin-top: 32px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(237,230,215,.65); }
+        .hero-meta strong { color: var(--paper); font-weight: 400; }
 
-        /* Ambient sound toggle */
-        .ambient-toggle {
-            position: absolute; top: 100px; right: 48px; z-index: 20;
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 10px 16px; border: 1px solid rgba(225,216,199,.25);
-            border-radius: 999px;
-            background: rgba(38,35,32,.32); backdrop-filter: blur(10px);
-            color: rgba(237,230,215,.85);
-            font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
-            text-transform: uppercase; cursor: pointer; user-select: none;
-            transition: all .25s;
-        }
-        .ambient-toggle:hover { border-color: rgba(225,216,199,.5); color: #fff; }
-        .ambient-toggle.on { border-color: var(--accent-soft); color: #fff; }
+        .ambient-toggle { position: absolute; top: 24px; right: 48px; z-index: 3; display: flex; align-items: center; gap: 10px; color: rgba(237,230,215,.7); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; padding: 10px 16px; border: 1px solid rgba(237,230,215,.2); border-radius: 999px; }
         .ambient-toggle .wave { display: flex; gap: 2px; align-items: center; }
-        .ambient-toggle .wave span { display: block; width: 2px; background: var(--accent-soft); border-radius: 1px; }
+        .ambient-toggle .wave span { display: block; width: 2px; background: var(--terracotta-soft); border-radius: 1px; }
         .ambient-toggle .wave span:nth-child(1) { height: 6px; }
         .ambient-toggle .wave span:nth-child(2) { height: 10px; }
         .ambient-toggle .wave span:nth-child(3) { height: 4px; }
-        .ambient-toggle.on .wave span { animation: bob 1.2s ease-in-out infinite; }
-        .ambient-toggle.on .wave span:nth-child(2) { animation-delay: .2s; }
-        .ambient-toggle.on .wave span:nth-child(3) { animation-delay: .4s; }
-        @keyframes bob { 0%,100% { transform: scaleY(.7); } 50% { transform: scaleY(1.4); } }
 
-        /* Floating WhatsApp CTA - same pattern as project pages */
-        .floating-cta {
-            position: fixed; bottom: 24px; right: 24px; z-index: 999;
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 13px 22px;
-            background: var(--black); color: var(--off-white);
-            font-family: var(--sans); font-size: 13px; font-weight: 400;
-            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-            border-radius: 999px;
-            box-shadow: 0 8px 24px rgba(38,35,32,.18);
-            transition: background .25s, transform .25s;
-        }
-        .floating-cta:hover { background: var(--accent); transform: translateY(-2px); }
-        .floating-cta svg { width: 16px; height: 16px; fill: #25D366; flex-shrink: 0; }
-        .floating-cta:hover svg { fill: #fff; }
-        @media (max-width: 600px) {
-            .floating-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; gap: 8px; }
-            .floating-cta svg { width: 14px; height: 14px; }
-            .ambient-toggle { right: 16px; top: 76px; padding: 8px 12px; font-size: 9px; }
-        }
+        /* THE LAND BAND — site-first */
+        .land { padding: 120px 48px; max-width: 1100px; margin: 0 auto; position: relative; }
+        .land-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 24px; }
+        .land-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.15; max-width: 800px; margin-bottom: 48px; letter-spacing: -0.3px; }
+        .land-title em { font-style: italic; color: var(--olive); }
+        .land-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; padding-top: 48px; border-top: 1px solid var(--grey-line); }
+        .land-item .lat { font-family: var(--serif); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 14px; }
+        .land-item h3 { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 10px; line-height: 1.2; }
+        .land-item p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--granite); }
 
-        html { scroll-behavior: smooth; }
+        /* PROJECTS — earth cards */
+        .projects { padding: 120px 48px; background: var(--bone); border-top: 1px solid var(--grey-line); border-bottom: 1px solid var(--grey-line); }
+        .projects-inner { max-width: 1200px; margin: 0 auto; }
+        .p-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 18px; }
+        .p-title { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 48px); font-weight: 300; line-height: 1.15; margin-bottom: 56px; max-width: 720px; letter-spacing: -0.3px; }
+        .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .pcard { display: block; text-decoration: none; color: inherit; }
+        .pcard-img { width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 18px; }
+        .pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s; filter: saturate(.85) contrast(1.05) sepia(.06); }
+        .pcard:hover .pcard-img img { transform: scale(1.04); }
+        .pcard-num { font-family: var(--serif); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; }
+        .pcard-title { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 4px; }
+        .pcard-sub { font-size: 12px; color: var(--olive); letter-spacing: 1px; }
 
-        body {
-            font-family: var(--sans);
-            background: var(--white);
-            color: var(--black);
-            -webkit-font-smoothing: antialiased;
+        /* APPROACH — dark earth band */
+        .approach { padding: 140px 48px; background: var(--ink); color: var(--bone); position: relative; }
+        .approach::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 60px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 Q 150 10 300 30 T 600 30 T 900 30 T 1200 30' stroke='%23C97757' fill='none' stroke-width='.7' opacity='.35'/%3E%3Cpath d='M0 38 Q 150 18 300 38 T 600 38 T 900 38 T 1200 38' stroke='%23C97757' fill='none' stroke-width='.5' opacity='.25'/%3E%3C/svg%3E");
+            background-size: 100% 100%; background-repeat: no-repeat;
         }
+        .approach-inner { max-width: 1100px; margin: 0 auto; padding-top: 40px; }
+        .approach-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta-soft); margin-bottom: 22px; }
+        .approach h2 { font-family: var(--serif); font-size: clamp(40px, 5.5vw, 64px); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 64px; letter-spacing: -0.3px; }
+        .approach h2 em { font-style: italic; color: var(--terracotta-soft); }
+        .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; }
+        .three .word { font-family: var(--serif); font-size: 56px; font-weight: 300; color: var(--terracotta-soft); margin-bottom: 16px; line-height: 1; letter-spacing: -1px; }
+        .three p { font-size: 14px; font-weight: 300; line-height: 1.85; color: rgba(225,216,199,.7); }
 
-        /* ═══════════════════════════════════════════ */
-        /* NAVIGATION - Fixed, transparent             */
-        /* ═══════════════════════════════════════════ */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 28px 48px;
-            transition: background .4s, border .4s;
-        }
-        nav.solid {
-            background: rgba(232,226,213,.92);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--grey-border);
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: 10px;
-            font-family: var(--serif);
-            font-size: 20px; font-weight: 400; letter-spacing: 4px;
-            text-transform: uppercase; color: #fff;
-            text-decoration: none;
-            transition: color .4s;
-        }
-        .nav-logo img {
-            height: 28px; width: auto;
-            filter: brightness(0) invert(1);
-            transition: filter .4s;
-        }
-        nav.solid .nav-logo { color: var(--black); }
-        nav.solid .nav-logo img { filter: none; }
+        /* CTA */
+        .cta { padding: 100px 48px; text-align: center; background: var(--paper); }
+        .cta-inner { max-width: 720px; margin: 0 auto; }
+        .cta h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 300; line-height: 1.2; margin-bottom: 18px; letter-spacing: -0.3px; }
+        .cta p { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--olive); margin-bottom: 32px; }
+        .cta a { display: inline-block; padding: 14px 32px; background: var(--terracotta); color: #fff; text-decoration: none; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; transition: background .3s; }
+        .cta a:hover { background: #9a4530; }
 
-        .nav-links {
-            display: flex; gap: 32px; align-items: center;
-        }
-        .nav-links a {
-            font-size: 13px; font-weight: 300; color: rgba(255,255,255,.7);
-            text-decoration: none; transition: color .4s, opacity .3s;
-        }
-        .nav-links a:hover { opacity: 1; color: #fff; }
-        nav.solid .nav-links a { color: var(--grey); }
-        nav.solid .nav-links a:hover { color: var(--black); }
-        .nav-links a.active { color: var(--black); font-weight: 400; }
+        footer { padding: 48px; text-align: center; font-size: 12px; color: var(--olive); background: var(--ink); color: rgba(225,216,199,.45); border-top: 1px solid rgba(225,216,199,.08); }
+        footer .live { display: inline-block; padding: 6px 14px; background: rgba(225,216,199,.06); border-radius: 999px; margin-bottom: 12px; font-size: 11px; }
+        footer .live::before { content: '●'; color: var(--terracotta-soft); margin-right: 6px; }
 
-        .nav-contact {
-            font-weight: 400 !important;
-            color: #fff !important;
-            border: 1px solid rgba(255,255,255,.3);
-            padding: 8px 20px;
-            transition: all .3s !important;
-        }
-        .nav-contact:hover {
-            background: var(--white) !important; color: var(--black) !important;
-            border-color: var(--white) !important;
-        }
-        nav.solid .nav-contact {
-            color: var(--black) !important;
-            border-color: var(--grey-light) !important;
-        }
-        nav.solid .nav-contact:hover {
-            background: var(--black) !important;
-            color: #fff !important;
-            border-color: var(--black) !important;
-        }
-
-        /* Hamburger for mobile */
-        .nav-hamburger {
-            display: none; cursor: pointer;
-            width: 24px; height: 16px;
-            position: relative; z-index: 1001;
-        }
-        .nav-hamburger span {
-            display: block; width: 100%; height: 1.5px;
-            background: #fff; position: absolute; left: 0;
-            transition: all .3s;
-        }
-        nav.solid .nav-hamburger span { background: var(--black); }
-        .nav-hamburger span:nth-child(1) { top: 0; }
-        .nav-hamburger span:nth-child(2) { top: 7px; }
-        .nav-hamburger span:nth-child(3) { top: 14px; }
-
-        /* ═══════════════════════════════════════════ */
-        /* HERO - Full-screen image slider             */
-        /* ═══════════════════════════════════════════ */
-        .slider {
-            position: relative; height: 100vh; overflow: hidden;
-            background: var(--black);
-        }
-        .slide {
-            position: absolute; inset: 0;
-            opacity: 0;
-            transition: opacity 1s ease;
-            pointer-events: none;
-        }
-        .slide.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .slide-image {
-            position: absolute; inset: 0;
-        }
-        .slide-image img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .slide-image::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,.1) 0%,
-                rgba(0,0,0,.02) 40%,
-                rgba(0,0,0,.45) 100%
-            );
-        }
-
-        .slide-content {
-            position: absolute; bottom: 80px; left: 48px; right: 48px;
-            display: flex; justify-content: space-between; align-items: flex-end;
-        }
-        .slide-text { max-width: 600px; }
-        .slide-category {
-            font-size: 11px; font-weight: 400; letter-spacing: 2px;
-            text-transform: uppercase; color: rgba(255,255,255,.45);
-            margin-bottom: 16px;
-        }
-        .slide-title {
-            font-family: var(--serif);
-            font-size: clamp(32px, 5vw, 60px); font-weight: 400;
-            color: #fff; line-height: 1.1; margin-bottom: 16px;
-        }
-        .slide-desc {
-            font-size: 14px; font-weight: 300; color: rgba(255,255,255,.8);
-            line-height: 1.7; max-width: 440px;
-        }
-        .slide-cta {
-            display: inline-block; margin-top: 20px;
-            font-size: 12px; font-weight: 400; letter-spacing: .5px;
-            color: #fff; text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,.3);
-            padding-bottom: 4px;
-            transition: border-color .3s;
-        }
-        .slide-cta:hover { border-color: #fff; }
-
-        /* Slider arrows */
-        .slider-arrows {
-            position: absolute; bottom: 80px; right: 48px;
-            display: flex; gap: 8px; z-index: 10;
-        }
-        .slider-arrow {
-            width: 48px; height: 48px;
-            border: 1px solid rgba(255,255,255,.25);
-            background: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all .3s;
-        }
-        .slider-arrow:hover {
-            background: rgba(255,255,255,.1);
-            border-color: rgba(255,255,255,.5);
-        }
-        .slider-arrow svg {
-            width: 16px; height: 16px;
-            stroke: #fff; stroke-width: 1.5; fill: none;
-        }
-
-        /* Slide counter */
-        .slider-counter {
-            position: absolute; bottom: 40px; left: 48px;
-            font-size: 11px; font-weight: 300; letter-spacing: 1px;
-            color: rgba(255,255,255,.35);
-        }
-
-        /* ═══════════════════════════════════════════ */
-        /* SECTIONS - Clean, generous whitespace       */
-        /* ═══════════════════════════════════════════ */
-        .section-intro {
-            padding: 120px 48px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .section-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 24px;
-        }
-        .section-headline {
-            font-family: var(--serif);
-            font-size: clamp(26px, 3.2vw, 40px); font-weight: 300;
-            line-height: 1.5; color: var(--black);
-            font-style: italic;
-        }
-
-        /* ═══════════════════════════════════════════ */
-        /* PROJECTS GRID - 2-column, clean             */
-        /* ═══════════════════════════════════════════ */
-        .projects {
-            padding: 0 48px 120px;
-        }
-        .projects-header {
-            display: flex; justify-content: space-between; align-items: baseline;
-            margin-bottom: 40px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--grey-border);
-        }
-        .projects-header h2 {
-            font-size: 13px; font-weight: 500; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--black);
-        }
-        .projects-header a {
-            font-size: 12px; font-weight: 300; color: var(--grey);
-            text-decoration: none;
-            transition: color .3s;
-        }
-        .projects-header a:hover { color: var(--black); }
-
-        .projects-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-        .project-card {
-            cursor: pointer; text-decoration: none; color: inherit;
-            display: block;
-        }
-        .project-card-image {
-            overflow: hidden; aspect-ratio: 3/2;
-            margin-bottom: 16px;
-        }
-        .project-card-image img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform .8s cubic-bezier(.25,.1,.25,1);
-        }
-        .project-card:hover .project-card-image img {
-            transform: scale(1.04);
-        }
-        .project-card-category {
-            font-size: 10px; font-weight: 400; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 6px;
-        }
-        .project-card-title {
-            font-family: var(--serif);
-            font-size: 22px; font-weight: 400; color: var(--black);
-            margin-bottom: 4px;
-        }
-        .project-card-sub {
-            font-size: 13px; font-weight: 300; color: var(--grey);
-        }
-
-
-        /* ═══════════════════════════════════════════ */
-        /* PRINCIPLES BAND                             */
-        /* ═══════════════════════════════════════════ */
-        .principles {
-            padding: 100px 48px;
-            max-width: 1200px; margin: 0 auto;
-        }
-        .principles-label {
-            font-size: 11px; font-weight: 400; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
-        }
-        .principles-title {
-            font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
-            font-weight: 300; line-height: 1.15; margin-bottom: 48px;
-            max-width: 700px;
-        }
-        .principles-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-        }
-        .principle-card {
-            display: block; text-decoration: none; color: inherit;
-            padding: 40px 32px; border: 1px solid var(--grey-border);
-            background: #fff; transition: all .4s;
-        }
-        .principle-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        .principle-num {
-            font-family: var(--serif); font-size: 32px; font-weight: 300;
-            color: var(--accent); opacity: .5; margin-bottom: 20px;
-        }
-        .principle-title {
-            font-family: var(--serif); font-size: 28px; font-weight: 400;
-            margin-bottom: 8px;
-        }
-        .principle-sub {
-            font-size: 11px; font-weight: 500; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--grey); margin-bottom: 16px;
-        }
-        .principle-desc {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey);
-        }
-
-        /* ═══════════════════════════════════════════ */
-        /* MINI METHOD (inside about-strip)            */
-        /* ═══════════════════════════════════════════ */
-        .mini-method {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 24px 0;
-            margin: 8px 0 24px;
-            border-top: 1px solid var(--grey-border);
-            border-bottom: 1px solid var(--grey-border);
-        }
-        .mini-method-col .mini-word {
-            font-family: var(--serif); font-size: 16px; font-weight: 400;
-            color: var(--black); margin-bottom: 4px;
-        }
-        .mini-method-col p {
-            font-size: 11px !important; font-weight: 300; line-height: 1.5;
-            color: var(--grey); margin: 0 !important;
-        }
-
-        /* ═══════════════════════════════════════════ */
-        /* ABOUT STRIP                                 */
-        /* ═══════════════════════════════════════════ */
-        .about-strip {
-            padding: 100px 48px;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 80px; max-width: 1200px; margin: 0 auto;
-            align-items: center;
-        }
-        .about-strip-image { overflow: hidden; }
-        .about-strip-image img {
-            width: 100%; height: 420px; object-fit: cover;
-        }
-        .about-strip-text h3 {
-            font-family: var(--serif);
-            font-size: 28px; font-weight: 400; margin-bottom: 16px;
-        }
-        .about-strip-text p {
-            font-size: 14px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); margin-bottom: 24px;
-        }
-        .about-strip-text a {
-            font-size: 12px; font-weight: 400; color: var(--black);
-            text-decoration: none; border-bottom: 1px solid var(--grey-light);
-            padding-bottom: 4px;
-            transition: border-color .3s;
-        }
-        .about-strip-text a:hover { border-color: var(--black); }
-
-        /* ═══════════════════════════════════════════ */
-        /* CONTACT - Clean split layout                */
-        /* ═══════════════════════════════════════════ */
-        .contact {
-            padding: 100px 48px;
-            border-top: 1px solid var(--grey-border);
-        }
-        .contact-inner {
-            display: grid; grid-template-columns: 1fr 1.3fr;
-            gap: 80px; max-width: 1100px; margin: 0 auto;
-        }
-        .contact-left h2 {
-            font-family: var(--serif);
-            font-size: 28px; font-weight: 400; margin-bottom: 12px;
-        }
-        .contact-left p {
-            font-size: 13px; font-weight: 300; line-height: 1.8;
-            color: var(--grey); margin-bottom: 28px;
-        }
-        .contact-detail {
-            display: block; font-size: 13px; font-weight: 300;
-            color: var(--grey); text-decoration: none;
-            margin-bottom: 4px; transition: color .3s;
-        }
-        .contact-detail:hover { color: var(--black); }
-        .contact-whatsapp {
-            display: inline-flex; align-items: center; gap: 8px;
-            margin-top: 20px; padding: 10px 20px;
-            background: #25D366; color: #fff;
-            font-size: 12px; font-weight: 400;
-            text-decoration: none; border-radius: 4px;
-            transition: background .3s;
-        }
-        .contact-whatsapp:hover { background: #1DA851; }
-
-        .contact-form .form-row { margin-bottom: 20px; }
-        .contact-form label {
-            display: block; font-size: 10px; font-weight: 500;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            color: var(--grey); margin-bottom: 6px;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 10px 0;
-            font-family: var(--sans); font-size: 14px; font-weight: 300;
-            background: transparent; border: none;
-            border-bottom: 1px solid var(--grey-border);
-            color: var(--black); outline: none;
-            transition: border-color .3s;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-bottom-color: var(--accent);
-        }
-        .contact-form input::placeholder, .contact-form textarea::placeholder {
-            color: var(--grey-light);
-        }
-        .contact-form textarea { resize: none; min-height: 72px; }
-        .contact-form button {
-            margin-top: 8px; padding: 12px 28px;
-            font-family: var(--sans); font-size: 12px; font-weight: 500;
-            letter-spacing: .5px;
-            background: var(--black); border: none; color: var(--white);
-            cursor: pointer; transition: background .3s;
-        }
-        .contact-form button:hover { background: var(--accent); }
-
-        /* ═══════════════════════════════════════════ */
-        /* FOOTER - Minimal                            */
-        /* ═══════════════════════════════════════════ */
-        /* ═══════════════════════════════════════════ */
-        /* FOOTER                                      */
-        /* ═══════════════════════════════════════════ */
-        footer {
-            background: var(--black);
-            color: var(--off-white);
-            padding: 80px 48px 0;
-        }
-        .footer-main {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 60px;
-        }
-        .footer-brand .footer-logo {
-            font-family: var(--serif);
-            font-size: 24px; font-weight: 400;
-            letter-spacing: 4px; text-transform: uppercase;
-            color: var(--off-white);
-            display: block; margin-bottom: 16px;
-        }
-        .footer-brand .footer-tagline {
-            font-size: 13px; font-weight: 300; line-height: 1.7;
-            color: var(--grey); margin-bottom: 20px;
-        }
-        .footer-brand .footer-location {
-            font-size: 12px; font-weight: 300;
-            color: var(--grey-light);
-        }
-        .footer-col h4 {
-            font-family: var(--serif);
-            font-size: 14px; font-weight: 400;
-            color: var(--off-white);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        .footer-col a, .footer-col span {
-            display: block;
-            font-size: 13px; font-weight: 300;
-            color: var(--grey);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color .3s;
-        }
-        .footer-col a:hover { color: var(--off-white); }
-        .footer-social {
-            display: flex; gap: 16px; margin-bottom: 24px;
-        }
-        .footer-social a {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
-            border: 1px solid rgba(225,216,204,.12);
-            margin-bottom: 0;
-            transition: all .3s;
-        }
-        .footer-social a:hover {
-            border-color: rgba(225,216,204,.3);
-            background: rgba(225,216,204,.05);
-        }
-        .footer-social a svg {
-            width: 16px; height: 16px;
-            fill: var(--grey);
-            transition: fill .3s;
-        }
-        .footer-social a:hover svg { fill: var(--off-white); }
-        .footer-whatsapp {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 20px;
-            background: #25D366; color: #fff !important;
-            font-size: 12px; font-weight: 400;
-            border-radius: 4px; margin-bottom: 0 !important;
-            transition: background .3s;
-        }
-        .footer-whatsapp:hover { background: #1DA851 !important; color: #fff !important; }
-        .footer-whatsapp svg { fill: #fff !important; width: 14px; height: 14px; }
-        .footer-bottom {
-            border-top: 1px solid rgba(225,216,204,.06);
-            padding: 24px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .footer-bottom span {
-            font-size: 11px; font-weight: 300; color: rgba(225,216,204,.25);
-        }
-        .footer-bottom a {
-            font-size: 11px; font-weight: 300;
-            color: rgba(225,216,204,.25);
-            text-decoration: none;
-            transition: color .3s;
-        }
-        .footer-bottom a:hover { color: var(--grey); }
-
-        /* ═══════════════════════════════════════════ */
-        /* REVEAL                                      */
-        /* ═══════════════════════════════════════════ */
-        .reveal {
-            opacity: 0; transform: translateY(20px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ═══════════════════════════════════════════ */
-        /* RESPONSIVE                                  */
-        /* ═══════════════════════════════════════════ */
-        @media (max-width: 900px) {
-            nav { padding: 20px 24px; }
-            .nav-links { display: none; }
-            .nav-hamburger { display: block; }
-
-            .slide-content { left: 24px; right: 24px; bottom: 60px; flex-direction: column; align-items: flex-start; }
-            .slider-arrows { position: static; margin-top: 24px; }
-            .slider-counter { left: 24px; }
-
-            .section-intro { padding: 80px 24px; }
-            .projects { padding: 0 24px 80px; }
-            .principles { padding: 60px 24px; }
-            .principles-grid { grid-template-columns: 1fr; gap: 16px; }
-            .principle-card { padding: 28px 24px; }
-            .projects-grid { grid-template-columns: 1fr; gap: 40px; }
-            .mini-method { grid-template-columns: 1fr; gap: 16px; }
-            .about-strip { padding: 60px 24px; grid-template-columns: 1fr; gap: 32px; }
-            .about-strip-image img { height: 280px; }
-            .contact { padding: 60px 24px; }
-            .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-            footer { padding: 60px 24px 0; }
-            .footer-main { grid-template-columns: 1fr; gap: 40px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-        }
-
-        @media (max-width: 600px) {
-            .values-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Language dropdown */
-        .nav-lang-wrap { position: relative; }
-        .nav-lang-wrap summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); padding: 4px 0; transition: color .3s; user-select: none; }
-        .nav-lang-wrap summary::-webkit-details-marker, .nav-lang-wrap summary::marker { display: none; }
-        .nav-lang-wrap summary:hover { color: var(--black); }
-        .nav-lang-wrap summary::after { content: '\2009\25BE'; font-size: 9px; opacity: .5; margin-left: 2px; font-weight: 300; }
-        .nav-lang-wrap[open] summary::after { content: '\2009\25B4'; }
-        .nav-lang-menu { position: absolute; top: calc(100% + 14px); right: 0; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--grey-border); min-width: 84px; padding: 6px 0; display: flex; flex-direction: column; z-index: 1001; }
-        .nav-lang-menu a { padding: 6px 18px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; letter-spacing: 0; text-transform: none; }
-        .nav-lang-menu a:hover { color: var(--black); background: none; }
-        .nav-lang-menu a.is-current { display: none; }
-        nav:not(.solid) .nav-lang-wrap summary { color: rgba(255,255,255,.7); }
-        nav:not(.solid) .nav-lang-wrap summary:hover { color: #fff; }
-
-        /* Mobile menu overlay */
-        @media (max-width: 900px) {
-            nav.nav-open .nav-links {
-                display: flex !important;
-                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                background: var(--white);
-                flex-direction: column; justify-content: center; align-items: center;
-                gap: 28px; padding: 0; z-index: 999;
-            }
-            nav.nav-open .nav-links a,
-            nav.nav-open .nav-links a.nav-contact,
-            nav.nav-open .nav-links a.nav-lang {
-                font-family: var(--serif) !important;
-                font-size: 24px !important;
-                font-weight: 400 !important;
-                letter-spacing: 2px;
-                text-transform: none;
-                color: var(--black) !important;
-                padding: 8px 0 !important;
-                border: none !important;
-                background: none !important;
-            }
-            nav.nav-open .nav-lang-wrap { width: auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-            nav.nav-open .nav-lang-wrap summary { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; color: var(--black) !important; padding: 8px 0 !important; }
-            nav.nav-open .nav-lang-menu { position: static; border: none; box-shadow: none; padding: 4px 0 0; align-items: center; background: none; }
-            nav.nav-open .nav-lang-menu a { font-family: var(--serif) !important; font-size: 18px !important; padding: 4px 0 !important; }
-            nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
-            nav.nav-open .nav-hamburger span { background: var(--black); }
-            nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-            nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
-            nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-            body.nav-open-body { overflow: hidden; }
+        @media (max-width: 800px) {
+            nav { padding: 16px 20px; } .nav-r { display: none; }
+            .hero-content { left: 20px; right: 20px; bottom: 48px; }
+            .ambient-toggle { right: 20px; top: 16px; }
+            .land { padding: 60px 20px; } .land-grid { grid-template-columns: 1fr; gap: 32px; }
+            .projects { padding: 60px 20px; } .pgrid { grid-template-columns: 1fr; gap: 32px; }
+            .approach { padding: 80px 20px; } .three { grid-template-columns: 1fr; gap: 32px; }
+            .cta { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
-<div style="background:#262320;color:#EDE6D7;text-align:center;padding:8px 16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:Inter,sans-serif;">Mockup &middot; v2 Site Speaks First (live homepage content) &middot; <a href="index.html" style="color:#EDE6D7;">Back to all options</a></div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- NAV                                         -->
-<!-- ═══════════════════════════════════════════ -->
-<nav id="mainNav">
-    <a href="index.html" class="nav-logo"><img src="../img/logo/sadala-logo.png" alt="">Sadala</a>
-    <div class="nav-links">
-        <a href="../pages/projects.html">Projects</a>
-        <a href="../pages/approach.html">Our approach</a>
-        <details class="nav-lang-wrap">
-            <summary>EN</summary>
-            <div class="nav-lang-menu">
-                <a href="index.html" class="is-current">EN</a>
-                <a href="../es/index.html">ES</a>
-                <a href="nl/index.html">NL</a>
-                <a href="fi/index.html">FI</a>
-                <a href="da/index.html">DA</a>
-            <a href="pl/index.html">PL</a>
-            </div>
-        </details>
-        <a href="../pages/contact.html" class="nav-contact">Contact</a>
-    </div>
-    <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
-        <span></span><span></span><span></span>
-    </div>
+<div class="mock-banner">Mockup · Option 2: The Site Speaks First · <a href="index.html">Back to all options</a></div>
+
+<nav>
+    <div class="logo">Sadala</div>
+    <div class="nav-r"><span>Projects</span><span>Approach</span><span>Contact</span><span class="lang">EN ▾</span></div>
 </nav>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- HERO SLIDER                                 -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="slider" id="slider">
-    <div class="ambient-toggle" id="ambientToggle" role="button" tabindex="0" aria-label="Toggle ambient sound">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-img grainy"><img src="../img/sosiego/sosiego-entrance-dusk.png" alt=""></div>
+    <div class="ambient-toggle">
         <div class="wave"><span></span><span></span><span></span></div>
-        <span id="ambientLabel">cicadas &middot; pine wind</span>
+        <span>cicadas · pine wind</span>
     </div>
-    <div class="slide active">
-        <div class="slide-image grainy">
-            <img src="../img/cantal/cantal-hero.jpg" alt="El Cantal among Mediterranean pines">
+    <div class="hero-content">
+        <div class="hero-eyebrow">Pinares de San Antón · 36.7367° N · 4.3833° W</div>
+        <h1 class="hero-title">The plot was here <em>before us.</em><br>The plot decides.</h1>
+        <div class="hero-meta">
+            <div><strong>Sadala</strong> · estudio</div>
+            <div><strong>Málaga</strong> · Andalucía</div>
+            <div><strong>One villa</strong> at a time</div>
         </div>
-        <div class="slide-content">
-            <div class="slide-text">
-                <div class="slide-category" style="font-family: var(--mono);">36.7367&deg; N &middot; 4.3833&deg; W &middot; Pinares de San Ant&oacute;n</div>
-                <h2 class="slide-title">The plot was here before us. <em style="color: var(--accent-soft);">The plot decides.</em></h2>
-                <p class="slide-desc">We conceive, build and deliver singular homes in the Andalusian landscape. One site. One vision. One time.</p>
-                <a href="#projects" class="slide-cta">Three plots, three signatures</a>
-            </div>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="slide-image grainy">
-            <img src="../img/cantal/cantal-aerial.jpg" alt="El Cantal aerial view with green roof and pool">
-        </div>
-        <div class="slide-content">
-            <div class="slide-text">
-                <div class="slide-category" style="font-family: var(--mono);">Quercus suber &middot; Pinus pinea &middot; Monte de M&aacute;laga</div>
-                <h2 class="slide-title">El Cantal</h2>
-                <p class="slide-desc">Corten steel and living roof, cut into the hillside. A house that becomes the slope it sits on.</p>
-                <a href="../pages/villa-el-cantal.html" class="slide-cta">Read more</a>
-            </div>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="slide-image grainy">
-            <img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset with infinity pool">
-        </div>
-        <div class="slide-content">
-            <div class="slide-text">
-                <div class="slide-category" style="font-family: var(--mono);">Pinus pinea &middot; 70 yrs &middot; Pinares de San Ant&oacute;n</div>
-                <h2 class="slide-title">Sosiego</h2>
-                <p class="slide-desc">A home conceived around how long, how clear, how calm you want to live. Body. Mind. Soul. Among century-old pines.</p>
-                <a href="../pages/sosiego.html" class="slide-cta">Read more</a>
-            </div>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="slide-image grainy">
-            <img src="../img/cantal/cantal-interior.jpg" alt="El Cantal outdoor living at golden hour">
-        </div>
-        <div class="slide-content">
-            <div class="slide-text">
-                <div class="slide-category" style="font-family: var(--mono);">Granite &middot; sand &middot; Andalucian quarry</div>
-                <h2 class="slide-title">Local stone, never imported.</h2>
-                <p class="slide-desc">The new luxury isn't imported marble. It's a home built by people who care because they live nearby.</p>
-                <a href="../pages/approach.html" class="slide-cta">Our approach</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="slider-arrows">
-        <button class="slider-arrow" id="prevBtn" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button class="slider-arrow" id="nextBtn" aria-label="Next slide">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
-        </button>
-    </div>
-
-    <div class="slider-counter">
-        <span id="slideNum">01</span> / <span id="slideTotal">04</span>
     </div>
 </section>
 
 <div class="topo"></div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- MISSION                                     -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="section-intro reveal">
-    <div class="section-label" style="font-family: var(--mono); letter-spacing: 3px;">What was here first</div>
-    <p class="section-headline">
-        A site reads as <em style="color: var(--accent); font-style: normal;">terrain, light, and species</em> long before it reads as a plan. The slope of the land, the direction of the morning sun, the silence between the pines: the program is already there. We listen first.
-    </p>
-</section>
-
-<div class="topo"></div>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- PROJECTS                                    -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="projects" id="projects">
-    <div class="projects-header">
-        <h2>Projects</h2>
-        <a href="../pages/projects.html">View all &rarr;</a>
-    </div>
-    <div class="projects-grid">
-        <a class="project-card reveal" href="../pages/villa-el-cantal.html">
-            <div class="project-card-image">
-                <img src="../img/cantal/cantal-hero.jpg" alt="El Cantal">
-            </div>
-            <div class="project-card-category">Project approved</div>
-            <div class="project-card-title">El Cantal</div>
-            <div class="project-card-sub">550 m&sup2; &middot; 5 rooms &middot; Pinares de San Ant&oacute;n</div>
-        </a>
-        <a class="project-card reveal" href="../pages/sosiego.html">
-            <div class="project-card-image">
-                <img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego">
-            </div>
-            <div class="project-card-category">Construction to begin shortly</div>
-            <div class="project-card-title">Sosiego</div>
-            <div class="project-card-sub">570 m&sup2; &middot; 4 rooms &middot; Pinares de San Ant&oacute;n</div>
-        </a>
-        <a class="project-card reveal" href="../pages/villa-leoni-benabu.html">
-            <div class="project-card-image" style="position:relative;">
-                <img src="../img/leoni-benabu/main.jpeg" alt="Origen">
-                <span style="position:absolute;top:16px;right:16px;background:var(--black);color:var(--off-white);font-size:10px;font-weight:500;letter-spacing:2px;padding:4px 12px;">SOLD</span>
-            </div>
-            <div class="project-card-category" style="color:var(--grey);">Sold</div>
-            <div class="project-card-title">Origen</div>
-            <div class="project-card-sub">620 m&sup2; &middot; 6 rooms &middot; Pinares de San Ant&oacute;n</div>
-        </a>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- ABOUT                                       -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="about-strip reveal" id="about">
-    <div class="about-strip-image">
-        <img src="../img/cantal/cantal-interior.jpg" alt="El Cantal outdoor living">
-    </div>
-    <div class="about-strip-text">
-        <h3>A studio, not a developer.</h3>
-        <p>One home at a time, conceived and delivered by a single team. Every Sadala project follows three principles.</p>
-        <div class="mini-method">
-            <div class="mini-method-col">
-                <div class="mini-word">Rooted</div>
-                <p>The land shapes the house.</p>
-            </div>
-            <div class="mini-method-col">
-                <div class="mini-word">Singular</div>
-                <p>One home, never repeated.</p>
-            </div>
-            <div class="mini-method-col">
-                <div class="mini-word">Local</div>
-                <p>Andalusian craft.</p>
-            </div>
+<!-- THE LAND -->
+<section class="land">
+    <div class="land-eyebrow">What was here first</div>
+    <h2 class="land-title">A site reads as <em>terrain, light, and species</em> long before it reads as a plan.</h2>
+    <div class="land-grid">
+        <div class="land-item">
+            <div class="lat">Pinus pinea</div>
+            <h3>Stone pine, ~70 yrs</h3>
+            <p>Eight specimens preserved on the Sosiego plot. The morning shadows they throw decided where the kitchen window goes.</p>
         </div>
-        <a href="../pages/approach.html">Read our approach &rarr;</a>
+        <div class="land-item">
+            <div class="lat">Olea europaea</div>
+            <h3>Centenarian olive</h3>
+            <p>One olive on the El Cantal site. Older than the road. The terrace bends around it in a soft arc.</p>
+        </div>
+        <div class="land-item">
+            <div class="lat">Granite + sand</div>
+            <h3>The substrate</h3>
+            <p>Andalusian quarry stone. Cut within fifteen kilometres of where it lays. The new luxury isn't imported marble.</p>
+        </div>
     </div>
 </section>
 
 <div class="topo"></div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- WHY MALAGA                                  -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="section-intro reveal" style="padding-bottom: 60px;">
-    <div class="section-label" style="font-family: var(--mono); letter-spacing: 3px;">36.7&deg; N &middot; The Andalusian coast</div>
-    <p class="section-headline" style="font-style: normal; font-size: clamp(20px, 2.5vw, 28px);">
-        320 days of sun. An international airport with direct flights across Europe. A gastronomy capital, 45 minutes from Marbella, a world apart. A growing tech and expat scene quietly making M&aacute;laga one of Europe's most livable cities.
-    </p>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- CONTACT                                     -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="contact" id="contact">
-    <div class="contact-inner">
-        <div class="contact-left reveal">
-            <h2>Contact</h2>
-            <p>Our process starts with a conversation, not a brochure. We live where we build. If our approach resonates, let's talk.</p>
-            <a href="mailto:info@sadala.com" class="contact-detail">info@sadala.com</a>
-            <a href="tel:+34639675315" class="contact-detail">+34 639 675 315</a>
-            <span class="contact-detail" style="margin-top: 12px; cursor: default; color: var(--grey-light);">M&aacute;laga, Spain</span>
-            <a href="https://wa.me/34639675315" class="contact-whatsapp">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-                WhatsApp
+<!-- PROJECTS -->
+<section class="projects">
+    <div class="projects-inner">
+        <div class="p-eyebrow">Three plots</div>
+        <h2 class="p-title">Three signatures of the same hand. Each one belongs only to its site.</h2>
+        <div class="pgrid">
+            <a href="#" class="pcard">
+                <div class="pcard-img grainy"><img src="../img/leoni-benabu/main.jpeg" alt="Origen"></div>
+                <div class="pcard-num">01 · Origen · 2023 · sold</div>
+                <div class="pcard-title">Where Sadala began</div>
+                <div class="pcard-sub">620 m² · among century-old pines</div>
+            </a>
+            <a href="#" class="pcard">
+                <div class="pcard-img grainy"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
+                <div class="pcard-num">02 · Sosiego · delivery 2027</div>
+                <div class="pcard-title">A home for longevity</div>
+                <div class="pcard-sub">570 m² · 1,096 m² of pinewood plot</div>
+            </a>
+            <a href="#" class="pcard">
+                <div class="pcard-img grainy"><img src="../img/cantal/cantal-aerial.jpg" alt="El Cantal"></div>
+                <div class="pcard-num">03 · El Cantal · 2028</div>
+                <div class="pcard-title">A house that becomes hill</div>
+                <div class="pcard-sub">550 m² · cut into the slope</div>
             </a>
         </div>
-        <form class="contact-form reveal" action="https://formsubmit.co/dimitri@sadala.com" method="POST">
-            <input type="hidden" name="_subject" value="New contact from Sadala website">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://sadala.com/index.html#contact">
-            <input type="hidden" name="_template" value="table">
-            <div class="form-row">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Your full name" required>
-            </div>
-            <div class="form-row">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-row">
-                <label>Phone</label>
-                <input type="tel" name="phone" placeholder="+34 ...">
-            </div>
-            <div class="form-row">
-                <label>Message</label>
-                <textarea name="message" placeholder="Tell us about your project..."></textarea>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- FOOTER                                      -->
-<!-- ═══════════════════════════════════════════ -->
-<footer>
-    <div class="footer-main">
-        <div class="footer-brand">
-            <span class="footer-logo">Sadala</span>
-            <p class="footer-tagline">Builders of the Unique. Singular homes conceived, built and delivered in the Andalusian landscape.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:info@sadala.com">info@sadala.com</a>
-            <a href="tel:+34639675315">+34 639 675 315</a>
-            <span>Leoni Benabu 31</span>
-            <span>29018 M&aacute;laga, Spain</span>
-        </div>
-        <div class="footer-col">
-            <h4>Connect</h4>
-            <div class="footer-social">
-                <a href="#" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-                <a href="#" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <a href="https://wa.me/34639675315" aria-label="WhatsApp">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-                </a>
+<!-- APPROACH dark band with topo top -->
+<section class="approach">
+    <div class="approach-inner">
+        <div class="approach-eyebrow">The Sadala Method</div>
+        <h2>We don't place a house on the land. <em>We let the land shape the house.</em></h2>
+        <div class="three">
+            <div>
+                <div class="word">Rooted</div>
+                <p>The site writes the brief. The slope, the trees, the morning sun aren't constraints — they're the program.</p>
+            </div>
+            <div>
+                <div class="word">Singular</div>
+                <p>One site, one vision, one time. No reused plans. Each home is conceived as if it were the only one we'll ever build.</p>
+            </div>
+            <div>
+                <div class="word">Local</div>
+                <p>Stone from Andalusian quarries. Wood from trusted mills. Partners chosen within a short drive, never a long flight.</p>
             </div>
         </div>
     </div>
-    <div class="footer-bottom">
-        <span>&copy; 2026 Sadala Homes S.L.</span>
-        <a href="#">Privacy Policy</a>
+</section>
+
+<div class="topo"></div>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="cta-inner">
+        <h2>Walk a plot with us before you read a brochure.</h2>
+        <p>Our process starts with a conversation, not a brochure. We live where we build. If our approach resonates, let's talk.</p>
+        <a href="#">Start a conversation</a>
     </div>
+</section>
+
+<footer>
+    <div class="live">Pinares de San Antón · 22°C · sunset 21:14</div>
+    <div>© 2026 Sadala SL · Builders of the Unique · Málaga, Andalucía</div>
 </footer>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- SCRIPTS                                     -->
-<!-- ═══════════════════════════════════════════ -->
-<script>
-/* Slider */
-const slides = document.querySelectorAll('.slide');
-const slideNum = document.getElementById('slideNum');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let current = 0;
-let autoPlay;
-
-function goTo(i) {
-    slides[current].classList.remove('active');
-    current = (i + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    slideNum.textContent = String(current + 1).padStart(2, '0');
-}
-
-function startAuto() {
-    autoPlay = setInterval(() => goTo(current + 1), 5000);
-}
-
-prevBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current - 1); startAuto(); });
-nextBtn.addEventListener('click', () => { clearInterval(autoPlay); goTo(current + 1); startAuto(); });
-startAuto();
-
-/* Touch/swipe on hero slider */
-const sliderEl = document.getElementById('slider');
-let startX = 0, heroSwiping = false;
-sliderEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; heroSwiping = true; }, { passive: true });
-sliderEl.addEventListener('touchend', e => {
-    if (!heroSwiping) return; heroSwiping = false;
-    const diff = e.changedTouches[0].clientX - startX;
-    if (diff < -50) { clearInterval(autoPlay); goTo(current + 1); startAuto(); }
-    else if (diff > 50) { clearInterval(autoPlay); goTo(current - 1); startAuto(); }
-});
-sliderEl.addEventListener('mousedown', e => { startX = e.clientX; heroSwiping = true; });
-sliderEl.addEventListener('mouseup', e => {
-    if (!heroSwiping) return; heroSwiping = false;
-    const diff = e.clientX - startX;
-    if (diff < -50) { clearInterval(autoPlay); goTo(current + 1); startAuto(); }
-    else if (diff > 50) { clearInterval(autoPlay); goTo(current - 1); startAuto(); }
-});
-
-/* Nav solid on scroll */
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-    nav.classList.toggle('solid', window.scrollY > 80);
-}, { passive: true });
-
-/* Reveal */
-const obs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-}), { threshold: .08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-/* ═══ Ambient sound - generated cicadas + pine wind ═══ */
-let ambCtx = null, ambNodes = [];
-function startAmbient() {
-    ambCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const ac = ambCtx;
-    const master = ac.createGain();
-    master.gain.value = 0;
-    master.gain.linearRampToValueAtTime(0.18, ac.currentTime + 1.4);
-    master.connect(ac.destination);
-
-    /* Pine wind = filtered pink-ish noise */
-    const buf = ac.createBuffer(1, 2 * ac.sampleRate, ac.sampleRate);
-    const d = buf.getChannelData(0);
-    let b0=0,b1=0,b2=0;
-    for (let i=0;i<d.length;i++){const w=Math.random()*2-1; b0=.99*b0+w*.029; b1=.96*b1+w*.084; b2=.74*b2+w*.31; d[i]=(b0+b1+b2)*.18;}
-    const noise = ac.createBufferSource(); noise.buffer = buf; noise.loop = true;
-    const flt = ac.createBiquadFilter(); flt.type = 'bandpass'; flt.frequency.value = 700; flt.Q.value = .55;
-    noise.connect(flt).connect(master);
-    noise.start();
-    ambNodes.push(noise);
-
-    /* Cicada bursts */
-    function cicada() {
-        if (!ambCtx) return;
-        const t = ac.currentTime;
-        const osc = ac.createOscillator();
-        const g = ac.createGain();
-        const lfo = ac.createOscillator();
-        const lfoG = ac.createGain();
-        osc.type = 'triangle';
-        osc.frequency.value = 4200 + Math.random() * 2800;
-        lfo.frequency.value = 16 + Math.random() * 16;
-        lfoG.gain.value = 0.5;
-        lfo.connect(lfoG).connect(g.gain);
-        g.gain.value = 0;
-        const dur = 0.35 + Math.random() * 0.7;
-        g.gain.setValueAtTime(0, t);
-        g.gain.linearRampToValueAtTime(0.035, t + 0.06);
-        g.gain.linearRampToValueAtTime(0, t + dur);
-        const filt = ac.createBiquadFilter(); filt.type = 'bandpass'; filt.frequency.value = 5400; filt.Q.value = 5.5;
-        osc.connect(filt).connect(g).connect(master);
-        lfo.start(t); osc.start(t);
-        osc.stop(t + dur); lfo.stop(t + dur);
-        ambNodes.push(osc, lfo);
-        setTimeout(cicada, 420 + Math.random() * 800);
-    }
-    cicada();
-}
-function stopAmbient() {
-    if (!ambCtx) return;
-    try { ambCtx.close(); } catch(e){}
-    ambCtx = null; ambNodes = [];
-}
-const ambBtn = document.getElementById('ambientToggle');
-const ambLabel = document.getElementById('ambientLabel');
-let ambOn = false;
-function toggleAmb() {
-    ambOn = !ambOn;
-    if (ambOn) { startAmbient(); ambBtn.classList.add('on'); ambLabel.textContent = 'listening'; }
-    else { stopAmbient(); ambBtn.classList.remove('on'); ambLabel.innerHTML = 'cicadas &middot; pine wind'; }
-}
-ambBtn.addEventListener('click', toggleAmb);
-ambBtn.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAmb(); } });
-</script>
-
-<a href="https://wa.me/34639675315" class="floating-cta" aria-label="Contact us via WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-    <span>Contact us</span>
-</a>
 
 </body>
 </html>
