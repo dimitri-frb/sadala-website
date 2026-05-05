@@ -114,34 +114,28 @@
         .media-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
         .media-soon { position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); border-radius: 999px; }
 
-        /* THE MAKERS - combined craft + team */
-        .makers-band { padding: 100px 48px; }
-        .makers-inner { max-width: 1100px; margin: 0 auto; }
-        .makers-title {
-            font-family: var(--serif); font-size: clamp(36px, 5vw, 56px);
-            font-weight: 300; line-height: 1.1; letter-spacing: -0.5px;
-            margin-bottom: 56px; max-width: 720px;
+        /* COLOPHON - flowing credits paragraph (dark band for contrast) */
+        .colophon-band {
+            padding: 140px 48px;
+            background: var(--black);
+            color: var(--off-white);
         }
-        .makers-group {
-            margin-bottom: 56px;
-        }
-        .makers-group:last-child { margin-bottom: 0; }
-        .makers-group-h {
+        .colophon-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+        .colophon-eyebrow {
             font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--grey);
-            margin-bottom: 28px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--grey-border);
+            text-transform: uppercase; color: var(--accent); margin-bottom: 36px;
         }
-        .maker-row {
-            display: grid; grid-template-columns: 200px 1.2fr 1.4fr;
-            gap: 32px; padding: 22px 0;
-            align-items: baseline;
+        .colophon-text {
+            font-family: var(--serif);
+            font-size: clamp(22px, 2.6vw, 32px);
+            font-weight: 300; font-style: italic;
+            line-height: 1.55; letter-spacing: -0.2px;
+            color: var(--off-white);
         }
-        .maker-row + .maker-row { border-top: 1px solid var(--grey-border); }
-        .m-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 4px; }
-        .m-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.2px; }
-        .m-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+        .colophon-text strong {
+            font-style: normal; font-weight: 400;
+            color: var(--accent);
+        }
 
         /* TIMELINE */
         .timeline-band { padding: 80px 48px; background: var(--off-white); border-top: 1px solid var(--grey-border); }
@@ -189,20 +183,26 @@
 
         @media (max-width: 760px) {
             nav { padding: 14px 20px; } .nav-r { display: none; }
-            .hero { height: 78vh; }
+            .hero { height: 72vh; }
             .hero-content { left: 20px; right: 20px; bottom: 28px; }
             .hero-title { font-size: clamp(48px, 13vw, 84px); letter-spacing: -1px; }
-            .hero-sub { font-size: 16px; margin-top: 12px; }
+            .hero-sub { font-size: 15px; margin-top: 10px; }
+            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
 
-            section.band, .home-band, .makers-band { padding: 64px 20px; }
-            .media-band { padding: 0 20px; margin-top: 40px; }
-            .home-paragraph { margin-bottom: 40px; }
+            /* Tighter section padding */
+            section.band, .home-band { padding: 48px 20px; }
+            .colophon-band { padding: 64px 20px; }
+            .media-band { padding: 0 20px; margin-top: 32px; }
+            .home-title { font-size: clamp(36px, 9vw, 56px); margin-bottom: 16px; }
+            .home-paragraph { font-size: 16px; margin-bottom: 32px; }
 
-            /* KPIs: 2x2 */
-            .kpi-strip { grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
+            /* KPIs: 2x2, tighter */
+            .kpi-strip { grid-template-columns: 1fr 1fr; margin-bottom: 40px; }
             .kpi-strip > div:nth-child(2) { border-right: none; }
             .kpi-strip > div:nth-child(1), .kpi-strip > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
-            .kpi-strip > div { padding: 24px 16px; }
+            .kpi-strip > div { padding: 22px 12px; }
+            .kpi-v { font-size: 32px; }
+            .kpi-l { font-size: 9px; margin-top: 8px; }
 
             /* Trifecta: horizontal scroll-snap */
             .trifecta {
@@ -218,38 +218,61 @@
                 scrollbar-width: none;
             }
             .trifecta::-webkit-scrollbar { display: none; }
-            .tri {
-                flex: 0 0 78%; scroll-snap-align: start;
-                min-width: 0;
-            }
-            .tri-img { aspect-ratio: 4/5; margin-bottom: 16px; }
+            .tri { flex: 0 0 78%; scroll-snap-align: start; min-width: 0; }
+            .tri-img { aspect-ratio: 4/5; margin-bottom: 14px; }
+            .tri-h { font-size: 18px; }
 
-            /* Gallery: 2-col with hero tiles full-width */
-            .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
-            .tile-1, .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
-            .tile-1 img, .tile-6 img { aspect-ratio: 4/3; }
-            .tile-2, .tile-3, .tile-4, .tile-5 { aspect-ratio: 1; }
+            /* Gallery: hide tiles 2-5 on mobile, show only 2 hero tiles */
+            .gallery { grid-template-columns: 1fr; gap: 2px; }
+            .tile-1, .tile-6 { grid-column: span 1; aspect-ratio: 16/10; }
+            .tile-1 img, .tile-6 img { aspect-ratio: 16/10; }
+            .tile-2, .tile-3, .tile-4, .tile-5 { display: none; }
 
             /* Media: stack */
             .media-grid { grid-template-columns: 1fr; }
-            .media-card { aspect-ratio: 4/3; }
+            .media-card { aspect-ratio: 16/10; }
+            .media-label { font-size: 24px; }
+            .media-sub { font-size: 10px; }
+            .media-icon { width: 44px; height: 44px; }
 
-            /* Makers: stack */
-            .maker-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
-            .m-role { padding-top: 0; }
-            .m-name { font-size: 22px; }
+            /* Colophon */
+            .colophon-text { font-size: 18px; line-height: 1.5; }
 
-            /* Timeline */
+            /* Timeline: vertical with line */
             .timeline-band { padding: 56px 20px; }
-            .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
-            .timeline-track::before { display: none; }
+            .timeline-track {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                gap: 0;
+                text-align: left;
+            }
+            .timeline-track::before {
+                top: 0; bottom: 0;
+                left: 6px; right: auto;
+                width: 2px; height: auto;
+                background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 33.33%, var(--grey-border) 33.33%, var(--grey-border) 100%);
+            }
+            .ts {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 18px;
+                padding: 4px 0 28px;
+            }
+            .ts:last-child { padding-bottom: 0; }
+            .ts-dot { margin-bottom: 0; margin-top: 4px; }
+            .ts-when, .ts-name { text-align: left; }
+            .ts-when { margin-bottom: 2px; }
+            .ts-name { font-size: 15px; }
+            .ts-content {}
 
             /* CTA */
-            .cta { padding: 64px 20px; }
+            .cta { padding: 56px 20px; }
+            .cta h2 { font-size: clamp(28px, 8vw, 40px); }
+            .cta p { font-size: 14px; margin-bottom: 28px; }
             .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
-            .cta-actions a { justify-content: center; }
+            .cta-actions a { justify-content: center; padding: 14px 24px; }
 
-            footer { padding: 28px 20px; font-size: 10px; }
+            footer { padding: 24px 20px; font-size: 10px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
     </style>
@@ -280,7 +303,6 @@
 <!-- ════ THE HOME (concept + facts + trifecta) ════ -->
 <section class="home-band">
     <div class="home-inner">
-        <div class="section-label">The home</div>
         <h2 class="home-title">Landscape. Light. Integration.</h2>
         <p class="home-paragraph">
             Three principles, three responses to the hillside. The roof becomes the slope, the facade dissolves into corten, the inside opens entirely to the garden below. A house that disappears into the hill it sits on.
@@ -364,39 +386,16 @@
     </div>
 </section>
 
-<!-- ════ THE MAKERS (designers + suppliers in one section) ════ -->
-<section class="makers-band">
-    <div class="makers-inner">
-        <div class="section-label">The makers</div>
-        <h2 class="makers-title">Every hand on this house, by name.</h2>
-
-        <div class="makers-group">
-            <div class="makers-group-h">Designed by</div>
-            <div class="maker-row">
-                <div class="m-role">Architecture</div>
-                <div class="m-name">Flow81</div>
-                <p class="m-desc">An award-winning experiential architecture lab based in M&aacute;laga. Architecture, interiors and landscape conceived as one piece.</p>
-            </div>
-        </div>
-
-        <div class="makers-group">
-            <div class="makers-group-h">Built with</div>
-            <div class="maker-row">
-                <div class="m-role">Corten steel</div>
-                <div class="m-name">A metalsmith in M&aacute;laga Este</div>
-                <p class="m-desc">The perforated facade is custom-forged sheet by sheet. The patina is left to the Andalusian weather to finish.</p>
-            </div>
-            <div class="maker-row">
-                <div class="m-role">Living roof</div>
-                <div class="m-name">A nursery in Nerja</div>
-                <p class="m-desc">Native grasses and drought-tolerant species selected to match the surrounding hillside.</p>
-            </div>
-            <div class="maker-row">
-                <div class="m-role">Stone</div>
-                <div class="m-name">Cantera de Mijas</div>
-                <p class="m-desc">Local granitic stone from a quarry within fifteen kilometres. The same colour as the cliff face the corten is cut into.</p>
-            </div>
-        </div>
+<!-- ════ COLOPHON (flowing credits paragraph) ════ -->
+<section class="colophon-band">
+    <div class="colophon-inner">
+        <div class="colophon-eyebrow">El Cantal, in full</div>
+        <p class="colophon-text">
+            Designed by <strong>Flow81</strong>, an architecture lab in M&aacute;laga.
+            Built with <strong>corten</strong> from a metalsmith in M&aacute;laga Este,
+            <strong>stone</strong> from Cantera de Mijas,
+            and a <strong>living roof</strong> from a nursery in Nerja.
+        </p>
     </div>
 </section>
 
