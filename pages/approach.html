@@ -64,7 +64,6 @@
             nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
             nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
             body.nav-open-body { overflow: hidden; }
-        }
 
         /* Hero quote */
         .quote-hero {
@@ -106,7 +105,6 @@
         @keyframes drop {
             0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; }
             50% { transform: scaleY(1); opacity: .5; }
-        }
 
         /* The studio - signed editorial paragraph */
         .studio-band { padding: 100px 48px; }
@@ -216,13 +214,6 @@
         }
         .p-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 600px; margin-top: 12px; }
 
-
-
-        @media (max-width: 1024px) {
-        }
-        @media (max-width: 760px) {
-        }
-
         /* THE TEAM - founders portrait + partner logos */
         .team-band { padding: 120px 48px; background: var(--off-white); }
         .team-inner { max-width: 1200px; margin: 0 auto; }
@@ -287,6 +278,27 @@
         }
         .partner-tile:hover { background: var(--off-white); }
 
+
+        /* CTA */
+        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
+        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
+        .cta .primary { background: var(--accent); color: #fff; }
+        .cta .primary:hover { background: #d49a7e; }
+        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
+        .cta .ghost:hover { border-color: var(--off-white); }
+        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
+
+        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
+
+        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
+        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
+        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
+        .float-cta:hover svg { fill: #fff; }
+        }        }
     </style>
 </head>
 <body>
