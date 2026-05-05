@@ -68,7 +68,7 @@
         .ambient-toggle.on .wave span:nth-child(3) { animation-delay: .4s; }
         @keyframes bob { 0%,100% { transform: scaleY(.7); } 50% { transform: scaleY(1.4); } }
 
-        /* Floating WhatsApp CTA — same pattern as project pages */
+        /* Floating WhatsApp CTA - same pattern as project pages */
         .floating-cta {
             position: fixed; bottom: 24px; right: 24px; z-index: 999;
             display: inline-flex; align-items: center; gap: 10px;
@@ -1024,7 +1024,7 @@ const obs = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-/* ═══ Ambient sound — generated cicadas + pine wind ═══ */
+/* ═══ Ambient sound - generated cicadas + pine wind ═══ */
 let ambCtx = null, ambNodes = [];
 function startAmbient() {
     ambCtx = new (window.AudioContext || window.webkitAudioContext)();
