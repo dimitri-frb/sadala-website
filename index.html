@@ -123,21 +123,26 @@
         /* ════ SECTION LABEL ════ */
         .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
 
-        /* ════ THE METHOD - single statement ════ */
-        .method-band { padding: 140px 48px; text-align: center; }
-        .method-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; }
+        /* ════ THE METHOD - dark statement band ════ */
+        .method-band {
+            padding: 140px 48px;
+            text-align: center;
+            background: var(--black);
+            color: var(--off-white);
+        }
         .method-words {
             font-family: var(--serif);
             font-size: clamp(48px, 7vw, 96px);
             font-weight: 300; line-height: 1; letter-spacing: -1px;
-            color: var(--black);
+            color: var(--off-white);
         }
         .method-words em { color: var(--accent); font-style: italic; }
         .method-sub {
             margin-top: 32px;
             font-family: var(--serif); font-style: italic;
             font-size: clamp(18px, 2vw, 24px); font-weight: 300;
-            color: var(--grey); line-height: 1.5; max-width: 600px; margin-left: auto; margin-right: auto;
+            color: rgba(225,216,204,.65); line-height: 1.5;
+            max-width: 600px; margin-left: auto; margin-right: auto;
         }
         .method-link {
             display: inline-block; margin-top: 48px;
@@ -351,7 +356,6 @@
 
 <!-- ════ THE METHOD ════ -->
 <section class="method-band">
-    <div class="method-eyebrow">The method</div>
     <h2 class="method-words"><em>Rooted.</em> <em>Singular.</em> <em>Local.</em></h2>
     <p class="method-sub">Three principles. Every villa, every time.</p>
     <a href="pages/approach.html" class="method-link">Read our approach &rarr;</a>
