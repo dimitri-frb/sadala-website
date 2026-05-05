@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Sadala — The Chord</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bone:#EDE5D3;        /* warmer than current cream */
+            --bone-2:#E5DCC6;
+            --paper:#F4EEDC;
+            --ink:#1C1A17;         /* near-black, slight warmth */
+            --ink-soft:#3A3631;
+            --grey:#8A8478;
+            --grey-line:rgba(28,26,23,.12);
+            --moss:#3F4A37;        /* secondary accent — quiet, dark green */
+            --copper:#A8643F;      /* tertiary accent — used very sparingly */
+            --serif:'Cormorant Garamond',Georgia,serif;
+            --sans:'Inter',sans-serif;
+            --mono:'JetBrains Mono',monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--bone); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        .mock-banner { background: var(--ink); color: var(--bone); text-align: center; padding: 8px 16px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; }
+        .mock-banner a { color: var(--bone); }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; position: absolute; top: 36px; left: 0; right: 0; z-index: 50; mix-blend-mode: difference; color: var(--bone); }
+        .logo { font-family: var(--serif); font-size: 18px; letter-spacing: 6px; text-transform: uppercase; }
+        .nav-r { display: flex; gap: 28px; align-items: center; font-size: 12px; font-weight: 300; letter-spacing: 1px; }
+
+        /* ════ SECTION 1 — THE OPENING ════ */
+        .opening {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 120px 48px 80px; position: relative;
+            background: var(--bone);
+        }
+        .o-meta {
+            display: flex; gap: 40px; font-family: var(--mono);
+            font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--grey); margin-bottom: 80px;
+        }
+        .o-meta .dot { width: 6px; height: 6px; background: var(--copper); border-radius: 50%; align-self: center; }
+        .number {
+            font-family: var(--serif);
+            font-size: clamp(220px, 38vw, 540px);
+            font-weight: 200;
+            line-height: .82;
+            letter-spacing: -16px;
+            color: var(--ink);
+            position: relative;
+        }
+        .number .superscript {
+            font-family: var(--serif);
+            font-size: 0.18em;
+            letter-spacing: 4px;
+            position: absolute;
+            top: 14%;
+            left: -0.7em;
+            font-weight: 300;
+            color: var(--grey);
+        }
+        .o-line {
+            margin-top: 48px;
+            font-family: var(--serif); font-style: italic;
+            font-size: clamp(20px, 2.4vw, 28px); font-weight: 300;
+            color: var(--ink-soft); text-align: center;
+            max-width: 720px; line-height: 1.4; letter-spacing: -0.2px;
+        }
+        .o-line em { color: var(--copper); font-style: normal; }
+        .play-pill {
+            margin-top: 64px;
+            display: inline-flex; align-items: center; gap: 14px;
+            padding: 16px 28px;
+            background: var(--ink); color: var(--bone);
+            font-family: var(--sans); font-size: 12px; font-weight: 400;
+            letter-spacing: 3px; text-transform: uppercase;
+            border: none; cursor: pointer;
+            border-radius: 999px;
+            transition: all .25s;
+        }
+        .play-pill:hover { background: var(--moss); transform: translateY(-2px); }
+        .play-pill.playing { background: var(--moss); }
+        .play-pill .triangle {
+            width: 0; height: 0;
+            border-left: 7px solid var(--bone);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            transition: all .3s;
+        }
+        .play-pill.playing .triangle {
+            border-left-color: transparent;
+            width: 9px; height: 11px;
+            border: none;
+            background: linear-gradient(to right, var(--bone) 0 3px, transparent 3px 6px, var(--bone) 6px 9px);
+        }
+        .o-fineprint {
+            margin-top: 24px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--grey);
+        }
+        .scroll-hint {
+            position: absolute; bottom: 32px;
+            font-family: var(--mono);
+            font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--grey);
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+        }
+        .scroll-hint::after {
+            content: ''; width: 1px; height: 32px;
+            background: var(--ink); opacity: .3;
+            animation: drop 2.4s ease infinite;
+        }
+        @keyframes drop { 0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; } 50% { transform: scaleY(1); opacity: .5; } }
+
+        /* ════ SECTION 2 — THE STONE ════ */
+        .stone-band {
+            background: var(--ink); color: var(--bone);
+            padding: 140px 48px;
+            position: relative;
+        }
+        .stone-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 96px; align-items: center;
+        }
+        .stone-visual {
+            aspect-ratio: 4/5;
+            position: relative;
+            background: linear-gradient(135deg, #2A2723 0%, #1C1A17 60%, #0E0D0B 100%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        /* Procedural "stone" — two halves with cleavage */
+        .stone-visual svg { width: 80%; height: 80%; }
+        .stone-label {
+            position: absolute; bottom: 24px; right: 24px;
+            font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+            color: rgba(237,229,211,.4);
+        }
+        .stone-text .eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--copper); margin-bottom: 22px;
+        }
+        .stone-text h2 {
+            font-family: var(--serif); font-size: clamp(38px, 5vw, 60px);
+            font-weight: 300; line-height: 1.1; margin-bottom: 28px;
+            letter-spacing: -0.5px; color: var(--bone);
+        }
+        .stone-text h2 em { font-style: italic; color: var(--copper); }
+        .stone-text p {
+            font-family: var(--serif); font-size: 19px; font-weight: 400;
+            line-height: 1.7; color: rgba(237,229,211,.78); margin-bottom: 18px;
+        }
+        .stone-spec {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px;
+            margin-top: 32px; padding-top: 32px;
+            border-top: 1px solid rgba(237,229,211,.15);
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1px;
+        }
+        .stone-spec .k { color: var(--grey); margin-bottom: 4px; text-transform: uppercase; }
+        .stone-spec .v { color: var(--bone); font-size: 14px; letter-spacing: .5px; }
+
+        /* ════ SECTION 3 — THE CHORD ════ */
+        .chord-band {
+            padding: 140px 48px; background: var(--paper);
+            position: relative;
+        }
+        .chord-inner { max-width: 1200px; margin: 0 auto; }
+        .chord-eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--copper); margin-bottom: 22px;
+        }
+        .chord-h {
+            font-family: var(--serif); font-size: clamp(38px, 5vw, 60px);
+            font-weight: 300; line-height: 1.1; max-width: 800px;
+            margin-bottom: 24px; letter-spacing: -0.5px;
+        }
+        .chord-h em { font-style: italic; color: var(--copper); }
+        .chord-sub {
+            font-family: var(--serif); font-size: 18px; font-style: italic;
+            color: var(--grey); max-width: 620px; margin-bottom: 80px;
+            line-height: 1.5;
+        }
+
+        /* The staff — visual representation of the chord */
+        .staff {
+            position: relative; height: 280px;
+            margin: 0 auto; max-width: 1100px;
+            display: flex; align-items: stretch;
+        }
+        .staff-line {
+            position: absolute; left: 0; right: 0;
+            height: 1px; background: var(--grey-line);
+        }
+        .staff-line:nth-child(1) { top: 25%; }
+        .staff-line:nth-child(2) { top: 50%; }
+        .staff-line:nth-child(3) { top: 75%; }
+
+        .note {
+            flex: 1; position: relative;
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+        }
+        .note .dot {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--ink);
+            transition: all .25s; position: relative;
+        }
+        .note .dot::after {
+            content: ''; position: absolute; left: 50%; top: 50%;
+            width: 22px; height: 22px;
+            border-radius: 50%; background: var(--copper);
+            transform: translate(-50%,-50%) scale(0);
+            opacity: 0; transition: all .6s;
+        }
+        .note.future .dot { background: none; border: 1.5px dashed var(--grey-line); }
+        .note.playing .dot::after { transform: translate(-50%,-50%) scale(2.6); opacity: 0; }
+        .note .label {
+            margin-top: 16px; font-family: var(--mono);
+            font-size: 11px; letter-spacing: 1.5px; text-align: center;
+            color: var(--grey); text-transform: uppercase;
+        }
+        .note .label .num { color: var(--ink); font-size: 13px; }
+        .note .label .name { display: block; margin-top: 6px; font-family: var(--serif); font-size: 16px; letter-spacing: 1px; text-transform: none; color: var(--ink-soft); font-style: italic; }
+        .note.future .label .num { color: var(--grey-line); }
+        .note .label .pitch { display: block; margin-top: 6px; color: var(--copper); font-size: 11px; letter-spacing: 1px; }
+        .note.future .label .pitch { color: transparent; }
+
+        /* Vertical stem from staff to label */
+        .note .stem {
+            position: absolute; top: 0; bottom: 50%;
+            width: 1px; background: var(--ink-soft);
+        }
+        .note.future .stem { background: var(--grey-line); }
+
+        /* Position notes at different staff heights — mimics actual sheet music */
+        .note:nth-child(1) .dot { margin-top: 56%; }   /* lower note */
+        .note:nth-child(2) .dot { margin-top: 35%; }   /* middle */
+        .note:nth-child(3) .dot { margin-top: 22%; }   /* higher */
+        .note:nth-child(4) .dot { margin-top: 65%; }
+        .note:nth-child(5) .dot { margin-top: 45%; }
+
+        .chord-actions {
+            margin-top: 80px; display: flex; gap: 14px; flex-wrap: wrap;
+        }
+        .chord-actions button {
+            padding: 14px 24px; font-family: var(--sans);
+            font-size: 11px; font-weight: 400; letter-spacing: 2.5px;
+            text-transform: uppercase; cursor: pointer; transition: all .25s;
+            border: 1px solid var(--ink); background: none; color: var(--ink);
+        }
+        .chord-actions button:hover { background: var(--ink); color: var(--bone); }
+        .chord-actions button.primary { background: var(--ink); color: var(--bone); }
+        .chord-actions button.primary:hover { background: var(--moss); border-color: var(--moss); }
+
+        /* ════ SECTION 4 — THE PLOT IS HEARD ════ */
+        .plot-band {
+            padding: 140px 48px;
+            background: var(--bone);
+        }
+        .plot-inner { max-width: 1100px; margin: 0 auto; }
+        .plot-eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--copper); margin-bottom: 22px;
+        }
+        .plot-h {
+            font-family: var(--serif); font-size: clamp(36px, 5vw, 56px);
+            font-weight: 300; line-height: 1.1; max-width: 800px;
+            margin-bottom: 56px; letter-spacing: -0.4px;
+        }
+        .plot-h em { font-style: italic; color: var(--copper); }
+
+        .waveform-wrap {
+            background: var(--paper);
+            padding: 56px 48px;
+            position: relative;
+            border-top: 1px solid var(--grey-line);
+            border-bottom: 1px solid var(--grey-line);
+        }
+        .waveform {
+            display: flex; align-items: center; justify-content: center;
+            gap: 2px; height: 120px;
+        }
+        .waveform .bar {
+            width: 3px; background: var(--ink-soft); border-radius: 1px;
+            transition: background .25s;
+        }
+        .waveform.playing .bar { background: var(--copper); animation: pulse 1.4s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scaleY(.85); } 50% { transform: scaleY(1.05); } }
+        .wf-meta {
+            display: flex; justify-content: space-between; margin-top: 28px;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey);
+        }
+        .wf-meta .lh { color: var(--ink); }
+        .wf-meta .duration { color: var(--copper); }
+
+        /* ════ SECTION 5 — NUMBERED CHRONICLE ════ */
+        .chronicle {
+            padding: 140px 48px;
+            background: var(--ink); color: var(--bone);
+        }
+        .chronicle-inner { max-width: 1300px; margin: 0 auto; }
+        .ch-eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--copper); margin-bottom: 22px;
+        }
+        .ch-h {
+            font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
+            font-weight: 300; line-height: 1.1; max-width: 900px;
+            margin-bottom: 80px; letter-spacing: -0.4px; color: var(--bone);
+        }
+        .ch-h em { font-style: italic; color: var(--copper); }
+
+        .ch-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+        }
+        .ch-card {
+            position: relative;
+            background: linear-gradient(180deg, rgba(237,229,211,.04) 0%, rgba(237,229,211,.01) 100%);
+            padding: 56px 36px;
+            border: 1px solid rgba(237,229,211,.08);
+            text-decoration: none; color: var(--bone);
+            transition: all .35s;
+            min-height: 380px;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .ch-card:hover { background: rgba(237,229,211,.06); border-color: rgba(237,229,211,.18); }
+        .ch-num {
+            font-family: var(--serif); font-size: 120px; font-weight: 200;
+            line-height: .85; letter-spacing: -4px; color: var(--bone);
+        }
+        .ch-num small { font-size: 0.18em; letter-spacing: 4px; vertical-align: top; color: var(--grey); margin-right: 8px; }
+        .ch-name {
+            font-family: var(--serif); font-size: 28px; font-weight: 400;
+            margin-top: 32px; margin-bottom: 8px;
+        }
+        .ch-meta {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey); display: flex; justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .ch-meta .status { color: var(--copper); }
+        .ch-card.sold .ch-meta .status { color: var(--grey); }
+        .ch-card.future .ch-meta .status { color: var(--moss); }
+        .ch-pitch {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+            color: var(--copper); margin-top: 16px;
+        }
+        .ch-card.future .ch-pitch { color: var(--grey); }
+        .ch-pitch::before { content: '♪ '; }
+
+        /* ════ SECTION 6 — A LETTER (small) ════ */
+        .letter {
+            padding: 100px 48px;
+            background: var(--paper);
+        }
+        .letter-inner { max-width: 720px; margin: 0 auto; }
+        .l-meta {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px;
+            color: var(--grey); margin-bottom: 32px; text-transform: uppercase;
+            display: flex; justify-content: space-between;
+        }
+        .letter-inner p {
+            font-family: var(--serif); font-size: 19px; font-weight: 400;
+            line-height: 1.7; color: var(--ink); margin-bottom: 16px;
+        }
+        .letter-inner p em { color: var(--copper); }
+        .l-sig {
+            font-family: var(--serif); font-style: italic;
+            font-size: 22px; color: var(--ink-soft); margin-top: 24px;
+        }
+
+        /* ════ FINAL CTA ════ */
+        .final {
+            padding: 140px 48px; background: var(--bone);
+            text-align: center; border-top: 1px solid var(--grey-line);
+        }
+        .final h2 {
+            font-family: var(--serif); font-size: clamp(40px, 6vw, 80px);
+            font-weight: 300; line-height: 1.05; max-width: 920px;
+            margin: 0 auto 40px; letter-spacing: -0.6px;
+        }
+        .final h2 em { font-style: italic; color: var(--copper); }
+        .final-actions {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+            margin-top: 56px;
+        }
+        .final-actions a {
+            padding: 16px 32px; text-decoration: none;
+            font-family: var(--sans); font-size: 12px; font-weight: 400;
+            letter-spacing: 3px; text-transform: uppercase;
+            transition: all .25s;
+        }
+        .final .primary { background: var(--ink); color: var(--bone); }
+        .final .primary:hover { background: var(--moss); }
+        .final .ghost { color: var(--ink); border: 1px solid var(--ink-soft); }
+        .final .ghost:hover { background: var(--ink); color: var(--bone); }
+
+        footer {
+            padding: 48px;
+            background: var(--ink); color: rgba(237,229,211,.45);
+            text-align: center; font-family: var(--mono);
+            font-size: 11px; letter-spacing: 1.5px;
+        }
+        footer .live { display: inline-block; padding: 6px 14px; background: rgba(237,229,211,.05); border-radius: 999px; margin-bottom: 12px; }
+        footer .live::before { content: '●'; color: var(--copper); margin-right: 6px; }
+
+        @media (max-width: 800px) {
+            nav { padding: 16px 20px; top: 36px; }
+            .nav-r { display: none; }
+            .opening { padding: 80px 20px 60px; }
+            .o-meta { flex-direction: column; gap: 8px; align-items: center; margin-bottom: 40px; }
+            .o-meta .dot { display: none; }
+            .stone-band { padding: 60px 20px; } .stone-inner { grid-template-columns: 1fr; gap: 48px; }
+            .chord-band { padding: 60px 20px; } .staff { height: 220px; }
+            .plot-band { padding: 60px 20px; } .waveform-wrap { padding: 32px 20px; }
+            .chronicle { padding: 60px 20px; } .ch-grid { grid-template-columns: 1fr; }
+            .ch-num { font-size: 84px; }
+            .letter { padding: 60px 20px; }
+            .final { padding: 80px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="mock-banner">Mockup · v6 — The Sadala Chord · <a href="index.html">Back to all options</a></div>
+
+<nav>
+    <div class="logo">SADALA</div>
+    <div class="nav-r">
+        <span>The Chord</span>
+        <span>Studio</span>
+        <span>Walk a plot</span>
+        <span style="color:var(--copper);">EN ▾</span>
+    </div>
+</nav>
+
+<!-- ════ 1 · OPENING ════ -->
+<section class="opening">
+    <div class="o-meta">
+        <span>Sadala</span>
+        <div class="dot"></div>
+        <span>Pinares de San Antón</span>
+        <div class="dot"></div>
+        <span>In progress · 2027</span>
+    </div>
+
+    <div class="number">
+        <span class="superscript">N°</span>02
+    </div>
+
+    <p class="o-line">A house has a sound. <em>Sadala N° 02 sounds like this.</em></p>
+
+    <button class="play-pill" id="heroPlay">
+        <span class="triangle"></span>
+        <span>Hear N° 02</span>
+    </button>
+    <div class="o-fineprint" id="heroFineprint">F♯₃ · 184.99 Hz · stone struck once · plot at dawn · 30 sec</div>
+
+    <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ════ 2 · THE STONE ════ -->
+<section class="stone-band">
+    <div class="stone-inner">
+        <div class="stone-visual">
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="stoneGrad" cx="40%" cy="35%">
+                        <stop offset="0%" stop-color="#5a5249"/>
+                        <stop offset="60%" stop-color="#3a342d"/>
+                        <stop offset="100%" stop-color="#1f1c18"/>
+                    </radialGradient>
+                </defs>
+                <!-- Left half -->
+                <path d="M 28 38 Q 40 22 60 28 L 92 36 Q 100 50 96 70 L 100 110 Q 102 142 96 174 L 92 200 Q 78 218 60 214 L 40 206 Q 24 192 28 168 L 24 130 Q 22 88 26 62 Z"
+                      fill="url(#stoneGrad)" stroke="#7a7164" stroke-width=".5" opacity=".95"/>
+                <!-- Right half -->
+                <path d="M 108 38 Q 124 26 142 32 L 172 44 Q 180 60 176 82 L 178 120 Q 178 152 174 178 L 172 202 Q 158 218 142 214 L 122 206 Q 110 188 108 168 L 104 130 Q 102 86 106 60 Z"
+                      fill="url(#stoneGrad)" stroke="#7a7164" stroke-width=".5" opacity=".95"
+                      transform="translate(8 0)"/>
+                <!-- Engravings -->
+                <text x="50" y="124" font-family="JetBrains Mono" font-size="9" fill="#a89a82" letter-spacing=".5">N° 02</text>
+                <text x="50" y="138" font-family="JetBrains Mono" font-size="6" fill="#857a68" letter-spacing=".3">I of II</text>
+                <text x="142" y="124" font-family="JetBrains Mono" font-size="9" fill="#a89a82" letter-spacing=".5">N° 02</text>
+                <text x="142" y="138" font-family="JetBrains Mono" font-size="6" fill="#857a68" letter-spacing=".3">II of II</text>
+                <!-- Cleavage -->
+                <line x1="100" y1="20" x2="106" y2="220" stroke="#0a0908" stroke-width="2"/>
+            </svg>
+            <div class="stone-label">Sosiego · Pinares de San Antón · cleaved March 2026</div>
+        </div>
+        <div class="stone-text">
+            <div class="eyebrow">The artifact</div>
+            <h2>Half is built into the wall.<br><em>The other half is yours.</em></h2>
+            <p>Every Sadala home is delivered with one hand-cut stone, taken from the same Andalusian quarry that supplied the house. The stone is cleaved.</p>
+            <p>One half is set into a wall niche during construction — visible, finished, permanent. The other half is yours, in a wooden box. Both engraved with the home's number.</p>
+            <p>The stone, when struck with a small bronze rod, rings. <em>Each home's stone has its own pitch.</em></p>
+
+            <div class="stone-spec">
+                <div>
+                    <div class="k">Origin</div>
+                    <div class="v">Cantera de Mijas</div>
+                </div>
+                <div>
+                    <div class="k">Composition</div>
+                    <div class="v">Granitic, micaceous</div>
+                </div>
+                <div>
+                    <div class="k">Resonant note</div>
+                    <div class="v">F♯₃ · 184.99 Hz</div>
+                </div>
+                <div>
+                    <div class="k">Pair count</div>
+                    <div class="v">II of II · 1 pair</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ 3 · THE CHORD ════ -->
+<section class="chord-band">
+    <div class="chord-inner">
+        <div class="chord-eyebrow">The Chord</div>
+        <h2 class="chord-h">Every Sadala home is one note. The chord is what they sound like together.</h2>
+        <p class="chord-sub">Three notes, today. Twelve, perhaps, in twenty years. <em>Some chords take a lifetime to compose.</em></p>
+
+        <div class="staff">
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+            <div class="staff-line"></div>
+
+            <div class="note" data-note="01">
+                <div class="dot"></div>
+                <div class="label">
+                    <span class="num">N° 01</span>
+                    <span class="name">Origen</span>
+                    <span class="pitch">D₃ · 146.83 Hz</span>
+                </div>
+            </div>
+            <div class="note" data-note="02">
+                <div class="dot"></div>
+                <div class="label">
+                    <span class="num">N° 02</span>
+                    <span class="name">Sosiego</span>
+                    <span class="pitch">F♯₃ · 184.99 Hz</span>
+                </div>
+            </div>
+            <div class="note" data-note="03">
+                <div class="dot"></div>
+                <div class="label">
+                    <span class="num">N° 03</span>
+                    <span class="name">El Cantal</span>
+                    <span class="pitch">A₃ · 220.00 Hz</span>
+                </div>
+            </div>
+            <div class="note future">
+                <div class="dot"></div>
+                <div class="label">
+                    <span class="num">N° 04</span>
+                    <span class="name">unbuilt</span>
+                    <span class="pitch">·</span>
+                </div>
+            </div>
+            <div class="note future">
+                <div class="dot"></div>
+                <div class="label">
+                    <span class="num">N° 05</span>
+                    <span class="name">unbuilt</span>
+                    <span class="pitch">·</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chord-actions">
+            <button class="primary" id="playChord">▷ Play the chord (3 notes together)</button>
+            <button id="playSeq">▷ Play in sequence</button>
+        </div>
+    </div>
+</section>
+
+<!-- ════ 4 · THE PLOT ════ -->
+<section class="plot-band">
+    <div class="plot-inner">
+        <div class="plot-eyebrow">The plot, recorded</div>
+        <h2 class="plot-h">Sosiego at dawn. <em>Recorded April 2026. 0:30.</em></h2>
+
+        <div class="waveform-wrap">
+            <div class="waveform" id="waveform"></div>
+            <div class="wf-meta">
+                <span class="lh">▷ Listen</span>
+                <span>Pinares de San Antón · 06:14 · 17°C · April 28, 2026</span>
+                <span class="duration">0:30</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ 5 · CHRONICLE ════ -->
+<section class="chronicle">
+    <div class="chronicle-inner">
+        <div class="ch-eyebrow">The chronicle</div>
+        <h2 class="ch-h">Three homes. <em>Three notes.</em></h2>
+
+        <div class="ch-grid">
+            <a href="#" class="ch-card sold">
+                <div>
+                    <div class="ch-num"><small>N°</small>01</div>
+                    <div class="ch-name">Origen</div>
+                </div>
+                <div>
+                    <div class="ch-meta"><span>2023</span><span class="status">Delivered · sold</span></div>
+                    <div class="ch-pitch">D₃ · 146.83 Hz</div>
+                </div>
+            </a>
+            <a href="#" class="ch-card">
+                <div>
+                    <div class="ch-num"><small>N°</small>02</div>
+                    <div class="ch-name">Sosiego</div>
+                </div>
+                <div>
+                    <div class="ch-meta"><span>2027</span><span class="status">In construction</span></div>
+                    <div class="ch-pitch">F♯₃ · 184.99 Hz</div>
+                </div>
+            </a>
+            <a href="#" class="ch-card future">
+                <div>
+                    <div class="ch-num"><small>N°</small>03</div>
+                    <div class="ch-name">El Cantal</div>
+                </div>
+                <div>
+                    <div class="ch-meta"><span>2028</span><span class="status">Approved</span></div>
+                    <div class="ch-pitch">A₃ · 220.00 Hz</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ════ 6 · LETTER ════ -->
+<section class="letter">
+    <div class="letter-inner">
+        <div class="l-meta">
+            <span>Letter № 47</span>
+            <span>Monday · 4 May 2026 · Pinares de San Antón</span>
+        </div>
+        <p>The cantilever was poured this week. The structure that defines the southern terrace is finally in place. From here on, the house starts to look like the renders.</p>
+        <p>I struck Sosiego's stone yesterday for the first time. <em>F♯ — clean, long, and a little melancholic.</em> I wasn't sure what I expected. But it sounded like the plot.</p>
+        <p>If you would like to hear it on the actual ground, the next plot walks are this Thursday and Saturday morning. Coffee at the usual café afterwards.</p>
+        <div class="l-sig">— Dimitri</div>
+    </div>
+</section>
+
+<!-- ════ FINAL ════ -->
+<section class="final">
+    <h2>Walk the plot. <em>Strike the stone.</em><br>Hear what your home sounds like.</h2>
+    <div class="final-actions">
+        <a href="#" class="primary">Walk a plot with us</a>
+        <a href="#" class="ghost">▷ Hear all three notes</a>
+    </div>
+</section>
+
+<footer>
+    <div class="live">Pinares de San Antón · 22°C · sunset 21:14</div>
+    <div>SADALA · BUILDERS OF THE UNIQUE · MÁLAGA, ANDALUCÍA · © 2026</div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// THE SADALA CHORD — Web Audio implementation
+// ═══════════════════════════════════════════════
+
+let ctx = null;
+function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    return ctx;
+}
+
+// Strike a stone — generate a bell-like tone with harmonic stack
+function strikeStone(fundamental = 184.99, duration = 3.5) {
+    const ac = getCtx();
+    const now = ac.currentTime;
+    const master = ac.createGain();
+    master.gain.value = 0;
+    master.connect(ac.destination);
+
+    // Quick attack, long exponential decay
+    master.gain.setValueAtTime(0, now);
+    master.gain.linearRampToValueAtTime(0.5, now + 0.005);
+    master.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+    // Harmonic stack — fundamental + a few harmonics with mistuning for stone realism
+    const harmonics = [
+        { ratio: 1,    gain: 0.6,  type: 'sine' },
+        { ratio: 2.05, gain: 0.35, type: 'sine' },
+        { ratio: 3.12, gain: 0.18, type: 'sine' },
+        { ratio: 4.4,  gain: 0.12, type: 'sine' },
+        { ratio: 5.73, gain: 0.06, type: 'sine' },
+    ];
+    harmonics.forEach(h => {
+        const osc = ac.createOscillator();
+        const g = ac.createGain();
+        osc.type = h.type;
+        osc.frequency.value = fundamental * h.ratio;
+        g.gain.value = h.gain;
+        osc.connect(g).connect(master);
+        osc.start(now);
+        osc.stop(now + duration);
+    });
+
+    return duration;
+}
+
+// Generate cicada/dawn ambience — pink-ish noise + sparse high tones
+let ambientNodes = [];
+function startAmbient(durationSec = 28) {
+    const ac = getCtx();
+    const now = ac.currentTime;
+
+    // Pink-ish noise via filtered white
+    const bufSize = 2 * ac.sampleRate;
+    const buffer = ac.createBuffer(1, bufSize, ac.sampleRate);
+    const data = buffer.getChannelData(0);
+    let b0=0,b1=0,b2=0;
+    for (let i = 0; i < bufSize; i++) {
+        const w = Math.random() * 2 - 1;
+        b0 = 0.99 * b0 + w * 0.029591;
+        b1 = 0.96 * b1 + w * 0.084;
+        b2 = 0.74 * b2 + w * 0.31;
+        data[i] = (b0 + b1 + b2) * 0.18;
+    }
+    const noise = ac.createBufferSource();
+    noise.buffer = buffer;
+    noise.loop = true;
+
+    const noiseFilt = ac.createBiquadFilter();
+    noiseFilt.type = 'bandpass';
+    noiseFilt.frequency.value = 800;
+    noiseFilt.Q.value = 0.6;
+
+    const noiseGain = ac.createGain();
+    noiseGain.gain.value = 0;
+    noiseGain.gain.linearRampToValueAtTime(0.16, now + 1.5);
+    noiseGain.gain.setValueAtTime(0.16, now + durationSec - 2);
+    noiseGain.gain.linearRampToValueAtTime(0, now + durationSec);
+
+    noise.connect(noiseFilt).connect(noiseGain).connect(ac.destination);
+    noise.start(now);
+    noise.stop(now + durationSec + 0.1);
+    ambientNodes.push(noise, noiseGain);
+
+    // Cicada-like high frequency bursts — random tone pulses
+    const cicadaInterval = setInterval(() => {
+        if (!ctx) return;
+        if (ctx.currentTime > now + durationSec) { clearInterval(cicadaInterval); return; }
+        const t = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = 4500 + Math.random() * 2500;
+        // Tremolo via lfo
+        const lfo = ctx.createOscillator();
+        const lfoG = ctx.createGain();
+        lfo.frequency.value = 18 + Math.random() * 14;
+        lfoG.gain.value = 0.4;
+        lfo.connect(lfoG).connect(g.gain);
+        g.gain.value = 0.0;
+        const dur = 0.4 + Math.random() * 0.6;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.04, t + 0.05);
+        g.gain.linearRampToValueAtTime(0, t + dur);
+        const filt = ctx.createBiquadFilter();
+        filt.type = 'bandpass'; filt.frequency.value = 5500; filt.Q.value = 6;
+        osc.connect(filt).connect(g).connect(ctx.destination);
+        lfo.start(t); osc.start(t);
+        osc.stop(t + dur); lfo.stop(t + dur);
+    }, 380 + Math.random() * 600);
+
+    return durationSec;
+}
+function stopAmbient() {
+    ambientNodes.forEach(n => { try { n.disconnect(); } catch(e){} });
+    ambientNodes = [];
+}
+
+// ═══════════════════════════════════════════════
+// HERO PLAY — N° 02 sequence
+// ═══════════════════════════════════════════════
+
+const heroBtn = document.getElementById('heroPlay');
+const heroFP = document.getElementById('heroFineprint');
+let heroPlaying = false;
+
+heroBtn.addEventListener('click', () => {
+    if (heroPlaying) return;
+    heroPlaying = true;
+    heroBtn.classList.add('playing');
+    heroBtn.querySelector('span:last-child').textContent = 'Playing N° 02…';
+    heroFP.textContent = '0:00 — F♯₃ stone tone';
+
+    // Resume context if needed
+    getCtx().resume();
+
+    // Stone tone first
+    strikeStone(184.99, 3.5);
+
+    // After 2.5s, ambient
+    setTimeout(() => { heroFP.textContent = '0:02 — Pinares de San Antón at dawn'; startAmbient(20); }, 2500);
+
+    // Final stone tone at 22s
+    setTimeout(() => { heroFP.textContent = '0:22 — F♯₃ stone tone (close)'; strikeStone(184.99, 4); }, 22000);
+
+    // Reset at 27s
+    setTimeout(() => {
+        heroPlaying = false;
+        heroBtn.classList.remove('playing');
+        heroBtn.querySelector('span:last-child').textContent = 'Hear N° 02';
+        heroFP.textContent = 'F♯₃ · 184.99 Hz · stone struck once · plot at dawn · 30 sec';
+    }, 27000);
+});
+
+// ═══════════════════════════════════════════════
+// CHORD STAFF — individual notes + full chord
+// ═══════════════════════════════════════════════
+
+const noteFreqs = { '01': 146.83, '02': 184.99, '03': 220.00 };
+
+document.querySelectorAll('.note[data-note]').forEach(n => {
+    n.addEventListener('click', () => {
+        const note = n.dataset.note;
+        if (!noteFreqs[note]) return;
+        getCtx().resume();
+        strikeStone(noteFreqs[note], 3.5);
+        n.classList.add('playing');
+        setTimeout(() => n.classList.remove('playing'), 700);
+    });
+});
+
+document.getElementById('playChord').addEventListener('click', () => {
+    getCtx().resume();
+    Object.values(noteFreqs).forEach(f => strikeStone(f, 4));
+    document.querySelectorAll('.note[data-note]').forEach(n => {
+        n.classList.add('playing');
+        setTimeout(() => n.classList.remove('playing'), 700);
+    });
+});
+
+document.getElementById('playSeq').addEventListener('click', () => {
+    getCtx().resume();
+    const notes = [['01',146.83],['02',184.99],['03',220.00]];
+    notes.forEach(([num, f], i) => {
+        setTimeout(() => {
+            strikeStone(f, 3);
+            const n = document.querySelector(`.note[data-note="${num}"]`);
+            if (n) { n.classList.add('playing'); setTimeout(()=>n.classList.remove('playing'),700); }
+        }, i * 1100);
+    });
+});
+
+// ═══════════════════════════════════════════════
+// WAVEFORM — generate procedurally
+// ═══════════════════════════════════════════════
+
+const wf = document.getElementById('waveform');
+const NUM_BARS = 140;
+for (let i = 0; i < NUM_BARS; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    // Procedural amplitude — soft envelope with random variance
+    const phase = i / NUM_BARS;
+    const env = Math.sin(phase * Math.PI) * 0.7 + 0.3;
+    const noise = 0.6 + Math.random() * 0.4;
+    const h = Math.max(8, env * noise * 100);
+    bar.style.height = h + 'px';
+    bar.style.animationDelay = (Math.random() * 1.4) + 's';
+    wf.appendChild(bar);
+}
+wf.addEventListener('click', () => {
+    getCtx().resume();
+    wf.classList.add('playing');
+    startAmbient(8);
+    setTimeout(() => { wf.classList.remove('playing'); stopAmbient(); }, 8500);
+});
+</script>
+
+</body>
+</html>
