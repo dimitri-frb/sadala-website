@@ -289,17 +289,17 @@
                 background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 66.67%, var(--grey-border) 66.67%, var(--grey-border) 100%);
             }
             .ts {
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 18px;
+                display: grid;
+                grid-template-columns: 22px 1fr;
+                column-gap: 18px;
+                row-gap: 4px;
+                align-items: start;
                 padding: 4px 0 28px;
             }
             .ts:last-child { padding-bottom: 0; }
-            .ts-dot { margin-bottom: 0; margin-top: 4px; }
-            .ts-when, .ts-name { text-align: left; }
-            .ts-when { margin-bottom: 2px; }
-            .ts-name { font-size: 15px; }
-            .ts-content {}
+            .ts-dot { grid-row: 1 / span 2; margin: 4px 0 0; }
+            .ts-when { grid-column: 2; text-align: left; margin: 0; }
+            .ts-name { grid-column: 2; text-align: left; font-size: 15px; }
 
             /* CTA */
             .cta { padding: 56px 20px; }
@@ -406,7 +406,7 @@
         <div class="tile tile-3"><img src="../img/sosiego/master-bedroom.png" alt=""></div>
         <div class="tile tile-4"><img src="../img/sosiego/zona-agua.png" alt=""></div>
         <div class="tile tile-5"><img src="../img/sosiego/view-sosiego-zen.png" alt=""></div>
-        <div class="tile tile-6"><img src="../img/sosiego/vista-frontal.png" alt=""></div>
+        <div class="tile tile-6"><img src="../img/sosiego/planta-arbolada.png" alt=""></div>
     </div>
 </section>
 
