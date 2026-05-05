@@ -216,153 +216,66 @@
         }
         .p-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 600px; margin-top: 12px; }
 
-        /* TEAM ON SITE - placeholder visuals band */
-        .onsite-band { padding: 100px 48px; background: var(--off-white); }
-        .onsite-inner { max-width: 1200px; margin: 0 auto; }
-        .onsite-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-        .onsite-h { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); font-weight: 300; line-height: 1.2; letter-spacing: -0.3px; max-width: 720px; margin-bottom: 56px; }
-        .onsite-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-        .onsite-tile {
+
+
+        @media (max-width: 1024px) {
+        }
+        @media (max-width: 760px) {
+        }
+
+        /* THE TEAM - studio / partners / advisors */
+        .team-band { padding: 120px 48px; background: var(--off-white); }
+        .team-inner { max-width: 1200px; margin: 0 auto; }
+        .team-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+        .team-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 800px; margin-bottom: 80px; }
+        .team-h em { color: var(--accent); font-style: italic; }
+        .team-group { margin-bottom: 80px; }
+        .team-group:last-child { margin-bottom: 0; }
+        .team-group-h {
+            display: flex; align-items: center; gap: 18px;
+            margin-bottom: 32px;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--grey);
+        }
+        .team-group-h::before, .team-group-h::after {
+            content: ''; flex: 1; height: 1px; background: var(--grey-border);
+        }
+        .team-cards { display: grid; gap: 4px; }
+        .team-cards.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .team-cards.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .team-cards.cols-1 { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+        .team-card { position: relative; }
+        .team-card-visual {
             position: relative; aspect-ratio: 4/5; overflow: hidden;
-            background: var(--grey-border);
+            background: var(--white);
         }
-        .onsite-tile-bg {
-            position: absolute; inset: 0;
-            background-size: cover; background-position: center;
-            filter: grayscale(.3) brightness(.9);
+        .team-card-visual img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(.4) brightness(.92);
+            transition: filter .4s, transform 1s cubic-bezier(.2,.8,.2,1);
         }
-        .onsite-tile::after {
+        .team-card:hover .team-card-visual img { filter: grayscale(0) brightness(1); transform: scale(1.02); }
+        .team-card-visual::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(44,44,44,.55) 100%);
+            background: linear-gradient(to bottom, transparent 50%, rgba(44,44,44,.4) 100%);
         }
-        .onsite-tile-meta {
-            position: absolute; left: 20px; right: 20px; bottom: 20px;
-            color: #fff; z-index: 2;
-        }
-        .onsite-tile-when { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
-        .onsite-tile-cap { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-top: 6px; }
-        .onsite-tile-soon {
-            position: absolute; top: 16px; right: 16px;
+        .team-card-soon {
+            position: absolute; top: 14px; right: 14px; z-index: 2;
             font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
             padding: 5px 10px; background: rgba(255,255,255,.18);
             border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.9);
-            border-radius: 999px; z-index: 3;
+            border-radius: 999px;
         }
-
-        /* CTA */
-        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
-        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
-        .cta h2 em { font-style: italic; color: var(--accent); }
-        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
-        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
-        .cta .primary { background: var(--accent); color: #fff; }
-        .cta .primary:hover { background: #d49a7e; }
-        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
-        .cta .ghost:hover { border-color: var(--off-white); }
-        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
-
-        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
-
-        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
-        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
-        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
-        .float-cta:hover svg { fill: #fff; }
-
-        @media (max-width: 1024px) {
-            .studio-band, .method-band, .process-band, .cta { padding-left: 32px; padding-right: 32px; }
-            .method-row { grid-template-columns: 220px 60px 1fr; gap: 28px; padding: 28px 0; }
-            .onsite-band { padding-left: 32px; padding-right: 32px; }
+        .team-card-meta {
+            padding: 22px 4px 0;
         }
-
-        @media (max-width: 760px) {
-            nav { padding: 14px 20px; }
-            .quote-hero { padding: 48px 20px 20px; min-height: calc(70vh - 60px); }
-            .quote-eyebrow { font-size: 10px; margin-bottom: 36px; }
-            .quote-text { font-size: clamp(26px, 7vw, 40px); }
-            .quote-author { font-size: 10px; margin-top: 36px; }
-            .scroll-hint { margin-top: 16px; }
-
-            .studio-band { padding: 56px 20px; }
-            .studio-text { font-size: 17px; line-height: 1.65; }
-            .method-band { padding: 80px 20px; }
-            .method-h { font-size: clamp(28px, 9vw, 44px); margin-bottom: 48px; }
-            .method-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
-            .method-row .m-img { aspect-ratio: 4/3; }
-            .m-num { font-size: 28px; padding-top: 0; }
-            .m-word { font-size: 24px; margin-bottom: 8px; }
-            .process-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
-            .p-num { font-size: 28px; margin-bottom: 4px; }
-            .p-word { font-size: 22px; }
-
-            .process-band { padding: 64px 20px; }
-            .process-h { font-size: clamp(26px, 8vw, 40px); margin-bottom: 48px; }
-            .process-tl { padding-left: 36px; }
-            .process-tl::before { left: 7px; }
-            .p-step { padding-bottom: 40px; }
-            .p-step::before { left: -35px; width: 16px; height: 16px; }
-            .p-step::after { left: -29px; }
-            .p-loc { font-size: 9px; letter-spacing: 2px; }
-            .p-h { font-size: 22px; }
-            .p-h .p-step-num { font-size: 11px; margin-right: 10px; }
-
-            .onsite-band { padding: 56px 20px; }
-            .onsite-h { font-size: clamp(22px, 7vw, 32px); margin-bottom: 36px; }
-            .onsite-grid { grid-template-columns: 1fr; gap: 2px; }
-            .onsite-tile { aspect-ratio: 4/3; }
-
-            .cta { padding: 64px 20px; }
-            .cta h2 { font-size: clamp(28px, 8vw, 40px); }
-            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
-            .cta-actions a { justify-content: center; padding: 14px 24px; }
-            footer { padding: 24px 20px; font-size: 10px; }
-            .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
+        .team-card-name {
+            font-family: var(--serif); font-size: 24px; font-weight: 400;
+            line-height: 1.15; letter-spacing: -0.2px; color: var(--black);
         }
-
-        /* PARTNERS - logo grid */
-        .partners-band { padding: 120px 48px; }
-        .partners-inner { max-width: 1200px; margin: 0 auto; }
-        .partners-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-        .partners-h { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 44px); font-weight: 300; line-height: 1.2; letter-spacing: -0.3px; max-width: 760px; margin-bottom: 16px; }
-        .partners-h em { color: var(--accent); font-style: italic; }
-        .partners-sub { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--grey); max-width: 600px; margin-bottom: 56px; line-height: 1.6; }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            border-top: 1px solid var(--grey-border);
-            border-left: 1px solid var(--grey-border);
-        }
-        .partner-tile {
-            aspect-ratio: 4/3;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            padding: 32px 24px; text-align: center;
-            background: var(--off-white);
-            border-right: 1px solid var(--grey-border);
-            border-bottom: 1px solid var(--grey-border);
-            transition: background .25s;
-            margin-right: -1px; margin-bottom: -1px;
-        }
-        .partner-tile:hover { background: var(--white); }
-        .pt-role { font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        .pt-name { font-family: var(--serif); font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1.15; letter-spacing: -0.2px; color: var(--black); }
-        .pt-soon {
-            margin-top: 12px;
-            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-            color: var(--grey-light);
-        }
-
-        @media (max-width: 1024px) {
-            .partners-band { padding-left: 32px; padding-right: 32px; }
-            .partners-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 760px) {
-            .partners-band { padding: 64px 20px; }
-            .partners-grid { grid-template-columns: repeat(2, 1fr); }
-            .partner-tile { aspect-ratio: 1; padding: 20px 14px; }
-            .pt-name { font-size: 18px; }
+        .team-card-role {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--accent); margin-top: 8px;
         }
     </style>
 </head>
@@ -418,6 +331,9 @@
         </p>
         <p class="studio-text">
             Sadala is a second-generation family studio in M&aacute;laga, in its work since 1990. We don&rsquo;t run parallel projects. We don&rsquo;t reuse plans. We commit to a plot before there is a drawing, often by months.
+        </p>
+        <p class="studio-text">
+            <em>We live within a ten-minute walk of every villa we build.</em> Not because we have to. Because we want to. We don&rsquo;t build for money. We build for passion - so others can live the life we&rsquo;re lucky to live.
         </p>
         <p class="studio-text">
             It&rsquo;s not a scaleable business. <em>That&rsquo;s the entire point.</em>
@@ -494,79 +410,77 @@
     </div>
 </section>
 
-<!-- TEAM ON SITE - placeholder visuals -->
-<section class="onsite-band">
-    <div class="onsite-inner">
-        <div class="onsite-eyebrow">The team, on site</div>
-        <h2 class="onsite-h">A studio you meet over coffee, not over email.</h2>
-        <div class="onsite-grid">
-            <div class="onsite-tile">
-                <div class="onsite-tile-bg" style="background-image: url('../img/leoni-benabu/leoni-walkway.jpeg');"></div>
-                <span class="onsite-tile-soon">Coming soon</span>
-                <div class="onsite-tile-meta">
-                    <div class="onsite-tile-when">On the plot</div>
-                    <div class="onsite-tile-cap">Walking the site at sunrise</div>
+<!-- THE TEAM - studio / partners / advisors -->
+<section class="team-band">
+    <div class="team-inner">
+        <div class="team-eyebrow">The team</div>
+        <h2 class="team-h">The hands behind <em>every Sadala home</em>.</h2>
+
+        <div class="team-group">
+            <div class="team-group-h">The studio</div>
+            <div class="team-cards cols-2">
+                <div class="team-card">
+                    <div class="team-card-visual">
+                        <img src="../img/sosiego/sosiego-entrance-dusk.png" alt="Claire">
+                        <span class="team-card-soon">Coming soon</span>
+                    </div>
+                    <div class="team-card-meta">
+                        <div class="team-card-name">Claire Caminati</div>
+                        <div class="team-card-role">Co-founder</div>
+                    </div>
                 </div>
-            </div>
-            <div class="onsite-tile">
-                <div class="onsite-tile-bg" style="background-image: url('../img/sosiego/jardin-zen.png');"></div>
-                <span class="onsite-tile-soon">Coming soon</span>
-                <div class="onsite-tile-meta">
-                    <div class="onsite-tile-when">At the drawing board</div>
-                    <div class="onsite-tile-cap">First sketches in pencil</div>
-                </div>
-            </div>
-            <div class="onsite-tile">
-                <div class="onsite-tile-bg" style="background-image: url('../img/cantal/cantal-aerial.jpg');"></div>
-                <span class="onsite-tile-soon">Coming soon</span>
-                <div class="onsite-tile-meta">
-                    <div class="onsite-tile-when">On site, every week</div>
-                    <div class="onsite-tile-cap">Foundation poured at El Cantal</div>
+                <div class="team-card">
+                    <div class="team-card-visual">
+                        <img src="../img/cantal/cantal-hero.jpg" alt="Dimitri">
+                        <span class="team-card-soon">Coming soon</span>
+                    </div>
+                    <div class="team-card-meta">
+                        <div class="team-card-name">Dimitri Farber</div>
+                        <div class="team-card-role">Co-founder</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- PARTNERS - logo grid -->
-<section class="partners-band">
-    <div class="partners-inner">
-        <div class="partners-eyebrow">Our partners</div>
-        <h2 class="partners-h">For each project, <em>the best hands</em>.</h2>
-        <p class="partners-sub">Architects, interior designers, landscapers, craftsmen. Every name on a Sadala project is named, local, and chosen to bring the home to life.</p>
+        <div class="team-group">
+            <div class="team-group-h">The partners</div>
+            <div class="team-cards cols-2">
+                <div class="team-card">
+                    <div class="team-card-visual">
+                        <img src="../img/cantal/cantal-aerial.jpg" alt="Flow81">
+                        <span class="team-card-soon">Coming soon</span>
+                    </div>
+                    <div class="team-card-meta">
+                        <div class="team-card-name">Flow81</div>
+                        <div class="team-card-role">Architecture</div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-card-visual">
+                        <img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="Acer">
+                        <span class="team-card-soon">Coming soon</span>
+                    </div>
+                    <div class="team-card-meta">
+                        <div class="team-card-name">Acer</div>
+                        <div class="team-card-role">Landscape</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="partners-grid">
-            <div class="partner-tile">
-                <div class="pt-role">Architecture</div>
-                <div class="pt-name">MR Arq</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Architecture</div>
-                <div class="pt-name">Flow81</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Architecture</div>
-                <div class="pt-name">El Muelle</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Interior design</div>
-                <div class="pt-name">Studio 1969</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Landscape</div>
-                <div class="pt-name">Landscapers</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Landscape</div>
-                <div class="pt-name">Acer</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Stone</div>
-                <div class="pt-name">Cantera de Mijas</div>
-            </div>
-            <div class="partner-tile">
-                <div class="pt-role">Wood</div>
-                <div class="pt-name">A mill in Ronda</div>
+        <div class="team-group">
+            <div class="team-group-h">The advisors</div>
+            <div class="team-cards cols-1">
+                <div class="team-card">
+                    <div class="team-card-visual">
+                        <img src="../img/sosiego/jardin-zen.png" alt="Urbania">
+                        <span class="team-card-soon">Coming soon</span>
+                    </div>
+                    <div class="team-card-meta">
+                        <div class="team-card-name">Urbania</div>
+                        <div class="team-card-role">Strategic advisor</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
