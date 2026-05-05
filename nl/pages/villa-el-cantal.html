@@ -408,6 +408,58 @@
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
             footer { padding: 28px 20px; font-size: 10px; }
         }
+    
+        /* === TEAM CREDITS — card layout (differentiated from craft list) === */
+        .team-credits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: none !important;
+        }
+        .credit-row {
+            display: flex !important;
+            flex-direction: column !important;
+            grid-template-columns: none !important;
+            gap: 0 !important;
+            padding: 56px 36px !important;
+            background: var(--off-white);
+            text-align: center;
+            border: none !important;
+            border-bottom: none !important;
+        }
+        .credit-row:last-child { border-bottom: none !important; }
+        .credit-role {
+            font-family: var(--mono) !important;
+            font-size: 10px !important;
+            letter-spacing: 2.5px !important;
+            text-transform: uppercase !important;
+            color: var(--accent) !important;
+            padding: 0 !important;
+            margin-bottom: 18px;
+        }
+        .credit-name {
+            font-family: var(--serif) !important;
+            font-size: 32px !important;
+            font-weight: 400 !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.3px !important;
+            margin-bottom: 14px;
+        }
+        .credit-desc {
+            font-size: 13px !important;
+            font-weight: 300 !important;
+            line-height: 1.7 !important;
+            color: var(--grey) !important;
+            margin-top: auto;
+        }
+        @media (max-width: 760px) {
+            .team-credits { grid-template-columns: 1fr; gap: 2px; }
+            .credit-row { padding: 40px 24px !important; }
+            .credit-name { font-size: 28px !important; }
+        }
+
     </style>
 </head>
 <body>
