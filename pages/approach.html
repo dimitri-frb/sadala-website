@@ -223,60 +223,71 @@
         @media (max-width: 760px) {
         }
 
-        /* THE TEAM - studio / partners / advisors */
+        /* THE TEAM - founders portrait + partner logos */
         .team-band { padding: 120px 48px; background: var(--off-white); }
         .team-inner { max-width: 1200px; margin: 0 auto; }
         .team-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-        .team-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 800px; margin-bottom: 80px; }
+        .team-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 800px; margin-bottom: 56px; }
         .team-h em { color: var(--accent); font-style: italic; }
-        .team-group { margin-bottom: 80px; }
-        .team-group:last-child { margin-bottom: 0; }
-        .team-group-h {
-            display: flex; align-items: center; gap: 18px;
-            margin-bottom: 32px;
-            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--grey);
-        }
-        .team-group-h::before, .team-group-h::after {
-            content: ''; flex: 1; height: 1px; background: var(--grey-border);
-        }
-        .team-cards { display: grid; gap: 4px; }
-        .team-cards.cols-2 { grid-template-columns: repeat(2, 1fr); }
-        .team-cards.cols-3 { grid-template-columns: repeat(3, 1fr); }
-        .team-cards.cols-1 { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
-        .team-card { position: relative; }
-        .team-card-visual {
-            position: relative; aspect-ratio: 4/5; overflow: hidden;
+
+        /* Founders: one big landscape portrait */
+        .founders {
+            position: relative; width: 100%;
+            aspect-ratio: 16/9; overflow: hidden;
             background: var(--white);
         }
-        .team-card-visual img {
+        .founders img {
             width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(.4) brightness(.92);
-            transition: filter .4s, transform 1s cubic-bezier(.2,.8,.2,1);
+            filter: grayscale(.3) brightness(.94);
+            transition: filter 1s, transform 2s cubic-bezier(.2,.8,.2,1);
         }
-        .team-card:hover .team-card-visual img { filter: grayscale(0) brightness(1); transform: scale(1.02); }
-        .team-card-visual::after {
+        .founders:hover img { filter: grayscale(0) brightness(1); transform: scale(1.02); }
+        .founders::after {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(44,44,44,.4) 100%);
+            background: linear-gradient(to top, rgba(44,44,44,.55) 0%, transparent 50%);
         }
-        .team-card-soon {
-            position: absolute; top: 14px; right: 14px; z-index: 2;
+        .founders-soon {
+            position: absolute; top: 20px; right: 20px;
             font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
             padding: 5px 10px; background: rgba(255,255,255,.18);
             border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.9);
-            border-radius: 999px;
+            border-radius: 999px; z-index: 2;
         }
-        .team-card-meta {
-            padding: 22px 4px 0;
+        .founders-meta {
+            position: absolute; left: 36px; right: 36px; bottom: 32px; z-index: 2;
+            color: #fff;
         }
-        .team-card-name {
-            font-family: var(--serif); font-size: 24px; font-weight: 400;
-            line-height: 1.15; letter-spacing: -0.2px; color: var(--black);
+        .founders-name {
+            font-family: var(--serif); font-size: clamp(28px, 3.6vw, 44px);
+            font-weight: 400; line-height: 1.1; letter-spacing: -0.3px;
         }
-        .team-card-role {
-            font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent); margin-top: 8px;
+        .founders-where {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px;
+            text-transform: uppercase; color: rgba(255,255,255,.75);
+            margin-top: 10px;
         }
+
+        /* Logos row */
+        .partners-row {
+            margin-top: 80px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+            border-top: 1px solid var(--grey-border);
+            border-left: 1px solid var(--grey-border);
+        }
+        .partner-tile {
+            aspect-ratio: 16/9;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--white);
+            border-right: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
+            margin-right: -1px; margin-bottom: -1px;
+            font-family: var(--serif); font-size: clamp(24px, 2.4vw, 32px);
+            font-weight: 400; letter-spacing: -0.2px;
+            color: var(--black);
+            transition: background .25s;
+        }
+        .partner-tile:hover { background: var(--off-white); }
+
     </style>
 </head>
 <body>
@@ -410,78 +421,25 @@
     </div>
 </section>
 
-<!-- THE TEAM - studio / partners / advisors -->
+<!-- THE TEAM - founders portrait + partner logos -->
 <section class="team-band">
     <div class="team-inner">
         <div class="team-eyebrow">The team</div>
-        <h2 class="team-h">The hands behind <em>every Sadala home</em>.</h2>
+        <h2 class="team-h"><em>Claire &amp; Dimitri.</em><br>And the partners that bring each home to life.</h2>
 
-        <div class="team-group">
-            <div class="team-group-h">The studio</div>
-            <div class="team-cards cols-2">
-                <div class="team-card">
-                    <div class="team-card-visual">
-                        <img src="../img/sosiego/sosiego-entrance-dusk.png" alt="Claire">
-                        <span class="team-card-soon">Coming soon</span>
-                    </div>
-                    <div class="team-card-meta">
-                        <div class="team-card-name">Claire Caminati</div>
-                        <div class="team-card-role">Co-founder</div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-card-visual">
-                        <img src="../img/cantal/cantal-hero.jpg" alt="Dimitri">
-                        <span class="team-card-soon">Coming soon</span>
-                    </div>
-                    <div class="team-card-meta">
-                        <div class="team-card-name">Dimitri Farber</div>
-                        <div class="team-card-role">Co-founder</div>
-                    </div>
-                </div>
+        <div class="founders">
+            <img src="../img/sosiego/sosiego-firepit-lounge.png" alt="Claire & Dimitri at home in Pinares de San Antón">
+            <span class="founders-soon">Photo coming soon</span>
+            <div class="founders-meta">
+                <div class="founders-name">Claire &amp; Dimitri</div>
+                <div class="founders-where">At home in Pinares de San Ant&oacute;n</div>
             </div>
         </div>
 
-        <div class="team-group">
-            <div class="team-group-h">The partners</div>
-            <div class="team-cards cols-2">
-                <div class="team-card">
-                    <div class="team-card-visual">
-                        <img src="../img/cantal/cantal-aerial.jpg" alt="Flow81">
-                        <span class="team-card-soon">Coming soon</span>
-                    </div>
-                    <div class="team-card-meta">
-                        <div class="team-card-name">Flow81</div>
-                        <div class="team-card-role">Architecture</div>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-card-visual">
-                        <img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="Acer">
-                        <span class="team-card-soon">Coming soon</span>
-                    </div>
-                    <div class="team-card-meta">
-                        <div class="team-card-name">Acer</div>
-                        <div class="team-card-role">Landscape</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-group">
-            <div class="team-group-h">The advisors</div>
-            <div class="team-cards cols-1">
-                <div class="team-card">
-                    <div class="team-card-visual">
-                        <img src="../img/sosiego/jardin-zen.png" alt="Urbania">
-                        <span class="team-card-soon">Coming soon</span>
-                    </div>
-                    <div class="team-card-meta">
-                        <div class="team-card-name">Urbania</div>
-                        <div class="team-card-role">Strategic advisor</div>
-                    </div>
-                </div>
-            </div>
+        <div class="partners-row">
+            <div class="partner-tile">Flow81</div>
+            <div class="partner-tile">Acer</div>
+            <div class="partner-tile">Urbania</div>
         </div>
     </div>
 </section>
