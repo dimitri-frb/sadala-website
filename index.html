@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sadala - Builders of the Unique</title>
-    <meta name="description" content="Sadala. A family studio in Málaga, second generation. One Mediterranean villa at a time. We design, build, and sell.">
+    <meta name="description" content="Sadala. A family studio in Málaga, second generation. We design, build, and sell one Mediterranean villa at a time.">
     <link rel="icon" type="image/png" sizes="32x32" href="img/logo/favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -67,23 +67,73 @@
             body.nav-open-body { overflow: hidden; }
         }
 
-        /* Hero */
-        .hero { position: relative; height: 92vh; overflow: hidden; }
-        .hero img { width: 100%; height: 100%; object-fit: cover; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(44,44,44,.6) 100%); }
-        .hero-content { position: absolute; bottom: 64px; left: 48px; right: 48px; color: #fff; z-index: 2; }
-        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 22px; }
-        .hero-title { font-family: var(--serif); font-size: clamp(56px, 10vw, 144px); font-weight: 300; line-height: .95; letter-spacing: -2px; max-width: 1100px; }
-        .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.2vw, 26px); color: rgba(255,255,255,.85); margin-top: 18px; max-width: 720px; line-height: 1.4; }
+        /* ════ QUOTE HERO - no image, brand statement first ════ */
+        .quote-hero {
+            min-height: calc(100vh - 80px);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 80px 48px;
+            text-align: center;
+            position: relative;
+        }
+        .quote-eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
+        }
+        .quote-text {
+            font-family: var(--serif);
+            font-size: clamp(36px, 5.5vw, 72px);
+            font-weight: 300; font-style: italic;
+            line-height: 1.15; letter-spacing: -0.6px;
+            max-width: 1000px;
+            color: var(--black);
+        }
+        .quote-text em { color: var(--accent); font-style: normal; }
+        .quote-author {
+            margin-top: 56px;
+            font-family: var(--mono);
+            font-size: 11px; letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+        .quote-author strong { color: var(--black); font-weight: 400; }
+        .scroll-hint {
+            position: absolute; bottom: 32px;
+            font-family: var(--mono);
+            font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--grey);
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+        }
+        .scroll-hint::after {
+            content: ''; width: 1px; height: 36px;
+            background: var(--accent); opacity: .4;
+            animation: drop 2.4s ease infinite;
+        }
+        @keyframes drop {
+            0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; }
+            50% { transform: scaleY(1); opacity: .5; }
+        }
 
-        /* Section base */
+        /* ════ SECTION LABEL ════ */
         .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
 
-        /* The work - 3 alternating zigzag rows */
+        /* ════ THE METHOD ════ */
+        .method-band { padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
+        .method-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px; margin-bottom: 56px; }
+        .method-rows { display: grid; grid-template-columns: 1fr; gap: 0; }
+        .method-row { display: grid; grid-template-columns: 80px 220px 1fr; gap: 32px; padding: 36px 0; align-items: baseline; border-top: 1px solid var(--grey-border); }
+        .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
+        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
+        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; }
+        .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
+
+        /* ════ THE WORK ════ */
         .work-band { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
         .work-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px; margin-bottom: 64px; }
         .work-list { display: flex; flex-direction: column; gap: 8px; }
         .work-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; padding: 40px 0; align-items: center; text-decoration: none; color: inherit; transition: opacity .3s; border-top: 1px solid var(--grey-border); }
+        .work-row:last-child { border-bottom: 1px solid var(--grey-border); }
         .work-row:hover { opacity: .82; }
         .work-row:nth-child(even) { grid-template-columns: 1.4fr 1fr; }
         .work-row:nth-child(even) .work-img { order: 2; }
@@ -94,32 +144,60 @@
         .work-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
         .work-name { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; line-height: 1; letter-spacing: -0.6px; margin: 4px 0 0; }
         .work-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 8px; }
-        .work-status.sold { color: var(--grey); }
         .work-status.live { color: var(--accent); }
         .work-status.future { color: #5A7A5A; }
         .work-spec { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); margin-top: 12px; max-width: 460px; }
         .work-arrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-top: 12px; }
 
-        /* The method - short, single sentence with three numbered words */
-        .method-band { padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
-        .method-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px; margin-bottom: 56px; }
-        .method-rows { display: grid; grid-template-columns: 1fr; gap: 0; }
-        .method-row { display: grid; grid-template-columns: 80px 220px 1fr; gap: 32px; padding: 36px 0; align-items: baseline; border-top: 1px solid var(--grey-border); }
-        .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
-        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; }
-        .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
+        /* ════ THE FILM (video placeholder) ════ */
+        .film-band { padding: 80px 48px 0; max-width: 1200px; margin: 0 auto; }
+        .film-card {
+            position: relative; aspect-ratio: 21/9; overflow: hidden;
+            text-decoration: none; cursor: pointer;
+            transition: transform .4s;
+        }
+        .film-card:hover { transform: translateY(-2px); }
+        .film-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            filter: brightness(.55) saturate(.92);
+            transition: filter .4s, transform 1.4s cubic-bezier(.2,.8,.2,1);
+        }
+        .film-card:hover .film-bg { filter: brightness(.4); transform: scale(1.04); }
+        .film-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: #fff; gap: 18px; padding: 32px;
+        }
+        .film-icon {
+            width: 64px; height: 64px;
+            border: 1.5px solid rgba(255,255,255,.7);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .25s;
+        }
+        .film-card:hover .film-icon { background: rgba(255,255,255,.12); border-color: #fff; }
+        .film-icon svg { width: 24px; height: 24px; fill: #fff; }
+        .film-label {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300; line-height: 1; letter-spacing: -0.4px;
+        }
+        .film-sub {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px;
+            text-transform: uppercase; color: rgba(255,255,255,.7);
+        }
+        .film-soon {
+            position: absolute; top: 20px; right: 20px;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+            padding: 6px 12px; background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+            border-radius: 999px;
+        }
 
-        /* The studio - single italic paragraph */
-        .studio-band { padding: 120px 48px; background: var(--off-white); }
-        .studio-inner { max-width: 880px; margin: 0 auto; text-align: center; }
-        .studio-text { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 32px); font-weight: 300; font-style: italic; line-height: 1.55; letter-spacing: -0.2px; color: var(--black); }
-        .studio-text strong { font-style: normal; font-weight: 400; color: var(--accent); }
-        .studio-link { display: inline-block; margin-top: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 4px; transition: opacity .3s; }
-        .studio-link:hover { opacity: .7; }
-
-        /* CTA */
-        .cta { background: var(--black); color: var(--off-white); padding: 100px 48px; text-align: center; }
+        /* ════ CTA ════ */
+        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; margin-top: 100px; }
         .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
         .cta h2 em { font-style: italic; color: var(--accent); }
         .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
@@ -139,33 +217,40 @@
         .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
         .float-cta:hover svg { fill: #fff; }
 
-        /* Tablet */
         @media (max-width: 1024px) {
-            .work-band, .method-band, .studio-band { padding-left: 32px; padding-right: 32px; }
+            .method-band, .work-band, .film-band { padding-left: 32px; padding-right: 32px; }
             .work-row { gap: 32px; padding: 32px 0; }
             .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
         }
-        /* Mobile */
+
         @media (max-width: 760px) {
             nav { padding: 14px 20px; }
-            .hero { height: 78vh; }
-            .hero-content { left: 20px; right: 20px; bottom: 28px; }
-            .hero-title { font-size: clamp(48px, 12vw, 88px); letter-spacing: -1px; }
-            .hero-sub { font-size: 16px; margin-top: 12px; }
-            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
-            .work-band, .method-band, .studio-band { padding: 64px 20px; }
-            .work-h, .method-h { font-size: clamp(28px, 8vw, 40px); margin-bottom: 40px; }
-            .work-row, .work-row:nth-child(even) { grid-template-columns: 1fr; gap: 18px; padding: 28px 0; }
-            .work-row:nth-child(even) .work-img { order: 0; }
-            .work-name { font-size: 36px; }
+            .quote-hero { padding: 56px 20px; min-height: calc(100vh - 60px); }
+            .quote-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 36px; }
+            .quote-text { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: -0.4px; }
+            .quote-author { font-size: 10px; letter-spacing: 2px; margin-top: 36px; }
+            .scroll-hint { bottom: 24px; }
+
+            .method-band, .work-band { padding: 64px 20px; }
+            .film-band { padding: 48px 20px 0; }
+            .method-h, .work-h { font-size: clamp(28px, 8vw, 40px); margin-bottom: 40px; }
             .method-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
             .m-num { font-size: 28px; margin-bottom: 4px; }
             .m-word { font-size: 26px; }
-            .studio-text { font-size: 18px; }
-            .cta { padding: 56px 20px; }
+
+            .work-row, .work-row:nth-child(even) { grid-template-columns: 1fr; gap: 18px; padding: 28px 0; }
+            .work-row:nth-child(even) .work-img { order: 0; }
+            .work-name { font-size: 36px; }
+
+            .film-card { aspect-ratio: 4/3; }
+            .film-label { font-size: 26px; }
+            .film-icon { width: 52px; height: 52px; }
+
+            .cta { padding: 64px 20px; margin-top: 60px; }
             .cta h2 { font-size: clamp(28px, 8vw, 40px); }
             .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
             .cta-actions a { justify-content: center; padding: 14px 24px; }
+
             footer { padding: 24px 20px; font-size: 10px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
@@ -196,17 +281,45 @@
     </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <img src="img/cantal/cantal-hero.jpg" alt="A Sadala home in its landscape">
-    <div class="hero-content">
-        <div class="hero-meta">M&aacute;laga &middot; Andaluc&iacute;a</div>
-        <h1 class="hero-title">Builders of the Unique.</h1>
-        <p class="hero-sub">One Mediterranean villa at a time. We design it, we build it, we sell it. Then we start the next one.</p>
+<!-- ════ QUOTE HERO ════ -->
+<section class="quote-hero">
+    <div class="quote-eyebrow">Sadala &middot; M&aacute;laga, Andaluc&iacute;a</div>
+    <h1 class="quote-text">
+        We don&rsquo;t build for clients.<br>
+        We build the homes <em>we&rsquo;d want to live in</em> ourselves.<br>
+        One at a time. Then we sell them.
+    </h1>
+    <div class="quote-author">
+        <strong>A family studio</strong> in M&aacute;laga<br>
+        Second generation since 1990
+    </div>
+    <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ════ THE METHOD ════ -->
+<section class="method-band">
+    <div class="section-label">The method</div>
+    <h2 class="method-h">Three principles. Every villa, every time.</h2>
+    <div class="method-rows">
+        <div class="method-row">
+            <div class="m-num">01</div>
+            <div class="m-word">Rooted</div>
+            <p class="m-desc">The land shapes the house. The slope, the trees, the morning sun aren&rsquo;t constraints. They are the program.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">02</div>
+            <div class="m-word">Singular</div>
+            <p class="m-desc">One site, one vision, one time. We don&rsquo;t reuse plans, we don&rsquo;t run parallel projects. Each home is conceived as if it were the only one we will ever build.</p>
+        </div>
+        <div class="method-row">
+            <div class="m-num">03</div>
+            <div class="m-word">Local</div>
+            <p class="m-desc">Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight.</p>
+        </div>
     </div>
 </section>
 
-<!-- THE WORK -->
+<!-- ════ THE WORK ════ -->
 <section class="work-band">
     <div class="section-label">The work</div>
     <h2 class="work-h">Three homes. Three signatures of the same hand.</h2>
@@ -216,12 +329,11 @@
             <div class="work-meta">
                 <div class="work-num">N&deg; 01</div>
                 <div class="work-name">Origen</div>
-                <div class="work-status sold">Delivered &middot; sold &middot; 2023</div>
+                <div class="work-status">Delivered &middot; sold &middot; 2023</div>
                 <p class="work-spec"><strong>620 m&sup2;</strong> &middot; 6 rooms &middot; Pinares de San Ant&oacute;n. The first home. Among century-old pines.</p>
                 <div class="work-arrow">Read &rarr;</div>
             </div>
         </a>
-
         <a href="pages/sosiego.html" class="work-row">
             <div class="work-img"><img src="img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
             <div class="work-meta">
@@ -232,13 +344,12 @@
                 <div class="work-arrow">Read &rarr;</div>
             </div>
         </a>
-
         <a href="pages/villa-el-cantal.html" class="work-row">
             <div class="work-img"><img src="img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
             <div class="work-meta">
                 <div class="work-num">N&deg; 03</div>
                 <div class="work-name">El Cantal</div>
-                <div class="work-status future">Project approved imminent &middot; delivery 2028</div>
+                <div class="work-status future">Project approval imminent &middot; delivery 2028</div>
                 <p class="work-spec"><strong>550 m&sup2;</strong> &middot; 5 bedrooms &middot; Pinares de San Ant&oacute;n. A house cut into the hillside. Corten skin, plants from the mountains.</p>
                 <div class="work-arrow">Read &rarr;</div>
             </div>
@@ -246,41 +357,20 @@
     </div>
 </section>
 
-<!-- THE METHOD -->
-<section class="method-band">
-    <div class="section-label">The method</div>
-    <h2 class="method-h">Three principles. Every villa, every time.</h2>
-    <div class="method-rows">
-        <div class="method-row">
-            <div class="m-num">01</div>
-            <div class="m-word">Rooted</div>
-            <p class="m-desc">The land shapes the house. The slope, the trees, the morning sun aren't constraints. They are the program.</p>
+<!-- ════ THE FILM ════ -->
+<section class="film-band">
+    <a href="#" class="film-card" aria-label="The studio film">
+        <div class="film-bg" style="background-image: url('img/sosiego/sosiego-entrance-dusk.png');"></div>
+        <span class="film-soon">Coming soon</span>
+        <div class="film-overlay">
+            <div class="film-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="film-label">The studio film</div>
+            <div class="film-sub">Sadala in 90 seconds</div>
         </div>
-        <div class="method-row">
-            <div class="m-num">02</div>
-            <div class="m-word">Singular</div>
-            <p class="m-desc">One site, one vision, one time. We don't reuse plans, we don't run parallel projects. Each home is conceived as if it were the only one we will ever build.</p>
-        </div>
-        <div class="method-row">
-            <div class="m-num">03</div>
-            <div class="m-word">Local</div>
-            <p class="m-desc">Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight.</p>
-        </div>
-    </div>
+    </a>
 </section>
 
-<!-- THE STUDIO -->
-<section class="studio-band">
-    <div class="studio-inner">
-        <div class="section-label">The studio</div>
-        <p class="studio-text">
-            Sadala is a <strong>family studio</strong> in M&aacute;laga, second generation since 1990. <em>We don't build for clients.</em> We build the homes we'd want to live in ourselves, one at a time, then we sell them.
-        </p>
-        <a href="pages/approach.html" class="studio-link">Read our approach &rarr;</a>
-    </div>
-</section>
-
-<!-- CTA -->
+<!-- ════ CTA ════ -->
 <section class="cta">
     <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
     <p class="cta-sub">Our process starts with a conversation, not a brochure. We live where we build.</p>
