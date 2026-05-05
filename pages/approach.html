@@ -277,6 +277,17 @@
             transition: background .25s;
         }
         .partner-tile:hover { background: var(--off-white); }
+        .partner-tile img {
+            max-width: 60%; max-height: 56%;
+            width: auto; height: auto;
+            object-fit: contain;
+            opacity: .9;
+            transition: opacity .25s, filter .25s;
+            filter: grayscale(.3);
+        }
+        .partner-tile:hover img { opacity: 1; filter: grayscale(0); }
+        /* Show alt text nicely if image is missing */
+        .partner-tile img[alt]:not([src=""]):not([src*=".png"]) { font-family: var(--serif); font-size: 18px; }
 
 
         /* CTA */
@@ -448,12 +459,12 @@
         </div>
 
         <div class="partners-row">
-            <div class="partner-tile">Flow81</div>
-            <div class="partner-tile">Urbania</div>
-            <div class="partner-tile">Acer</div>
-            <div class="partner-tile">El Muelle</div>
-            <div class="partner-tile">ARK</div>
-            <div class="partner-tile">Coral Shield</div>
+            <div class="partner-tile"><img src="../img/partners/flow81.png" alt="Flow81"></div>
+            <div class="partner-tile"><img src="../img/partners/urbania.png" alt="Urbania"></div>
+            <div class="partner-tile"><img src="../img/partners/acer.png" alt="Acer"></div>
+            <div class="partner-tile"><img src="../img/partners/el-muelle.png" alt="El Muelle"></div>
+            <div class="partner-tile"><img src="../img/partners/ark.png" alt="ARK"></div>
+            <div class="partner-tile"><img src="../img/partners/coral-shield.png" alt="Coral Shield"></div>
         </div>
     </div>
 </section>
