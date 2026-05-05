@@ -123,36 +123,67 @@
         /* ════ SECTION LABEL ════ */
         .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
 
-        /* ════ THE METHOD ════ */
-        .method-band { padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
-        .method-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px; margin-bottom: 56px; }
-        .method-rows { display: grid; grid-template-columns: 1fr; gap: 0; }
-        .method-row { display: grid; grid-template-columns: 80px 220px 1fr; gap: 32px; padding: 36px 0; align-items: baseline; border-top: 1px solid var(--grey-border); }
-        .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
-        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; }
-        .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
+        /* ════ THE METHOD - single statement ════ */
+        .method-band { padding: 140px 48px; text-align: center; }
+        .method-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; }
+        .method-words {
+            font-family: var(--serif);
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 300; line-height: 1; letter-spacing: -1px;
+            color: var(--black);
+        }
+        .method-words em { color: var(--accent); font-style: italic; }
+        .method-sub {
+            margin-top: 32px;
+            font-family: var(--serif); font-style: italic;
+            font-size: clamp(18px, 2vw, 24px); font-weight: 300;
+            color: var(--grey); line-height: 1.5; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .method-link {
+            display: inline-block; margin-top: 48px;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--accent); text-decoration: none;
+            border-bottom: 1px solid var(--accent); padding-bottom: 4px;
+            transition: opacity .3s;
+        }
+        .method-link:hover { opacity: .7; }
 
-        /* ════ THE WORK ════ */
-        .work-band { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
-        .work-h { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px; margin-bottom: 64px; }
-        .work-list { display: flex; flex-direction: column; gap: 8px; }
-        .work-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; padding: 40px 0; align-items: center; text-decoration: none; color: inherit; transition: opacity .3s; border-top: 1px solid var(--grey-border); }
-        .work-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .work-row:hover { opacity: .82; }
-        .work-row:nth-child(even) { grid-template-columns: 1.4fr 1fr; }
-        .work-row:nth-child(even) .work-img { order: 2; }
-        .work-img { aspect-ratio: 4/3; overflow: hidden; }
-        .work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-        .work-row:hover .work-img img { transform: scale(1.04); }
-        .work-meta { display: flex; flex-direction: column; gap: 12px; }
-        .work-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-        .work-name { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; line-height: 1; letter-spacing: -0.6px; margin: 4px 0 0; }
-        .work-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 8px; }
-        .work-status.live { color: var(--accent); }
-        .work-status.future { color: #5A7A5A; }
-        .work-spec { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); margin-top: 12px; max-width: 460px; }
-        .work-arrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-top: 12px; }
+        /* ════ THE WORK - full-bleed cinematic cards ════ */
+        .work-band { padding: 0; }
+        .work-eyebrow-band { padding: 100px 48px 56px; max-width: 1200px; margin: 0 auto; }
+        .work-stack { display: flex; flex-direction: column; gap: 4px; }
+        .work-card {
+            position: relative; height: 70vh; min-height: 480px;
+            overflow: hidden; display: block;
+            text-decoration: none; color: #fff;
+        }
+        .work-card-bg { position: absolute; inset: 0; }
+        .work-card-bg img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
+        .work-card:hover .work-card-bg img { transform: scale(1.04); }
+        .work-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,.6) 100%);
+        }
+        .work-card-meta {
+            position: absolute; left: 48px; right: 48px; bottom: 48px;
+            z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;
+        }
+        .work-card-left { max-width: 720px; }
+        .work-card-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+        .work-card-name { font-family: var(--serif); font-size: clamp(48px, 6vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -1px; }
+        .work-card-spec { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 16px; }
+        .work-card-right { text-align: right; flex-shrink: 0; }
+        .work-card-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: 8px; }
+        .work-card-status.live { color: var(--accent); }
+        .work-card-status.live::before { content: '\25CF'; margin-right: 6px; }
+        .work-card-arrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px;
+            border: 1px solid rgba(255,255,255,.4);
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: #fff; transition: all .25s;
+        }
+        .work-card:hover .work-card-arrow { background: var(--accent); border-color: var(--accent); }
 
         /* ════ THE FILM (video placeholder) ════ */
         .film-band { padding: 80px 48px 0; max-width: 1200px; margin: 0 auto; }
@@ -224,9 +255,10 @@
         .float-cta:hover svg { fill: #fff; }
 
         @media (max-width: 1024px) {
-            .method-band, .work-band, .film-band { padding-left: 32px; padding-right: 32px; }
-            .work-row { gap: 32px; padding: 32px 0; }
-            .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+            .film-band { padding-left: 32px; padding-right: 32px; }
+            .method-band { padding-left: 32px; padding-right: 32px; }
+            .work-eyebrow-band { padding-left: 32px; padding-right: 32px; }
+            .work-card-meta { left: 32px; right: 32px; bottom: 32px; }
         }
 
         @media (max-width: 760px) {
@@ -239,14 +271,15 @@
 
             .method-band, .work-band { padding: 64px 20px; }
             .film-band { padding: 48px 20px 0; }
-            .method-h, .work-h { font-size: clamp(28px, 8vw, 40px); margin-bottom: 40px; }
-            .method-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
-            .m-num { font-size: 28px; margin-bottom: 4px; }
-            .m-word { font-size: 26px; }
+            .method-band { padding: 64px 20px; }
+            .method-words { font-size: clamp(36px, 11vw, 64px); }
+            .method-sub { font-size: 16px; margin-top: 20px; }
 
-            .work-row, .work-row:nth-child(even) { grid-template-columns: 1fr; gap: 18px; padding: 28px 0; }
-            .work-row:nth-child(even) .work-img { order: 0; }
-            .work-name { font-size: 36px; }
+            .work-eyebrow-band { padding: 56px 20px 32px; }
+            .work-card { height: 60vh; min-height: 420px; }
+            .work-card-meta { left: 20px; right: 20px; bottom: 28px; flex-direction: column; align-items: flex-start; }
+            .work-card-right { text-align: left; }
+            .work-card-name { font-size: 44px; }
 
             .film-card { aspect-ratio: 4/3; }
             .film-label { font-size: 26px; }
@@ -318,60 +351,59 @@
 
 <!-- ════ THE METHOD ════ -->
 <section class="method-band">
-    <div class="section-label">The method</div>
-    <h2 class="method-h">Three principles. Every villa, every time.</h2>
-    <div class="method-rows">
-        <div class="method-row">
-            <div class="m-num">01</div>
-            <div class="m-word">Rooted</div>
-            <p class="m-desc">The land shapes the house. The slope, the trees, the morning sun aren&rsquo;t constraints. They are the program.</p>
-        </div>
-        <div class="method-row">
-            <div class="m-num">02</div>
-            <div class="m-word">Singular</div>
-            <p class="m-desc">One site, one vision, one time. We don&rsquo;t reuse plans, we don&rsquo;t run parallel projects. Each home is conceived as if it were the only one we will ever build.</p>
-        </div>
-        <div class="method-row">
-            <div class="m-num">03</div>
-            <div class="m-word">Local</div>
-            <p class="m-desc">Stone from Andalusian quarries. Solid wood from trusted mills. Partners chosen within a short drive, never a long flight.</p>
-        </div>
-    </div>
+    <div class="method-eyebrow">The method</div>
+    <h2 class="method-words"><em>Rooted.</em> <em>Singular.</em> <em>Local.</em></h2>
+    <p class="method-sub">Three principles. Every villa, every time.</p>
+    <a href="pages/approach.html" class="method-link">Read our approach &rarr;</a>
 </section>
 
-<!-- ════ THE WORK ════ -->
+<!-- ════ THE WORK - cinematic stack ════ -->
 <section class="work-band">
-    <div class="section-label">The work</div>
-    <h2 class="work-h">Three homes. Three signatures of the same hand.</h2>
-    <div class="work-list">
-        <a href="pages/villa-leoni-benabu.html" class="work-row">
-            <div class="work-img"><img src="img/leoni-benabu/main.jpeg" alt="Origen"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 01</div>
-                <div class="work-name">Origen</div>
-                <div class="work-status">Delivered &middot; sold &middot; 2023</div>
-                <p class="work-spec"><strong>620 m&sup2;</strong> &middot; 6 rooms &middot; Pinares de San Ant&oacute;n. The first home. Among century-old pines.</p>
-                <div class="work-arrow">Read &rarr;</div>
+    <div class="work-eyebrow-band">
+        <div class="section-label">The work</div>
+        <h2 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px;">Three homes. Three signatures of the same hand.</h2>
+    </div>
+    <div class="work-stack">
+        <a href="pages/villa-leoni-benabu.html" class="work-card">
+            <div class="work-card-bg"><img src="img/leoni-benabu/main.jpeg" alt="Origen"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-num">N&deg; 01 &middot; 2023</div>
+                    <div class="work-card-name">Origen</div>
+                    <div class="work-card-spec">620 m&sup2; &middot; 6 rooms &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status">Delivered &middot; sold</div>
+                    <div class="work-card-arrow">Read &rarr;</div>
+                </div>
             </div>
         </a>
-        <a href="pages/sosiego.html" class="work-row">
-            <div class="work-img"><img src="img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 02</div>
-                <div class="work-name">Sosiego</div>
-                <div class="work-status live">In construction &middot; delivery 2027</div>
-                <p class="work-spec"><strong>570 m&sup2;</strong> &middot; 4 bedrooms &middot; Pinares de San Ant&oacute;n. A wellness home designed around the Mediterranean rhythm.</p>
-                <div class="work-arrow">Read &rarr;</div>
+        <a href="pages/sosiego.html" class="work-card">
+            <div class="work-card-bg"><img src="img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-num">N&deg; 02 &middot; delivery 2027</div>
+                    <div class="work-card-name">Sosiego</div>
+                    <div class="work-card-spec">570 m&sup2; &middot; 4 bedrooms &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status live">In construction</div>
+                    <div class="work-card-arrow">Read &rarr;</div>
+                </div>
             </div>
         </a>
-        <a href="pages/villa-el-cantal.html" class="work-row">
-            <div class="work-img"><img src="img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 03</div>
-                <div class="work-name">El Cantal</div>
-                <div class="work-status future">Project approval imminent &middot; delivery 2028</div>
-                <p class="work-spec"><strong>550 m&sup2;</strong> &middot; 5 bedrooms &middot; Pinares de San Ant&oacute;n. A house cut into the hillside. Corten skin, plants from the mountains.</p>
-                <div class="work-arrow">Read &rarr;</div>
+        <a href="pages/villa-el-cantal.html" class="work-card">
+            <div class="work-card-bg"><img src="img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-num">N&deg; 03 &middot; delivery 2028</div>
+                    <div class="work-card-name">El Cantal</div>
+                    <div class="work-card-spec">550 m&sup2; &middot; 5 bedrooms &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status">Project approval imminent</div>
+                    <div class="work-card-arrow">Read &rarr;</div>
+                </div>
             </div>
         </a>
     </div>
