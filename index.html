@@ -71,10 +71,15 @@
         .quote-hero {
             min-height: calc(100vh - 80px);
             display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            padding: 80px 48px;
+            align-items: center;
+            padding: 56px 48px 40px;
             text-align: center;
-            position: relative;
+        }
+        .quote-content {
+            flex: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: 100%;
         }
         .quote-eyebrow {
             font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
@@ -99,7 +104,7 @@
         }
         .quote-author strong { color: var(--black); font-weight: 400; }
         .scroll-hint {
-            position: absolute; bottom: 32px;
+            margin-top: 48px;
             font-family: var(--mono);
             font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
             color: var(--grey);
@@ -230,7 +235,7 @@
             .quote-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 36px; }
             .quote-text { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: -0.4px; }
             .quote-author { font-size: 10px; letter-spacing: 2px; margin-top: 36px; }
-            .scroll-hint { bottom: 24px; }
+            .scroll-hint { margin-top: 32px; }
 
             .method-band, .work-band { padding: 64px 20px; }
             .film-band { padding: 48px 20px 0; }
@@ -284,15 +289,17 @@
 
 <!-- ════ QUOTE HERO ════ -->
 <section class="quote-hero">
-    <div class="quote-eyebrow">M&aacute;laga &middot; Andaluc&iacute;a</div>
-    <h1 class="quote-text">
-        We don&rsquo;t build for clients.<br>
-        We build the homes <em>we&rsquo;d want to live in</em> ourselves.<br>
-        One at a time.
-    </h1>
-    <div class="quote-author">
-        <strong>A family studio</strong> in M&aacute;laga<br>
-        Second generation since 1990
+    <div class="quote-content">
+        <div class="quote-eyebrow">M&aacute;laga &middot; Andaluc&iacute;a</div>
+        <h1 class="quote-text">
+            We don&rsquo;t build for clients.<br>
+            We build the homes <em>we&rsquo;d want to live in</em> ourselves.<br>
+            One at a time.
+        </h1>
+        <div class="quote-author">
+            <strong>A family studio</strong> in M&aacute;laga<br>
+            Second generation since 1990
+        </div>
     </div>
     <div class="scroll-hint">scroll</div>
 </section>
