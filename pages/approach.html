@@ -150,27 +150,100 @@
         .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; color: var(--black); }
         .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
 
-        /* Process - 5 steps */
+        /* Process - vertical timeline */
         .process-band { padding: 120px 48px; }
-        .process-inner { max-width: 1100px; margin: 0 auto; }
+        .process-inner { max-width: 920px; margin: 0 auto; }
         .process-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
         .process-h {
             font-family: var(--serif);
             font-size: clamp(36px, 5vw, 60px);
             font-weight: 300; line-height: 1.1; letter-spacing: -0.5px;
-            margin-bottom: 64px; max-width: 800px;
+            margin-bottom: 80px; max-width: 800px;
         }
-        .process-list { display: grid; grid-template-columns: 1fr; gap: 0; }
-        .process-row {
-            display: grid; grid-template-columns: 80px 220px 1fr;
-            gap: 32px; padding: 32px 0;
-            align-items: baseline;
-            border-top: 1px solid var(--grey-border);
+        .process-h em { color: var(--accent); font-style: italic; }
+        /* Timeline rail + steps */
+        .process-tl { position: relative; padding-left: 60px; }
+        .process-tl::before {
+            content: '';
+            position: absolute; top: 14px; bottom: 14px;
+            left: 13px; width: 2px;
+            background: linear-gradient(to bottom,
+                var(--accent) 0%, var(--accent) 95%,
+                rgba(193,135,107,.3) 100%);
+            border-radius: 1px;
         }
-        .process-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .p-num { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--accent); line-height: 1; }
-        .p-word { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.2px; }
-        .p-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
+        .p-step { position: relative; padding-bottom: 64px; }
+        .p-step:last-child { padding-bottom: 0; }
+        .p-step::before {
+            content: '';
+            position: absolute; left: -55px; top: 6px;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            box-sizing: border-box;
+            z-index: 1;
+        }
+        .p-step::after {
+            content: '';
+            position: absolute; left: -49px; top: 12px;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity .3s;
+            z-index: 2;
+        }
+        .p-step:hover::after { opacity: 1; }
+        .p-loc {
+            font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--grey);
+            margin-bottom: 10px;
+        }
+        .p-h {
+            font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px);
+            font-weight: 400; line-height: 1.1; letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+        .p-h .p-step-num {
+            font-family: var(--mono); font-size: 13px; font-weight: 400;
+            letter-spacing: 2px; color: var(--accent);
+            margin-right: 14px; vertical-align: middle;
+        }
+        .p-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 600px; margin-top: 12px; }
+
+        /* TEAM ON SITE - placeholder visuals band */
+        .onsite-band { padding: 100px 48px; background: var(--off-white); }
+        .onsite-inner { max-width: 1200px; margin: 0 auto; }
+        .onsite-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+        .onsite-h { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); font-weight: 300; line-height: 1.2; letter-spacing: -0.3px; max-width: 720px; margin-bottom: 56px; }
+        .onsite-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+        .onsite-tile {
+            position: relative; aspect-ratio: 4/5; overflow: hidden;
+            background: var(--grey-border);
+        }
+        .onsite-tile-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            filter: grayscale(.3) brightness(.9);
+        }
+        .onsite-tile::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(44,44,44,.55) 100%);
+        }
+        .onsite-tile-meta {
+            position: absolute; left: 20px; right: 20px; bottom: 20px;
+            color: #fff; z-index: 2;
+        }
+        .onsite-tile-when { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
+        .onsite-tile-cap { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-top: 6px; }
+        .onsite-tile-soon {
+            position: absolute; top: 16px; right: 16px;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+            padding: 5px 10px; background: rgba(255,255,255,.18);
+            border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.9);
+            border-radius: 999px; z-index: 3;
+        }
 
         /* CTA */
         .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
@@ -194,7 +267,8 @@
 
         @media (max-width: 1024px) {
             .studio-band, .method-band, .process-band, .cta { padding-left: 32px; padding-right: 32px; }
-            .method-row, .process-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+            .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+            .onsite-band { padding-left: 32px; padding-right: 32px; }
         }
 
         @media (max-width: 760px) {
@@ -215,7 +289,20 @@
             .p-word { font-size: 22px; }
 
             .process-band { padding: 64px 20px; }
-            .process-h { font-size: clamp(26px, 8vw, 40px); margin-bottom: 36px; }
+            .process-h { font-size: clamp(26px, 8vw, 40px); margin-bottom: 48px; }
+            .process-tl { padding-left: 36px; }
+            .process-tl::before { left: 7px; }
+            .p-step { padding-bottom: 40px; }
+            .p-step::before { left: -35px; width: 16px; height: 16px; }
+            .p-step::after { left: -29px; }
+            .p-loc { font-size: 9px; letter-spacing: 2px; }
+            .p-h { font-size: 22px; }
+            .p-h .p-step-num { font-size: 11px; margin-right: 10px; }
+
+            .onsite-band { padding: 56px 20px; }
+            .onsite-h { font-size: clamp(22px, 7vw, 32px); margin-bottom: 36px; }
+            .onsite-grid { grid-template-columns: 1fr; gap: 2px; }
+            .onsite-tile { aspect-ratio: 4/3; }
 
             .cta { padding: 64px 20px; }
             .cta h2 { font-size: clamp(28px, 8vw, 40px); }
@@ -310,36 +397,70 @@
     </div>
 </section>
 
-<!-- THE PROCESS - 5 steps -->
+<!-- THE PROCESS - vertical timeline -->
 <section class="process-band">
     <div class="process-inner">
         <div class="process-eyebrow">The process</div>
-        <h2 class="process-h">From plot to keys, by hand.</h2>
-        <div class="process-list">
-            <div class="process-row">
-                <div class="p-num">01</div>
-                <div class="p-word">The plot</div>
+        <h2 class="process-h">From plot to keys, <em>by hand.</em></h2>
+        <div class="process-tl">
+            <div class="p-step">
+                <div class="p-loc">On the plot</div>
+                <h3 class="p-h"><span class="p-step-num">01</span>The plot</h3>
                 <p class="p-desc">We identify a site. We walk it at sunrise, at noon, in winter and summer. We listen to the trees, the slope, the silence. We commit before there is a plan, sometimes by months.</p>
             </div>
-            <div class="process-row">
-                <div class="p-num">02</div>
-                <div class="p-word">The drawing</div>
+            <div class="p-step">
+                <div class="p-loc">At the drawing board</div>
+                <h3 class="p-h"><span class="p-step-num">02</span>The drawing</h3>
                 <p class="p-desc">A first sketch, by hand, on tracing paper. Often the kitchen window&rsquo;s orientation is decided before any wall is drawn. The plan adapts to the site, not the other way around.</p>
             </div>
-            <div class="process-row">
-                <div class="p-num">03</div>
-                <div class="p-word">The team</div>
+            <div class="p-step">
+                <div class="p-loc">Around the table</div>
+                <h3 class="p-h"><span class="p-step-num">03</span>The team</h3>
                 <p class="p-desc">Architects, interior designers, landscapers. Craftsmen, quarry, mill, nursery. Every name on the team works within a short drive. The same set of names recurs across Sadala projects, where it makes sense.</p>
             </div>
-            <div class="process-row">
-                <div class="p-num">04</div>
-                <div class="p-word">The build</div>
+            <div class="p-step">
+                <div class="p-loc">On site, every week</div>
+                <h3 class="p-h"><span class="p-step-num">04</span>The build</h3>
                 <p class="p-desc">Foundation. Structure. Skin. Garden. Eighteen to thirty months on site, depending on the home. We post weekly updates because hiding the construction would betray the brand.</p>
             </div>
-            <div class="process-row">
-                <div class="p-num">05</div>
-                <div class="p-word">The keys</div>
+            <div class="p-step">
+                <div class="p-loc">At your front door</div>
+                <h3 class="p-h"><span class="p-step-num">05</span>The keys</h3>
                 <p class="p-desc">A walk through the home with the buyer. The kitchen garden is planted. The first morning light comes through the window we drew at the start. We hand over the keys. Then we start the next plot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM ON SITE - placeholder visuals -->
+<section class="onsite-band">
+    <div class="onsite-inner">
+        <div class="onsite-eyebrow">The team, on site</div>
+        <h2 class="onsite-h">A studio you meet over coffee, not over email.</h2>
+        <div class="onsite-grid">
+            <div class="onsite-tile">
+                <div class="onsite-tile-bg" style="background-image: url('../img/leoni-benabu/leoni-walkway.jpeg');"></div>
+                <span class="onsite-tile-soon">Coming soon</span>
+                <div class="onsite-tile-meta">
+                    <div class="onsite-tile-when">On the plot</div>
+                    <div class="onsite-tile-cap">Walking the site at sunrise</div>
+                </div>
+            </div>
+            <div class="onsite-tile">
+                <div class="onsite-tile-bg" style="background-image: url('../img/sosiego/jardin-zen.png');"></div>
+                <span class="onsite-tile-soon">Coming soon</span>
+                <div class="onsite-tile-meta">
+                    <div class="onsite-tile-when">At the drawing board</div>
+                    <div class="onsite-tile-cap">First sketches in pencil</div>
+                </div>
+            </div>
+            <div class="onsite-tile">
+                <div class="onsite-tile-bg" style="background-image: url('../img/cantal/cantal-aerial.jpg');"></div>
+                <span class="onsite-tile-soon">Coming soon</span>
+                <div class="onsite-tile-meta">
+                    <div class="onsite-tile-when">On site, every week</div>
+                    <div class="onsite-tile-cap">Foundation poured at El Cantal</div>
+                </div>
             </div>
         </div>
     </div>
