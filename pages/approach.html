@@ -318,6 +318,52 @@
             footer { padding: 24px 20px; font-size: 10px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
+
+        /* PARTNERS - logo grid */
+        .partners-band { padding: 120px 48px; }
+        .partners-inner { max-width: 1200px; margin: 0 auto; }
+        .partners-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+        .partners-h { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 44px); font-weight: 300; line-height: 1.2; letter-spacing: -0.3px; max-width: 760px; margin-bottom: 16px; }
+        .partners-h em { color: var(--accent); font-style: italic; }
+        .partners-sub { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--grey); max-width: 600px; margin-bottom: 56px; line-height: 1.6; }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            border-top: 1px solid var(--grey-border);
+            border-left: 1px solid var(--grey-border);
+        }
+        .partner-tile {
+            aspect-ratio: 4/3;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 32px 24px; text-align: center;
+            background: var(--off-white);
+            border-right: 1px solid var(--grey-border);
+            border-bottom: 1px solid var(--grey-border);
+            transition: background .25s;
+            margin-right: -1px; margin-bottom: -1px;
+        }
+        .partner-tile:hover { background: var(--white); }
+        .pt-role { font-family: var(--mono); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .pt-name { font-family: var(--serif); font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1.15; letter-spacing: -0.2px; color: var(--black); }
+        .pt-soon {
+            margin-top: 12px;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--grey-light);
+        }
+
+        @media (max-width: 1024px) {
+            .partners-band { padding-left: 32px; padding-right: 32px; }
+            .partners-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 760px) {
+            .partners-band { padding: 64px 20px; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+            .partner-tile { aspect-ratio: 1; padding: 20px 14px; }
+            .pt-name { font-size: 18px; }
+        }
     </style>
 </head>
 <body>
@@ -477,6 +523,50 @@
                     <div class="onsite-tile-when">On site, every week</div>
                     <div class="onsite-tile-cap">Foundation poured at El Cantal</div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PARTNERS - logo grid -->
+<section class="partners-band">
+    <div class="partners-inner">
+        <div class="partners-eyebrow">Our partners</div>
+        <h2 class="partners-h">For each project, <em>the best hands</em>.</h2>
+        <p class="partners-sub">Architects, interior designers, landscapers, craftsmen. Every name on a Sadala project is named, local, and chosen to bring the home to life.</p>
+
+        <div class="partners-grid">
+            <div class="partner-tile">
+                <div class="pt-role">Architecture</div>
+                <div class="pt-name">MR Arq</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Architecture</div>
+                <div class="pt-name">Flow81</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Architecture</div>
+                <div class="pt-name">El Muelle</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Interior design</div>
+                <div class="pt-name">Studio 1969</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Landscape</div>
+                <div class="pt-name">Landscapers</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Landscape</div>
+                <div class="pt-name">Acer</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Stone</div>
+                <div class="pt-name">Cantera de Mijas</div>
+            </div>
+            <div class="partner-tile">
+                <div class="pt-role">Wood</div>
+                <div class="pt-name">A mill in Ronda</div>
             </div>
         </div>
     </div>
