@@ -138,16 +138,20 @@
             max-width: 900px;
         }
         .method-h em { color: var(--accent); font-style: italic; }
-        .method-list { display: grid; grid-template-columns: 1fr; gap: 0; }
+        .method-list { display: grid; grid-template-columns: 1fr; gap: 4px; }
         .method-row {
-            display: grid; grid-template-columns: 80px 220px 1fr;
-            gap: 32px; padding: 40px 0;
-            align-items: baseline;
+            display: grid; grid-template-columns: 280px 80px 1fr;
+            gap: 40px; padding: 32px 0;
+            align-items: center;
             border-top: 1px solid var(--grey-border);
         }
         .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
-        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; color: var(--black); }
+        .m-img { aspect-ratio: 4/5; overflow: hidden; }
+        .m-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+        .method-row:hover .m-img img { transform: scale(1.04); }
+        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; align-self: start; padding-top: 8px; }
+        .m-text { display: flex; flex-direction: column; }
+        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; color: var(--black); margin-bottom: 14px; }
         .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 560px; }
 
         /* Process - vertical timeline */
@@ -267,7 +271,7 @@
 
         @media (max-width: 1024px) {
             .studio-band, .method-band, .process-band, .cta { padding-left: 32px; padding-right: 32px; }
-            .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+            .method-row { grid-template-columns: 220px 60px 1fr; gap: 28px; padding: 28px 0; }
             .onsite-band { padding-left: 32px; padding-right: 32px; }
         }
 
@@ -283,9 +287,12 @@
             .studio-text { font-size: 17px; line-height: 1.65; }
             .method-band { padding: 80px 20px; }
             .method-h { font-size: clamp(28px, 9vw, 44px); margin-bottom: 48px; }
-            .method-row, .process-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
-            .m-num, .p-num { font-size: 28px; margin-bottom: 4px; }
-            .m-word { font-size: 26px; }
+            .method-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
+            .method-row .m-img { aspect-ratio: 4/3; }
+            .m-num { font-size: 28px; padding-top: 0; }
+            .m-word { font-size: 24px; margin-bottom: 8px; }
+            .process-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
+            .p-num { font-size: 28px; margin-bottom: 4px; }
             .p-word { font-size: 22px; }
 
             .process-band { padding: 64px 20px; }
@@ -379,19 +386,28 @@
         <h2 class="method-h">Three principles. <em>Every villa, every time.</em></h2>
         <div class="method-list">
             <div class="method-row">
+                <div class="m-img"><img src="../img/leoni-benabu/leoni-walkway.jpeg" alt="Rooted - the site"></div>
                 <div class="m-num">01</div>
-                <div class="m-word">Rooted</div>
-                <p class="m-desc">The land shapes the house, not the other way around. The slope, the mature trees, the direction of the morning sun aren&rsquo;t constraints. They are the program. We commit to a plot before there is a plan. The kitchen window faces east because that is where the morning shadows already pointed. The bedroom is below grade because the mature pines sit above. Every Sadala project starts by listening to the site, often for months.</p>
+                <div class="m-text">
+                    <div class="m-word">Rooted</div>
+                    <p class="m-desc">The land shapes the house, not the other way around. The slope, the mature trees, the direction of the morning sun aren&rsquo;t constraints. They are the program. We commit to a plot before there is a plan. The kitchen window faces east because that is where the morning shadows already pointed. The bedroom is below grade because the mature pines sit above. Every Sadala project starts by listening to the site, often for months.</p>
+                </div>
             </div>
             <div class="method-row">
+                <div class="m-img"><img src="../img/cantal/cantal-hero.jpg" alt="Singular - one of one"></div>
                 <div class="m-num">02</div>
-                <div class="m-word">Singular</div>
-                <p class="m-desc">One site, one vision, one time. We don&rsquo;t reuse plans, and we don&rsquo;t run parallel projects. Each home is conceived as if it were the only one we will ever build, because for us, that&rsquo;s exactly what it is. While we work on one villa, no other Sadala home is being designed. This is not a scaleable practice. That is the entire point.</p>
+                <div class="m-text">
+                    <div class="m-word">Singular</div>
+                    <p class="m-desc">One site, one vision, one time. We don&rsquo;t reuse plans, and we don&rsquo;t run parallel projects. Each home is conceived as if it were the only one we will ever build, because for us, that&rsquo;s exactly what it is. While we work on one villa, no other Sadala home is being designed. This is not a scaleable practice. That is the entire point.</p>
+                </div>
             </div>
             <div class="method-row">
+                <div class="m-img"><img src="../img/cantal/cantal-garden.jpg" alt="Local - native materials"></div>
                 <div class="m-num">03</div>
-                <div class="m-word">Local</div>
-                <p class="m-desc">Stone from Andalusian quarries within a short drive. Solid wood from trusted mills. Native gardens from a nursery up the road. Every supplier is named, every craftsman is known. The new luxury isn&rsquo;t imported marble. It&rsquo;s a home built by people who care because they live nearby and will see the home for years after the keys change hands.</p>
+                <div class="m-text">
+                    <div class="m-word">Local</div>
+                    <p class="m-desc">Stone from Andalusian quarries within a short drive. Solid wood from trusted mills. Native gardens from a nursery up the road. Every supplier is named, every craftsman is known. The new luxury isn&rsquo;t imported marble. It&rsquo;s a home built by people who care because they live nearby and will see the home for years after the keys change hands.</p>
+                </div>
             </div>
         </div>
     </div>
