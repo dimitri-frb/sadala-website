@@ -460,6 +460,62 @@
             .credit-name { font-size: 28px !important; }
         }
 
+    
+        /* === MEDIA BAND (3D visit + Video placeholders) === */
+        .media-band { padding: 64px 48px 96px; max-width: 1200px; margin: 0 auto; }
+        .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .media-card {
+            position: relative; aspect-ratio: 16/9; overflow: hidden;
+            text-decoration: none; cursor: pointer;
+            transition: transform .4s;
+        }
+        .media-card:hover { transform: translateY(-2px); }
+        .media-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            filter: brightness(.55) saturate(.9);
+            transition: filter .4s, transform 1.2s cubic-bezier(.2,.8,.2,1);
+        }
+        .media-card:hover .media-bg { filter: brightness(.4); transform: scale(1.04); }
+        .media-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: #fff; gap: 14px;
+            padding: 24px;
+        }
+        .media-icon {
+            width: 52px; height: 52px;
+            border: 1.5px solid rgba(255,255,255,.7);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: all .25s;
+        }
+        .media-card:hover .media-icon { background: rgba(255,255,255,.12); border-color: #fff; }
+        .media-icon svg { width: 22px; height: 22px; fill: #fff; }
+        .media-label {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 400; line-height: 1; letter-spacing: -0.3px;
+        }
+        .media-sub {
+            font-family: var(--mono);
+            font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: rgba(255,255,255,.7);
+        }
+        .media-soon {
+            position: absolute; top: 16px; right: 16px;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+            padding: 5px 10px; background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+            border-radius: 999px;
+        }
+        @media (max-width: 760px) {
+            .media-grid { grid-template-columns: 1fr; }
+            .media-band { padding: 40px 20px 64px; }
+            .media-card { aspect-ratio: 4/3; }
+        }
+
     </style>
 </head>
 <body>
@@ -602,6 +658,31 @@
         <div class="tile tile-6"><img src="../../img/sosiego/vista-frontal.png" alt=""></div>
     </div>
 </div>
+<!-- MEDIA BAND - 3D Visit + Video placeholders -->
+<section class="media-band reveal">
+    <div class="media-grid">
+        <a href="#" class="media-card" aria-label="3D-tour">
+            <div class="media-bg" style="background-image: url('../img/sosiego/sosiego-sunset.png');"></div>
+            <span class="media-soon">Binnenkort</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.2L19.5 8 12 11.8 4.5 8 12 4.2zM4 9.4l7 3.5v7.7l-7-3.5V9.4zm9 11.2v-7.7l7-3.5v7.7l-7 3.5z"/></svg></div>
+                <div class="media-label">3D-tour</div>
+                <div class="media-sub">Maak de virtuele rondleiding</div>
+            </div>
+        </a>
+        <a href="#" class="media-card" aria-label="Video">
+            <div class="media-bg" style="background-image: url('../img/sosiego/sosiego-entrance-dusk.png');"></div>
+            <span class="media-soon">Binnenkort</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                <div class="media-label">Video</div>
+                <div class="media-sub">Bekijk de film</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+
 
 <!-- ════ 03 / THE CRAFT ════ -->
 <section class="opener" id="craft">
