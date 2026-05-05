@@ -114,22 +114,17 @@
         .media-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
         .media-soon { position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); border-radius: 999px; }
 
-        /* COLOPHON - flowing credits paragraph */
-        .colophon-band {
-            padding: 120px 48px;
-            background: var(--white);
-        }
-        .colophon-inner { max-width: 880px; margin: 0 auto; text-align: center; }
-        .colophon-eyebrow {
-            font-family: var(--mono); font-size: 11px; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 32px;
-        }
+        /* COLOPHON - flowing credits paragraph (sits below timeline in same band) */
         .colophon-text {
+            max-width: 880px; margin: 56px auto 0;
+            text-align: center;
             font-family: var(--serif);
-            font-size: clamp(22px, 2.6vw, 32px);
+            font-size: clamp(20px, 2.2vw, 26px);
             font-weight: 300; font-style: italic;
             line-height: 1.55; letter-spacing: -0.2px;
             color: var(--black);
+            padding-top: 56px;
+            border-top: 1px solid var(--grey-border);
         }
         .colophon-text strong {
             font-style: normal; font-weight: 400;
@@ -190,7 +185,7 @@
 
             /* Tighter section padding */
             section.band, .home-band { padding: 48px 20px; }
-            .colophon-band { padding: 64px 20px; }
+            { padding: 64px 20px; }
             .media-band { padding: 0 20px; margin-top: 32px; }
             .home-title { font-size: clamp(36px, 9vw, 56px); margin-bottom: 16px; }
             .home-paragraph { font-size: 16px; margin-bottom: 32px; }
@@ -385,20 +380,7 @@
     </div>
 </section>
 
-<!-- ════ COLOPHON (flowing credits paragraph) ════ -->
-<section class="colophon-band">
-    <div class="colophon-inner">
-        <div class="colophon-eyebrow">El Cantal, in full</div>
-        <p class="colophon-text">
-            Designed by <strong>Flow81</strong>, an architecture lab in M&aacute;laga.
-            Built with <strong>corten</strong> from a metalsmith in M&aacute;laga Este,
-            <strong>stone</strong> from Cantera de Mijas,
-            and a <strong>living roof</strong> from a nursery in Nerja.
-        </p>
-    </div>
-</section>
-
-<!-- ════ TIMELINE ════ -->
+<!-- ════ TIMELINE + COLOPHON (one section) ════ -->
 <section class="timeline-band">
     <div class="timeline-inner">
         <div class="timeline-label">El Cantal, today</div>
@@ -408,9 +390,9 @@
                 <div class="ts-when">2024</div>
                 <div class="ts-name">Land<br>acquired</div>
             </div>
-            <div class="ts now">
+            <div class="ts done">
                 <div class="ts-dot"></div>
-                <div class="ts-when">2026 &middot; now</div>
+                <div class="ts-when">2026</div>
                 <div class="ts-name">Project<br>approved</div>
             </div>
             <div class="ts">
@@ -424,6 +406,13 @@
                 <div class="ts-name">Keys<br>handed over</div>
             </div>
         </div>
+
+        <p class="colophon-text">
+            Designed by <strong>Flow81</strong>, an architecture lab in M&aacute;laga.
+            Built with <strong>corten</strong> from a metalsmith in M&aacute;laga Este,
+            <strong>stone</strong> from Cantera de Mijas,
+            and a <strong>living roof</strong> from a nursery in Nerja.
+        </p>
     </div>
 </section>
 
