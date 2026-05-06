@@ -216,6 +216,20 @@
         }
         .p-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 600px; margin-top: 12px; }
 
+        @media (max-width: 720px) {
+            .process-band { padding: 80px 24px; }
+            .process-h { margin-bottom: 56px; }
+            .process-tl { padding-left: 32px; }
+            .process-tl::before { left: 7px; top: 8px; bottom: 8px; }
+            .p-step { padding-bottom: 44px; }
+            .p-step::before { left: -32px; top: 4px; width: 14px; height: 14px; border-width: 2px; }
+            .p-step::after { left: -27px; top: 9px; width: 4px; height: 4px; }
+            .p-loc { font-size: 9px; letter-spacing: 2px; margin-bottom: 6px; }
+            .p-h { font-size: 24px; line-height: 1.15; }
+            .p-h .p-step-num { display: block; margin-right: 0; margin-bottom: 6px; font-size: 11px; letter-spacing: 1.8px; }
+            .p-desc { font-size: 13px; line-height: 1.75; margin-top: 10px; }
+        }
+
         /* THE TEAM - founders portrait + partner logos */
         .team-band { padding: 120px 48px; background: var(--off-white); }
         .team-inner { max-width: 1200px; margin: 0 auto; }
