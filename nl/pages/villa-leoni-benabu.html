@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Origen - Sadala</title>
-    <meta name="description" content="Origen - de eerste Sadala-woning, opgeleverd en verkocht in 2023. Pinares de San Ant&oacute;n, M&aacute;laga.">
+    <meta name="description" content="Origen - the first Sadala home, delivered and sold 2023. Pinares de San Anton, Malaga.">
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -22,7 +22,7 @@
 
 
 
-        /* === Live nav (logo, links, language dropdown, hamburger) === */
+        /* === Live nav === */
         nav {
             position: sticky; top: 0; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -35,7 +35,6 @@
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
-        .nav-links a.active { color: var(--black); font-weight: 400; }
         .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
         .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
         .nav-hamburger { display: none; cursor: pointer; width: 24px; height: 16px; position: relative; z-index: 1001; }
@@ -73,408 +72,262 @@
         /* HERO */
         .hero { position: relative; height: 88vh; overflow: hidden; }
         .hero img { width: 100%; height: 100%; object-fit: cover; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,.55) 100%); }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,.6) 100%); }
         .hero-content { position: absolute; bottom: 60px; left: 48px; right: 48px; color: #fff; z-index: 2; }
-        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 18px; }
+        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 18px; }
         .hero-title { font-family: var(--serif); font-size: clamp(64px, 11vw, 160px); font-weight: 300; line-height: .95; letter-spacing: -2px; }
         .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2vw, 24px); color: rgba(255,255,255,.85); margin-top: 16px; max-width: 640px; line-height: 1.4; }
 
-        /* In-page TOC */
-        .toc { position: sticky; top: 65px; z-index: 40; background: rgba(232,226,213,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-border); }
-        .toc-inner { display: flex; gap: 36px; justify-content: center; padding: 16px 24px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-        .toc a {
-            font-family: var(--sans); font-size: 11px; font-weight: 400;
-            letter-spacing: 2px; text-transform: uppercase;
-            color: var(--grey); text-decoration: none; padding: 4px 0;
-            border-bottom: 1px solid transparent; transition: all .25s;
-        }
-        .toc a .n { color: var(--accent); margin-right: 8px; font-family: var(--serif); font-size: 13px; }
-        .toc a:hover, .toc a.active { color: var(--black); border-bottom-color: var(--accent); }
+        /* SECTIONS - soft labels, no chapter numbers */
+        section.band { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
 
-        /* Chapter opener */
-        .opener {
-            padding: 96px 48px 56px;
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: 220px 1fr;
-            gap: 48px; align-items: baseline;
-        }
-        .opener .num {
+        /* ════ THE HOME ════ */
+        .home-band { padding: 100px 48px 80px; }
+        .home-inner { max-width: 1200px; margin: 0 auto; }
+        .home-title {
             font-family: var(--serif);
-            font-size: clamp(120px, 16vw, 200px);
-            font-weight: 200; line-height: .85;
-            letter-spacing: -5px; color: var(--accent);
+            font-size: clamp(40px, 6vw, 76px);
+            font-weight: 300; line-height: 1.05; letter-spacing: -0.7px;
+            margin-bottom: 24px;
+            max-width: 900px;
         }
-        .opener .name {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 300; line-height: 1.1;
-            letter-spacing: -0.4px;
+        .home-paragraph {
+            font-family: var(--serif); font-size: clamp(19px, 2vw, 24px);
+            font-weight: 400; font-style: italic; line-height: 1.55;
+            color: var(--grey);
+            max-width: 720px;
+            margin-bottom: 64px;
         }
-        .opener .name .label {
-            display: block; font-family: var(--sans);
-            font-size: 11px; font-weight: 400;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 14px;
-        }
-        .opener .name em { font-style: italic; color: var(--grey); }
-
-        /* Chapter body */
-        .chapter-body { max-width: 1200px; margin: 0 auto; padding: 0 48px 96px; }
-
-        /* ════ CHAPTER 01: THE PLOT - spec sheet (vertical rows) ════ */
-        .plot-facts {
-            max-width: 800px; margin: 0 auto 64px;
-            border-top: 1px solid var(--grey-border);
-        }
-        .plot-facts > div {
-            display: grid; grid-template-columns: 220px 1fr;
-            gap: 32px; padding: 22px 0;
-            border-bottom: 1px solid var(--grey-border);
-            align-items: baseline;
-        }
-        .pf-label { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
-        .pf-value { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; }
-        .pf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 6px; letter-spacing: 0; }
-
-        .plot-image { width: 100%; aspect-ratio: 21/9; overflow: hidden; margin-bottom: 56px; }
-        .plot-image img { width: 100%; height: 100%; object-fit: cover; }
-
-        .plot-narrative {
-            max-width: 720px; margin: 0 auto;
-            font-family: var(--serif); font-size: 22px; font-weight: 400;
-            line-height: 1.6; color: var(--black);
-        }
-        .plot-narrative em { font-style: italic; color: var(--accent); }
-        .plot-narrative + .plot-narrative { margin-top: 18px; }
-
-        /* ════ CHAPTER 02: THE HOME ════ */
-        .home-kpis {
+        .kpi-strip {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 0;
             border-top: 1px solid var(--grey-border);
             border-bottom: 1px solid var(--grey-border);
             margin-bottom: 80px;
         }
-        .home-kpis > div { padding: 32px 24px; text-align: center; border-right: 1px solid var(--grey-border); }
-        .home-kpis > div:last-child { border-right: none; }
-        .kpi-v { font-family: var(--serif); font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -1px; }
-        .kpi-l { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 10px; }
+        .kpi-strip > div {
+            padding: 36px 24px; text-align: center;
+            border-right: 1px solid var(--grey-border);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .kpi-strip > div:last-child { border-right: none; }
+        .kpi-v { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; line-height: 1; letter-spacing: -0.8px; }
+        .kpi-l { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-top: 12px; }
+        .kpi-strip > .kpi-loc .kpi-v { font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.3px; line-height: 1.15; }
 
-        .home-concept { max-width: 800px; margin: 0 auto 64px; text-align: center; }
-        .home-concept .label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-        .home-concept h3 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); font-weight: 300; letter-spacing: -0.5px; line-height: 1.05; margin-bottom: 24px; }
-        .home-concept p { font-family: var(--serif); font-size: 19px; font-weight: 400; font-style: italic; color: var(--grey); line-height: 1.6; }
+        /* TRIFECTA - desktop grid, mobile horizontal scroll-snap */
+        .trifecta {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .tri {
+            display: flex; flex-direction: column;
+        }
+        .tri-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 22px; }
+        .tri-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+        .tri:hover .tri-img img { transform: scale(1.04); }
+        .tri-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+        .tri-h { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.25; }
 
-        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 80px; }
-        .pillar { display: flex; flex-direction: column; }
-        .pillar-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 22px; }
-        .pillar-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s; }
-        .pillar:hover .pillar-img img { transform: scale(1.03); }
-        .pillar-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-        .pillar h4 { font-family: var(--serif); font-size: 22px; font-weight: 400; line-height: 1.2; }
-
-        /* Tight gallery - 6 images, asymmetric */
+        /* GALLERY */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 4px;
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
         }
-        .gallery .tile { overflow: hidden; }
-        .gallery .tile img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-        .gallery .tile:hover img { transform: scale(1.04); }
-        .gallery .tile-1 { grid-column: span 4; aspect-ratio: 16/9; }
-        .gallery .tile-1 img { aspect-ratio: 16/9; }
-        .gallery .tile-2 { grid-column: span 2; aspect-ratio: 1; }
-        .gallery .tile-3 { grid-column: span 2; aspect-ratio: 1; }
-        .gallery .tile-4 { grid-column: span 2; aspect-ratio: 1; }
-        .gallery .tile-5 { grid-column: span 2; aspect-ratio: 1; }
-        .gallery .tile-6 { grid-column: span 6; aspect-ratio: 21/9; }
-        .gallery .tile-6 img { aspect-ratio: 21/9; }
+        .tile { overflow: hidden; }
+        .tile img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .tile:hover img { transform: scale(1.04); }
+        .tile-1 { grid-column: span 4; aspect-ratio: 16/9; }
+        .tile-1 img { aspect-ratio: 16/9; }
+        .tile-2, .tile-3, .tile-4, .tile-5 { grid-column: span 2; aspect-ratio: 1; }
+        .tile-6 { grid-column: span 6; aspect-ratio: 21/9; }
+        .tile-6 img { aspect-ratio: 21/9; }
 
-        /* ════ CHAPTER 03: THE CRAFT - numbered editorial list ════ */
-        .craft-list { max-width: 920px; margin: 0 auto; }
-        .craft-row {
-            display: grid; grid-template-columns: 80px 200px 1fr;
-            gap: 32px; padding: 36px 0;
-            border-top: 1px solid var(--grey-border);
-            align-items: baseline;
-        }
-        .craft-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .cr-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
-        .cr-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
-        .cr-name { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-top: 4px; }
-        .cr-desc { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--grey); max-width: 580px; }
+        /* MEDIA (3D + Video) */
+        .media-band { padding: 0 48px; max-width: 1200px; margin: 64px auto 0; }
+        .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+        .media-card { position: relative; aspect-ratio: 16/9; overflow: hidden; text-decoration: none; cursor: pointer; transition: transform .4s; }
+        .media-card:hover { transform: translateY(-2px); }
+        .media-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(.55); transition: filter .4s, transform 1.2s cubic-bezier(.2,.8,.2,1); }
+        .media-card:hover .media-bg { filter: brightness(.4); transform: scale(1.04); }
+        .media-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; gap: 14px; padding: 24px; }
+        .media-icon { width: 52px; height: 52px; border: 1.5px solid rgba(255,255,255,.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .25s; }
+        .media-card:hover .media-icon { background: rgba(255,255,255,.12); border-color: #fff; }
+        .media-icon svg { width: 22px; height: 22px; fill: #fff; }
+        .media-label { font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 400; line-height: 1; }
+        .media-sub { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); }
+        .media-soon { position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); border-radius: 999px; }
 
-        /* ════ CHAPTER 04: THE TEAM - colophon-style credits ════ */
-        .team-credits { max-width: 920px; margin: 0 auto; }
-        .credit-row {
-            display: grid; grid-template-columns: 200px 1fr 1.4fr;
-            gap: 40px; padding: 28px 0;
-            border-top: 1px solid var(--grey-border);
-            align-items: baseline;
+        /* COLOPHON - flowing credits paragraph (sits above timeline in same band) */
+        .colophon-text {
+            max-width: 880px; margin: 28px auto 56px;
+            text-align: center;
+            font-family: var(--serif);
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-weight: 300; font-style: italic;
+            line-height: 1.55; letter-spacing: -0.2px;
+            color: var(--black);
+            padding-bottom: 56px;
+            border-bottom: 1px solid var(--grey-border);
         }
-        .credit-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .credit-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 8px; }
-        .credit-name { font-family: var(--serif); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -0.3px; }
-        .credit-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--grey); }
+        .colophon-text strong {
+            font-style: normal; font-weight: 400;
+            color: var(--accent);
+        }
 
-        /* ════ TIMELINE BAND (before CTA) ════ */
-        .timeline-band {
-            padding: 80px 48px; background: var(--off-white);
-            border-top: 1px solid var(--grey-border);
-        }
+        /* TIMELINE */
+        .timeline-band { padding: 80px 48px; background: var(--off-white); border-top: 1px solid var(--grey-border); }
         .timeline-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
         .timeline-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; }
-        .timeline-track {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            position: relative; max-width: 880px; margin: 0 auto;
-        }
-        /* Connector line - aligned through the centre of the dots */
+        .timeline-track { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; max-width: 880px; margin: 0 auto; }
         .timeline-track::before {
-            content: ''; position: absolute;
-            top: 6px;             /* dot is 14px tall; centre = 7px. line height 2 -> top 6 */
-            left: 12.5%; right: 12.5%;  /* from centre of column 1 to centre of column 4 */
-            height: 2px;
-            background: linear-gradient(to right,
-                var(--accent) 0%, var(--accent) 66.67%,
-                var(--grey-border) 66.67%, var(--grey-border) 100%);
+            content: ''; position: absolute; top: 6px; left: 12.5%; right: 12.5%; height: 2px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent) 100%);
             z-index: 0;
         }
-        .ts {
-            position: relative; z-index: 1;
-            display: flex; flex-direction: column; align-items: center;
-        }
-        .ts-dot {
-            width: 14px; height: 14px; border-radius: 50%;
-            background: var(--white); border: 1.5px solid var(--grey-border);
-            box-sizing: border-box;
-            margin-bottom: 16px;
-            flex-shrink: 0;
-        }
+        .ts { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+        .ts-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 1.5px solid var(--grey-border); box-sizing: border-box; margin-bottom: 16px; flex-shrink: 0; }
         .ts.done .ts-dot { background: var(--accent); border-color: var(--accent); }
         .ts.now .ts-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px rgba(193,135,107,.2); }
         .ts-when { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); margin-bottom: 4px; text-transform: uppercase; }
         .ts.now .ts-when { color: var(--accent); }
         .ts-name { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.2; }
 
-        /* ════ CTA ════ */
-        .cta {
-            background: var(--black); color: var(--off-white);
-            padding: 100px 48px; text-align: center;
-        }
-        .cta h2 {
-            font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
-            font-weight: 300; line-height: 1.1; letter-spacing: -0.4px;
-            max-width: 800px; margin: 0 auto 16px;
-        }
+        /* CTA */
+        .cta { background: var(--black); color: var(--off-white); padding: 100px 48px; text-align: center; }
+        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
         .cta h2 em { font-style: italic; color: var(--accent); }
-        .cta p {
-            font-size: 15px; font-weight: 300; line-height: 1.7;
-            color: rgba(225,216,204,.7); max-width: 540px;
-            margin: 0 auto 36px;
-        }
+        .cta p { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
         .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .cta-actions a {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 32px; text-decoration: none;
-            font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
-            transition: all .25s;
-        }
+        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
         .cta .primary { background: var(--accent); color: #fff; }
         .cta .primary:hover { background: #d49a7e; }
         .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
         .cta .ghost:hover { border-color: var(--off-white); }
         .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
 
-        footer {
-            padding: 36px 48px;
-            background: var(--white);
-            border-top: 1px solid var(--grey-border);
-            text-align: center;
-            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
-            color: var(--grey);
-        }
+        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
 
         /* Floating WhatsApp */
-        .float-cta {
-            position: fixed; bottom: 24px; right: 24px; z-index: 99;
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 13px 22px;
-            background: var(--black); color: var(--off-white);
-            font-family: var(--sans); font-size: 13px; font-weight: 400;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            text-decoration: none; border-radius: 999px;
-            box-shadow: 0 8px 24px rgba(44,44,44,.18);
-            transition: all .25s;
-        }
+        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
         .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
         .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
         .float-cta:hover svg { fill: #fff; }
 
-        /* ════ TABLET (1024px) - soften the desktop grids ════ */
+        /* ════ RESPONSIVE ════ */
         @media (max-width: 1024px) {
-            nav { padding: 18px 28px; }
-            .opener { padding: 80px 32px 48px; grid-template-columns: 160px 1fr; gap: 32px; }
-            .opener .num { font-size: 140px; }
-            .chapter-body { padding: 0 32px 80px; }
-            .plot-facts > div { grid-template-columns: 180px 1fr; gap: 24px; }
-            .craft-row { grid-template-columns: 60px 1fr 1.6fr; gap: 24px; padding: 30px 0; }
-            .credit-row { grid-template-columns: 160px 1fr 1.4fr; gap: 24px; }
-            .timeline-band { padding: 64px 32px; }
+            section.band, .home-band, .makers-band, .media-band, .timeline-band, .cta { padding-left: 32px; padding-right: 32px; }
         }
 
-        /* ════ MOBILE (760px) - stack everything cleanly ════ */
         @media (max-width: 760px) {
-            nav { padding: 14px 20px; }
-            .nav-r { display: none; }
-            .hero { height: 78vh; }
+            nav { padding: 14px 20px; } .nav-r { display: none; }
+            .hero { height: 72vh; }
             .hero-content { left: 20px; right: 20px; bottom: 28px; }
-            .hero-title { font-size: clamp(52px, 14vw, 96px); letter-spacing: -1px; }
-            .hero-sub { font-size: 16px; margin-top: 12px; }
+            .hero-title { font-size: clamp(48px, 13vw, 84px); letter-spacing: -1px; }
+            .hero-sub { font-size: 15px; margin-top: 10px; }
             .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
-            .toc { top: 64px; }
-            .toc-inner { gap: 14px; padding: 12px 14px; }
-            .toc a { font-size: 10px; letter-spacing: 1.2px; }
-            .toc a .n { font-size: 12px; margin-right: 4px; }
 
-            .opener { padding: 48px 20px 24px; grid-template-columns: 1fr; gap: 8px; }
-            .opener .num { font-size: 88px; line-height: .9; }
-            .opener .name { font-size: 30px; }
+            /* Tighter section padding */
+            section.band, .home-band { padding: 48px 20px; }
+            { padding: 64px 20px; }
+            .media-band { padding: 0 20px; margin-top: 32px; }
+            .home-title { font-size: clamp(36px, 9vw, 56px); margin-bottom: 16px; }
+            .home-paragraph { font-size: 16px; margin-bottom: 32px; }
 
-            .chapter-body { padding: 0 20px 56px; }
+            /* KPIs: 2x2, tighter */
+            .kpi-strip { grid-template-columns: 1fr 1fr; margin-bottom: 40px; }
+            .kpi-strip > div:nth-child(2) { border-right: none; }
+            .kpi-strip > div:nth-child(1), .kpi-strip > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
+            .kpi-strip > div { padding: 22px 12px; }
+            .kpi-v { font-size: 32px; }
+            .kpi-l { font-size: 9px; margin-top: 8px; }
 
-            /* Plot facts: stack each row */
-            .plot-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
-            .pf-label { padding-top: 0; font-size: 10px; }
-            .pf-value { font-size: 22px; }
-
-            /* Plot image: smaller aspect ratio */
-            .plot-image { aspect-ratio: 16/10; margin-bottom: 40px; }
-
-            /* Plot narrative */
-            .plot-narrative { font-size: 18px; }
-
-            /* KPIs: 2x2 grid */
-            .home-kpis { grid-template-columns: 1fr 1fr; margin-bottom: 56px; }
-            .home-kpis > div { padding: 22px 12px; }
-            .home-kpis > div:nth-child(2) { border-right: none; }
-            .home-kpis > div:nth-child(1), .home-kpis > div:nth-child(2) { border-bottom: 1px solid var(--grey-border); }
-            .kpi-v { font-size: 34px; }
-
-            /* Concept */
-            .home-concept { margin-bottom: 48px; }
-            .home-concept p { font-size: 16px; }
-
-            /* Pillars: stack */
-            .pillars { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
-            .pillar-img { aspect-ratio: 16/9; margin-bottom: 16px; }
-
-            /* Gallery: 2-col with hero tiles full width */
-            .gallery { grid-template-columns: 1fr 1fr; gap: 2px; }
-            .gallery .tile-1, .gallery .tile-6 { grid-column: span 2; aspect-ratio: 4/3; }
-            .gallery .tile-1 img, .gallery .tile-6 img { aspect-ratio: 4/3; }
-
-            /* Craft list - stack vertically per row */
-            .craft-row {
-                grid-template-columns: 1fr;
-                gap: 6px; padding: 28px 0;
+            /* Trifecta: horizontal scroll-snap */
+            .trifecta {
+                grid-template-columns: none;
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-padding: 20px;
+                margin: 0 -20px;
+                padding: 0 20px 8px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
             }
-            .cr-num { font-size: 30px; margin-bottom: 4px; }
-            .cr-name { font-size: 22px; }
-            .cr-desc { margin-top: 4px; }
+            .trifecta::-webkit-scrollbar { display: none; }
+            .tri { flex: 0 0 78%; scroll-snap-align: start; min-width: 0; }
+            .tri-img { aspect-ratio: 4/5; margin-bottom: 14px; }
+            .tri-h { font-size: 18px; }
 
-            /* Team credits - stack vertically per row */
-            .credit-row {
-                grid-template-columns: 1fr;
-                gap: 4px; padding: 24px 0;
-            }
-            .credit-role { padding-top: 0; font-size: 10px; }
-            .credit-name { font-size: 26px; }
-            .credit-desc { margin-top: 4px; }
+            /* Gallery: hide tiles 2-5 on mobile, show only 2 hero tiles */
+            .gallery { grid-template-columns: 1fr; gap: 2px; }
+            .tile-1, .tile-6 { grid-column: span 1; aspect-ratio: 16/10; }
+            .tile-1 img, .tile-6 img { aspect-ratio: 16/10; }
+            .tile-2, .tile-3, .tile-4, .tile-5 { display: none; }
 
-            /* Timeline */
+            /* Media: stack */
+            .media-grid { grid-template-columns: 1fr; }
+            .media-card { aspect-ratio: 16/10; }
+            .media-label { font-size: 24px; }
+            .media-sub { font-size: 10px; }
+            .media-icon { width: 44px; height: 44px; }
+
+            /* Colophon */
+            .colophon-text { font-size: 18px; line-height: 1.5; }
+
+            /* Timeline: vertical with line */
             .timeline-band { padding: 56px 20px; }
-            .timeline-label { margin-bottom: 28px; font-size: 10px; }
-            .timeline-track { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
-            .timeline-track::before { display: none; }
-            .ts-name { font-size: 14px; }
+            .timeline-track {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                gap: 0;
+                text-align: left;
+            }
+            .timeline-track::before {
+                top: 0; bottom: 0;
+                left: 6px; right: auto;
+                width: 2px; height: auto;
+                background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 100%);
+            }
+            .ts {
+                display: grid;
+                grid-template-columns: 22px 1fr;
+                column-gap: 18px;
+                row-gap: 4px;
+                align-items: start;
+                padding: 4px 0 28px;
+            }
+            .ts:last-child { padding-bottom: 0; }
+            .ts-dot { grid-row: 1 / span 2; margin: 4px 0 0; }
+            .ts-when { grid-column: 2; text-align: left; margin: 0; }
+            .ts-name { grid-column: 2; text-align: left; font-size: 15px; }
 
             /* CTA */
-            .cta { padding: 64px 20px; }
+            .cta { padding: 56px 20px; }
+            .cta h2 { font-size: clamp(28px, 8vw, 40px); }
+            .cta p { font-size: 14px; margin-bottom: 28px; }
             .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
-            .cta-actions a { justify-content: center; }
+            .cta-actions a { justify-content: center; padding: 14px 24px; }
 
-            /* Floating */
+            footer { padding: 24px 20px; font-size: 10px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
-            footer { padding: 28px 20px; font-size: 10px; }
         }
-    
-        /* === TEAM CREDITS — card layout (differentiated from craft list) === */
-        .team-credits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 4px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border: none !important;
-        }
-        .credit-row {
-            display: flex !important;
-            flex-direction: column !important;
-            grid-template-columns: none !important;
-            gap: 0 !important;
-            padding: 56px 36px !important;
-            background: var(--off-white);
-            text-align: center;
-            border: none !important;
-            border-bottom: none !important;
-        }
-        .credit-row:last-child { border-bottom: none !important; }
-        .credit-role {
-            font-family: var(--mono) !important;
-            font-size: 10px !important;
-            letter-spacing: 2.5px !important;
-            text-transform: uppercase !important;
-            color: var(--accent) !important;
-            padding: 0 !important;
-            margin-bottom: 18px;
-        }
-        .credit-name {
-            font-family: var(--serif) !important;
-            font-size: 32px !important;
-            font-weight: 400 !important;
-            line-height: 1.1 !important;
-            letter-spacing: -0.3px !important;
-            margin-bottom: 14px;
-        }
-        .credit-desc {
-            font-size: 13px !important;
-            font-weight: 300 !important;
-            line-height: 1.7 !important;
-            color: var(--grey) !important;
-            margin-top: auto;
-        }
-        @media (max-width: 760px) {
-            .team-credits { grid-template-columns: 1fr; gap: 2px; }
-            .credit-row { padding: 40px 24px !important; }
-            .credit-name { font-size: 28px !important; }
-        }
-
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="../index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
+    <a href="../../nl/index.html" class="nav-logo"><img src="../../img/logo/sadala-logo.png" alt="">Sadala</a>
     <div class="nav-links">
-        <a href="projects.html">Projecten</a>
-        <a href="approach.html">Onze aanpak</a>
+        <a href="projects.html">Projects</a>
+        <a href="approach.html">Our approach</a>
         <details class="nav-lang-wrap">
-            <summary>NL</summary>
+            <summary>EN</summary>
             <div class="nav-lang-menu">
                 <a href="../../pages/villa-leoni-benabu.html">EN</a>
                 <a href="../../es/pages/villa-leoni-benabu.html">ES</a>
-                <a href="villa-leoni-benabu.html" class="is-current">NL</a>
+                <a href="../../nl/pages/villa-leoni-benabu.html" class="is-current">NL</a>
                 <a href="../../fi/pages/villa-leoni-benabu.html">FI</a>
                 <a href="../../da/pages/villa-leoni-benabu.html">DA</a>
                 <a href="../../pl/pages/villa-leoni-benabu.html">PL</a>
@@ -489,181 +342,111 @@
 
 <!-- HERO -->
 <section class="hero">
-    <img src="../../img/leoni-benabu/main.jpeg" alt="Origen tussen honderdjarige pijnbomen">
+    <img src="../../img/leoni-benabu/main.jpeg" alt="Origen among century-old pines">
     <div class="hero-content">
-        <div class="hero-meta">Pinares de San Ant&oacute;n &middot; Opgeleverd 2023 &middot; Verkocht</div>
+        <div class="hero-meta">Pinares de San Ant&oacute;n &middot; Delivered 2023 &middot; Sold</div>
         <h1 class="hero-title">Origen</h1>
-        <p class="hero-sub">De eerste Sadala-woning. Waar de studio begon. Waar de methode voor het eerst werd bewezen.</p>
+        <p class="hero-sub">The first Sadala home. Where the studio began. Where the method was first proven.</p>
     </div>
 </section>
 
-<!-- IN-PAGE TOC -->
-<div class="toc">
-    <div class="toc-inner">
-        <a href="#plot"  data-ch="plot"><span class="n">01</span>De plek</a>
-        <a href="#home"  data-ch="home"><span class="n">02</span>De woning</a>
-        <a href="#craft" data-ch="craft"><span class="n">03</span>Het ambacht</a>
-        <a href="#team"  data-ch="team"><span class="n">04</span>Het team</a>
-    </div>
-</div>
+<!-- ════ THE HOME (concept + facts + trifecta) ════ -->
+<section class="home-band">
+    <div class="home-inner">
+        <h2 class="home-title">Rooted. Singular. Local.</h2>
+        <p class="home-paragraph">
+            We drove past this plot for three years before buying it. Origen sold before the kitchen taps were installed. The buyer asked one question: are you building anything else like this? That quiet success gave us permission to keep going. More importantly, it taught us what Sadala would become.
+        </p>
 
-<!-- ════ 01 / DE PLEK ════ -->
-<section class="opener" id="plot">
-    <div class="num">01</div>
-    <h2 class="name">De plek.</h2>
+        <!-- 4 KPIs -->
+        <div class="kpi-strip">
+            <div>
+                <div class="kpi-v">620</div>
+                <div class="kpi-l">m&sup2; built</div>
+            </div>
+            <div>
+                <div class="kpi-v">3,076</div>
+                <div class="kpi-l">m&sup2; plot</div>
+            </div>
+            <div>
+                <div class="kpi-v">6</div>
+                <div class="kpi-l">rooms</div>
+            </div>
+            <div class="kpi-loc">
+                <div class="kpi-v">Pinares de San Ant&oacute;n</div>
+                <div class="kpi-l">location</div>
+            </div>
+        </div>
+
+    </div>
 </section>
 
-<div class="chapter-body">
-    <div class="plot-facts">
-        <div>
-            <div class="pf-label">Locatie</div>
-            <div class="pf-value">Pinares de San Ant&oacute;n<small>8 min van het centrum van M&aacute;laga</small></div>
-        </div>
-        <div>
-            <div class="pf-label">Perceel</div>
-            <div class="pf-value">3.076 m&sup2;<small>Tussen honderdjarige pijnbomen</small></div>
-        </div>
-        <div>
-            <div class="pf-label">Eerste toezegging</div>
-            <div class="pf-value">2021<small>Gekocht voordat er een plan was</small></div>
-        </div>
-        <div>
-            <div class="pf-label">Ori&euml;ntatie</div>
-            <div class="pf-value">Zuidoost<small>Ochtendlicht door het bladerdek van de pijnbomen</small></div>
-        </div>
-    </div>
-
-    <div class="plot-image">
-        <img src="../../img/leoni-benabu/leoni-walkway.jpeg" alt="Tuinpad van Origen">
-    </div>
-
-    <p class="plot-narrative">
-        Wij reden drie jaar lang langs dit perceel voordat wij het kochten. <em>Er was niets gebouwd. Er was alleen licht tussen de takken, de geur van hars en stilte.</em> Wij gaven ons woord voordat wij een plan hadden.
-    </p>
-    <p class="plot-narrative">
-        Die toezegging, aan de plek nog v&oacute;&oacute;r het programma, werd het eerste principe van Sadala.
-    </p>
-</div>
-
-<!-- ════ 02 / DE WONING ════ -->
-<section class="opener" id="home">
-    <div class="num">02</div>
-    <h2 class="name">De woning.<br><em>Rooted. Singular. Local.</em></h2>
-</section>
-
-<div class="chapter-body">
-    <div class="home-concept">
-        <p>Origen werd verkocht voordat de keukenkranen waren ge&iuml;nstalleerd. De koper stelde &eacute;&eacute;n vraag: "bouwt u nog iets anders zoals dit?" Dat stille succes gaf ons toestemming om door te gaan. Belangrijker nog, het leerde ons wat Sadala zou worden.</p>
-    </div>
-
-    <div class="home-kpis">
-        <div>
-            <div class="kpi-v">620</div>
-            <div class="kpi-l">m&sup2; bebouwd</div>
-        </div>
-        <div>
-            <div class="kpi-v">6</div>
-            <div class="kpi-l">kamers</div>
-        </div>
-        <div>
-            <div class="kpi-v">1 op 1</div>
-            <div class="kpi-l">nooit herhaald</div>
-        </div>
-        <div>
-            <div class="kpi-v">2023</div>
-            <div class="kpi-l">opgeleverd</div>
-        </div>
-    </div>
-
-    <div class="tile tile-2"><img src="../../img/leoni-benabu/leoni-deck.jpeg" alt=""></div>
+<!-- ════ GALLERY ════ -->
+<section class="band" style="padding-top: 0;">
+    <div class="section-label">The renders</div>
+    <div class="gallery">
+        <div class="tile tile-1"><img src="../../img/leoni-benabu/main.jpeg" alt=""></div>
+        <div class="tile tile-2"><img src="../../img/leoni-benabu/leoni-deck.jpeg" alt=""></div>
         <div class="tile tile-3"><img src="../../img/leoni-benabu/leoni-walkway.jpeg" alt=""></div>
         <div class="tile tile-4"><img src="../../img/leoni-benabu/IMG_0009.jpg" alt=""></div>
         <div class="tile tile-5"><img src="../../img/leoni-benabu/main.jpeg" alt=""></div>
         <div class="tile tile-6"><img src="../../img/leoni-benabu/leoni-deck.jpeg" alt=""></div>
     </div>
-</div>
-
-<!-- ════ 03 / HET AMBACHT ════ -->
-<section class="opener" id="craft">
-    <div class="num">03</div>
-    <h2 class="name">Het ambacht.</h2>
 </section>
 
-<div class="chapter-body">
-    <div class="craft-list">
-        <div class="craft-row">
-            <div class="cr-num">01</div>
-            <div class="cr-role-name">
-                <div class="cr-role">Steen</div>
-                <div class="cr-name">Cantera de Mijas</div>
+<!-- ════ MEDIA (3D + Video) ════ -->
+<section class="media-band">
+    <div class="media-grid">
+        <a href="#" class="media-card" aria-label="3D Visit">
+            <div class="media-bg" style="background-image: url('../img/leoni-benabu/main.jpeg');"></div>
+            <span class="media-soon">Coming soon</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.2L19.5 8 12 11.8 4.5 8 12 4.2zM4 9.4l7 3.5v7.7l-7-3.5V9.4zm9 11.2v-7.7l7-3.5v7.7l-7 3.5z"/></svg></div>
+                <div class="media-label">3D Visit</div>
+                <div class="media-sub">Take the virtual tour</div>
             </div>
-            <p class="cr-desc">Dezelfde Andalusische graniethoudende steen die Sadala vandaag nog gebruikt. De relatie begon hier, bij Origen, en is sindsdien op elk project voortgezet.</p>
-        </div>
-        <div class="craft-row">
-            <div class="cr-num">02</div>
-            <div class="cr-role-name">
-                <div class="cr-role">Pijnbomentuin</div>
-                <div class="cr-name">Lokale tuinier</div>
+        </a>
+        <a href="#" class="media-card" aria-label="Video">
+            <div class="media-bg" style="background-image: url('../img/leoni-benabu/leoni-deck.jpeg');"></div>
+            <span class="media-soon">Coming soon</span>
+            <div class="media-overlay">
+                <div class="media-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                <div class="media-label">Video</div>
+                <div class="media-sub">Watch the film</div>
             </div>
-            <p class="cr-desc">De volgroeide pijnbomen werden bewaard op de exacte plek waar zij stonden. Inheemse bodembedekkers en varens, gekozen door een tuinier uit de buurt die het perceel tot op de dag van vandaag eens per seizoen aanloopt.</p>
-        </div>
-        <div class="craft-row">
-            <div class="cr-num">03</div>
-            <div class="cr-role-name">
-                <div class="cr-role">Hout</div>
-                <div class="cr-name">Een houtzagerij in Ronda</div>
-            </div>
-            <p class="cr-desc">Massief Andalusisch eikenhout. Dezelfde leverancier zaagt nog altijd planken voor elke Sadala-woning die sindsdien is opgeleverd.</p>
-        </div>
+        </a>
     </div>
-</div>
-
-<!-- ════ 04 / HET TEAM ════ -->
-<section class="opener" id="team">
-    <div class="num">04</div>
-    <h2 class="name">Het team.</h2>
 </section>
 
-<div class="chapter-body">
-    <div class="team-credits">
-        <div class="credit-row">
-            <div class="credit-role">Architectuur</div>
-            <div class="credit-name">El Muelle</div>
-            <p class="credit-desc">Een architectenbureau gevestigd in M&aacute;laga. Gekozen voor de ingetogen, op de plek gerichte aanpak.</p>
-        </div>
-        <div class="credit-row">
-            <div class="credit-role">Landschap</div>
-            <div class="credit-name">Acer</div>
-            <p class="credit-desc">Landschapsontwerpers die werken met inheemse mediterrane beplanting.</p>
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- ════ TIMELINE - de kroniek van Origen ════ -->
+<!-- ════ COLOPHON + TIMELINE (one section, colophon first) ════ -->
 <section class="timeline-band">
     <div class="timeline-inner">
-        <div class="timeline-label">Origen, de kroniek</div>
+        <div class="timeline-label">Origen</div>
+
+        <p class="colophon-text">
+            Origen introduced <strong>acero corten</strong> to the studio - <em>the Sadala signature ever since</em>. <strong>Stone</strong> quarried in Mijas, <strong>solid oak</strong> milled in Ronda, and a <strong>pine garden</strong> shaped around eight century-old trees that were already on the plot. Designed by <strong>El Muelle</strong>, landscape by <strong>Acer</strong>.
+        </p>
+
         <div class="timeline-track">
             <div class="ts done">
                 <div class="ts-dot"></div>
                 <div class="ts-when">2021</div>
-                <div class="ts-name">Perceel<br>gevonden</div>
+                <div class="ts-name">Plot<br>identified</div>
             </div>
             <div class="ts done">
                 <div class="ts-dot"></div>
                 <div class="ts-when">2022</div>
-                <div class="ts-name">Project<br>goedgekeurd</div>
+                <div class="ts-name">Project<br>approved</div>
             </div>
             <div class="ts done">
                 <div class="ts-dot"></div>
                 <div class="ts-when">2023</div>
-                <div class="ts-name">Opgeleverd<br>&amp; verkocht</div>
+                <div class="ts-name">Delivered<br>&amp; sold</div>
             </div>
             <div class="ts done">
                 <div class="ts-dot"></div>
-                <div class="ts-when">vandaag</div>
-                <div class="ts-name">De eerste<br>fundamentsteen</div>
+                <div class="ts-when">today</div>
+                <div class="ts-name">Foundation stone<br>of the studio</div>
             </div>
         </div>
     </div>
@@ -671,10 +454,10 @@
 
 <!-- ════ CTA ════ -->
 <section class="cta">
-    <h2>Loop het perceel met ons af<br><em>voordat u een brochure leest.</em></h2>
-    <p>Ons proces begint met een gesprek, niet met een brochure. Wij wonen waar wij bouwen.</p>
+    <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
+    <p>Our process starts with a conversation, not a brochure. We live where we build.</p>
     <div class="cta-actions">
-        <a href="#" class="primary">Bezoek het perceel</a>
+        <a href="#" class="primary">Walk the plot</a>
         <a href="https://wa.me/34639675315" class="ghost">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
             WhatsApp
@@ -682,38 +465,12 @@
     </div>
 </section>
 
-<footer>
-    SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A
-</footer>
+<footer>SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A</footer>
 
-<a href="https://wa.me/34639675315" class="float-cta" aria-label="Neem contact op">
+<a href="https://wa.me/34639675315" class="float-cta" aria-label="Contact us">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-    <span>Neem contact op</span>
+    <span>Contact us</span>
 </a>
-
-<script>
-/* TOC scroll-spy */
-const links = document.querySelectorAll('.toc a[data-ch]');
-const sections = ['plot','home','craft','team'].map(id => document.getElementById(id));
-const obs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) {
-        links.forEach(a => a.classList.toggle('active', a.dataset.ch === e.target.id));
-    }
-}), { rootMargin: '-30% 0px -60% 0px' });
-sections.forEach(s => s && obs.observe(s));
-
-/* Smooth scroll with offset for sticky nav + TOC */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const t = document.getElementById(id);
-        if (!t) return;
-        e.preventDefault();
-        const y = t.getBoundingClientRect().top + window.scrollY - 130;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-    });
-});
-</script>
 
 </body>
 </html>
