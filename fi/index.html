@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadala - Ainutlaatuisen rakentajat</title>
-    <meta name="description" content="Sadala - Ainutlaatuisen rakentajat. Yksi välimerellinen huvila kerrallaan Andalusiassa. Suunnittelemme, rakennamme ja myymme.">
+    <title>Sadala - Builders of the Unique</title>
+    <meta name="description" content="Sadala. Perheen studio Málagassa, toinen sukupolvi. Suunnittelemme, rakennamme ja myymme yhden välimerellisen huvilan kerrallaan.">
     <link rel="icon" type="image/png" sizes="32x32" href="../img/logo/favicon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -21,8 +21,7 @@
         body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
 
 
-
-        /* === Live nav (logo, links, language dropdown, hamburger) === */
+        /* === Live nav === */
         nav {
             position: sticky; top: 0; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -35,7 +34,6 @@
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
         .nav-links a:hover { color: var(--black); }
-        .nav-links a.active { color: var(--black); font-weight: 400; }
         .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
         .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
         .nav-hamburger { display: none; cursor: pointer; width: 24px; height: 16px; position: relative; z-index: 1001; }
@@ -69,213 +67,234 @@
             body.nav-open-body { overflow: hidden; }
         }
 
-
-        /* HERO */
-        .hero { position: relative; height: 92vh; overflow: hidden; }
-        .hero img { width: 100%; height: 100%; object-fit: cover; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(44,44,44,.6) 100%); }
-        .hero-content { position: absolute; bottom: 64px; left: 48px; right: 48px; color: #fff; z-index: 2; }
-        .hero-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 22px; }
-        .hero-title { font-family: var(--serif); font-size: clamp(56px, 10vw, 144px); font-weight: 300; line-height: .95; letter-spacing: -2px; max-width: 1100px; }
-        .hero-sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.2vw, 26px); color: rgba(255,255,255,.85); margin-top: 18px; max-width: 720px; line-height: 1.4; }
-
-        /* In-page TOC */
-        .toc { position: sticky; top: 65px; z-index: 40; background: rgba(232,226,213,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grey-border); }
-        .toc-inner { display: flex; gap: 36px; justify-content: center; padding: 16px 24px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-        .toc a { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; transition: all .25s; }
-        .toc a .n { color: var(--accent); margin-right: 8px; font-family: var(--serif); font-size: 13px; }
-        .toc a:hover, .toc a.active { color: var(--black); border-bottom-color: var(--accent); }
-
-        /* Chapter opener */
-        .opener {
-            padding: 96px 48px 56px;
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: 220px 1fr;
-            gap: 48px; align-items: baseline;
-        }
-        .opener .num { font-family: var(--serif); font-size: clamp(120px, 16vw, 200px); font-weight: 200; line-height: .85; letter-spacing: -5px; color: var(--accent); }
-        .opener .name { font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; }
-        .opener .name .label { display: block; font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        .opener .name em { font-style: italic; color: var(--grey); }
-
-        /* Chapter body container */
-        .chapter-body { max-width: 1200px; margin: 0 auto; padding: 0 48px 96px; }
-
-        /* ════ 01 STUDIO - fact sheet + signed paragraph ════ */
-        .studio-facts {
-            max-width: 800px; margin: 0 auto 64px;
-            border-top: 1px solid var(--grey-border);
-        }
-        .studio-facts > div {
-            display: grid; grid-template-columns: 220px 1fr;
-            gap: 32px; padding: 22px 0;
-            border-bottom: 1px solid var(--grey-border);
-            align-items: baseline;
-        }
-        .sf-label { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
-        .sf-value { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; }
-        .sf-value small { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); display: block; margin-top: 6px; letter-spacing: 0; }
-
-        .studio-letter {
-            max-width: 720px; margin: 0 auto;
-            font-family: var(--serif); font-size: 22px; font-weight: 400;
-            line-height: 1.6; color: var(--black); text-align: center;
-        }
-        .studio-letter em { font-style: italic; color: var(--accent); }
-        .studio-letter + .studio-letter { margin-top: 18px; }
-        .studio-sig { display: block; margin-top: 32px; font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--grey); }
-
-        /* ════ 02 THE WORK - three numbered project cards ════ */
-        .work-list { max-width: 1100px; margin: 0 auto; }
-        .work-row {
-            display: grid; grid-template-columns: 1fr 1.4fr;
-            gap: 56px; padding: 48px 0;
-            border-top: 1px solid var(--grey-border);
+        /* ════ QUOTE HERO - no image, brand statement first ════ */
+        .quote-hero {
+            min-height: calc(90vh - 80px);
+            display: flex; flex-direction: column;
             align-items: center;
-            text-decoration: none; color: inherit;
+            padding: 56px 48px 24px;
+            text-align: center;
+        }
+        .quote-content {
+            flex: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: 100%;
+        }
+        .quote-eyebrow {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
+        }
+        .quote-text {
+            font-family: var(--serif);
+            font-size: clamp(36px, 5.5vw, 72px);
+            font-weight: 300; font-style: italic;
+            line-height: 1.15; letter-spacing: -0.6px;
+            max-width: 1000px;
+            color: var(--black);
+        }
+        .quote-text em { color: var(--accent); font-style: normal; }
+        .quote-author {
+            margin-top: 56px;
+            font-family: var(--mono);
+            font-size: 11px; letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+        .quote-author strong { color: var(--black); font-weight: 400; }
+        .scroll-hint {
+            margin-top: 24px;
+            font-family: var(--mono);
+            font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--grey);
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+        }
+        .scroll-hint::after {
+            content: ''; width: 1px; height: 36px;
+            background: var(--accent); opacity: .4;
+            animation: drop 2.4s ease infinite;
+            margin-top: 0;
+        }
+        @keyframes drop {
+            0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; }
+            50% { transform: scaleY(1); opacity: .5; }
+        }
+
+        /* ════ SECTION LABEL ════ */
+        .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+
+        /* ════ THE METHOD - single statement ════ */
+        .method-band {
+            padding: 140px 48px;
+            text-align: center;
+        }
+        .method-words {
+            font-family: var(--serif);
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 300; line-height: 1; letter-spacing: -1px;
+            color: var(--black);
+        }
+        .method-words em { color: var(--accent); font-style: italic; }
+        .method-sub {
+            margin-top: 32px;
+            font-family: var(--serif); font-style: italic;
+            font-size: clamp(18px, 2vw, 24px); font-weight: 300;
+            color: var(--grey); line-height: 1.5;
+            max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .method-link {
+            display: inline-block; margin-top: 48px;
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--accent); text-decoration: none;
+            border-bottom: 1px solid var(--accent); padding-bottom: 4px;
             transition: opacity .3s;
         }
-        .work-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .work-row:hover { opacity: .82; }
-        .work-row:nth-child(even) { grid-template-columns: 1.4fr 1fr; }
-        .work-row:nth-child(even) .work-img { order: 2; }
-        .work-img { aspect-ratio: 4/3; overflow: hidden; }
-        .work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-        .work-row:hover .work-img img { transform: scale(1.04); }
-        .work-meta { display: flex; flex-direction: column; gap: 12px; }
-        .work-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-        .work-name { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; line-height: 1; letter-spacing: -0.6px; margin: 4px 0 0; }
-        .work-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); margin-top: 8px; }
-        .work-status.sold { color: var(--grey); }
-        .work-status.live { color: var(--accent); }
-        .work-status.live::before { content: '\\25CF'; margin-right: 6px; animation: pulse 2.4s ease-in-out infinite; }
-        .work-status.future { color: #5A7A5A; }
-        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
-        .work-spec { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); margin-top: 14px; max-width: 460px; }
-        .work-spec strong { color: var(--black); font-weight: 400; }
-        .work-arrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-top: 12px; }
+        .method-link:hover { opacity: .7; }
 
-        /* ════ 03 THE METHOD - numbered editorial list ════ */
-        .method-list { max-width: 920px; margin: 0 auto; }
-        .method-row {
-            display: grid; grid-template-columns: 80px 220px 1fr;
-            gap: 32px; padding: 36px 0;
-            border-top: 1px solid var(--grey-border);
-            align-items: baseline;
+        /* ════ THE WORK - full-bleed cinematic cards ════ */
+        .work-band { padding: 0; }
+        .work-eyebrow-band { padding: 100px 48px 56px; max-width: 1200px; margin: 0 auto; }
+        .work-stack { display: flex; flex-direction: column; gap: 4px; }
+        .work-card {
+            position: relative; height: 70vh; min-height: 480px;
+            overflow: hidden; display: block;
+            text-decoration: none; color: #fff;
         }
-        .method-row:last-child { border-bottom: 1px solid var(--grey-border); }
-        .m-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; letter-spacing: -1px; }
-        .m-word { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.3px; }
-        .m-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 580px; }
+        .work-card-bg { position: absolute; inset: 0; }
+        .work-card-bg img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
+        .work-card:hover .work-card-bg img { transform: scale(1.04); }
+        .work-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,.6) 100%);
+        }
+        .work-card-meta {
+            position: absolute; left: 48px; right: 48px; bottom: 48px;
+            z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;
+        }
+        .work-card-left { max-width: 720px; }
+        .work-card-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+        .work-card-name { font-family: var(--serif); font-size: clamp(48px, 6vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -1px; }
+        .work-card-spec { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 16px; }
+        .work-card-right { text-align: right; flex-shrink: 0; }
+        .work-card-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: 8px; }
+        .work-card-status.live { color: var(--accent); }
+        .work-card-status.live::before { content: '\25CF'; margin-right: 6px; }
+        .work-card-arrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px;
+            border: 1px solid rgba(255,255,255,.4);
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: #fff; transition: all .25s;
+        }
+        .work-card:hover .work-card-arrow { background: var(--accent); border-color: var(--accent); }
 
-        /* ════ 04 THE CONVERSATION - CTA ════ */
-        .cta {
-            background: var(--black); color: var(--off-white);
-            padding: 100px 48px; text-align: center;
+        /* ════ THE FILM (video placeholder) ════ */
+        .film-band { padding: 32px 48px 0; max-width: 1200px; margin: 0 auto; }
+        .film-card {
+            display: block; position: relative; aspect-ratio: 21/9; overflow: hidden;
+            text-decoration: none; cursor: pointer;
+            transition: transform .4s;
+            background: var(--black);
         }
-        .cta h2 {
-            font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
-            font-weight: 300; line-height: 1.1; letter-spacing: -0.4px;
-            max-width: 800px; margin: 0 auto 16px;
+        .film-card:hover { transform: translateY(-2px); }
+        .film-bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            filter: brightness(.55) saturate(.92);
+            transition: filter .4s, transform 1.4s cubic-bezier(.2,.8,.2,1);
         }
-        .cta h2 em { font-style: italic; color: var(--accent); }
-        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 40px; }
-        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
-        .cta-actions a {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 32px; text-decoration: none;
-            font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+        .film-card:hover .film-bg { filter: brightness(.4); transform: scale(1.04); }
+        .film-overlay {
+            position: absolute; inset: 0; z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: #fff; gap: 18px; padding: 32px;
+        }
+        .film-icon {
+            width: 64px; height: 64px;
+            border: 1.5px solid rgba(255,255,255,.7);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
             transition: all .25s;
         }
+        .film-card:hover .film-icon { background: rgba(255,255,255,.12); border-color: #fff; }
+        .film-icon svg { width: 24px; height: 24px; fill: #fff; }
+        .film-label {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300; line-height: 1; letter-spacing: -0.4px;
+        }
+        .film-sub {
+            font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px;
+            text-transform: uppercase; color: rgba(255,255,255,.7);
+        }
+        .film-soon {
+            position: absolute; top: 20px; right: 20px; z-index: 3;
+            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+            padding: 6px 12px; background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+            border-radius: 999px;
+        }
+
+        /* ════ CTA ════ */
+        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
+        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
+        .cta h2 em { font-style: italic; color: var(--accent); }
+        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
+        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
         .cta .primary { background: var(--accent); color: #fff; }
         .cta .primary:hover { background: #d49a7e; }
         .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
         .cta .ghost:hover { border-color: var(--off-white); }
         .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
-        .cta-direct { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: rgba(225,216,204,.55); }
-        .cta-direct a { color: rgba(225,216,204,.85); text-decoration: none; }
-        .cta-direct a:hover { color: var(--off-white); }
 
-        /* Footer */
-        footer {
-            padding: 36px 48px;
-            background: var(--white);
-            border-top: 1px solid var(--grey-border);
-            text-align: center;
-            font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
-            color: var(--grey);
-        }
+        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
 
         /* Floating WhatsApp */
-        .float-cta {
-            position: fixed; bottom: 24px; right: 24px; z-index: 99;
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 13px 22px;
-            background: var(--black); color: var(--off-white);
-            font-family: var(--sans); font-size: 13px; font-weight: 400;
-            letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-            border-radius: 999px;
-            box-shadow: 0 8px 24px rgba(44,44,44,.18);
-            transition: all .25s;
-        }
+        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
         .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
         .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
         .float-cta:hover svg { fill: #fff; }
 
-        /* Tablet */
         @media (max-width: 1024px) {
-            .opener { padding: 80px 32px 48px; grid-template-columns: 160px 1fr; gap: 32px; }
-            .opener .num { font-size: 140px; }
-            .chapter-body { padding: 0 32px 80px; }
-            .studio-facts > div { grid-template-columns: 180px 1fr; gap: 24px; }
-            .work-row { gap: 32px; padding: 36px 0; }
-            .method-row { grid-template-columns: 60px 200px 1fr; gap: 24px; padding: 30px 0; }
+            .film-band { padding-left: 32px; padding-right: 32px; }
+            .method-band { padding-left: 32px; padding-right: 32px; }
+            .work-eyebrow-band { padding-left: 32px; padding-right: 32px; }
+            .work-card-meta { left: 32px; right: 32px; bottom: 32px; }
         }
 
-        /* Mobile */
         @media (max-width: 760px) {
             nav { padding: 14px 20px; }
-            .nav-r { display: none; }
-            .hero { height: 78vh; }
-            .hero-content { left: 20px; right: 20px; bottom: 28px; }
-            .hero-title { font-size: clamp(48px, 13vw, 88px); letter-spacing: -1px; }
-            .hero-sub { font-size: 16px; margin-top: 12px; }
-            .hero-meta { font-size: 10px; letter-spacing: 1.5px; }
-            .toc { top: 64px; }
-            .toc-inner { gap: 14px; padding: 12px 14px; }
-            .toc a { font-size: 10px; letter-spacing: 1.2px; }
-            .toc a .n { font-size: 12px; margin-right: 4px; }
+            .quote-hero { padding: 56px 20px; min-height: calc(100vh - 60px); }
+            .quote-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 36px; }
+            .quote-text { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: -0.4px; }
+            .quote-author { font-size: 10px; letter-spacing: 2px; margin-top: 36px; }
+            .scroll-hint { margin-top: 16px; }
 
-            .opener { padding: 48px 20px 24px; grid-template-columns: 1fr; gap: 8px; }
-            .opener .num { font-size: 88px; line-height: .9; }
-            .opener .name { font-size: 30px; }
-            .chapter-body { padding: 0 20px 56px; }
+            .method-band, .work-band { padding: 64px 20px; }
+            .film-band { padding: 24px 20px 0; }
+            .method-band { padding: 64px 20px; }
+            .method-words { font-size: clamp(36px, 11vw, 64px); }
+            .method-sub { font-size: 16px; margin-top: 20px; }
 
-            /* Studio facts: stack each row */
-            .studio-facts > div { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
-            .sf-label { padding-top: 0; font-size: 10px; }
-            .sf-value { font-size: 22px; }
+            .work-eyebrow-band { padding: 56px 20px 32px; }
+            .work-card { height: 60vh; min-height: 420px; }
+            .work-card-meta { left: 20px; right: 20px; bottom: 28px; flex-direction: column; align-items: flex-start; }
+            .work-card-right { text-align: left; }
+            .work-card-name { font-size: 44px; }
 
-            .studio-letter { font-size: 18px; text-align: left; }
+            .film-card { aspect-ratio: 4/3; }
+            .film-label { font-size: 26px; }
+            .film-icon { width: 52px; height: 52px; }
 
-            /* Work: stack image and meta */
-            .work-row, .work-row:nth-child(even) {
-                grid-template-columns: 1fr; gap: 20px; padding: 32px 0;
-            }
-            .work-row:nth-child(even) .work-img { order: 0; }
-            .work-name { font-size: 36px; }
-
-            /* Method: stack */
-            .method-row { grid-template-columns: 1fr; gap: 6px; padding: 28px 0; }
-            .m-num { font-size: 30px; margin-bottom: 4px; }
-            .m-word { font-size: 26px; }
-
-            /* CTA */
             .cta { padding: 64px 20px; }
+            .cta h2 { font-size: clamp(28px, 8vw, 40px); }
             .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
-            .cta-actions a { justify-content: center; }
+            .cta-actions a { justify-content: center; padding: 14px 24px; }
 
-            footer { padding: 28px 20px; font-size: 10px; }
+            footer { padding: 24px 20px; font-size: 10px; }
             .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
         }
     </style>
@@ -305,134 +324,95 @@
     </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <img src="../img/cantal/cantal-hero.jpg" alt="Sadala-koti hämärässä">
-    <div class="hero-content">
-        <div class="hero-meta">M&aacute;laga &middot; Andaluc&iacute;a &middot; 36.7367&deg; N &middot; 4.3833&deg; W</div>
-        <h1 class="hero-title">Ainutlaatuisen rakentajat.</h1>
-        <p class="hero-sub">Yksi välimerellinen huvila kerrallaan. Me suunnittelemme sen, me rakennamme sen, me myymme sen. Sitten aloitamme seuraavan.</p>
-    </div>
-</section>
-
-<!-- IN-PAGE TOC -->
-<div class="toc">
-    <div class="toc-inner">
-        <a href="#studio" data-ch="studio"><span class="n">01</span>Studio</a>
-        <a href="#work"   data-ch="work"><span class="n">02</span>Työt</a>
-        <a href="#method" data-ch="method"><span class="n">03</span>Menetelmä</a>
-        <a href="#talk"   data-ch="talk"><span class="n">04</span>Aloita keskustelu</a>
-    </div>
-</div>
-
-<!-- ════ 01 / THE STUDIO ════ -->
-<section class="opener" id="studio">
-    <div class="num">01</div>
-    <h2 class="name">Studio.</h2>
-</section>
-
-<div class="chapter-body">
-    <div class="studio-facts">
-        <div>
-            <div class="sf-label">Perustettu</div>
-            <div class="sf-value">2021<small>M&aacute;laga, Andaluc&iacute;a &middot; perheen studio vuodesta 1990, toinen sukupolvi</small></div>
-        </div>
-        <div>
-            <div class="sf-label">Toimintatapa</div>
-            <div class="sf-value">Studio<small>Ei rakennuttaja. Ei markkinointialusta.</small></div>
-        </div>
-        <div>
-            <div class="sf-label">Tahti</div>
-            <div class="sf-value">Yksi huvila kerrallaan<small>Saman tiimin suunnittelema, rakentama ja luovuttama</small></div>
-        </div>
-        <div>
-            <div class="sf-label">Toiminta-alue</div>
-            <div class="sf-value">Lyhyen ajomatkan päässä<small>Jokaisesta projektista, kivilouhoksesta ja verstaasta</small></div>
+<!-- ════ QUOTE HERO ════ -->
+<section class="quote-hero">
+    <div class="quote-content">
+        <div class="quote-eyebrow">M&aacute;laga &middot; Andaluc&iacute;a</div>
+        <h1 class="quote-text">
+            Rakennamme koteja, <em>joissa itsekin haluaisimme asua</em>.<br>
+            Yksi kerrallaan.
+        </h1>
+        <div class="quote-author">
+            <strong>Perheen studio</strong> M&aacute;lagassa<br>
+            Toinen sukupolvi vuodesta 1990
         </div>
     </div>
-
-    <p class="studio-letter">
-        Perustin Sadalan, koska kaipaamiani koteja ei ollut markkinoilla. <em>Emme rakenna asiakkaille. Rakennamme koteja, joissa haluaisimme itse asua, yhden kerrallaan, ja sitten myymme ne.</em>
-    </p>
-    <p class="studio-letter">
-        Tämä ei ole skaalautuva liiketoiminta. Juuri siinä on koko idea.
-        <span class="studio-sig">- Dimitri</span>
-    </p>
-</div>
-
-<!-- ════ 02 / THE WORK ════ -->
-<section class="opener" id="work">
-    <div class="num">02</div>
-    <h2 class="name">Työt.</h2>
+    <div class="scroll-hint">vieritä</div>
 </section>
 
-<div class="chapter-body">
-    <div class="work-list">
-        <a href="pages/villa-leoni-benabu.html" class="work-row">
-            <div class="work-img"><img src="../img/leoni-benabu/main.jpeg" alt="Origen"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 01</div>
-                <div class="work-name">Origen</div>
-                <div class="work-status sold">Luovutettu &middot; myyty &middot; 2023</div>
-                <p class="work-spec"><strong>620 m&sup2;</strong> &middot; 6 huonetta &middot; Pinares de San Ant&oacute;n. Ensimmäinen koti. Satavuotiaiden mäntyjen keskellä.</p>
-                <div class="work-arrow">Lue lisää &rarr;</div>
+<!-- ════ THE FILM ════ -->
+<section class="film-band">
+    <a href="#" class="film-card" aria-label="Studion lyhytelokuva">
+        <div class="film-bg" style="background-image: url('../img/cantal/cantal-aerial.jpg');"></div>
+        <span class="film-soon">Tulossa pian</span>
+        <div class="film-overlay">
+            <div class="film-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="film-label">Studion lyhytelokuva</div>
+            <div class="film-sub">Sadala 90 sekunnissa</div>
+        </div>
+    </a>
+</section>
+
+<!-- ════ THE METHOD ════ -->
+<section class="method-band">
+    <h2 class="method-words"><em>Rooted.</em> <em>Singular.</em> <em>Local.</em></h2>
+    <p class="method-sub">Kolme periaatetta. Joka huvila, joka kerta.</p>
+    <a href="pages/approach.html" class="method-link">Lue lähestymistapamme &rarr;</a>
+</section>
+
+<!-- ════ THE WORK - cinematic stack ════ -->
+<section class="work-band">
+    <div class="work-eyebrow-band">
+        <div class="section-label">Projektimme</div>
+        <h2 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px;">Kolme kotia. Saman käden kolme allekirjoitusta.</h2>
+    </div>
+    <div class="work-stack">
+        <a href="pages/villa-leoni-benabu.html" class="work-card">
+            <div class="work-card-bg"><img src="../img/leoni-benabu/main.jpeg" alt="Origen"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-name">Origen</div>
+                    <div class="work-card-spec">620 m&sup2; &middot; 6 huonetta &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status">Toimitettu &middot; myyty</div>
+                    <div class="work-card-arrow">Kävele kanssamme &rarr;</div>
+                </div>
             </div>
         </a>
-
-        <a href="pages/sosiego.html" class="work-row">
-            <div class="work-img"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 02</div>
-                <div class="work-name">Sosiego</div>
-                <div class="work-status live">Rakenteilla &middot; luovutus 2027</div>
-                <p class="work-spec"><strong>570 m&sup2;</strong> &middot; 4 huonetta &middot; Pinares de San Ant&oacute;n. Hyvinvointikoti, joka on suunniteltu Välimeren rytmin ympärille.</p>
-                <div class="work-arrow">Lue lisää &rarr;</div>
+        <a href="pages/sosiego.html" class="work-card">
+            <div class="work-card-bg"><img src="../img/sosiego/sosiego-sunset.png" alt="Sosiego"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-name">Sosiego</div>
+                    <div class="work-card-spec">570 m&sup2; &middot; 4 makuuhuonetta &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status live">Rakenteilla</div>
+                    <div class="work-card-arrow">Kävele kanssamme &rarr;</div>
+                </div>
             </div>
         </a>
-
-        <a href="pages/villa-el-cantal.html" class="work-row">
-            <div class="work-img"><img src="../img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
-            <div class="work-meta">
-                <div class="work-num">N&deg; 03</div>
-                <div class="work-name">El Cantal</div>
-                <div class="work-status future">Hanke hyväksytty &middot; luovutus 2028</div>
-                <p class="work-spec"><strong>550 m&sup2;</strong> &middot; 5 huonetta &middot; Pinares de San Ant&oacute;n. Rinteeseen leikattu talo. Corten-pinta, viherkatto.</p>
-                <div class="work-arrow">Lue lisää &rarr;</div>
+        <a href="pages/villa-el-cantal.html" class="work-card">
+            <div class="work-card-bg"><img src="../img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
+            <div class="work-card-meta">
+                <div class="work-card-left">
+                    <div class="work-card-name">El Cantal</div>
+                    <div class="work-card-spec">550 m&sup2; &middot; 5 makuuhuonetta &middot; Pinares de San Ant&oacute;n</div>
+                </div>
+                <div class="work-card-right">
+                    <div class="work-card-status">Projektin hyväksyntä lähellä</div>
+                    <div class="work-card-arrow">Kävele kanssamme &rarr;</div>
+                </div>
             </div>
         </a>
     </div>
-</div>
-
-<!-- ════ 03 / THE METHOD ════ -->
-<section class="opener" id="method">
-    <div class="num">03</div>
-    <h2 class="name">Menetelmä.</h2>
 </section>
 
-<div class="chapter-body">
-    <div class="method-list">
-        <div class="method-row">
-            <div class="m-num">01</div>
-            <div class="m-word">Rooted</div>
-            <p class="m-desc">Maa muotoilee talon, ei toisinpäin. Rinne, puut, aamuaurinko eivät ole rajoitteita. Ne ovat ohjelma. Jokainen Sadala-hanke alkaa paikan kuuntelemisesta.</p>
-        </div>
-        <div class="method-row">
-            <div class="m-num">02</div>
-            <div class="m-word">Singular</div>
-            <p class="m-desc">Yksi paikka, yksi näkemys, yksi kerta. Emme käytä piirustuksia uudelleen emmekä vie rinnakkaisia projekteja. Jokainen koti on suunniteltu kuin se olisi ainoa, jonka koskaan rakennamme - koska meille se onkin juuri niin.</p>
-        </div>
-        <div class="method-row">
-            <div class="m-num">03</div>
-            <div class="m-word">Local</div>
-            <p class="m-desc">Kiveä andalusialaisista louhoksista. Massiivipuuta luotettavilta sahoilta. Kumppanit valitaan lyhyen ajomatkan päästä, ei pitkän lentomatkan takaa. Uusi luksus ei ole tuotu marmori. Se on koti, jonka rakentavat ihmiset, jotka välittävät, koska he asuvat lähellä.</p>
-        </div>
-    </div>
-</div>
-
-<!-- ════ 04 / START A CONVERSATION ════ -->
-<section class="cta" id="talk">
-    <h2>Kävellään tontti yhdessä<br><em>ennen kuin avaat esitettä.</em></h2>
-    <p class="cta-sub">Prosessimme alkaa keskustelusta, ei esitteestä. Asumme siellä, missä rakennamme.</p>
+<!-- ════ CTA ════ -->
+<section class="cta">
+    <h2>Kävele tontilla kanssamme<br><em>ennen kuin luet esitettä.</em></h2>
+    <p class="cta-sub">Prosessimme alkaa keskustelusta, ei esitteestä. Asumme siellä missä rakennamme.</p>
     <div class="cta-actions">
         <a href="pages/contact.html" class="primary">Aloita keskustelu</a>
         <a href="https://wa.me/34639675315" class="ghost">
@@ -440,40 +420,14 @@
             WhatsApp
         </a>
     </div>
-    <p class="cta-direct"><a href="mailto:info@sadala.com">info@sadala.com</a> &middot; <a href="tel:+34639675315">+34 639 675 315</a></p>
 </section>
 
-<footer>
-    SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A
-</footer>
+<footer>SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A</footer>
 
 <a href="https://wa.me/34639675315" class="float-cta" aria-label="Ota yhteyttä">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
     <span>Ota yhteyttä</span>
 </a>
-
-<script>
-/* TOC scroll-spy */
-const links = document.querySelectorAll('.toc a[data-ch]');
-const sections = ['studio','work','method','talk'].map(id => document.getElementById(id));
-const obs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) {
-        links.forEach(a => a.classList.toggle('active', a.dataset.ch === e.target.id));
-    }
-}), { rootMargin: '-30% 0px -60% 0px' });
-sections.forEach(s => s && obs.observe(s));
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const t = document.getElementById(id);
-        if (!t) return;
-        e.preventDefault();
-        const y = t.getBoundingClientRect().top + window.scrollY - 130;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-    });
-});
-</script>
 
 </body>
 </html>
