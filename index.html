@@ -193,13 +193,12 @@
         .film-band { padding: 32px 48px 0; max-width: 1200px; margin: 0 auto; }
         .film-card {
             display: block; position: relative; aspect-ratio: 21/9; overflow: hidden;
-            text-decoration: none; cursor: pointer;
-            transition: transform .4s;
             background: var(--black);
         }
-        .film-card:hover { transform: translateY(-2px); }
         .film-bg {
             position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
             background-size: cover; background-position: center;
             filter: brightness(.55) saturate(.92);
             transition: filter .4s, transform 1.4s cubic-bezier(.2,.8,.2,1);
@@ -342,15 +341,16 @@
 
 <!-- ════ THE FILM ════ -->
 <section class="film-band">
-    <a href="#" class="film-card" aria-label="The studio film">
-        <div class="film-bg" style="background-image: url('img/cantal/cantal-aerial.jpg');"></div>
-        <span class="film-soon">Coming soon</span>
+    <div class="film-card">
+        <video class="film-bg" autoplay loop muted playsinline preload="metadata" poster="img/cantal/cantal-aerial.jpg">
+            <source src="videos/sadala-background-video.mp4" type="video/mp4">
+        </video>
         <div class="film-overlay">
             <div class="film-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
             <div class="film-label">The studio film</div>
             <div class="film-sub">Sadala in 90 seconds</div>
         </div>
-    </a>
+    </div>
 </section>
 
 <!-- ════ THE METHOD ════ -->
