@@ -193,6 +193,22 @@
         .ts.now .ts-when { color: var(--accent); }
         .ts-name { font-family: var(--serif); font-size: 16px; font-weight: 400; line-height: 1.2; }
 
+        /* Architect */
+        .architect-band { padding: 120px 48px; background: var(--white); border-top: 1px solid var(--grey-border); }
+        .architect-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items: center; }
+        .architect-portrait { aspect-ratio: 4/5; overflow: hidden; background: var(--off-white); }
+        .architect-portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.15); transition: filter .8s, transform 1.4s cubic-bezier(.2,.8,.2,1); }
+        .architect-portrait:hover img { filter: grayscale(0); transform: scale(1.02); }
+        .architect-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+        .architect-name { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); font-weight: 300; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .architect-name em { color: var(--accent); font-style: italic; }
+        .architect-role { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 36px; }
+        .architect-quote { font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); font-weight: 300; font-style: italic; line-height: 1.45; color: var(--black); padding-left: 24px; border-left: 2px solid var(--accent); margin-bottom: 32px; }
+        .architect-bio { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--grey); max-width: 540px; margin-bottom: 28px; }
+        .architect-meta { display: flex; flex-wrap: wrap; gap: 28px; padding-top: 24px; border-top: 1px solid var(--grey-border); }
+        .architect-meta-item { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); text-transform: uppercase; }
+        .architect-meta-item strong { color: var(--black); font-weight: 400; display: block; margin-top: 4px; font-family: var(--serif); font-size: 15px; letter-spacing: 0; text-transform: none; }
+
         /* CTA */
         .cta { background: var(--black); color: var(--off-white); padding: 100px 48px; text-align: center; }
         .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
@@ -216,7 +232,9 @@
 
         /* ════ RESPONSIVE ════ */
         @media (max-width: 1024px) {
-            section.band, .home-band, .makers-band, .media-band, .timeline-band, .cta { padding-left: 32px; padding-right: 32px; }
+            section.band, .home-band, .makers-band, .media-band, .timeline-band, .architect-band, .cta { padding-left: 32px; padding-right: 32px; }
+            .architect-inner { grid-template-columns: 1fr; gap: 48px; }
+            .architect-portrait { max-width: 480px; }
         }
 
         @media (max-width: 760px) {
@@ -465,6 +483,31 @@
                 <div class="ts-dot"></div>
                 <div class="ts-when">est. 2028</div>
                 <div class="ts-name">Your home<br>ready</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ THE ARCHITECT ════ -->
+<section class="architect-band">
+    <div class="architect-inner">
+        <div class="architect-portrait">
+            <img src="../img/cantal/cantal-ignacio-merino.webp" alt="Ignacio Merino, architect of El Cantal">
+        </div>
+        <div class="architect-text">
+            <div class="architect-eyebrow">The architect</div>
+            <h2 class="architect-name"><em>Ignacio Merino.</em></h2>
+            <div class="architect-role">Co-founder &amp; CEO &middot; Flow81 Architecture Lab</div>
+            <p class="architect-quote">
+                &ldquo;You don't draw a house and then look for a plot. You visit the plot, you walk it, you wait, and the house draws itself.&rdquo;
+            </p>
+            <p class="architect-bio">
+                Ignacio co-founded Flow81 in M&aacute;laga in 2018 with Jose Miguel Arregui. Their work, deeply rooted in its physical, natural and social context, has earned them a Special Mention at the Andalusia Architecture Awards, the M&aacute;laga Architects' Prize, and a place on the Forbes list of creators to watch. Casa Flotante at Marbella Club Golf and the Malaka Art Hall sit alongside El Cantal as part of a quiet, growing body of work that prefers listening over imposing.
+            </p>
+            <div class="architect-meta">
+                <div class="architect-meta-item">Studio<strong>Flow81 Architecture Lab</strong></div>
+                <div class="architect-meta-item">Based in<strong>M&aacute;laga, Andaluc&iacute;a</strong></div>
+                <div class="architect-meta-item">Notable<strong>Casa Flotante &middot; Malaka Art Hall</strong></div>
             </div>
         </div>
     </div>
