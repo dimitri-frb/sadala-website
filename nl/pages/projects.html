@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecten - Sadala</title>
+    <title>Onze projecten - Sadala</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/logo/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../img/logo/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,6 +164,8 @@
             transition: transform .8s cubic-bezier(.25,.1,.25,1);
         }
         .project-card:hover .project-card-image img { transform: scale(1.04); }
+        .project-card-soon { cursor: default; }
+        .project-card-soon:hover .project-card-image img { transform: none; }
         .project-card-status {
             font-size: 10px; font-weight: 500; letter-spacing: 2px;
             text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
@@ -171,7 +173,7 @@
         .project-card-status.sold { color: var(--grey); }
         .project-card.sold .project-card-image { opacity: .85; }
         .project-card.sold .project-card-image::after {
-            content: 'VERKOCHT'; position: absolute; top: 16px; right: 16px;
+            content: 'SOLD'; position: absolute; top: 16px; right: 16px;
             background: var(--black); color: var(--off-white);
             font-size: 10px; font-weight: 500; letter-spacing: 2px;
             padding: 4px 12px;
@@ -294,7 +296,7 @@
                 <a href="../../nl/pages/projects.html" class="is-current">NL</a>
                 <a href="../../fi/pages/projects.html">FI</a>
                 <a href="../../da/pages/projects.html">DA</a>
-            <a href="../../pl/pages/projects.html">PL</a>
+                <a href="../../pl/pages/projects.html">PL</a>
             </div>
         </details>
         <a href="contact.html" class="nav-contact">Contact</a>
@@ -308,7 +310,7 @@
 <section class="page-header reveal">
     <div class="page-header-label">Portfolio</div>
     <h1>Onze projecten</h1>
-    <p>Drie woningen. Drie uitdrukkingen van dezelfde methode: Rooted, Singular, Local. Hier vindt u elk Sadala-project, heden en verleden.</p>
+    <p>Drie huizen. Drie handtekeningen van dezelfde methode: Rooted, Singular, Local. Hier is elk Sadala-project, verleden en heden.</p>
 </section>
 
 <!-- FILTER TABS -->
@@ -323,45 +325,53 @@
     <div class="projects-grid-small">
         <a class="project-card reveal" href="villa-el-cantal.html" data-status="current">
             <div class="project-card-image">
-                <img src="../../img/cantal/cantal-hero.jpg" alt="El Cantal tussen mediterrane pijnbomen">
+                <img src="../../img/cantal/cantal-hero.jpg" alt="El Cantal among Mediterranean pines">
             </div>
             <div class="project-card-status">Project goedgekeurd</div>
             <div class="project-card-title">El Cantal</div>
-            <div class="project-card-sub">550 m&sup2; &middot; 5 kamers &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">550 m&sup2; &middot; 5 slaapkamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
         <a class="project-card reveal" href="sosiego.html" data-status="current">
             <div class="project-card-image">
-                <img src="../../img/sosiego/sosiego-sunset.png" alt="Sosiego bij zonsondergang">
+                <img src="../../img/sosiego/sosiego-sunset.png" alt="Sosiego at sunset">
             </div>
             <div class="project-card-status">Bouw begint binnenkort</div>
             <div class="project-card-title">Sosiego</div>
-            <div class="project-card-sub">570 m&sup2; &middot; 4 kamers &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">570 m&sup2; &middot; 4 slaapkamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
         <a class="project-card sold reveal" href="villa-leoni-benabu.html" data-status="completed">
             <div class="project-card-image">
-                <img src="../../img/leoni-benabu/main.jpeg" alt="Origen tussen de pijnbomen">
+                <img src="../../img/leoni-benabu/main.jpeg" alt="Origen among the pines">
             </div>
             <div class="project-card-status sold">Verkocht</div>
             <div class="project-card-title">Origen</div>
-            <div class="project-card-sub">620 m&sup2; &middot; 6 kamers &middot; Pinares de San Ant&oacute;n</div>
+            <div class="project-card-sub">620 m&sup2; &middot; 6 slaapkamers &middot; Pinares de San Ant&oacute;n</div>
         </a>
+        <div class="project-card project-card-soon reveal" data-status="soon">
+            <div class="project-card-image">
+                <img src="../../img/atalaya/atalaya.jpeg" alt="Atalaya">
+            </div>
+            <div class="project-card-status">Binnenkort</div>
+            <div class="project-card-title">Atalaya</div>
+            <div class="project-card-sub">3,500 m&sup2; &middot; Pinares de San Ant&oacute;n</div>
+        </div>
     </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-band">
     <h2>Op zoek naar iets unieks?</h2>
-    <p>Wij speuren voortdurend naar nieuwe locaties. Wilt u als eerste weten waar ons volgende project verrijst, neem dan contact op.</p>
+    <p>We zijn altijd op zoek naar nieuwe locaties. Wil je als eerste van ons volgende project horen, neem dan contact op.</p>
     <a href="contact.html" class="btn">Begin een gesprek</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
     <div class="footer-main">
-        <div class="footer-col"><h4>Contact</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Spanje</span></div>
-        <div class="footer-col"><h4>Volg ons</h4><div class="footer-social"><a href="https://www.instagram.com/sadalahomes/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
+        <div class="footer-col"><h4>Contact</h4><a href="mailto:info@sadala.com">info@sadala.com</a><a href="tel:+34639675315">+34 639 675 315</a><span>Leoni Benabu 31</span><span>29018 M&aacute;laga, Spain</span></div>
+        <div class="footer-col"><h4>Connect</h4><div class="footer-social"><a href="https://www.instagram.com/sadalahomes/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://wa.me/34639675315" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg></a></div></div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Privacybeleid</a></div>
+    <div class="footer-bottom"><span>&copy; 2026 Sadala Homes S.L.</span><a href="#">Privacy Policy</a></div>
 </footer>
 
 <script>
