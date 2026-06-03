@@ -277,10 +277,16 @@
         /* Logos row */
         .partners-row {
             margin-top: 64px;
-            display: grid; grid-template-columns: repeat(3, 1fr);
+            display: grid; grid-template-columns: repeat(5, 1fr);
             gap: 1px;
             background: var(--grey-border);
             border: 1px solid var(--grey-border);
+        }
+        @media (max-width: 960px) {
+            .partners-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .partners-row { grid-template-columns: repeat(2, 1fr); }
         }
         .partner-tile {
             aspect-ratio: 5/3;
@@ -478,7 +484,6 @@
             <div class="partner-tile"><img src="../img/partners/urbania.jpeg" alt="Urbania"></div>
             <div class="partner-tile"><img src="../img/partners/acer.png" alt="Acer"></div>
             <div class="partner-tile"><img src="../img/partners/el-muelle.png" alt="El Muelle"></div>
-            <div class="partner-tile"><img src="../img/partners/ark.jpeg" alt="ARK"></div>
             <div class="partner-tile"><img src="../img/partners/coral-shield.png" alt="Coral Shield"></div>
         </div>
     </div>
