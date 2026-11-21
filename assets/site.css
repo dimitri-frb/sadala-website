@@ -206,3 +206,46 @@ main { flex: 1; }
 .zoom-hover img { transition: transform 1.2s ease; }
 .zoom-hover:hover img { transform: scale(1.03); }
 .zoom-hover.hover-sm:hover img { transform: scale(1.02); }
+
+/* Start band - two-card panel on each project page, directly under the hero */
+.start-card {
+  min-width: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: clamp(22px,2.6vw,36px);
+  text-align: left; text-decoration: none;
+  cursor: pointer;
+  transition: background .25s, border-color .25s;
+}
+.start-card-own {
+  background: var(--warm-white);
+  border: 1px solid var(--rule-light);
+  color: var(--olive);
+}
+.start-card-own:hover { border-color: var(--olive); }
+.start-card-expert {
+  background: var(--olive);
+  border: 1px solid var(--olive);
+  color: var(--limestone);
+}
+.start-card-expert:hover { background: var(--olive-footer); }
+.start-label {
+  font: 500 12px var(--sans);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.start-title {
+  font: 400 clamp(28px,2.8vw,40px)/1.05 var(--serif);
+}
+.start-body {
+  font: 400 17px/1.6 var(--sans);
+  color: var(--charcoal);
+}
+.start-cta {
+  font: 500 12px var(--sans);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  align-self: flex-start;
+  padding-bottom: 6px;
+  margin-top: 8px;
+}
