@@ -1,443 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sadala - Builders of the Unique</title>
-    <meta name="description" content="Sadala. A family studio in Málaga, second generation. We design, build, and sell one Mediterranean villa at a time.">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo/favicon-32.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --white:#E8E2D5; --off-white:#E1D8CC; --black:#2C2C2C;
-            --grey:#7A7570; --grey-light:#B5AFA8; --grey-border:rgba(44,44,44,.1);
-            --accent:#C1876B;
-            --serif:'Cormorant Garamond',Georgia,serif;
-            --sans:'Inter',sans-serif;
-            --mono:'JetBrains Mono',monospace;
-        }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--sans); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
-
-
-        /* === Live nav === */
-        nav {
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 22px 48px;
-            background: rgba(232,226,213,.92); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--grey-border);
-        }
-        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 20px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--black); text-decoration: none; }
-        .nav-logo img { height: 28px; width: auto; }
-        .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-links a { font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; }
-        .nav-links a:hover { color: var(--black); }
-        .nav-contact { font-weight: 400 !important; color: var(--black) !important; border: 1px solid var(--grey-light); padding: 8px 20px; transition: all .3s !important; }
-        .nav-contact:hover { background: var(--black) !important; color: var(--white) !important; border-color: var(--black) !important; }
-        .nav-hamburger { display: none; cursor: pointer; width: 24px; height: 16px; position: relative; z-index: 1001; }
-        .nav-hamburger span { display: block; width: 100%; height: 1.5px; background: var(--black); position: absolute; left: 0; transition: all .3s; }
-        .nav-hamburger span:nth-child(1) { top: 0; }
-        .nav-hamburger span:nth-child(2) { top: 7px; }
-        .nav-hamburger span:nth-child(3) { top: 14px; }
-        .nav-lang-wrap { position: relative; }
-        .nav-lang-wrap summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--grey); padding: 4px 0; transition: color .3s; user-select: none; }
-        .nav-lang-wrap summary::-webkit-details-marker, .nav-lang-wrap summary::marker { display: none; }
-        .nav-lang-wrap summary:hover { color: var(--black); }
-        .nav-lang-wrap summary::after { content: '\2009\25BE'; font-size: 9px; opacity: .5; margin-left: 2px; font-weight: 300; }
-        .nav-lang-wrap[open] summary::after { content: '\2009\25B4'; } .nav-lang-wrap:not([open]) .nav-lang-menu { display: none !important; }
-        .nav-lang-menu { position: absolute; top: calc(100% + 14px); right: 0; background: rgba(232,226,213,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--grey-border); min-width: 84px; padding: 6px 0; display: flex; flex-direction: column; z-index: 1001; }
-        .nav-lang-menu a { padding: 6px 18px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color .3s; letter-spacing: 0; text-transform: none; }
-        .nav-lang-menu a:hover { color: var(--black); background: none; }
-        .nav-lang-menu a.is-current { display: none; }
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .nav-hamburger { display: block; }
-            nav.nav-open { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; } nav.nav-open .nav-links { display: flex !important; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 28px; padding: 0; z-index: 999; }
-            nav.nav-open .nav-links a, nav.nav-open .nav-links a.nav-contact { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; letter-spacing: 2px; text-transform: none; color: var(--black) !important; padding: 8px 0 !important; border: none !important; background: none !important; }
-            nav.nav-open .nav-lang-wrap { width: auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-            nav.nav-open .nav-lang-wrap summary { font-family: var(--serif) !important; font-size: 24px !important; font-weight: 400 !important; color: var(--black) !important; padding: 8px 0 !important; }
-            nav.nav-open .nav-lang-menu { position: static; border: none; box-shadow: none; padding: 4px 0 0; align-items: center; background: none; }
-            nav.nav-open .nav-lang-menu a { font-family: var(--serif) !important; font-size: 18px !important; padding: 4px 0 !important; }
-            nav.nav-open .nav-hamburger { position: fixed; top: 28px; right: 24px; }
-            nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-            nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
-            nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-            body.nav-open-body { overflow: hidden; }
-        }
-
-        /* ════ QUOTE HERO - no image, brand statement first ════ */
-        .quote-hero {
-            min-height: calc(90vh - 80px);
-            display: flex; flex-direction: column;
-            align-items: center;
-            padding: 56px 48px 24px;
-            text-align: center;
-        }
-        .quote-content {
-            flex: 1;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            width: 100%;
-        }
-        .quote-eyebrow {
-            font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
-        }
-        .quote-text {
-            font-family: var(--serif);
-            font-size: clamp(36px, 5.5vw, 72px);
-            font-weight: 300; font-style: italic;
-            line-height: 1.15; letter-spacing: -0.6px;
-            max-width: 1000px;
-            color: var(--black);
-        }
-        .quote-text em { color: var(--accent); font-style: normal; }
-        .quote-author {
-            margin-top: 56px;
-            font-family: var(--mono);
-            font-size: 11px; letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--grey);
-            line-height: 1.7;
-        }
-        .quote-author strong { color: var(--black); font-weight: 400; }
-        .scroll-hint {
-            margin-top: 24px;
-            font-family: var(--mono);
-            font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-            color: var(--grey);
-            display: flex; flex-direction: column; align-items: center; gap: 12px;
-        }
-        .scroll-hint::after {
-            content: ''; width: 1px; height: 36px;
-            background: var(--accent); opacity: .4;
-            animation: drop 2.4s ease infinite;
-            margin-top: 0;
-        }
-        @keyframes drop {
-            0%,100% { transform: scaleY(.3); transform-origin: top; opacity: .15; }
-            50% { transform: scaleY(1); opacity: .5; }
-        }
-
-        /* ════ SECTION LABEL ════ */
-        .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-
-        /* ════ THE METHOD - single statement ════ */
-        .method-band {
-            padding: 140px 48px;
-            text-align: center;
-        }
-        .method-words {
-            font-family: var(--serif);
-            font-size: clamp(48px, 7vw, 96px);
-            font-weight: 300; line-height: 1; letter-spacing: -1px;
-            color: var(--black);
-        }
-        .method-words em { color: var(--accent); font-style: italic; }
-        .method-sub {
-            margin-top: 32px;
-            font-family: var(--serif); font-style: italic;
-            font-size: clamp(18px, 2vw, 24px); font-weight: 300;
-            color: var(--grey); line-height: 1.5;
-            max-width: 600px; margin-left: auto; margin-right: auto;
-        }
-        .method-link {
-            display: inline-block; margin-top: 48px;
-            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-            color: var(--accent); text-decoration: none;
-            border-bottom: 1px solid var(--accent); padding-bottom: 4px;
-            transition: opacity .3s;
-        }
-        .method-link:hover { opacity: .7; }
-
-        /* ════ THE WORK - full-bleed cinematic cards ════ */
-        .work-band { padding: 0; }
-        .work-eyebrow-band { padding: 100px 48px 56px; max-width: 1200px; margin: 0 auto; }
-        .work-stack { display: flex; flex-direction: column; gap: 4px; }
-        .work-card {
-            position: relative; height: 70vh; min-height: 480px;
-            overflow: hidden; display: block;
-            text-decoration: none; color: #fff;
-        }
-        .work-card-bg { position: absolute; inset: 0; }
-        .work-card-bg img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
-        .work-card:hover .work-card-bg img { transform: scale(1.04); }
-        .work-card-soon { cursor: default; }
-        .work-card-soon:hover .work-card-bg img { transform: none; }
-        .work-card::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,.6) 100%);
-        }
-        .work-card-meta {
-            position: absolute; left: 48px; right: 48px; bottom: 48px;
-            z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;
-        }
-        .work-card-left { max-width: 720px; }
-        .work-card-num { font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px; }
-        .work-card-name { font-family: var(--serif); font-size: clamp(48px, 6vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -1px; }
-        .work-card-spec { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: 16px; }
-        .work-card-right { text-align: right; flex-shrink: 0; }
-        .work-card-status { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: 8px; }
-        .work-card-status.live { color: var(--accent); }
-        .work-card-status.live::before { content: '\25CF'; margin-right: 6px; }
-        .work-card-arrow {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 18px;
-            border: 1px solid rgba(255,255,255,.4);
-            font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-            color: #fff; transition: all .25s;
-        }
-        .work-card:hover .work-card-arrow { background: var(--accent); border-color: var(--accent); }
-
-        /* ════ THE FILM (video placeholder) ════ */
-        .film-band { padding: 32px 48px 0; max-width: 1200px; margin: 0 auto; }
-        .film-card {
-            display: block; position: relative; aspect-ratio: 21/9; overflow: hidden;
-            background: var(--black);
-        }
-        .film-bg {
-            position: absolute; inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; object-position: center;
-            background-size: cover; background-position: center;
-            filter: brightness(.55) saturate(.92);
-            transition: filter .4s, transform 1.4s cubic-bezier(.2,.8,.2,1);
-        }
-        .film-card:hover .film-bg { filter: brightness(.4); transform: scale(1.04); }
-        .film-overlay {
-            position: absolute; inset: 0; z-index: 2;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            color: #fff; gap: 18px; padding: 32px;
-        }
-        .film-icon {
-            width: 64px; height: 64px;
-            border: 1.5px solid rgba(255,255,255,.7);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            transition: all .25s;
-        }
-        .film-card:hover .film-icon { background: rgba(255,255,255,.12); border-color: #fff; }
-        .film-icon svg { width: 24px; height: 24px; fill: #fff; }
-        .film-label {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 300; line-height: 1; letter-spacing: -0.4px;
-        }
-        .film-sub {
-            font-family: var(--mono); font-size: 11px; letter-spacing: 2.5px;
-            text-transform: uppercase; color: rgba(255,255,255,.7);
-        }
-        .film-soon {
-            position: absolute; top: 20px; right: 20px; z-index: 3;
-            font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-            padding: 6px 12px; background: rgba(255,255,255,.12);
-            border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
-            border-radius: 999px;
-        }
-
-        /* ════ CTA ════ */
-        .cta { background: var(--black); color: var(--off-white); padding: 120px 48px; text-align: center; }
-        .cta h2 { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.4px; max-width: 800px; margin: 0 auto 16px; }
-        .cta h2 em { font-style: italic; color: var(--accent); }
-        .cta-sub { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(225,216,204,.7); max-width: 540px; margin: 0 auto 36px; }
-        .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .cta-actions a { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; transition: all .25s; }
-        .cta .primary { background: var(--accent); color: #fff; }
-        .cta .primary:hover { background: #d49a7e; }
-        .cta .ghost { color: var(--off-white); border: 1px solid rgba(225,216,204,.3); }
-        .cta .ghost:hover { border-color: var(--off-white); }
-        .cta-actions svg { width: 14px; height: 14px; fill: currentColor; }
-
-        footer { padding: 36px 48px; background: var(--white); border-top: 1px solid var(--grey-border); text-align: center; font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--grey); }
-
-        /* Floating WhatsApp */
-        .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 99; display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; background: var(--black); color: var(--off-white); font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 999px; box-shadow: 0 8px 24px rgba(44,44,44,.18); transition: all .25s; }
-        .float-cta:hover { background: var(--accent); transform: translateY(-2px); }
-        .float-cta svg { width: 16px; height: 16px; fill: #25D366; }
-        .float-cta:hover svg { fill: #fff; }
-
-        @media (max-width: 1024px) {
-            .film-band { padding-left: 32px; padding-right: 32px; }
-            .method-band { padding-left: 32px; padding-right: 32px; }
-            .work-eyebrow-band { padding-left: 32px; padding-right: 32px; }
-            .work-card-meta { left: 32px; right: 32px; bottom: 32px; }
-        }
-
-        @media (max-width: 760px) {
-            nav { padding: 14px 20px; }
-            .quote-hero { padding: 56px 20px; min-height: calc(100vh - 60px); }
-            .quote-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 36px; }
-            .quote-text { font-size: clamp(26px, 7.5vw, 44px); letter-spacing: -0.4px; }
-            .quote-author { font-size: 10px; letter-spacing: 2px; margin-top: 36px; }
-            .scroll-hint { margin-top: 16px; }
-
-            .method-band, .work-band { padding: 64px 20px; }
-            .film-band { padding: 24px 20px 0; }
-            .method-band { padding: 64px 20px; }
-            .method-words { font-size: clamp(36px, 11vw, 64px); }
-            .method-sub { font-size: 16px; margin-top: 20px; }
-
-            .work-eyebrow-band { padding: 56px 20px 32px; }
-            .work-card { height: 60vh; min-height: 420px; }
-            .work-card-meta { left: 20px; right: 20px; bottom: 28px; flex-direction: column; align-items: flex-start; }
-            .work-card-right { text-align: left; }
-            .work-card-name { font-size: 44px; }
-
-            .film-card { aspect-ratio: 4/3; }
-            .film-label { font-size: 26px; }
-            .film-icon { width: 52px; height: 52px; }
-
-            .cta { padding: 64px 20px; }
-            .cta h2 { font-size: clamp(28px, 8vw, 40px); }
-            .cta-actions { flex-direction: column; gap: 10px; align-items: stretch; }
-            .cta-actions a { justify-content: center; padding: 14px 24px; }
-
-            footer { padding: 24px 20px; font-size: 10px; }
-            .float-cta { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 12px; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SADALA - Homes built for generations, in Málaga</title>
+<meta name="description" content="SADALA is a second-generation family studio in Málaga. We build one-of-a-kind homes, shaped by the land, made by local hands, and built for generations.">
+<meta property="og:title" content="SADALA - Built for generations">
+<meta property="og:description" content="A second-generation family studio in Málaga, building homes shaped by the land.">
+<meta property="og:image" content="/img/cantal-hero.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 </head>
 <body>
+<div class="site">
 
-<nav>
-    <a href="index.html" class="nav-logo"><img src="img/logo/sadala-logo.png" alt="">Sadala</a>
-    <div class="nav-links">
-        <a href="pages/projects.html">Projects</a>
-        <a href="pages/approach.html">Our approach</a>
-        <details class="nav-lang-wrap">
-            <summary>EN</summary>
-            <div class="nav-lang-menu">
-                <a href="index.html" class="is-current">EN</a>
-                <a href="es/index.html">ES</a>
-                <a href="nl/index.html">NL</a>
-                <a href="fi/index.html">FI</a>
-                <a href="da/index.html">DA</a>
-                <a href="pl/index.html">PL</a>
-            </div>
-        </details>
-        <a href="pages/contact.html" class="nav-contact">Contact</a>
-    </div>
-    <div class="nav-hamburger" onclick="this.parentElement.classList.toggle('nav-open'); document.body.classList.toggle('nav-open-body');">
-        <span></span><span></span><span></span>
-    </div>
-</nav>
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="wordmark" aria-label="SADALA home">SADALA</a>
+    <nav aria-label="Primary">
+      <a href="/homes/">Homes</a>
+      <a href="/studio/">Studio</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<!-- ════ QUOTE HERO ════ -->
-<section class="quote-hero">
-    <div class="quote-content">
-        <div class="quote-eyebrow">M&aacute;laga &middot; Andaluc&iacute;a</div>
-        <h1 class="quote-text">
-            We build the homes <em>we&rsquo;d want to live in</em> ourselves.<br>
-            One at a time.
-        </h1>
-        <div class="quote-author">
-            <strong>A family studio</strong> in M&aacute;laga<br>
-            Second generation since 1990
+<main>
+
+<!-- HERO -->
+<section style="position:relative;min-height:min(88svh,920px);display:flex;align-items:flex-end;overflow:hidden;background:var(--olive-footer);color:var(--warm-white)">
+  <img src="/img/cantal-hero.jpg" alt="El Cantal, a SADALA home, among pines" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" fetchpriority="high">
+  <div style="position:absolute;inset:0;background:linear-gradient(rgba(20,32,27,.05) 30%, rgba(20,32,27,.88))"></div>
+  <div style="position:relative;max-width:1360px;width:100%;margin:0 auto;padding:clamp(120px,22vh,260px) clamp(20px,5vw,72px) clamp(36px,6vw,72px);display:flex;flex-wrap:wrap;gap:28px 80px;align-items:flex-end;justify-content:space-between">
+    <h1 class="h1-hero" style="color:var(--warm-white);flex:1 1 520px">Some things are built to outlive us.</h1>
+    <div style="flex:1 1 320px;max-width:440px;min-width:0">
+      <p style="font:400 clamp(16px,1.3vw,19px)/1.6 var(--sans);margin:0;color:var(--warm-white)">We are a second-generation family studio in Málaga. We create one-of-a-kind homes, shaped by the land, made by local hands, and built for generations.</p>
+      <a href="/homes/" class="btn btn-on-dark" style="margin-top:26px">Discover the homes</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR BELIEF -->
+<section class="sec sec-warm">
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:40px 80px;align-items:flex-end">
+    <div style="flex:1 1 420px;min-width:0">
+      <div class="eyebrow">Our belief</div>
+      <h2 class="h2-section">A home should belong to something bigger than itself.</h2>
+      <p style="font:italic 400 clamp(22px,2.2vw,32px)/1.3 var(--serif);margin:32px 0 0;color:var(--terracotta-dark)">To its landscape. To its people. To the generations who will call it home.</p>
+    </div>
+    <img src="/img/cantal-aerial.jpg" alt="El Cantal seen from above, its roof planted" style="flex:1 1 420px;min-width:0;width:100%;aspect-ratio:4/3;object-fit:cover" loading="lazy">
+  </div>
+</section>
+
+<!-- OUR PHILOSOPHY -->
+<section class="sec sec-olive">
+  <div class="container">
+    <div class="eyebrow">Our philosophy</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:48px 56px;margin-top:40px">
+      <div>
+        <h3 style="font:400 clamp(56px,7vw,104px)/1 var(--serif);margin:0;color:var(--limestone)">Rooted.</h3>
+        <p style="border-top:1px solid var(--rule-dark-strong);margin:28px 0 0;padding-top:22px;font:400 17px/1.6 var(--sans);color:var(--limestone)">Respect for place. Architecture that responds to its landscape, climate, history and surroundings.</p>
+      </div>
+      <div>
+        <h3 style="font:400 clamp(56px,7vw,104px)/1 var(--serif);margin:0;color:var(--limestone)">Singular.</h3>
+        <p style="border-top:1px solid var(--rule-dark-strong);margin:28px 0 0;padding-top:22px;font:400 17px/1.6 var(--sans);color:var(--limestone)">Every project is unique. No standard solutions, no repetition for the sake of scale.</p>
+      </div>
+      <div>
+        <h3 style="font:400 clamp(56px,7vw,104px)/1 var(--serif);margin:0;color:var(--limestone)">Local.</h3>
+        <p style="border-top:1px solid var(--rule-dark-strong);margin:28px 0 0;padding-top:22px;font:400 17px/1.6 var(--sans);color:var(--limestone)">Local materials, regional knowledge, talented craftspeople and meaningful relationships with our partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE HOMES -->
+<section class="sec sec-stone">
+  <div class="container">
+    <div class="eyebrow">The homes</div>
+    <h2 class="h2-section">Not many homes. Just the right ones.</h2>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(56px,8vw,120px);margin-top:clamp(48px,7vw,96px)">
+
+      <article style="display:flex;flex-wrap:wrap;gap:28px 64px;align-items:flex-end">
+        <a href="/homes/el-cantal/" aria-label="El Cantal" class="zoom-hover" style="flex:3 1 480px;min-width:0">
+          <img src="/img/cantal-garden.jpg" alt="El Cantal from the garden" style="width:100%;aspect-ratio:3/2;object-fit:cover" loading="lazy">
+        </a>
+        <div style="flex:1 1 280px;min-width:0">
+          <div style="font:400 clamp(40px,4.4vw,64px)/1 var(--serif);letter-spacing:.12em;text-transform:uppercase">El Cantal</div>
+          <div class="endorsement" style="margin-top:12px">A SADALA home</div>
+          <p class="body-md" style="margin:22px 0 0">Held among the pines, under a roof that gives the hillside back its green. The light arrives filtered, and changes with every hour.</p>
+          <a href="/homes/el-cantal/" class="text-link" style="margin-top:20px">Visit El Cantal</a>
         </div>
-    </div>
-    <div class="scroll-hint">scroll</div>
-</section>
+      </article>
 
-<!-- ════ THE FILM ════ -->
-<section class="film-band">
-    <div class="film-card">
-        <video class="film-bg" autoplay loop muted playsinline preload="metadata" poster="img/cantal/cantal-aerial.jpg">
-            <source src="videos/sadala-background-video.mp4" type="video/mp4">
-        </video>
-    </div>
-</section>
-
-<!-- ════ THE METHOD ════ -->
-<section class="method-band">
-    <h2 class="method-words"><em>Rooted.</em> <em>Singular.</em> <em>Local.</em></h2>
-    <p class="method-sub">Three principles. Every villa, every time.</p>
-    <a href="pages/approach.html" class="method-link">Read our approach &rarr;</a>
-</section>
-
-<!-- ════ THE WORK - cinematic stack ════ -->
-<section class="work-band">
-    <div class="work-eyebrow-band">
-        <div class="section-label">Our projects</div>
-        <h2 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; letter-spacing: -0.5px; max-width: 720px;">Four homes. One studio.</h2>
-    </div>
-    <div class="work-stack">
-        <a href="pages/villa-leoni-benabu.html" class="work-card">
-            <div class="work-card-bg"><img src="img/leoni-benabu/main.jpeg" alt="Origen"></div>
-            <div class="work-card-meta">
-                <div class="work-card-left">
-                    <div class="work-card-name">Origen</div>
-                    <div class="work-card-spec">620 m&sup2; &middot; 6 bedrooms &middot; Pinares de San Ant&oacute;n</div>
-                </div>
-                <div class="work-card-right">
-                    <div class="work-card-status">Delivered &middot; sold</div>
-                    <div class="work-card-arrow">Walk with us &rarr;</div>
-                </div>
-            </div>
-        </a>
-        <a href="pages/sosiego.html" class="work-card">
-            <div class="work-card-bg"><img src="img/sosiego/EXTERIOR_SAN_ANTON_cam02_TARDE_4K_FINAL.jpg" alt="Sosiego"></div>
-            <div class="work-card-meta">
-                <div class="work-card-left">
-                    <div class="work-card-name">Sosiego</div>
-                    <div class="work-card-spec">570 m&sup2; &middot; 4 bedrooms &middot; Pinares de San Ant&oacute;n</div>
-                </div>
-                <div class="work-card-right">
-                    <div class="work-card-status live">In construction</div>
-                    <div class="work-card-arrow">Walk with us &rarr;</div>
-                </div>
-            </div>
-        </a>
-        <a href="pages/villa-el-cantal.html" class="work-card">
-            <div class="work-card-bg"><img src="img/cantal/cantal-hero.jpg" alt="El Cantal"></div>
-            <div class="work-card-meta">
-                <div class="work-card-left">
-                    <div class="work-card-name">El Cantal</div>
-                    <div class="work-card-spec">550 m&sup2; &middot; 5 bedrooms &middot; Pinares de San Ant&oacute;n</div>
-                </div>
-                <div class="work-card-right">
-                    <div class="work-card-status">Project approval imminent</div>
-                    <div class="work-card-arrow">Walk with us &rarr;</div>
-                </div>
-            </div>
-        </a>
-
-        <div class="work-card work-card-soon">
-            <div class="work-card-bg"><img src="img/atalaya/atalaya.jpeg" alt="Atalaya"></div>
-            <div class="work-card-meta">
-                <div class="work-card-left">
-                    <div class="work-card-name">Atalaya</div>
-                    <div class="work-card-spec">3,500 m&sup2; &middot; Pinares de San Ant&oacute;n</div>
-                </div>
-                <div class="work-card-right">
-                    <div class="work-card-status">Coming soon</div>
-                </div>
-            </div>
+      <article style="display:flex;flex-wrap:wrap-reverse;gap:28px 64px;align-items:flex-end">
+        <div style="flex:1 1 280px;min-width:0">
+          <div style="font:400 clamp(40px,4.4vw,64px)/1 var(--serif);letter-spacing:.12em;text-transform:uppercase">Sosiego</div>
+          <div class="endorsement" style="margin-top:12px">A SADALA home</div>
+          <p class="body-md" style="margin:22px 0 0">A house that follows the slope down, terrace by terrace, until the garden takes over. Every level opens to the horizon.</p>
+          <a href="/homes/sosiego/" class="text-link" style="margin-top:20px">Visit Sosiego</a>
         </div>
-    </div>
-</section>
-
-<!-- ════ CTA ════ -->
-<section class="cta">
-    <h2>Walk the plot with us<br><em>before you read a brochure.</em></h2>
-    <p class="cta-sub">Our process starts with a conversation, not a brochure. We live where we build.</p>
-    <div class="cta-actions">
-        <a href="pages/contact.html" class="primary">Start a conversation</a>
-        <a href="https://wa.me/34639675315" class="ghost">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-            WhatsApp
+        <a href="/homes/sosiego/" aria-label="Sosiego" class="zoom-hover" style="flex:3 1 480px;min-width:0">
+          <img src="/img/sos-35-2.jpg" alt="Sosiego, terraces stepping down the hillside" style="width:100%;aspect-ratio:3/2;object-fit:cover" loading="lazy">
         </a>
+      </article>
+
+      <article style="display:flex;flex-wrap:wrap;gap:28px 64px;align-items:flex-end">
+        <a href="/homes/origen/" aria-label="Origen" class="zoom-hover" style="flex:3 1 480px;min-width:0">
+          <img src="/img/origen-garden.jpg" alt="Origen, the house seen through the pines of its garden" style="width:100%;aspect-ratio:3/2;object-fit:cover" loading="lazy">
+        </a>
+        <div style="flex:1 1 280px;min-width:0">
+          <div style="font:400 clamp(40px,4.4vw,64px)/1 var(--serif);letter-spacing:.12em;text-transform:uppercase">Origen</div>
+          <div class="endorsement" style="margin-top:12px">A SADALA home</div>
+          <p class="body-md" style="margin:22px 0 0">A low house kept behind its pines. You reach it on foot, along a timber walkway through the garden, with the sea beyond.</p>
+          <a href="/homes/origen/" class="text-link" style="margin-top:20px">Visit Origen</a>
+        </div>
+      </article>
+
     </div>
+  </div>
 </section>
 
-<footer>SADALA &middot; BUILDERS OF THE UNIQUE &middot; M&Aacute;LAGA, ANDALUC&Iacute;A</footer>
+<!-- THE WAY WE BUILD -->
+<section class="sec sec-warm">
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:40px 80px">
+    <div style="flex:1 1 380px;min-width:0">
+      <div class="eyebrow">The way we build</div>
+      <h2 class="h2-section">Good things take time.</h2>
+    </div>
+    <ol style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;list-style:none;padding:0;margin:0">
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">01</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Discovering a plot</span>
+      </li>
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">02</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Architecture</span>
+      </li>
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">03</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Material selection</span>
+      </li>
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">04</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Craftsmanship</span>
+      </li>
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">05</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Construction</span>
+      </li>
+      <li style="display:flex;gap:28px;align-items:baseline;border-top:1px solid var(--rule-light);padding:18px 0">
+        <span style="font:500 12px var(--sans);letter-spacing:.16em;width:28px;flex:none">06</span>
+        <span style="font:400 clamp(26px,2.6vw,36px)/1.1 var(--serif)">Completion</span>
+      </li>
+    </ol>
+  </div>
+</section>
 
-<a href="https://wa.me/34639675315" class="float-cta" aria-label="Contact us">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.634-1.215A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.16-.69-5.795-1.86l-.416-.267-2.75.721.735-2.684-.29-.462A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
-    <span>Contact us</span>
-</a>
+<!-- THE PEOPLE -->
+<section class="sec sec-stone">
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:40px 80px;align-items:center">
+    <figure style="flex:1 1 320px;max-width:460px;min-width:0;margin:0">
+      <img src="/img/sadala-founders.png" alt="Dimitri Farber and Claire Caminati on a plot, looking up at a pine" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 75%" loading="lazy">
+      <figcaption class="caption" style="margin-top:10px">Dimitri Farber and Claire Caminati, founders of SADALA</figcaption>
+    </figure>
+    <div style="flex:1 1 420px;min-width:0">
+      <div class="eyebrow">The people</div>
+      <h2 class="h2-section">A family behind every decision.</h2>
+      <p class="body-lg" style="margin:28px 0 0;max-width:520px">We are personally invested in every project because our name, our family and our reputation are behind every decision.</p>
+      <a href="/studio/" class="text-link" style="margin-top:28px">Meet the studio</a>
+    </div>
+  </div>
+</section>
 
+<!-- STATEMENT -->
+<section class="sec-tall sec-olive">
+  <div class="container">
+    <p style="font:400 clamp(44px,7.4vw,120px)/1 var(--serif);margin:0;text-wrap:balance;color:var(--limestone)">We are only here for a moment. <span style="font-style:italic">What we build can stay.</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-word">SADALA</div>
+        <div class="footer-tag">BUILT FOR GENERATIONS</div>
+      </div>
+      <nav aria-label="Footer">
+        <a href="/homes/">The Homes</a>
+        <a href="/studio/">The Studio</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>Málaga, Andalucía, Spain</span>
+      <span>© 2026 SADALA</span>
+    </div>
+  </div>
+</footer>
+
+</div>
 </body>
 </html>
