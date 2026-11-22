@@ -298,3 +298,22 @@ main { flex: 1; }
 .start-card.is-soon:hover {
   border-color: var(--rule-light);
 }
+
+/* Status chips (hero + listing cards) */
+.sold-chip, .soon-chip {
+  display: inline-flex; align-items: center;
+  padding: 6px 12px;
+  font: 500 11px var(--sans);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  line-height: 1;
+}
+.sold-chip { color: var(--warm-white); background: rgba(164,110,81,.25); }
+.soon-chip { color: var(--warm-white); background: rgba(185,169,140,.22); }
+.status-line {
+  font: 500 11px var(--sans);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--terracotta-dark);
+}
