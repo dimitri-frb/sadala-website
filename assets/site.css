@@ -290,3 +290,11 @@ main { flex: 1; }
 .expert-action svg {
   width: 16px; height: 16px; flex: none;
 }
+
+/* "Coming soon" state for Explore & configure card */
+.start-card.is-soon {
+  cursor: default;
+}
+.start-card.is-soon:hover {
+  border-color: var(--rule-light);
+}
