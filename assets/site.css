@@ -249,3 +249,44 @@ main { flex: 1; }
   padding-bottom: 6px;
   margin-top: 8px;
 }
+
+/* Ivan contact block inside the "With an expert" card */
+.expert-ivan {
+  margin-top: 6px; padding-top: 14px;
+  border-top: 1px solid rgba(234,229,217,.3);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
+}
+.expert-ivan-name {
+  font: 400 18px var(--serif);
+}
+.expert-ivan-phone {
+  font: 400 14px var(--sans);
+  color: var(--oak);
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.expert-actions {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 8px;
+}
+.expert-action {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 10px 16px;
+  color: var(--limestone);
+  background: transparent;
+  border: 1px solid rgba(234,229,217,.5);
+  text-decoration: none;
+  font: 500 12px var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.expert-action:hover {
+  background: var(--limestone);
+  color: var(--olive);
+  border-color: var(--limestone);
+}
+.expert-action svg {
+  width: 16px; height: 16px; flex: none;
+}
